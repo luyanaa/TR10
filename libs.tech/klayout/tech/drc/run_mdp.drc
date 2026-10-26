@@ -1,0 +1,295 @@
+# ----- ------ ----- ----- ------ ----- ----- ------ -----
+# TR10 Layer Generation / MDP Export
+# Original version was made by jun1okamura from TokaiRika's document
+# LICENSE: Apache License Version 2.0, January 2004
+#          http://www.apache.org/licenses/
+# ----- ------ ----- ----- ------ ----- ----- ------ -----
+
+# --------------------------------------------------------
+# Input / Output
+# --------------------------------------------------------
+if $input
+  if $cellname
+    source($input, $cellname)
+  else
+    source($input)
+  end
+end
+
+target($output) if $output
+
+TOPCELL = layout.cell_name
+source_topcell  = source.select("-*", "+#{TOPCELL}")
+TXM1_TOP = source_topcell.labels(48, 0).texts  # Top M1 Label
+TXM2_TOP = source_topcell.labels(49, 0).texts  # Top M2 Label
+
+flat
+
+# --------------------------------------------------------
+# Input layers
+# --------------------------------------------------------
+MASK  = input(63, 0)   # DRC waiver area
+PTECT = input(63, 1)   # protection / measurement recognition
+ESD   = input(63, 2)   # IO / ESD recognition
+
+AP = input(3, 1)
+AN = input(3, 2)
+AR = input(3, 3)
+AC = input(3, 4)
+
+GC = input(8, 1)       # silicide gate/contact
+GR = input(8, 2)       # silicide resistor
+
+PSUB = input(140, 0)   # Nwell / Pwell marker
+CO   = input(11, 0)    # Contact
+M1   = input(13, 0)    # Metal-1
+TC   = input(19, 0)    # Via1
+M2   = input(20, 0)    # Metal-2
+PRO  = input(14, 0)    # Pad
+
+TC23 = input(121, 0)   # Via2
+M3   = input(122, 0)   # Metal-3
+TXM1 = input(48, 0)    # Text M1
+TXM2 = input(49, 0)    # Text M2
+M1PIN = input(48, 1)   # M1 Pin
+M2PIN = input(49, 1)   # M1 Pin
+
+SCRB = input(80, 0)    # Seal ring / scribe
+
+# --------------------------------------------------------
+# Seal ring / bulk area
+# --------------------------------------------------------
+BBOX  = extent
+SRING = SCRB.drc(switch(SCRB.holes, (BBOX - SCRB.holes + SCRB), (BBOX - BBOX)))
+BULK  = BBOX - SRING
+
+# --------------------------------------------------------
+# Imported / preserved process layers inside seal ring
+# --------------------------------------------------------
+_NW   = input(36,  0).and(SRING)
+_L    = input(3,   0).and(SRING)
+_NF   = input(25,  0).and(SRING)
+_HPM  = input(33,  0).and(SRING)
+_RHP  = input(148, 0).and(SRING)
+_CL   = input(143, 0).and(SRING)
+_HPBE = input(144, 0).and(SRING)
+_HNBE = input(145, 0).and(SRING)
+_PBE  = input(146, 0).and(SRING)
+_NBE  = input(147, 0).and(SRING)
+_PM   = input(35,  0).and(SRING)
+_NM   = input(7,   0).and(SRING)
+_R    = input(12,  0).and(SRING)
+_PSD  = input(9,   0).and(SRING)
+_NSD  = input(28,  0).and(SRING)
+
+# --------------------------------------------------------
+# Derived base regions
+# --------------------------------------------------------
+NWMP = PSUB.not_interacting(AC)
+NWCS = PSUB.interacting(AC)
+PWMN = (
+  (
+    (AN - PSUB).sized(12.0, square_limit) +
+    (AP - PSUB).sized(7.0, square_limit)
+  ).merged
+).sized(-2.0, square_limit).snap(0.05, 0.05)
+
+L  = AP + AN + AR + AC
+SG = GC + GR
+
+# --------------------------------------------------------
+# Auto-generated implant masks
+# --------------------------------------------------------
+MP  = ((AP & NWMP) - ESD).interacting(GC)
+MN  = ((AN & PWMN) - ESD).interacting(GC)
+MPE = (AP & NWMP & ESD).interacting(GC)
+MPEs = MPE.edges.with_angle(diagonal_only).extents + MPE
+MNE = (AN & PWMN & ESD).interacting(GC)
+MNEs = MNE.edges.with_angle(diagonal_only).extents + MNE
+
+DP  = (AP & NWMP).not_interacting(GC)
+DN  = (AN & PWMN).not_interacting(GC)
+GP  = (AN & NWMP).not_interacting(GC)
+GN  = (AP & PWMN).not_interacting(GC)
+
+GCS = (AN & NWCS).not_interacting(GC).hulls  # CSIO back gate
+
+# --------------------------------------------------------
+# AR resistor related layers
+# --------------------------------------------------------
+CL   = AC.sized(1.4, square_limit).merged.snap(0.05, 0.05)
+RR   = AR.sized(2.0, square_limit).raw.extents.merged.snap(0.05, 0.05)
+R    = RR.sized(1.3-1.dbu).sized(-1.3+1.dbu)
+RS   = GR.sized(1.4, square_limit).merged.snap(0.05, 0.05)
+
+# Non-RPSD block region should be limited to half the surrounding poly.
+# Anything larger can conflict with neighboring resistors of different sizes.
+RPSD = RR - (CO & RR).sized(4.2-1.0, size_inside(SG.holes), steps(7)).sized(1.0)
+
+# --------------------------------------------------------
+# Main generated process layers
+# --------------------------------------------------------
+NW   = (BULK & PSUB.not_interacting(AR)).sized(1.5)
+HVNW = (BULK & PSUB.interacting(AR)).sized(1.5)
+
+NF = PSUB
+PF = PSUB.not_interacting(AC + AR)
+
+ARs = AR.edges.with_angle(diagonal_only).extents + AR
+
+# The base implant area is the minimum enclosure
+base_implant = (AC + AN + AP + GR + MNEs + MPEs).sized(1.4) + ARs.sized(2.0)
+# The implant_grow_limit is the area that the implant may grow to eliminate width errors
+implant_grow_limit = BULK - base_implant
+
+# 2.6um is minimum space, 4.2um is minimum width, 1.4um is minimum enclosure. ( 2 * 1.4 + 2.6 ) / 2 = 2.7
+PBE_base = MP + MPEs
+PBE_minimum = PBE_base.sized(1.4)
+PBE_spacing = PBE_minimum.sized(2.6+1.4)
+PBE_maximum = PBE_minimum.hulls.extents.sized(1.3).extents.sized(-1.3) - base_implant + PBE_minimum
+# Undersize by just less than half width to remove minimum width errors
+# Final sizing needs to be minimum enclosure to get diagonal spacing correct
+PBE_W_OK = (PBE_maximum.sized(-2.1+1.dbu).sized(0.7-1.dbu) + PBE_minimum.sized(-1.4))
+# subtract spacing error implant that doesn't do anything
+PBE_WS_OK = PBE_W_OK - (PBE_W_OK & PBE_spacing).not_interacting(PBE_minimum)
+PBE = PBE_WS_OK.sized(1.4, octagon_limit).merged.snap(0.05, 0.05)
+
+# 2.6um is minimum space, 4.2um is minimum width, 1.4um is minimum enclosure. ( 2 * 1.4 + 2.6 ) / 2 = 2.7
+NBE_base = MN + MNEs
+NBE_minimum = NBE_base.sized(1.4)
+NBE_spacing = NBE_minimum.sized(2.6+1.4)
+NBE_maximum = NBE_minimum.hulls.extents.sized(1.3).extents.sized(-1.3) - base_implant + NBE_minimum
+# Undersize by just less than half width to remove minimum width errors
+# Final sizing needs to be minimum enclosure to get diagonal spacing correct
+NBE_W_OK = (NBE_maximum.sized(-2.1+1.dbu).sized(0.7-1.dbu) + NBE_minimum.sized(-1.4))
+# subtract spacing error implant that doesn't do anything
+NBE_WS_OK = NBE_W_OK - (NBE_W_OK & NBE_spacing).not_interacting(NBE_minimum)
+NBE = NBE_WS_OK.sized(1.4, octagon_limit).merged.snap(0.05, 0.05)
+
+# 2.6um is minimum space, 4.2um is minimum width, 1.4um is minimum enclosure. ( 2 * 1.4 + 2.6 ) / 2 = 2.7
+PM_base = (ARs.sized(0.6) + GR + MN + DP + GP + DN + GN + MNEs + GCS)
+PM_minimum = PM_base.sized(1.4)
+PM_spacing = PM_minimum.sized(2.6+1.4)
+PM_maximum = PM_minimum.hulls.extents.sized(1.3).extents.sized(-1.3) - base_implant + PM_minimum
+# Undersize by just less than half width to remove minimum width errors
+# Final sizing needs to be minimum enclosure to get diagonal spacing correct
+PM_W_OK = (PM_maximum.sized(-2.1+1.dbu).sized(0.7-1.dbu) + PM_minimum.sized(-1.4))
+# subtract spacing error implant that doesn't do anything
+PM_WS_OK = PM_W_OK - (PM_W_OK & PM_spacing).not_interacting(PM_minimum)
+PM = (PM_WS_OK.sized(1.4, octagon_limit) + GR.sized(1.4)).merged.snap(0.05, 0.05)
+
+# 2.6um is minimum space, 4.2um is minimum width, 1.4um is minimum enclosure. ( 2 * 1.4 + 2.6 ) / 2 = 2.7
+NM_base = (ARs.sized(0.6) + GR + MP + DP + GP + DN + GN + MPEs + MNEs + GCS)
+NM_minimum = NM_base.sized(1.4)
+NM_spacing = NM_minimum.sized(2.6+1.4)
+NM_maximum = NM_minimum.hulls.extents.sized(1.3).extents.sized(-1.3) - base_implant + NM_minimum
+# Undersize by just less than half width to remove minimum width errors
+# Final sizing needs to be minimum enclosure to get diagonal spacing correct
+NM_W_OK = (NM_maximum.sized(-2.1+1.dbu).sized(0.7-1.dbu) + NM_minimum.sized(-1.4))
+# subtract spacing error implant that doesn't do anything
+NM_WS_OK = NM_W_OK - (NM_W_OK & NM_spacing).not_interacting(NM_minimum)
+NM = (NM_WS_OK.sized(1.4, octagon_limit) + GR.sized(1.4)).merged.snap(0.05, 0.05)
+
+# 2.6um is minimum space, 4.2um is minimum width, 1.4um is minimum enclosure. ( 2 * 1.4 + 2.6 ) / 2 = 2.7
+PSD_base = AN + GCS + GR
+PSD_minimum = PSD_base.sized(1.4) + RPSD
+PSD_spacing = PSD_minimum.sized(2.6+1.4)
+PSD_maximum = PSD_minimum.hulls.extents.sized(1.3).extents.sized(-1.3) - base_implant + PSD_minimum
+# Undersize by just less than half width to remove minimum width errors
+# Final sizing needs to be minimum enclosure to get diagonal spacing correct
+PSD_W_OK = (PSD_maximum.sized(-2.1+1.dbu).sized(0.7-1.dbu) + PSD_minimum.sized(-1.4))
+# subtract spacing error implant that doesn't do anything
+PSD_WS_OK = PSD_W_OK - (PSD_W_OK & PSD_spacing).not_interacting(PSD_minimum)
+PSD = (PSD_WS_OK.sized(1.4, octagon_limit) + RPSD + GR.sized(1.4)).merged.snap(0.05, 0.05)
+
+# 2.6um is minimum space, 4.2um is minimum width, 1.4um is minimum enclosure. ( 2 * 1.4 + 2.6 ) / 2 = 2.7
+NSD_base = AP + AC + ARs.sized(0.6)
+NSD_minimum = NSD_base.sized(1.4)
+NSD_spacing = NSD_minimum.sized(2.6+1.4)
+NSD_maximum = NSD_minimum.hulls.extents.sized(1.3).extents.sized(-1.3) - base_implant + NSD_minimum
+# Undersize by just less than half width to remove minimum width errors
+# Final sizing needs to be minimum enclosure to get diagonal spacing correct
+NSD_W_OK = (NSD_maximum.sized(-2.1+1.dbu).sized(0.7-1.dbu) + NSD_minimum.sized(-1.4))
+# subtract spacing error implant that doesn't do anything
+NSD_WS_OK = NSD_W_OK - (NSD_W_OK & NSD_spacing).not_interacting(NSD_minimum)
+DLCSIO = NWCS.sized(1.5)
+NSD = (NSD_WS_OK.sized(1.4, octagon_limit) - DLCSIO + CL).merged.snap(0.05, 0.05)
+
+HPM = BULK
+
+# --------------------------------------------------------
+# Auto-generated recognition layers
+# --------------------------------------------------------
+DLWLMP = NW.not_interacting(AC + AR)
+DLWLMN = PWMN
+DLWLRR = HVNW
+
+DLMP   = MP.sized(2.7, square_limit).merged.sized(-1.3, square_limit).snap(0.05, 0.05)
+DLMN   = MN.sized(2.7, square_limit).merged.sized(-1.3, square_limit).snap(0.05, 0.05)
+DLRR   = (HVNW & GC).holes.sized(2.0)
+DLRS   = GR.sized(1.4, square_limit).merged.snap(0.05, 0.05)
+#DLCSIO = NWCS.sized(1.5)
+DLDP   = DP.sized(2.7, square_limit).merged.sized(-1.3, square_limit).snap(0.05, 0.05)
+DLDN   = DN.sized(2.7, square_limit).merged.sized(-1.3, square_limit).snap(0.05, 0.05)
+DLMPE  = MPE.sized(2.7, square_limit).merged.sized(-1.3, square_limit).snap(0.05, 0.05)
+DLMNE  = MNE.sized(2.7, square_limit).merged.sized(-1.3, square_limit).snap(0.05, 0.05)
+DLBGMP = (GP - HVNW).sized(2.7, square_limit).merged.sized(-1.3, square_limit).snap(0.05, 0.05)
+DLBGMN = GN.sized(2.7, square_limit).merged.sized(-1.3, square_limit).snap(0.05, 0.05)
+DLBGRR = HVNW & PSD - DLRR
+
+# --------------------------------------------------------
+# Output MDP layers
+# --------------------------------------------------------
+(PSUB      ).output(140, 0)   # Nwell/Pwell
+(NW + _NW  ).output(36,  0)   # NW
+(HVNW      ).output(141, 0)   # HVNW
+(NF + _NF  ).output(25,  0)   # NF
+(PF        ).output(26,  0)   # PF
+(HPM + _HPM).output(33,  0)   # HPM
+(_RHP      ).output(148, 0)   # RHP
+(CL + _CL  ).output(143, 0)   # CSIO
+(_HPBE     ).output(144, 0)   # HPBE
+(_HNBE     ).output(145, 0)   # HNBE
+(PBE + _PBE).output(146, 0)   # PMOS channel implant
+(NBE + _NBE).output(147, 0)   # NMOS channel implant
+(L + _L    ).output(3,   0)   # Active
+(PM + _PM  ).output(35,  0)   # PMOS LDD
+(NM + _NM  ).output(7,   0)   # NMOS LDD
+(R + _R    ).output(12,  0)   # Resistor
+(PSD + _PSD).output(9,   0)   # PMOS S/D
+(NSD + _NSD).output(28,  0)   # NMOS S/D
+
+(SG + CL   ).output(8,   0)   # Silicide
+(CO        ).output(11,  0)   # Contact
+(M1        ).output(13,  0)   # Metal-1
+(TC        ).output(19,  0)   # Via1
+(M2        ).output(20,  0)   # Metal-2
+(PRO       ).output(14,  0)   # PAD
+(TC23      ).output(121, 0)   # Via2
+(M3        ).output(122, 0)   # Metal-3
+(SCRB      ).output(80,  0)   # SCRB
+(TXM1_TOP  ).output(48,  0)   # TEXT M1
+(TXM2_TOP  ).output(49,  0)   # TEXT M2
+(M1PIN     ).output(48,  1)   # M1 PIN
+(M2PIN     ).output(49,  1)   # M2 PIN
+
+(MASK      ).output(63,  0)   # DRC waiver
+(PTECT     ).output(63,  1)   # Protection recognition
+(ESD       ).output(63,  2)   # IO/ESD recognition
+(SCRB      ).output(80,  0)   # Seal ring
+
+(DLWLMP    ).output(150, 0)
+(DLWLMN    ).output(151, 0)
+(DLWLRR    ).output(154, 0)
+(DLMP      ).output(157, 0)
+(DLMN      ).output(158, 0)
+(DLRR      ).output(162, 0)
+(DLRS      ).output(165, 0)
+(DLCSIO    ).output(166, 0)
+(DLDP      ).output(167, 0)
+(DLDN      ).output(168, 0)
+(DLMPE     ).output(169, 0)
+(DLMNE     ).output(170, 0)
+(DLBGMP    ).output(177, 0)
+(DLBGMN    ).output(178, 0)
+(DLBGRR    ).output(182, 0)

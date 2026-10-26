@@ -1,0 +1,115 @@
+{
+  "cdl": "libs.ref/TR10_gen_sc/cdl/TR10_gen_sc.cdl",
+  "gds": "libs.ref/TR10_gen_sc/gds/TR10_gen_sc.gds",
+  "lef": "libs.ref/TR10_gen_sc/lef/TR10_gen_sc.lef",
+  "lib": "libs.ref/TR10_gen_sc/lib/TR10_gen_sc__typ_5p0V_25C.lib",
+  "library": "TR10_gen_sc",
+  "row_contract_fix": {
+    "candidate_gds_sha256": "2da843473029c2f47009de5df117026ac0b7f90f2532f72a82b45e2f033fbdef",
+    "candidate_lef_sha256": "6b69238f6e80ccdbaafa4896c1d0830fb6a8cc4a7034d38c808c2606f1190642",
+    "contract": {
+      "LEF_macro_sizes_unchanged": true,
+      "LEF_site_class_origin_symmetry_unchanged": true,
+      "TIELO_GND_stack_translation_um": [
+        0.0,
+        1.1
+      ],
+      "all_40_masters_staged": true,
+      "all_native_cell_geometry_readback_pass": true,
+      "all_signal_pin_pg_short_checks_pass": true,
+      "declared_pg_ports_excluded_from_obs": true,
+      "device_geometry_and_transistor_terminals_unchanged": true,
+      "metal_tie_master_count": 2,
+      "north_M1_minimum_row_setback_um": 1.0,
+      "north_M2_minimum_row_setback_um": 1.2,
+      "north_VDD_stack_translation_um": [
+        0.0,
+        -1.0
+      ],
+      "obs_rebuilt_from_actual_gds_minus_pin_access": true,
+      "pg_ports_refined_from_actual_named_gds_conductors": true,
+      "pin_annotation_marker_presence_unchanged": true,
+      "pin_annotation_regions_match_candidate_lef_ports_where_source_marker_exists": true,
+      "signal_ports_unchanged_except_TIELO_LO": true,
+      "site_height_um": 70.2,
+      "south_AP_CO_translation_um": [
+        0.0,
+        0.75
+      ],
+      "south_AP_spacing_margin_um": 0.10000000000000009,
+      "south_AP_spacing_rule_um": 1.4,
+      "south_GND_M1_rail_top_um": 3.4,
+      "south_opposed_AP_gap_after_um": 1.5,
+      "tielo_M2_south_setback_um": 1.1,
+      "transistor_master_count": 38,
+      "unadvertised_pg_metal_retained_as_obs": true,
+      "wire_and_electrical_views_byte_identical": true
+    },
+    "geometry_proof": "row_contract_geometry.json",
+    "geometry_proof_sha256": "8e3c6583d79cc9a6d0435a74dff6ed872635cb51a62c43067c60c817a29c6839",
+    "producer": "scripts/repair_gen_row_contract.py",
+    "producer_sha256": "5fb24209a393721c69a6b445188834b1d145ad4d18dd0733267fdfcb00916288",
+    "protected_view_copy_proof": {
+      "cdl/TR10_gen_sc.cdl": {
+        "candidate_path": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate/TR10_gen_sc/cdl/TR10_gen_sc.cdl",
+        "candidate_sha256": "8aea4f9818a1dd24b0fc339f72737415f1a00d08b9d83a4ce7b58dceb2781187",
+        "source_path": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/before/TR10_gen_sc/cdl/TR10_gen_sc.cdl",
+        "source_sha256": "8aea4f9818a1dd24b0fc339f72737415f1a00d08b9d83a4ce7b58dceb2781187",
+        "unchanged": true
+      },
+      "lib/TR10_gen_sc__typ_5p0V_25C.lib": {
+        "candidate_path": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate/TR10_gen_sc/lib/TR10_gen_sc__typ_5p0V_25C.lib",
+        "candidate_sha256": "876b9a5e7191381e30951a8f398db92b2942a919c655e7b4fd14845846ec805c",
+        "source_path": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/before/TR10_gen_sc/lib/TR10_gen_sc__typ_5p0V_25C.lib",
+        "source_sha256": "876b9a5e7191381e30951a8f398db92b2942a919c655e7b4fd14845846ec805c",
+        "unchanged": true
+      },
+      "spice/TR10_gen_sc.spice": {
+        "candidate_path": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate/TR10_gen_sc/spice/TR10_gen_sc.spice",
+        "candidate_sha256": "69ffb67978c0ff9b7e74a5b11b2185c58c8fdfcf19bd6ddf57558a7d57c82b9d",
+        "source_path": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/before/TR10_gen_sc/spice/TR10_gen_sc.spice",
+        "source_sha256": "69ffb67978c0ff9b7e74a5b11b2185c58c8fdfcf19bd6ddf57558a7d57c82b9d",
+        "unchanged": true
+      },
+      "techlef/TR10_tech.tlef": {
+        "candidate_path": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate/TR10_gen_sc/techlef/TR10_tech.tlef",
+        "candidate_sha256": "f349506be23df926f61a19e5cfc65d8df083709aa7208682041f71853cc91cb4",
+        "source_path": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/before/TR10_gen_sc/techlef/TR10_tech.tlef",
+        "source_sha256": "f349506be23df926f61a19e5cfc65d8df083709aa7208682041f71853cc91cb4",
+        "unchanged": true
+      },
+      "verilog/TR10_gen_sc.v": {
+        "candidate_path": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate/TR10_gen_sc/verilog/TR10_gen_sc.v",
+        "candidate_sha256": "fe2c7a35ef41b3281b514a485daba41b6285a1471893c8a3d9d9f77cb36d7ff9",
+        "source_path": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/before/TR10_gen_sc/verilog/TR10_gen_sc.v",
+        "source_sha256": "fe2c7a35ef41b3281b514a485daba41b6285a1471893c8a3d9d9f77cb36d7ff9",
+        "unchanged": true
+      }
+    },
+    "protected_views_byte_identical": true,
+    "schema": "tr10-gen-row-abutment-repair-v1",
+    "source_gds_sha256": "1cdab345aefb9ae974df7cdf0957db6cdb591794a1e504ce52acd15ca8a92e97",
+    "source_lef_sha256": "772891dcc93a3905d092271c8d0d863ee48c015827c63b629f57e7bcaaecf53a",
+    "source_manifest": "reports/phase2/gen_row_contract_fix/before/TR10_gen_sc/TR10_gen_sc_manifest.json",
+    "source_manifest_sha256": "06e79e9f1afededed741ec09a8fd3c6ea83d7c90e784b06e0fc627f95f621305",
+    "generation_status": "staged_candidate_not_active",
+    "status": "active_research_row_geometry_and_counter_qualified",
+    "native_qualification": {
+      "receipt": "reports/phase2/gen_row_contract_fix/acceptance.json",
+      "receipt_sha256": "95cb13d664e5ba4f9d54dd4f387b9e9694685a68c352ef369ce4204ad7b5ca86",
+      "scope": "41-master AP/M2 row-boundary proof and fresh native counter Drawing/Mask/LVS/PG acceptance; research-only, not signoff"
+    }
+  },
+  "sha256": {
+    "TR10_gen_sc.cdl": "8aea4f9818a1dd24b0fc339f72737415f1a00d08b9d83a4ce7b58dceb2781187",
+    "TR10_gen_sc.gds": "2da843473029c2f47009de5df117026ac0b7f90f2532f72a82b45e2f033fbdef",
+    "TR10_gen_sc.lef": "6b69238f6e80ccdbaafa4896c1d0830fb6a8cc4a7034d38c808c2606f1190642",
+    "TR10_gen_sc.spice": "69ffb67978c0ff9b7e74a5b11b2185c58c8fdfcf19bd6ddf57558a7d57c82b9d",
+    "TR10_gen_sc.v": "fe2c7a35ef41b3281b514a485daba41b6285a1471893c8a3d9d9f77cb36d7ff9",
+    "TR10_gen_sc__typ_5p0V_25C.lib": "876b9a5e7191381e30951a8f398db92b2942a919c655e7b4fd14845846ec805c",
+    "TR10_tech.tlef": "f349506be23df926f61a19e5cfc65d8df083709aa7208682041f71853cc91cb4"
+  },
+  "spice": "libs.ref/TR10_gen_sc/spice/TR10_gen_sc.spice",
+  "techlef": "libs.ref/TR10_gen_sc/techlef/TR10_tech.tlef",
+  "verilog": "libs.ref/TR10_gen_sc/verilog/TR10_gen_sc.v"
+}

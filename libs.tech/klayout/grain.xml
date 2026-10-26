@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<salt-grain>
+ <name>OpenSUSI-TR10</name>
+ <token/>
+ <hidden>false</hidden>
+ <version>1.0</version>
+ <api-version/>
+ <title>Technology</title>
+ <doc>Provides some basic PCells, DRC, and LVS setup for Tokairika technology.</doc>
+ <doc-url>https://github.com/OpenSUSI/TR10/tree/main/Document</doc-url>
+ <url/>
+ <license>Apache 2.0</license>
+ <author>OpenSUSI</author>
+ <author-contact>secretary@opensusi.org</author-contact>
+ <authored-time/>
+ <installed-time>2026-03-18T00:00:00</installed-time>
+ <screenshot/>
+</salt-grain>

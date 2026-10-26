@@ -1,0 +1,19 @@
+{
+  "library": "TR10_fd_sc",
+  "gds": "libs.ref/TR10_fd_sc/gds/TR10_fd_sc.gds",
+  "lef": "libs.ref/TR10_fd_sc/lef/TR10_fd_sc.lef",
+  "techlef": "libs.ref/TR10_fd_sc/techlef/TR10_tech.tlef",
+  "cdl": "libs.ref/TR10_fd_sc/cdl/TR10_fd_sc.cdl",
+  "lib": "libs.ref/TR10_fd_sc/lib/TR10_fd_sc__typ_5p0V_25C.lib",
+  "spice": "libs.ref/TR10_fd_sc/spice/TR10_fd_sc.spice",
+  "verilog": "libs.ref/TR10_fd_sc/verilog/TR10_fd_sc.v",
+  "sha256": {
+    "TR10_fd_sc.gds": "c318de2a9d8841649bb95dcfdf08bddb97fc7db05efeb06630dd0d180e418482",
+    "TR10_fd_sc.cdl": "8aea4f9818a1dd24b0fc339f72737415f1a00d08b9d83a4ce7b58dceb2781187",
+    "TR10_fd_sc__typ_5p0V_25C.lib": "455cba315b3b9471a2f6c93f2cc3b5621dea536c96cca255d233848a7488c457",
+    "TR10_fd_sc.lef": "18f18b2868fcb51c90c1fcb95bd02de09a6531062264f6efdfca97f910444a1e",
+    "TR10_fd_sc.spice": "69ffb67978c0ff9b7e74a5b11b2185c58c8fdfcf19bd6ddf57558a7d57c82b9d",
+    "TR10_fd_sc.v": "fe2c7a35ef41b3281b514a485daba41b6285a1471893c8a3d9d9f77cb36d7ff9",
+    "TR10_tech.tlef": "9f1d5a55ec556d31819f64f33bb4d8f3d8cfc2c13f4bbac46eb97ab13b12bcf0"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "tr10-antenna-access-generation-v1",
+  "cell": "ANTENNAN_X1",
+  "status": "complete_views_generated_layout_qualification_required",
+  "qualification": "engineering_prior_not_ESD_or_foundry_signoff",
+  "ports": [
+    "ANT",
+    "GND"
+  ],
+  "pg_ports": [
+    "GND"
+  ],
+  "vdd_contract": "No VDD device or port; custom row PDN must span the intentionally empty VDD track region",
+  "model": "/home/yanlu/Documents/TR-1um_stdcell/inputs/baseline/libs.tech/spice/models/ip62_models_calibrated",
+  "model_sha256": "d9583c6b44da1c418f8113a317d7cff6dc08375be9053f343fe6b7723ef2024f",
+  "magic_tech_sha256": "a6c9c7a5290c339c95aeed624a7a1cb22b1d3876856a8933c8f7ba633c36090c",
+  "native_ac": [
+    {
+      "bias_v": 0.0,
+      "frequency_hz": 1000000.0,
+      "capacitance_pf": 0.0178444677651113,
+      "input_source_current_a": 0.0,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_00/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_00/native.log"
+    },
+    {
+      "bias_v": 0.0,
+      "frequency_hz": 100000000.0,
+      "capacitance_pf": 0.0178444677651113,
+      "input_source_current_a": 0.0,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_01/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_01/native.log"
+    },
+    {
+      "bias_v": 2.5,
+      "frequency_hz": 1000000.0,
+      "capacitance_pf": 0.00978890285214662,
+      "input_source_current_a": -4.45812966231171e-12,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_02/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_02/native.log"
+    },
+    {
+      "bias_v": 2.5,
+      "frequency_hz": 100000000.0,
+      "capacitance_pf": 0.00978890285214662,
+      "input_source_current_a": -4.45812966231171e-12,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_03/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_03/native.log"
+    },
+    {
+      "bias_v": 5.0,
+      "frequency_hz": 1000000.0,
+      "capacitance_pf": 0.007935359685879256,
+      "input_source_current_a": -7.37113836757997e-12,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_04/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_04/native.log"
+    },
+    {
+      "bias_v": 5.0,
+      "frequency_hz": 100000000.0,
+      "capacitance_pf": 0.007935359685879256,
+      "input_source_current_a": -7.37113836757997e-12,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_05/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_05/native.log"
+    }
+  ],
+  "metal": {
+    "input_capacitance_pf": 0.00479438,
+    "spef": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/metal_reference/reference.spef",
+    "method": "actual supplied M1/M2/V1 polygons; ANT ground C plus ANT-to-GND mutual C"
+  },
+  "maximum_native_intrinsic_cap_pf": 0.0178444677651113,
+  "liberty_input_cap_pf": 0.0226388477651113,
+  "leakage_power": "not represented by a placeholder; use actual native circuit currents",
+  "views": {
+    "gds/TR10_antenna.gds": "c33376a9168b188a19d6807c913905667d1d51d894903c84e5bc7442b5ff70d1",
+    "lef/TR10_antenna.lef": "a544a12b215fead5987f862f8fd7af7fbe90c90ff2101b545eb617dd239d0966",
+    "cdl/TR10_antenna.cdl": "98376764ac1ee97e4d160dc06893514ddd1c40485ddd66993cc137b564a2e196",
+    "spice/TR10_antenna.spice": "98376764ac1ee97e4d160dc06893514ddd1c40485ddd66993cc137b564a2e196",
+    "lib/TR10_antenna.lib": "3867f6bb595b8aa44a2ee0de504d17388a200949da8adfeebe47fa7e2f6da681",
+    "verilog/TR10_antenna.v": "79f0b2088e14e186e75d8a61aa9427509577f56ce4a4b3b0ba140742d0cb85d6"
+  },
+  "generator_sha256": "0dcd4bdd4acd447938663d216820f0d73d444a432ef9edc914d5146a4166a0aa"
+}

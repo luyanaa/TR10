@@ -1,0 +1,105 @@
+2026-09-04 12:03:55 align.main INFO : Reading netlist: /private/tmp/align_lib/dff/dff.sp subckt=DFF, flat=0
+2026-09-04 12:03:55 align.compiler.compiler INFO : Starting topology identification...
+2026-09-04 12:03:55 align.compiler.user_const INFO : Reading constraint file: [PosixPath('/private/tmp/align_lib/dff/dff.const.json'), PosixPath('/private/tmp/align_lib/dff/test_18000/1_topology/dff.const.json'), PosixPath('/private/tmp/align_lib/dff/test_12000/1_topology/dff.const.json'), PosixPath('/private/tmp/align_lib/dff/work_pnr/1_topology/dff.const.json')]
+2026-09-04 12:03:55 align.compiler.compiler INFO : Completed topology identification.
+2026-09-04 12:03:55 align.cell_fabric.remove_duplicates ERROR : Found errors: SHORT: 0 OPEN: 0 DIFFERENT WIDTH: 1
+2026-09-04 12:03:55 align.cell_fabric.remove_duplicates ERROR : Found errors: SHORT: 0 OPEN: 0 DIFFERENT WIDTH: 1
+2026-09-04 12:03:55 align.cell_fabric.remove_duplicates ERROR : Found errors: SHORT: 0 OPEN: 0 DIFFERENT WIDTH: 1
+2026-09-04 12:03:55 align.cell_fabric.remove_duplicates ERROR : Found errors: SHORT: 0 OPEN: 0 DIFFERENT WIDTH: 1
+2026-09-04 12:03:55 align.pnr.main INFO : Running Place & Route for DFF
+2026-09-04 12:03:55 align.pnr.build_pnr_model INFO : Reading contraint json file DFF.pnr.const.json
+2026-09-04 12:03:55 align.pnr.build_pnr_model INFO : Reading contraint json file INV_32252278_PG0.pnr.const.json
+2026-09-04 12:03:55 align.pnr.build_pnr_model INFO : Reading contraint json file TGATE_92275069_PG0.pnr.const.json
+2026-09-04 12:03:55 align.pnr.build_pnr_model INFO : Reading contraint json file DFF.pnr.const.json
+2026-09-04 12:03:55 align.pnr.build_pnr_model INFO : Reading contraint json file INV_32252278_PG0.pnr.const.json
+2026-09-04 12:03:55 align.pnr.build_pnr_model INFO : Reading contraint json file TGATE_92275069_PG0.pnr.const.json
+2026-09-04 12:03:55 align.pnr.placer INFO : Starting bottom-up placement on INV_32252278_PG0 1
+2026-09-04 12:03:55 PnR.placer.SeqPair.SeqPair INFO : Enumerated search
+2026-09-04 12:03:55 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : Exhausted all permutations of seq pairs and found 1 placement solution(s)
+2026-09-04 12:03:57 align.pnr.placer INFO : Starting bottom-up placement on TGATE_92275069_PG0 2
+2026-09-04 12:03:57 PnR.placer.SeqPair.SeqPair INFO : Enumerated search
+2026-09-04 12:03:57 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : Exhausted all permutations of seq pairs and found 1 placement solution(s)
+2026-09-04 12:03:58 align.pnr.placer INFO : Starting bottom-up placement on DFF 0
+2026-09-04 12:03:58 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : Required 1 perturbations to generate a feasible solution.
+2026-09-04 12:04:14 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : ..... 10 %
+2026-09-04 12:04:30 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : ..... 20 %
+2026-09-04 12:04:45 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : ..... 30 %
+2026-09-04 12:05:01 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : ..... 40 %
+2026-09-04 12:05:14 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : ..... 50 %
+2026-09-04 12:05:28 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : ..... 60 %
+2026-09-04 12:05:42 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : ..... 70 %
+2026-09-04 12:05:57 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : ..... 80 %
+2026-09-04 12:06:11 PnR.placer.Placer.PlacementCoreAspectRatio_ILP INFO : ..... 90 %
+2026-09-04 12:06:32 align.pnr.build_pnr_model INFO : Reading contraint json file DFF.pnr.const.json
+2026-09-04 12:06:32 align.pnr.build_pnr_model INFO : Reading contraint json file INV_32252278_PG0.pnr.const.json
+2026-09-04 12:06:32 align.pnr.build_pnr_model INFO : Reading contraint json file TGATE_92275069_PG0.pnr.const.json
+2026-09-04 12:06:32 PnR.placer.SeqPair.SeqPair INFO : Enumerated search
+2026-09-04 12:06:33 PnR.placer.SeqPair.SeqPair INFO : Enumerated search
+2026-09-04 12:06:43 align.pnr.router INFO : Starting bottom_up routing on DFF 0 restricted to None
+2026-09-04 12:06:43 align.pnr.router INFO : bottom up routing for INV_32252278_PG0 (1) placement version 0
+2026-09-04 12:06:43 PnR.router.Router.RouteWork INFO : GcellGlobalRouter: INV_32252278_PG0
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.Router.RouteWork INFO : GcellDetailRouter: INV_32252278_PG0
+2026-09-04 12:06:43 align.pnr.router INFO : bottom up routing for TGATE_92275069_PG0 (2) placement version 0
+2026-09-04 12:06:43 PnR.router.Router.RouteWork INFO : GcellGlobalRouter: TGATE_92275069_PG0
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.Router.RouteWork INFO : GcellDetailRouter: TGATE_92275069_PG0
+2026-09-04 12:06:43 align.pnr.router INFO : bottom up routing for DFF (0) placement version 0
+2026-09-04 12:06:43 PnR.router.Router.RouteWork INFO : GcellGlobalRouter: DFF
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.GlobalGraph.dijkstra WARNING : Router-Warning: feasible path might not be found
+2026-09-04 12:06:43 PnR.router.Router.RouteWork INFO : GcellDetailRouter: DFF
+2026-09-04 12:06:44 PnR.router.Router.RouteWork INFO : Create power grid: DFF
+2026-09-04 12:06:44 PnR.router.Router.RouteWork INFO : Power routing DFF
+2026-09-04 12:06:44 align.cell_fabric.remove_duplicates ERROR : Found errors: SHORT: 0 OPEN: 0 DIFFERENT WIDTH: 2
+2026-09-04 12:06:44 align.pnr.main INFO : OUTPUT json at /private/tmp/align_lib/dff/test_24000/3_pnr/INV_32252278_PG0_0.json
+2026-09-04 12:06:44 align.pnr.main INFO : OUTPUT gds.json /private/tmp/align_lib/dff/test_24000/3_pnr/INV_32252278_PG0_0.python.gds.json
+2026-09-04 12:06:44 align.cell_fabric.remove_duplicates ERROR : Found errors: SHORT: 0 OPEN: 0 DIFFERENT WIDTH: 2
+2026-09-04 12:06:44 align.pnr.main INFO : OUTPUT json at /private/tmp/align_lib/dff/test_24000/3_pnr/TGATE_92275069_PG0_0.json
+2026-09-04 12:06:44 align.pnr.main INFO : OUTPUT gds.json /private/tmp/align_lib/dff/test_24000/3_pnr/TGATE_92275069_PG0_0.python.gds.json
+2026-09-04 12:06:44 align.pnr.checkers ERROR : Off grid:blockPin M1 CK [121000, 252000, 127800, 364000] 6800 112000: 62200 doesn't land on grid, lb and ub are: ((12, 0), (12, 1))
+2026-09-04 12:06:44 align.pnr.checkers ERROR : Off grid:blockPin M1 NM1 [130600, 266000, 137400, 350000] 6800 84000: 67000 doesn't land on grid, lb and ub are: ((13, 0), (13, 1))
+2026-09-04 12:06:44 align.cell_fabric.remove_duplicates ERROR : Found errors: SHORT: 0 OPEN: 0 DIFFERENT WIDTH: 22
+2026-09-04 12:06:44 align.pnr.main INFO : OUTPUT json at /private/tmp/align_lib/dff/test_24000/3_pnr/DFF_0.json
+2026-09-04 12:06:44 align.pnr.main ERROR : 2 LVS / DRC errors found !!!
+2026-09-04 12:06:44 align.pnr.main INFO : OUTPUT error file at /private/tmp/align_lib/dff/test_24000/3_pnr/DFF_0.errors
+2026-09-04 12:06:44 align.pnr.main INFO : OUTPUT gds.json /private/tmp/align_lib/dff/test_24000/3_pnr/DFF_0.python.gds.json

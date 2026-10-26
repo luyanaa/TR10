@@ -1,0 +1,422 @@
+{
+  "schema": "tr10-antenna-access-generation-v2",
+  "cell": "ANTENNAN_X1",
+  "generation_status": "gen_row_safe_views_recharacterized_layout_qualification_required",
+  "status": "active_gen_row_safe_native_layout_qualified_research_only",
+  "qualification": "Native AC and Magic metal C remeasured; standalone Drawing/MDP/Mask/strict both LVS and fresh counter Drawing/Mask/LVS/PG gates pass. No inherited layout qualification or signoff claim.",
+  "ports": [
+    "ANT",
+    "GND"
+  ],
+  "pg_ports": [
+    "GND"
+  ],
+  "vdd_contract": "No VDD device or port; custom row PDN must span the intentionally empty VDD track region",
+  "model": "/home/yanlu/Documents/TR-1um_stdcell/inputs/baseline/libs.tech/spice/models/ip62_models_calibrated",
+  "model_sha256": "d9583c6b44da1c418f8113a317d7cff6dc08375be9053f343fe6b7723ef2024f",
+  "magic_tech_sha256": "a6c9c7a5290c339c95aeed624a7a1cb22b1d3876856a8933c8f7ba633c36090c",
+  "native_ac": [
+    {
+      "bias_v": 0.0,
+      "frequency_hz": 1000000.0,
+      "capacitance_pf": 0.0178444677651113,
+      "input_source_current_a": 0.0,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_00/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_00/native.log"
+    },
+    {
+      "bias_v": 0.0,
+      "frequency_hz": 100000000.0,
+      "capacitance_pf": 0.0178444677651113,
+      "input_source_current_a": 0.0,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_01/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_01/native.log"
+    },
+    {
+      "bias_v": 2.5,
+      "frequency_hz": 1000000.0,
+      "capacitance_pf": 0.00978890285214662,
+      "input_source_current_a": -4.45812966231171e-12,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_02/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_02/native.log"
+    },
+    {
+      "bias_v": 2.5,
+      "frequency_hz": 100000000.0,
+      "capacitance_pf": 0.00978890285214662,
+      "input_source_current_a": -4.45812966231171e-12,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_03/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_03/native.log"
+    },
+    {
+      "bias_v": 5.0,
+      "frequency_hz": 1000000.0,
+      "capacitance_pf": 0.007935359685879256,
+      "input_source_current_a": -7.37113836757997e-12,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_04/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_04/native.log"
+    },
+    {
+      "bias_v": 5.0,
+      "frequency_hz": 100000000.0,
+      "capacitance_pf": 0.007935359685879256,
+      "input_source_current_a": -7.37113836757997e-12,
+      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_05/case.spice",
+      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_05/native.log"
+    }
+  ],
+  "metal": {
+    "input_capacitance_pf": 0.00479438,
+    "spef": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/metal_reference/reference.spef",
+    "method": "actual supplied M1/M2/V1 polygons; ANT ground C plus ANT-to-GND mutual C",
+    "input_gds_sha256": "6f2e6f5b31322e58d6a4d5ab280de5878cd43e6b2ed000978c5ad142192df2cf",
+    "input_geometry_sha256": "a7e763e1cfd28ea48f48959eb50de903b0d96c5f38e78f4ffa140f0f3f1d914b",
+    "spef_sha256": "aabd03400fc7ba3f3d706af9082c9f2787716f8b3ca349f6e6c3785218e24bbb",
+    "gds_geometry_validation": {
+      "matched_supplied_geometry": true,
+      "physical_shape_count": 19,
+      "dbu_um": 0.001
+    }
+  },
+  "maximum_native_intrinsic_cap_pf": 0.0178444677651113,
+  "liberty_input_cap_pf": 0.0226388477651113,
+  "row_height_um": 70.2,
+  "geometry_bounds_um": {
+    "x_min_um": 0.0,
+    "y_min_um": 0.0,
+    "x_max_um": 27.0,
+    "y_max_um": 15.4,
+    "physical_shape_count": 19
+  },
+  "leakage_power": "not represented by a placeholder; use actual native circuit currents",
+  "views": {
+    "gds/TR10_antenna.gds": "6f2e6f5b31322e58d6a4d5ab280de5878cd43e6b2ed000978c5ad142192df2cf",
+    "lef/TR10_antenna.lef": "b5085a112105d3ae4406587cd69f5c0fe2ec4f9475400cc4d8347d353781aecf",
+    "cdl/TR10_antenna.cdl": "98376764ac1ee97e4d160dc06893514ddd1c40485ddd66993cc137b564a2e196",
+    "spice/TR10_antenna.spice": "98376764ac1ee97e4d160dc06893514ddd1c40485ddd66993cc137b564a2e196",
+    "lib/TR10_antenna.lib": "cf8be1b77ce5ef1f92fdc30d6a88425f94d3d5dd649c9f8193593c6b14b41af8",
+    "verilog/TR10_antenna.v": "79f0b2088e14e186e75d8a61aa9427509577f56ce4a4b3b0ba140742d0cb85d6"
+  },
+  "generator_sha256": "bffa388b4c9ddc4136f288aaf7e21259858a70c02373a8fbfe1c1eeffb47b4af",
+  "native_qualification": {
+    "receipt": "reports/phase2/gen_row_contract_fix/acceptance.json",
+    "receipt_sha256": "95cb13d664e5ba4f9d54dd4f387b9e9694685a68c352ef369ce4204ad7b5ca86"
+  },
+  "generation_mode": "gen_row_safe_gnd_dogleg",
+  "physical_metal_geometry_um": {
+    "GND": {
+      "M1": [
+        [
+          0,
+          0,
+          27,
+          3.4
+        ],
+        [
+          7.2,
+          0,
+          9.8,
+          8.1
+        ],
+        [
+          9.2,
+          10.3,
+          16.4,
+          13.7
+        ],
+        [
+          2.7,
+          1.1,
+          9.8,
+          4.5
+        ]
+      ],
+      "M2": [
+        [
+          5.4,
+          1.1,
+          16.4,
+          4.5
+        ],
+        [
+          13.0,
+          1.1,
+          16.4,
+          13.7
+        ]
+      ],
+      "V1": [
+        [
+          6.4,
+          2.1,
+          7.8,
+          3.5
+        ],
+        [
+          14.0,
+          11.3,
+          15.4,
+          12.7
+        ]
+      ]
+    },
+    "ANT": {
+      "M1": [
+        [
+          11.2,
+          5.1,
+          22.3,
+          8.5
+        ]
+      ],
+      "M2": [
+        [
+          18.9,
+          5.1,
+          22.3,
+          15.4
+        ]
+      ],
+      "V1": [
+        [
+          19.9,
+          6.1,
+          21.3,
+          7.5
+        ]
+      ]
+    }
+  },
+  "lef_geometry_um": {
+    "pins": {
+      "ANT": {
+        "M2": [
+          [
+            18.9,
+            5.1,
+            22.3,
+            15.4
+          ]
+        ]
+      },
+      "GND": {
+        "M1": [
+          [
+            0,
+            0,
+            27,
+            3.4
+          ],
+          [
+            2.7,
+            1.1,
+            9.8,
+            4.5
+          ]
+        ]
+      }
+    },
+    "obs": {
+      "M1": [
+        [
+          7.2,
+          4.5,
+          9.8,
+          8.1
+        ],
+        [
+          9.2,
+          10.3,
+          16.4,
+          13.7
+        ],
+        [
+          11.2,
+          5.1,
+          22.3,
+          8.5
+        ]
+      ],
+      "M2": [
+        [
+          5.4,
+          1.1,
+          16.4,
+          4.5
+        ],
+        [
+          13.0,
+          1.1,
+          16.4,
+          13.7
+        ]
+      ],
+      "V1": [
+        [
+          6.4,
+          2.1,
+          7.8,
+          3.5
+        ],
+        [
+          14.0,
+          11.3,
+          15.4,
+          12.7
+        ],
+        [
+          19.9,
+          6.1,
+          21.3,
+          7.5
+        ]
+      ]
+    }
+  },
+  "device_geometry_um": {
+    "AP": [
+      [
+        1.3,
+        0.75,
+        3.9,
+        3.35
+      ]
+    ],
+    "AN": [
+      [
+        7.2,
+        5.1,
+        13.8,
+        8.5
+      ]
+    ],
+    "GC": [
+      [
+        10.0,
+        3.9,
+        11.0,
+        13.3
+      ],
+      [
+        9.2,
+        10.7,
+        11.8,
+        13.3
+      ]
+    ],
+    "CO": [
+      [
+        2.1,
+        1.55,
+        3.1,
+        2.55
+      ],
+      [
+        8.0,
+        6.3,
+        9.0,
+        7.3
+      ],
+      [
+        12.0,
+        6.3,
+        13.0,
+        7.3
+      ],
+      [
+        10.0,
+        11.5,
+        11.0,
+        12.5
+      ]
+    ]
+  },
+  "geometry_validation": {
+    "archived_source": {
+      "matched_supplied_geometry": true,
+      "physical_shape_count": 17,
+      "dbu_um": 0.001
+    },
+    "candidate": {
+      "matched_supplied_geometry": true,
+      "physical_shape_count": 19,
+      "dbu_um": 0.001
+    },
+    "preserved_antenna_metal": true,
+    "preserved_original_gnd_m1": true,
+    "drain_m1_xmin_um": 11.2,
+    "gnd_bridge_m1_xmax_um": 9.8,
+    "m1_drain_x_gap_um": 1.4,
+    "m1_drain_clearance_um": 1.5231546211727802,
+    "lower_gnd_v1_um": [
+      6.4,
+      2.1,
+      7.8,
+      3.5
+    ],
+    "lower_gnd_v1_m1_enclosure_um": 1.0,
+    "lower_gnd_v1_m2_enclosure_um": 1.0,
+    "lower_gnd_v1_m1_left_enclosure_um": 3.7,
+    "lower_gnd_v1_m2_left_enclosure_um": 1.0,
+    "minimum_v1_co_spacing_um": 2.80713376952364,
+    "m2_south_guard_um": 1.1,
+    "left_vdd_m2_strap_x_um": [
+      0.0,
+      3.4
+    ],
+    "m2_left_gap_to_vdd_strap_um": 2.0
+  },
+  "geometry_rule_source": {
+    "runset_path": "/home/yanlu/Documents/TR-1um_stdcell/flow/pdk_root/TR10/libs.tech/klayout/tech/drc/run.drc",
+    "runset_sha256": "4c2ad7d34556c85ab826a4f708a0f661e4691303f7243408fde0405feb23cb1b",
+    "V1.CO_smin_um": 1.0,
+    "M2.S1_smin_um": 2.0,
+    "M2.V1_enclosure_um": 1.0
+  },
+  "capacitance_comparison": {
+    "archived_footprint_only_cap_pf": 0.0226388477651113,
+    "candidate_remeasured_cap_pf": 0.0226388477651113,
+    "delta_pf": 0.0,
+    "archived_cap_reused": false,
+    "measurement_binding": {
+      "candidate_gds_sha256": "6f2e6f5b31322e58d6a4d5ab280de5878cd43e6b2ed000978c5ad142192df2cf",
+      "metal_geometry_sha256": "a7e763e1cfd28ea48f48959eb50de903b0d96c5f38e78f4ffa140f0f3f1d914b",
+      "magic_spef_sha256": "aabd03400fc7ba3f3d706af9082c9f2787716f8b3ca349f6e6c3785218e24bbb"
+    }
+  },
+  "source_package": {
+    "role": "Archived gen geometry/device baseline only; archived Liberty capacitance, metal extraction, and drawing/mask/LVS qualification are not reused.",
+    "manifest_path": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/before/TR10_gen_pr/manifest.json",
+    "manifest_sha256": "f7833688fb9a8a4baa148631018a5b2fd8a3761efa7c453a89481f6aea18bbeb",
+    "view_hashes": {
+      "gds/TR10_antenna.gds": "c33376a9168b188a19d6807c913905667d1d51d894903c84e5bc7442b5ff70d1",
+      "lef/TR10_antenna.lef": "5344ee57954702565423f6759aff5c269797dac64152aac120ff5499ce50ca3e",
+      "cdl/TR10_antenna.cdl": "98376764ac1ee97e4d160dc06893514ddd1c40485ddd66993cc137b564a2e196",
+      "spice/TR10_antenna.spice": "98376764ac1ee97e4d160dc06893514ddd1c40485ddd66993cc137b564a2e196",
+      "lib/TR10_antenna.lib": "cf8be1b77ce5ef1f92fdc30d6a88425f94d3d5dd649c9f8193593c6b14b41af8",
+      "verilog/TR10_antenna.v": "79f0b2088e14e186e75d8a61aa9427509577f56ce4a4b3b0ba140742d0cb85d6"
+    },
+    "preserved_device_view_hashes": {
+      "cdl/TR10_antenna.cdl": "98376764ac1ee97e4d160dc06893514ddd1c40485ddd66993cc137b564a2e196",
+      "spice/TR10_antenna.spice": "98376764ac1ee97e4d160dc06893514ddd1c40485ddd66993cc137b564a2e196",
+      "verilog/TR10_antenna.v": "79f0b2088e14e186e75d8a61aa9427509577f56ce4a4b3b0ba140742d0cb85d6"
+    }
+  },
+  "characterization_file_hashes": {
+    "characterization/metal_geometry.json": "a7e763e1cfd28ea48f48959eb50de903b0d96c5f38e78f4ffa140f0f3f1d914b",
+    "characterization/magic_cli.log": "8fb669b3aeef0a7853c055dce0730f5c17fa1abb3600271538911fe4e13000f8",
+    "characterization/metal_reference/reference.spef": "aabd03400fc7ba3f3d706af9082c9f2787716f8b3ca349f6e6c3785218e24bbb",
+    "characterization/ac_00/case.spice": "5b50fa81a8345080fe69d774811997f1259295426e15ff71dfad1738e63bf9ce",
+    "characterization/ac_00/native.log": "61333729bc6f34046c38f334b81ea7cc8217fd26d801380ba2c509c19adddcea",
+    "characterization/ac_01/case.spice": "b0da6987cbf1a4d69782c5072ba28cc525dfcdcfbfef138c2bf83feb70943bfd",
+    "characterization/ac_01/native.log": "61333729bc6f34046c38f334b81ea7cc8217fd26d801380ba2c509c19adddcea",
+    "characterization/ac_02/case.spice": "1dd1f174645887828465a11c95b69c6ec788243ce586e203b5f068fd4f8d63c5",
+    "characterization/ac_02/native.log": "4dc1297b84812d8f6497677a978949b39df075a0798f77d2f57683384407ba35",
+    "characterization/ac_03/case.spice": "61305cb42670ad4326f831bdea745573fb23cdfdff05e70777366b8fbee9b499",
+    "characterization/ac_03/native.log": "4dc1297b84812d8f6497677a978949b39df075a0798f77d2f57683384407ba35",
+    "characterization/ac_04/case.spice": "f4a88087675475da5f3d93b4426f6b4f3ecde056ec89d05c1607266eb001fcf6",
+    "characterization/ac_04/native.log": "8c4ece929d7cb83c7e182aa1b61398f2573cc835e7c2c455e2c17e72fd9b404c",
+    "characterization/ac_05/case.spice": "10a83ebebe45d3b5aa97ead0ae605b74ae39ea3636fe7f4326527ad851f9bcd9",
+    "characterization/ac_05/native.log": "8c4ece929d7cb83c7e182aa1b61398f2573cc835e7c2c455e2c17e72fd9b404c"
+  }
+}

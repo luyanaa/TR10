@@ -1,0 +1,33 @@
+#
+# TR10 DRC header template for KLayout macro generation
+# TR10: Copyright 2025 OpenSUSI non-profit organaization 
+## Original version was made by jun1okamura from TokaiRika's document 
+# LICENSE: Apache License Version 2.0, January 2004,
+#          http://www.apache.org/licenses/
+# ----- ------ ----- 
+# warning_rep = new_report("TR10 DRC(warning)", "warning.lyrdb")
+if $input 
+    if $top_cell
+        source($input, $top_cell)
+    else
+        source($input)
+    end
+end
+#
+if $report
+    report("TR10 DRC(MASK)", $report)
+else
+    report("TR10 DRC(MASK)")
+end
+#----
+# %include IP62/00_Layers.drc
+# %include IP62/01_Basics.drc
+# %include IP62/02_Device.drc
+# %include IP62/03_Check.drc
+# %include IP62/04_Check.drc
+# %include IP62/05_Check.drc
+# %include IP62/06_Check.drc
+# %include IP62/07_Check.drc
+# %include IP62/08_Check.drc
+# %include IP62/09_Check.drc
+#----

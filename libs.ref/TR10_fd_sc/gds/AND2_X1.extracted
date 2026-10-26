@@ -1,0 +1,23 @@
+* Created by KLayout
+*** My special header ***
+
+* cell AND2_X1
+* pin A
+* pin B
+* pin Y
+* pin vdd
+* pin gnd
+.SUBCKT AND2_X1 A B Y vdd gnd
+* device instance $1 r0 *1 12.4,46.1 PMOS
+M$1 vdd A \$6 vdd PMOS L=1u W=10.2u AS=28.56p AD=15.3p PS=26u PD=13.2u
+* device instance $2 r0 *1 16.4,46.1 PMOS
+M$2 \$6 B vdd vdd PMOS L=1u W=10.2u AS=15.3p AD=15.3p PS=13.2u PD=13.2u
+* device instance $3 r0 *1 20.4,46.1 PMOS
+M$3 vdd \$6 Y vdd PMOS L=1u W=10.2u AS=15.3p AD=28.56p PS=13.2u PD=26u
+* device instance $4 r0 *1 12.4,8.1 NMOS
+M$4 \$6 A \$4 gnd NMOS L=1u W=3.4u AS=9.52p AD=5.1p PS=12.4u PD=6.4u
+* device instance $5 r0 *1 16.4,8.1 NMOS
+M$5 \$4 B gnd gnd NMOS L=1u W=3.4u AS=5.1p AD=5.1p PS=6.4u PD=6.4u
+* device instance $6 r0 *1 20.4,8.1 NMOS
+M$6 gnd \$6 Y gnd NMOS L=1u W=3.4u AS=5.1p AD=9.52p PS=6.4u PD=12.4u
+.ENDS AND2_X1

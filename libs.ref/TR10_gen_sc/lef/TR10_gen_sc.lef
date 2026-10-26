@@ -1,0 +1,5870 @@
+VERSION 5.8 ;
+BUSBITCHARS "[]" ;
+DIVIDERCHAR "/" ;
+MACRO AND2_X1
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 34.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 29.6 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+        RECT 17.1 41 19.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 29.6 3.4 ;
+        RECT 17.1 3.4 19.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 16.100 19.000 19.500 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 32.600 24.500 36.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.4 12.7 11.3 14.5 ;
+    LAYER M1 ;
+      RECT 7.4 14.5 9.2 22.3 ;
+    LAYER M1 ;
+      RECT 7.4 22.3 20.9 24.1 ;
+    LAYER M1 ;
+      RECT 7.4 24.1 9.2 37.5 ;
+    LAYER M1 ;
+      RECT 7.4 37.5 15.3 39.3 ;
+    LAYER M1 ;
+      RECT 9.1 6.4 11.7 9.8 ;
+    LAYER M1 ;
+      RECT 9.5 9.8 11.3 12.7 ;
+    LAYER M1 ;
+      RECT 10.6 16.9 19 18.7 ;
+    LAYER M1 ;
+      RECT 10.6 18.7 13.2 19.5 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.5 39.3 15.3 41 ;
+    LAYER M1 ;
+      RECT 14.4 32.6 17.4 35.2 ;
+    LAYER M1 ;
+      RECT 15.6 16.1 19 16.9 ;
+    LAYER M1 ;
+      RECT 15.6 18.7 19 19.5 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 30.5 ;
+    LAYER M1 ;
+      RECT 15.6 30.5 17.4 32.6 ;
+    LAYER M1 ;
+      RECT 18.3 21.9 20.9 22.3 ;
+    LAYER M1 ;
+      RECT 18.3 24.1 20.9 24.5 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 9.8 ;
+    LAYER M1 ;
+      RECT 21.1 32.6 24.5 36 ;
+    LAYER M1 ;
+      RECT 21.1 41 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.5 9.8 23.3 12.1 ;
+    LAYER M1 ;
+      RECT 21.5 12.1 24.5 13.9 ;
+    LAYER M1 ;
+      RECT 21.5 37.5 24.5 39.3 ;
+    LAYER M1 ;
+      RECT 21.5 39.3 23.3 41 ;
+    LAYER M1 ;
+      RECT 22.7 13.9 24.5 32.6 ;
+    LAYER M1 ;
+      RECT 22.7 36 24.5 37.5 ;
+    LAYER V1 ;
+      RECT 16.6 17.1 18 18.5 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 22.1 33.6 23.5 35 ;
+  END
+END AND2_X1
+MACRO AND3_X1
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 40.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 35.1 57.6 ;
+        RECT 13.1 41 15.7 55 ;
+        RECT 21.1 41 23.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 35.1 3.4 ;
+        RECT 21.1 3.4 23.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 16.100 19.000 19.500 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 21.600 24.500 25.000 ;
+    END
+  END C
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.600 32.600 30.000 36.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.3 6.4 11.7 9.8 ;
+    LAYER M1 ;
+      RECT 7.3 9.8 9.3 37.2 ;
+    LAYER M1 ;
+      RECT 7.3 37.2 23.7 39.2 ;
+    LAYER M1 ;
+      RECT 9.1 39.2 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 10.7 33.2 17.6 35.2 ;
+    LAYER M1 ;
+      RECT 10.7 35.2 13.3 35.8 ;
+    LAYER M1 ;
+      RECT 12 14.6 14.6 16.1 ;
+    LAYER M1 ;
+      RECT 12 16.1 19 19.5 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 30.5 ;
+    LAYER M1 ;
+      RECT 15.6 30.5 17.6 33.2 ;
+    LAYER M1 ;
+      RECT 16.3 21.6 24.5 25 ;
+    LAYER M1 ;
+      RECT 17.1 6.4 19.7 9.8 ;
+    LAYER M1 ;
+      RECT 17.1 39.2 19.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.1 28.8 24.7 31.4 ;
+    LAYER M1 ;
+      RECT 21.1 31.4 23.7 37.2 ;
+    LAYER M1 ;
+      RECT 25.1 6.4 29.2 9.8 ;
+    LAYER M1 ;
+      RECT 25.1 36.6 29.2 39.2 ;
+    LAYER M1 ;
+      RECT 25.1 39.2 27.7 51.2 ;
+    LAYER M1 ;
+      RECT 26.6 9.8 29.2 32.6 ;
+    LAYER M1 ;
+      RECT 26.6 32.6 30 36 ;
+    LAYER M1 ;
+      RECT 26.6 36 29.2 36.6 ;
+    LAYER V1 ;
+      RECT 16.6 17.1 18 18.5 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 22.1 22.6 23.5 24 ;
+    LAYER V1 ;
+      RECT 27.6 33.6 29 35 ;
+  END
+END AND3_X1
+MACRO AND4_X1
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 45.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 40.6 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+        RECT 17.1 41 19.7 55 ;
+        RECT 21.1 65.6 24.5 69.2 ;
+        RECT 21.9 57.6 23.7 65.6 ;
+        RECT 25.1 41 27.7 55 ;
+      LAYER M2 ;
+        RECT 21.1 66.4 24.5 69 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 40.6 3.4 ;
+        RECT 18.9 3.4 22.3 5 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+      LAYER M2 ;
+        RECT 18.9 1.6 22.3 5 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 16.100 19.000 19.500 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 21.600 24.500 25.000 ;
+    END
+  END C
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 32.600 24.500 36.000 ;
+    END
+  END D
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 32.100 27.100 35.500 30.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7 12.7 26 14.5 ;
+    LAYER M1 ;
+      RECT 7 14.5 8.8 37.5 ;
+    LAYER M1 ;
+      RECT 7 37.5 23.3 39.3 ;
+    LAYER M1 ;
+      RECT 9.1 6.4 11.7 9.8 ;
+    LAYER M1 ;
+      RECT 9.5 9.8 11.3 12.7 ;
+    LAYER M1 ;
+      RECT 10.6 20.4 13.2 23 ;
+    LAYER M1 ;
+      RECT 11.1 16.9 19 18.7 ;
+    LAYER M1 ;
+      RECT 11.1 18.7 12.9 20.4 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.5 39.3 15.3 41 ;
+    LAYER M1 ;
+      RECT 14.4 32.6 17.4 35.2 ;
+    LAYER M1 ;
+      RECT 15.6 16.1 19 16.9 ;
+    LAYER M1 ;
+      RECT 15.6 18.7 19 19.5 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 30.5 ;
+    LAYER M1 ;
+      RECT 15.6 30.5 17.4 32.6 ;
+    LAYER M1 ;
+      RECT 17.1 6.4 19.7 9.8 ;
+    LAYER M1 ;
+      RECT 17.9 22.4 24.5 25 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 9.8 ;
+    LAYER M1 ;
+      RECT 21.1 21.6 24.5 22.4 ;
+    LAYER M1 ;
+      RECT 21.1 32.6 24.5 36 ;
+    LAYER M1 ;
+      RECT 21.1 41 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.5 39.3 23.3 41 ;
+    LAYER M1 ;
+      RECT 22.7 28.4 26.4 31 ;
+    LAYER M1 ;
+      RECT 22.7 31 24.5 32.6 ;
+    LAYER M1 ;
+      RECT 24.2 14.5 26 18.1 ;
+    LAYER M1 ;
+      RECT 24.2 18.1 30.5 19.9 ;
+    LAYER M1 ;
+      RECT 27.9 17.7 30.5 18.1 ;
+    LAYER M1 ;
+      RECT 27.9 19.9 30.5 20.3 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 9.8 ;
+    LAYER M1 ;
+      RECT 29.1 41 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 29.5 9.8 31.3 12.1 ;
+    LAYER M1 ;
+      RECT 29.5 12.1 34.7 13.9 ;
+    LAYER M1 ;
+      RECT 29.5 37.5 34.7 39.3 ;
+    LAYER M1 ;
+      RECT 29.5 39.3 31.3 41 ;
+    LAYER M1 ;
+      RECT 32.1 27.1 35.5 30.5 ;
+    LAYER M1 ;
+      RECT 32.9 13.9 34.7 27.1 ;
+    LAYER M1 ;
+      RECT 32.9 30.5 34.7 37.5 ;
+    LAYER V1 ;
+      RECT 16.6 17.1 18 18.5 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 19.9 2.6 21.3 4 ;
+    LAYER V1 ;
+      RECT 22.1 22.6 23.5 24 ;
+    LAYER V1 ;
+      RECT 22.1 33.6 23.5 35 ;
+    LAYER V1 ;
+      RECT 22.1 66.6 23.5 68 ;
+    LAYER V1 ;
+      RECT 33.1 28.1 34.5 29.5 ;
+    LAYER M2 ;
+      RECT 21.1 65.6 24.5 66.4 ;
+  END
+END AND4_X1
+MACRO BUF_X1
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 27.000 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 54.2 27 57.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 0 27 3.4 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 8.050 21.600 11.450 25.000 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 13.550 32.600 16.950 36.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.05 6.4 9.65 9.8 ;
+    LAYER M1 ;
+      RECT 7.05 41 9.65 51.2 ;
+    LAYER M1 ;
+      RECT 7.45 9.8 9.25 14.4 ;
+    LAYER M1 ;
+      RECT 7.45 14.4 16.45 16.2 ;
+    LAYER M1 ;
+      RECT 7.45 27.2 16.45 29 ;
+    LAYER M1 ;
+      RECT 7.45 29 9.25 41 ;
+    LAYER M1 ;
+      RECT 8.05 21.6 12.05 25 ;
+    LAYER M1 ;
+      RECT 9.85 17.6 12.45 20.2 ;
+    LAYER M1 ;
+      RECT 10.25 20.2 12.05 21.6 ;
+    LAYER M1 ;
+      RECT 11.05 3.4 13.65 9.8 ;
+    LAYER M1 ;
+      RECT 11.05 41 13.65 54.2 ;
+    LAYER M1 ;
+      RECT 13.55 32.6 19.85 34.4 ;
+    LAYER M1 ;
+      RECT 13.55 34.4 17.25 36 ;
+    LAYER M1 ;
+      RECT 13.85 26.4 16.45 27.2 ;
+    LAYER M1 ;
+      RECT 14.65 16.2 16.45 26.4 ;
+    LAYER M1 ;
+      RECT 15.05 6.4 17.65 9.8 ;
+    LAYER M1 ;
+      RECT 15.05 41 17.65 51.2 ;
+    LAYER M1 ;
+      RECT 15.45 9.8 17.25 11.2 ;
+    LAYER M1 ;
+      RECT 15.45 11.2 19.85 13 ;
+    LAYER M1 ;
+      RECT 15.45 36 17.25 41 ;
+    LAYER M1 ;
+      RECT 18.05 13 19.85 32.6 ;
+    LAYER V1 ;
+      RECT 9.05 22.6 10.45 24 ;
+    LAYER V1 ;
+      RECT 14.55 33.6 15.95 35 ;
+  END
+END BUF_X1
+MACRO BUF_X12
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 78.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 73.6 57.6 ;
+        RECT 9.1 41 11.7 51.2 ;
+        RECT 9.5 51.2 11.3 52.6 ;
+        RECT 9.5 52.6 67.7 55 ;
+        RECT 17.1 41 19.7 52.6 ;
+        RECT 25.1 41 27.7 52.6 ;
+        RECT 33.1 41 35.7 52.6 ;
+        RECT 41.1 41 43.7 52.6 ;
+        RECT 49.1 41 51.7 52.6 ;
+        RECT 57.1 41 59.7 52.6 ;
+        RECT 65.1 41 67.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 73.6 3.4 ;
+        RECT 9.1 3.4 67.7 5 ;
+        RECT 9.1 5 11.7 9.8 ;
+        RECT 17.1 5 19.7 9.8 ;
+        RECT 25.1 5 27.7 9.8 ;
+        RECT 33.1 5 35.7 9.8 ;
+        RECT 41.1 5 43.7 9.8 ;
+        RECT 49.1 5 51.7 9.8 ;
+        RECT 57.1 5 59.7 9.8 ;
+        RECT 65.1 5 67.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 27.100 13.500 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 59.600 21.600 63.000 25.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 10.1 27.1 13.7 30.5 ;
+    LAYER M1 ;
+      RECT 11.9 22 14.5 24.6 ;
+    LAYER M1 ;
+      RECT 11.9 24.6 13.7 27.1 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.5 9.8 15.3 16.8 ;
+    LAYER M1 ;
+      RECT 13.5 16.8 19 18.6 ;
+    LAYER M1 ;
+      RECT 13.5 33 19 34.8 ;
+    LAYER M1 ;
+      RECT 13.5 34.8 15.3 41 ;
+    LAYER M1 ;
+      RECT 17.2 18.6 19 24.9 ;
+    LAYER M1 ;
+      RECT 17.2 24.9 42.5 27.5 ;
+    LAYER M1 ;
+      RECT 17.2 27.5 19 33 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.4 ;
+    LAYER M1 ;
+      RECT 21.1 11.4 63.7 14 ;
+    LAYER M1 ;
+      RECT 21.1 36.8 63.7 39.4 ;
+    LAYER M1 ;
+      RECT 21.1 39.4 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 24.4 32.3 59.5 34.9 ;
+    LAYER M1 ;
+      RECT 24.6 15.9 59.5 18.5 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 11.4 ;
+    LAYER M1 ;
+      RECT 29.1 39.4 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 37.1 6.4 39.7 11.4 ;
+    LAYER M1 ;
+      RECT 37.1 39.4 39.7 51.2 ;
+    LAYER M1 ;
+      RECT 39.9 18.5 42.5 24.9 ;
+    LAYER M1 ;
+      RECT 39.9 27.5 42.5 32.3 ;
+    LAYER M1 ;
+      RECT 45.1 6.4 47.7 11.4 ;
+    LAYER M1 ;
+      RECT 45.1 39.4 47.7 51.2 ;
+    LAYER M1 ;
+      RECT 53.1 6.4 55.7 11.4 ;
+    LAYER M1 ;
+      RECT 53.1 39.4 55.7 51.2 ;
+    LAYER M1 ;
+      RECT 59.6 21.6 63.7 25 ;
+    LAYER M1 ;
+      RECT 61.1 6.4 63.7 11.4 ;
+    LAYER M1 ;
+      RECT 61.1 14 63.7 21.6 ;
+    LAYER M1 ;
+      RECT 61.1 25 63.7 36.8 ;
+    LAYER M1 ;
+      RECT 61.1 39.4 63.7 51.2 ;
+    LAYER V1 ;
+      RECT 11.1 28.1 12.5 29.5 ;
+    LAYER V1 ;
+      RECT 60.6 22.6 62 24 ;
+  END
+END BUF_X12
+MACRO BUF_X16
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 106.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 101.1 57.6 ;
+        RECT 9.1 44.4 11.7 52.6 ;
+        RECT 9.1 52.6 95.7 55 ;
+        RECT 17.1 44.4 19.7 52.6 ;
+        RECT 25.1 44.4 27.7 52.6 ;
+        RECT 29.1 41 31.7 52.6 ;
+        RECT 37.1 41 39.7 52.6 ;
+        RECT 45.1 41 47.7 52.6 ;
+        RECT 53.1 41 55.7 52.6 ;
+        RECT 61.1 41 63.7 52.6 ;
+        RECT 69.1 41 71.7 52.6 ;
+        RECT 77.1 41 79.7 52.6 ;
+        RECT 85.1 41 87.7 52.6 ;
+        RECT 93.1 41 95.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 101.1 3.4 ;
+        RECT 9.1 3.4 91.7 5 ;
+        RECT 9.1 5 11.7 9.8 ;
+        RECT 17.1 5 19.7 9.8 ;
+        RECT 25.1 5 27.7 9.8 ;
+        RECT 29.1 5 31.7 9.8 ;
+        RECT 37.1 5 39.7 9.8 ;
+        RECT 45.1 5 47.7 9.8 ;
+        RECT 53.1 5 55.7 9.8 ;
+        RECT 61.1 5 63.7 9.8 ;
+        RECT 69.1 5 71.7 9.8 ;
+        RECT 77.1 5 79.7 9.8 ;
+        RECT 85.1 5 87.7 9.8 ;
+        RECT 93.1 3.4 95.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 27.100 13.500 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 92.600 27.100 96.000 30.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 10.1 27.1 13.7 30.5 ;
+    LAYER M1 ;
+      RECT 11.9 22 14.5 24.6 ;
+    LAYER M1 ;
+      RECT 11.9 24.6 13.7 27.1 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 13.1 44.4 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.5 9.8 15.3 12.2 ;
+    LAYER M1 ;
+      RECT 13.5 12.2 23.3 14 ;
+    LAYER M1 ;
+      RECT 13.5 40.2 23.3 42 ;
+    LAYER M1 ;
+      RECT 13.5 42 15.3 44.4 ;
+    LAYER M1 ;
+      RECT 16.8 14 18.6 24.9 ;
+    LAYER M1 ;
+      RECT 16.8 24.9 64.1 27.5 ;
+    LAYER M1 ;
+      RECT 16.8 27.5 18.6 40.2 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 9.8 ;
+    LAYER M1 ;
+      RECT 21.1 44.4 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.5 9.8 23.3 12.2 ;
+    LAYER M1 ;
+      RECT 21.5 42 23.3 44.4 ;
+    LAYER M1 ;
+      RECT 33.1 6.4 35.7 11.4 ;
+    LAYER M1 ;
+      RECT 33.1 11.4 91.7 14 ;
+    LAYER M1 ;
+      RECT 33.1 36.8 91.7 39.4 ;
+    LAYER M1 ;
+      RECT 33.1 39.4 35.7 51.2 ;
+    LAYER M1 ;
+      RECT 36.6 15.9 87.5 18.5 ;
+    LAYER M1 ;
+      RECT 36.6 32.3 87.7 34.9 ;
+    LAYER M1 ;
+      RECT 41.1 6.4 43.7 11.4 ;
+    LAYER M1 ;
+      RECT 41.1 39.4 43.7 51.2 ;
+    LAYER M1 ;
+      RECT 49.1 6.4 51.7 11.4 ;
+    LAYER M1 ;
+      RECT 49.1 39.4 51.7 51.2 ;
+    LAYER M1 ;
+      RECT 57.1 6.4 59.7 11.4 ;
+    LAYER M1 ;
+      RECT 57.1 39.4 59.7 51.2 ;
+    LAYER M1 ;
+      RECT 61.5 18.5 64.1 24.9 ;
+    LAYER M1 ;
+      RECT 61.5 27.5 64.1 32.3 ;
+    LAYER M1 ;
+      RECT 65.1 6.4 67.7 11.4 ;
+    LAYER M1 ;
+      RECT 65.1 39.4 67.7 51.2 ;
+    LAYER M1 ;
+      RECT 73.1 6.4 75.7 11.4 ;
+    LAYER M1 ;
+      RECT 73.1 39.4 75.7 51.2 ;
+    LAYER M1 ;
+      RECT 81.1 6.4 83.7 11.4 ;
+    LAYER M1 ;
+      RECT 81.1 39.4 83.7 51.2 ;
+    LAYER M1 ;
+      RECT 89.1 6.4 91.7 11.4 ;
+    LAYER M1 ;
+      RECT 89.1 14 91.7 27.1 ;
+    LAYER M1 ;
+      RECT 89.1 27.1 96 30.5 ;
+    LAYER M1 ;
+      RECT 89.1 30.5 91.7 36.8 ;
+    LAYER M1 ;
+      RECT 89.1 39.4 91.7 51.2 ;
+    LAYER V1 ;
+      RECT 11.1 28.1 12.5 29.5 ;
+    LAYER V1 ;
+      RECT 93.6 28.1 95 29.5 ;
+  END
+END BUF_X16
+MACRO BUF_X2
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 34.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 29.6 57.6 ;
+        RECT 13.1 41 15.7 52.6 ;
+        RECT 13.1 52.6 23.7 55 ;
+        RECT 21.1 41 23.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 29.6 3.4 ;
+        RECT 13.1 3.4 23.7 5 ;
+        RECT 13.1 5 15.7 9.8 ;
+        RECT 21.1 5 23.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 27.100 13.500 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 32.600 24.500 36.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 9.1 6.4 11.7 9.8 ;
+    LAYER M1 ;
+      RECT 9.1 41 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 9.5 9.8 11.3 17.5 ;
+    LAYER M1 ;
+      RECT 9.5 17.5 18.8 19.3 ;
+    LAYER M1 ;
+      RECT 9.5 33.6 18.8 35.4 ;
+    LAYER M1 ;
+      RECT 9.5 35.4 11.3 41 ;
+    LAYER M1 ;
+      RECT 10.1 27.1 13.7 30.5 ;
+    LAYER M1 ;
+      RECT 11.9 22.2 14.5 24.8 ;
+    LAYER M1 ;
+      RECT 11.9 24.8 13.7 27.1 ;
+    LAYER M1 ;
+      RECT 17 19.3 18.8 25.8 ;
+    LAYER M1 ;
+      RECT 17 25.8 22.5 28.4 ;
+    LAYER M1 ;
+      RECT 17 28.4 18.8 33.6 ;
+    LAYER M1 ;
+      RECT 17.1 6.4 19.7 9.8 ;
+    LAYER M1 ;
+      RECT 17.1 41 19.7 51.2 ;
+    LAYER M1 ;
+      RECT 17.5 9.8 19.3 13.8 ;
+    LAYER M1 ;
+      RECT 17.5 13.8 26.9 15.6 ;
+    LAYER M1 ;
+      RECT 17.5 37.7 22.9 39.5 ;
+    LAYER M1 ;
+      RECT 17.5 39.5 19.3 41 ;
+    LAYER M1 ;
+      RECT 21.1 32.6 26.9 34.4 ;
+    LAYER M1 ;
+      RECT 21.1 34.4 24.5 36 ;
+    LAYER M1 ;
+      RECT 21.1 36 22.9 37.7 ;
+    LAYER M1 ;
+      RECT 25.1 15.6 26.9 32.6 ;
+    LAYER V1 ;
+      RECT 11.1 28.1 12.5 29.5 ;
+    LAYER V1 ;
+      RECT 22.1 33.6 23.5 35 ;
+  END
+END BUF_X2
+MACRO BUF_X4
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 45.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 40.6 57.6 ;
+        RECT 9.1 41 11.7 52.6 ;
+        RECT 9.1 52.6 35.7 55 ;
+        RECT 17.1 41 19.7 52.6 ;
+        RECT 25.1 41 27.7 52.6 ;
+        RECT 33.1 41 35.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 40.6 3.4 ;
+        RECT 9.1 3.4 35.7 5 ;
+        RECT 9.1 5 11.7 9.8 ;
+        RECT 17.1 5 19.7 9.8 ;
+        RECT 25.1 5 27.7 9.8 ;
+        RECT 33.1 5 35.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 27.100 13.500 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.600 21.600 30.000 25.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 10.1 27.1 13.7 30.5 ;
+    LAYER M1 ;
+      RECT 11.9 22 15.4 24.6 ;
+    LAYER M1 ;
+      RECT 11.9 24.6 13.7 27.1 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.5 9.8 15.3 16.8 ;
+    LAYER M1 ;
+      RECT 13.5 16.8 18.6 18.6 ;
+    LAYER M1 ;
+      RECT 13.5 33 18.6 34.8 ;
+    LAYER M1 ;
+      RECT 13.5 34.8 15.3 41 ;
+    LAYER M1 ;
+      RECT 16.8 18.6 18.6 26.2 ;
+    LAYER M1 ;
+      RECT 16.8 26.2 22.5 28.8 ;
+    LAYER M1 ;
+      RECT 16.8 28.8 18.6 33 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 9.8 ;
+    LAYER M1 ;
+      RECT 21.1 41 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.5 9.8 23.3 12.2 ;
+    LAYER M1 ;
+      RECT 21.5 12.2 31.3 14 ;
+    LAYER M1 ;
+      RECT 21.5 36.8 31.3 38.6 ;
+    LAYER M1 ;
+      RECT 21.5 38.6 23.3 41 ;
+    LAYER M1 ;
+      RECT 25.1 14 27.7 21.6 ;
+    LAYER M1 ;
+      RECT 25.1 21.6 30 25 ;
+    LAYER M1 ;
+      RECT 25.1 25 27.7 36.8 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 9.8 ;
+    LAYER M1 ;
+      RECT 29.1 41 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 29.5 9.8 31.3 12.2 ;
+    LAYER M1 ;
+      RECT 29.5 38.6 31.3 41 ;
+    LAYER V1 ;
+      RECT 11.1 28.1 12.5 29.5 ;
+    LAYER V1 ;
+      RECT 27.6 22.6 29 24 ;
+  END
+END BUF_X4
+MACRO BUF_X8
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 62.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 57.1 57.6 ;
+        RECT 9.1 41 11.7 52.6 ;
+        RECT 9.1 52.6 51.7 55 ;
+        RECT 17.1 41 19.7 52.6 ;
+        RECT 25.1 41 27.7 52.6 ;
+        RECT 33.1 41 35.7 52.6 ;
+        RECT 41.1 41 43.7 52.6 ;
+        RECT 49.1 41 51.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 57.1 3.4 ;
+        RECT 9.1 3.4 51.7 5 ;
+        RECT 9.1 5 11.7 9.8 ;
+        RECT 17.1 5 19.7 9.8 ;
+        RECT 25.1 5 27.7 9.8 ;
+        RECT 33.1 5 35.7 9.8 ;
+        RECT 41.1 5 43.7 9.8 ;
+        RECT 49.1 5 51.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 21.600 13.500 25.000 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 48.600 27.100 52.000 30.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 10.1 21.6 16.9 24.2 ;
+    LAYER M1 ;
+      RECT 10.1 24.2 13.5 25 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.5 9.8 15.3 16.8 ;
+    LAYER M1 ;
+      RECT 13.5 16.8 22.6 18.6 ;
+    LAYER M1 ;
+      RECT 13.5 32.6 22.6 34.4 ;
+    LAYER M1 ;
+      RECT 13.5 34.4 15.3 41 ;
+    LAYER M1 ;
+      RECT 20.8 18.6 22.6 24.9 ;
+    LAYER M1 ;
+      RECT 20.8 24.9 34.2 27.5 ;
+    LAYER M1 ;
+      RECT 20.8 27.5 22.6 32.6 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.4 ;
+    LAYER M1 ;
+      RECT 21.1 11.4 47.7 14 ;
+    LAYER M1 ;
+      RECT 21.1 36.8 47.7 39.4 ;
+    LAYER M1 ;
+      RECT 21.1 39.4 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 24.4 32.3 42.5 34.9 ;
+    LAYER M1 ;
+      RECT 24.6 15.9 42.5 18.5 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 11.4 ;
+    LAYER M1 ;
+      RECT 29.1 39.4 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 31.6 18.5 34.2 24.9 ;
+    LAYER M1 ;
+      RECT 31.6 27.5 34.2 32.3 ;
+    LAYER M1 ;
+      RECT 37.1 6.4 39.7 11.4 ;
+    LAYER M1 ;
+      RECT 37.1 39.4 39.7 51.2 ;
+    LAYER M1 ;
+      RECT 45.1 6.4 47.7 11.4 ;
+    LAYER M1 ;
+      RECT 45.1 14 47.7 27.1 ;
+    LAYER M1 ;
+      RECT 45.1 27.1 52 30.5 ;
+    LAYER M1 ;
+      RECT 45.1 30.5 47.7 36.8 ;
+    LAYER M1 ;
+      RECT 45.1 39.4 47.7 51.2 ;
+    LAYER V1 ;
+      RECT 11.1 22.6 12.5 24 ;
+    LAYER V1 ;
+      RECT 49.6 28.1 51 29.5 ;
+  END
+END BUF_X8
+MACRO CLKBUF_X1
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 51.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 46.1 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+        RECT 17.1 41 19.7 55 ;
+        RECT 25.1 41 27.7 55 ;
+        RECT 33.1 41 35.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 46.1 3.4 ;
+        RECT 9.1 3.4 11.7 9.8 ;
+        RECT 17.1 3.4 19.7 9.8 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+        RECT 33.1 3.4 35.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 21.600 13.500 25.000 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 32.100 21.600 35.500 25.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 10.1 16.4 15.7 19 ;
+    LAYER M1 ;
+      RECT 10.1 19 13.5 31.8 ;
+    LAYER M1 ;
+      RECT 10.1 31.8 15.7 34.4 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 11.8 ;
+    LAYER M1 ;
+      RECT 13.1 11.8 19.7 14.4 ;
+    LAYER M1 ;
+      RECT 13.1 36.4 19.7 39 ;
+    LAYER M1 ;
+      RECT 13.1 39 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 17.1 14.4 19.7 21.6 ;
+    LAYER M1 ;
+      RECT 17.1 21.6 29.7 25 ;
+    LAYER M1 ;
+      RECT 17.1 25 19.7 36.4 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.8 ;
+    LAYER M1 ;
+      RECT 21.1 11.8 39.7 14.4 ;
+    LAYER M1 ;
+      RECT 21.1 36.4 39.7 39 ;
+    LAYER M1 ;
+      RECT 21.1 39 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 26.3 16.4 29.7 21.6 ;
+    LAYER M1 ;
+      RECT 26.3 25 29.7 34.4 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 11.8 ;
+    LAYER M1 ;
+      RECT 29.1 39 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 32.1 21.6 35.5 25 ;
+    LAYER M1 ;
+      RECT 32.9 14.4 35.5 21.6 ;
+    LAYER M1 ;
+      RECT 32.9 25 35.5 36.4 ;
+    LAYER M1 ;
+      RECT 37.1 6.4 39.7 11.8 ;
+    LAYER M1 ;
+      RECT 37.1 39 39.7 51.2 ;
+    LAYER V1 ;
+      RECT 11.1 22.6 12.5 24 ;
+    LAYER V1 ;
+      RECT 33.1 22.6 34.5 24 ;
+  END
+END CLKBUF_X1
+MACRO CLKBUF_X12
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 305.400 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 299.1 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+        RECT 17.1 41 19.7 55 ;
+        RECT 25.1 41 27.7 55 ;
+        RECT 33.1 41 35.7 55 ;
+        RECT 41.1 41 43.7 55 ;
+        RECT 49.1 41 51.7 55 ;
+        RECT 57.1 41 59.7 55 ;
+        RECT 65.1 41 67.7 55 ;
+        RECT 73.1 41 75.7 55 ;
+        RECT 81.1 41 83.7 55 ;
+        RECT 89.1 41 91.7 55 ;
+        RECT 97.1 41 99.7 55 ;
+        RECT 105.1 41 107.7 55 ;
+        RECT 113.1 41 115.7 55 ;
+        RECT 121.1 41 123.7 55 ;
+        RECT 129.1 41 131.7 55 ;
+        RECT 137.1 41 139.7 55 ;
+        RECT 145.1 41 147.7 55 ;
+        RECT 153.1 41 155.7 55 ;
+        RECT 161.1 41 163.7 55 ;
+        RECT 169.1 41 171.7 55 ;
+        RECT 177.1 41 179.7 55 ;
+        RECT 185.1 41 187.7 55 ;
+        RECT 193.1 41 195.7 55 ;
+        RECT 201.1 41 203.7 55 ;
+        RECT 209.1 41 211.7 55 ;
+        RECT 217.1 41 219.7 55 ;
+        RECT 225.1 41 227.7 55 ;
+        RECT 233.1 41 235.7 55 ;
+        RECT 241.1 41 243.7 55 ;
+        RECT 249.1 41 251.7 55 ;
+        RECT 257.1 41 259.7 55 ;
+        RECT 265.1 41 267.7 55 ;
+        RECT 273.1 41 275.7 55 ;
+        RECT 281.1 41 283.7 55 ;
+        RECT 289.1 41 291.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 299.1 3.4 ;
+        RECT 9.1 3.4 11.7 9.8 ;
+        RECT 17.1 3.4 19.7 9.8 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+        RECT 33.1 3.4 35.7 9.8 ;
+        RECT 41.1 3.4 43.7 9.8 ;
+        RECT 49.1 3.4 51.7 9.8 ;
+        RECT 57.1 3.4 59.7 9.8 ;
+        RECT 65.1 3.4 67.7 9.8 ;
+        RECT 73.1 3.4 75.7 9.8 ;
+        RECT 81.1 3.4 83.7 9.8 ;
+        RECT 89.1 3.4 91.7 9.8 ;
+        RECT 97.1 3.4 99.7 9.8 ;
+        RECT 105.1 3.4 107.7 9.8 ;
+        RECT 113.1 3.4 115.7 9.8 ;
+        RECT 121.1 3.4 123.7 9.8 ;
+        RECT 129.1 3.4 131.7 9.8 ;
+        RECT 137.1 3.4 139.7 9.8 ;
+        RECT 145.1 3.4 147.7 9.8 ;
+        RECT 153.1 3.4 155.7 9.8 ;
+        RECT 161.1 3.4 163.7 9.8 ;
+        RECT 169.1 3.4 171.7 9.8 ;
+        RECT 177.1 3.4 179.7 9.8 ;
+        RECT 185.1 3.4 187.7 9.8 ;
+        RECT 193.1 3.4 195.7 9.8 ;
+        RECT 201.1 3.4 203.7 9.8 ;
+        RECT 209.1 3.4 211.7 9.8 ;
+        RECT 217.1 3.4 219.7 9.8 ;
+        RECT 225.1 3.4 227.7 9.8 ;
+        RECT 233.1 3.4 235.7 9.8 ;
+        RECT 241.1 3.4 243.7 9.8 ;
+        RECT 249.1 3.4 251.7 9.8 ;
+        RECT 257.1 3.4 259.7 9.8 ;
+        RECT 265.1 3.4 267.7 9.8 ;
+        RECT 273.1 3.4 275.7 9.8 ;
+        RECT 281.1 3.4 283.7 9.8 ;
+        RECT 289.1 3.4 291.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.600 21.600 30.000 25.000 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 285.100 21.600 288.500 25.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 11.8 ;
+    LAYER M1 ;
+      RECT 13.1 11.8 47.7 14.4 ;
+    LAYER M1 ;
+      RECT 13.1 36.4 47.7 39 ;
+    LAYER M1 ;
+      RECT 13.1 39 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 19.1 16.4 21.7 16.7 ;
+    LAYER M1 ;
+      RECT 19.1 16.7 41.7 18.7 ;
+    LAYER M1 ;
+      RECT 19.1 18.7 21.7 19 ;
+    LAYER M1 ;
+      RECT 19.1 31.8 21.7 32.1 ;
+    LAYER M1 ;
+      RECT 19.1 32.1 41.7 34.1 ;
+    LAYER M1 ;
+      RECT 19.1 34.1 21.7 34.4 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.8 ;
+    LAYER M1 ;
+      RECT 21.1 39 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 26.6 21.6 32.1 25 ;
+    LAYER M1 ;
+      RECT 28.7 18.7 32.1 21.6 ;
+    LAYER M1 ;
+      RECT 28.7 25 32.1 32.1 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 11.8 ;
+    LAYER M1 ;
+      RECT 29.1 39 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 37.1 6.4 39.7 11.8 ;
+    LAYER M1 ;
+      RECT 37.1 39 39.7 51.2 ;
+    LAYER M1 ;
+      RECT 39.1 16.4 41.7 16.7 ;
+    LAYER M1 ;
+      RECT 39.1 18.7 41.7 19 ;
+    LAYER M1 ;
+      RECT 39.1 31.8 41.7 32.1 ;
+    LAYER M1 ;
+      RECT 39.1 34.1 41.7 34.4 ;
+    LAYER M1 ;
+      RECT 45.1 6.4 47.7 11.8 ;
+    LAYER M1 ;
+      RECT 45.1 14.4 47.7 21.6 ;
+    LAYER M1 ;
+      RECT 45.1 21.6 172.1 25 ;
+    LAYER M1 ;
+      RECT 45.1 25 47.7 36.4 ;
+    LAYER M1 ;
+      RECT 45.1 39 47.7 51.2 ;
+    LAYER M1 ;
+      RECT 53.1 6.4 55.7 11.8 ;
+    LAYER M1 ;
+      RECT 53.1 11.8 287.7 14.4 ;
+    LAYER M1 ;
+      RECT 53.1 36.4 287.7 39 ;
+    LAYER M1 ;
+      RECT 53.1 39 55.7 51.2 ;
+    LAYER M1 ;
+      RECT 59.1 16.4 61.7 16.7 ;
+    LAYER M1 ;
+      RECT 59.1 16.7 281.7 18.7 ;
+    LAYER M1 ;
+      RECT 59.1 18.7 61.7 19 ;
+    LAYER M1 ;
+      RECT 59.1 31.8 61.7 32.1 ;
+    LAYER M1 ;
+      RECT 59.1 32.1 281.7 34.1 ;
+    LAYER M1 ;
+      RECT 59.1 34.1 61.7 34.4 ;
+    LAYER M1 ;
+      RECT 61.1 6.4 63.7 11.8 ;
+    LAYER M1 ;
+      RECT 61.1 39 63.7 51.2 ;
+    LAYER M1 ;
+      RECT 69.1 6.4 71.7 11.8 ;
+    LAYER M1 ;
+      RECT 69.1 39 71.7 51.2 ;
+    LAYER M1 ;
+      RECT 77.1 6.4 79.7 11.8 ;
+    LAYER M1 ;
+      RECT 77.1 39 79.7 51.2 ;
+    LAYER M1 ;
+      RECT 79.1 16.4 81.7 16.7 ;
+    LAYER M1 ;
+      RECT 79.1 18.7 81.7 19 ;
+    LAYER M1 ;
+      RECT 79.1 31.8 81.7 32.1 ;
+    LAYER M1 ;
+      RECT 79.1 34.1 81.7 34.4 ;
+    LAYER M1 ;
+      RECT 85.1 6.4 87.7 11.8 ;
+    LAYER M1 ;
+      RECT 85.1 39 87.7 51.2 ;
+    LAYER M1 ;
+      RECT 93.1 6.4 95.7 11.8 ;
+    LAYER M1 ;
+      RECT 93.1 39 95.7 51.2 ;
+    LAYER M1 ;
+      RECT 99.1 16.4 101.7 16.7 ;
+    LAYER M1 ;
+      RECT 99.1 18.7 101.7 19 ;
+    LAYER M1 ;
+      RECT 99.1 31.8 101.7 32.1 ;
+    LAYER M1 ;
+      RECT 99.1 34.1 101.7 34.4 ;
+    LAYER M1 ;
+      RECT 101.1 6.4 103.7 11.8 ;
+    LAYER M1 ;
+      RECT 101.1 39 103.7 51.2 ;
+    LAYER M1 ;
+      RECT 109.1 6.4 111.7 11.8 ;
+    LAYER M1 ;
+      RECT 109.1 39 111.7 51.2 ;
+    LAYER M1 ;
+      RECT 117.1 6.4 119.7 11.8 ;
+    LAYER M1 ;
+      RECT 117.1 39 119.7 51.2 ;
+    LAYER M1 ;
+      RECT 119.1 16.4 121.7 16.7 ;
+    LAYER M1 ;
+      RECT 119.1 18.7 121.7 19 ;
+    LAYER M1 ;
+      RECT 119.1 31.8 121.7 32.1 ;
+    LAYER M1 ;
+      RECT 119.1 34.1 121.7 34.4 ;
+    LAYER M1 ;
+      RECT 125.1 6.4 127.7 11.8 ;
+    LAYER M1 ;
+      RECT 125.1 39 127.7 51.2 ;
+    LAYER M1 ;
+      RECT 133.1 6.4 135.7 11.8 ;
+    LAYER M1 ;
+      RECT 133.1 39 135.7 51.2 ;
+    LAYER M1 ;
+      RECT 139.1 16.4 141.7 16.7 ;
+    LAYER M1 ;
+      RECT 139.1 18.7 141.7 19 ;
+    LAYER M1 ;
+      RECT 139.1 31.8 141.7 32.1 ;
+    LAYER M1 ;
+      RECT 139.1 34.1 141.7 34.4 ;
+    LAYER M1 ;
+      RECT 141.1 6.4 143.7 11.8 ;
+    LAYER M1 ;
+      RECT 141.1 39 143.7 51.2 ;
+    LAYER M1 ;
+      RECT 149.1 6.4 151.7 11.8 ;
+    LAYER M1 ;
+      RECT 149.1 39 151.7 51.2 ;
+    LAYER M1 ;
+      RECT 157.1 6.4 159.7 11.8 ;
+    LAYER M1 ;
+      RECT 157.1 39 159.7 51.2 ;
+    LAYER M1 ;
+      RECT 159.1 16.4 161.7 16.7 ;
+    LAYER M1 ;
+      RECT 159.1 18.7 161.7 19 ;
+    LAYER M1 ;
+      RECT 159.1 31.8 161.7 32.1 ;
+    LAYER M1 ;
+      RECT 159.1 34.1 161.7 34.4 ;
+    LAYER M1 ;
+      RECT 165.1 6.4 167.7 11.8 ;
+    LAYER M1 ;
+      RECT 165.1 39 167.7 51.2 ;
+    LAYER M1 ;
+      RECT 168.7 18.7 172.1 21.6 ;
+    LAYER M1 ;
+      RECT 168.7 25 172.1 32.1 ;
+    LAYER M1 ;
+      RECT 173.1 6.4 175.7 11.8 ;
+    LAYER M1 ;
+      RECT 173.1 39 175.7 51.2 ;
+    LAYER M1 ;
+      RECT 179.1 16.4 181.7 16.7 ;
+    LAYER M1 ;
+      RECT 179.1 18.7 181.7 19 ;
+    LAYER M1 ;
+      RECT 179.1 31.8 181.7 32.1 ;
+    LAYER M1 ;
+      RECT 179.1 34.1 181.7 34.4 ;
+    LAYER M1 ;
+      RECT 181.1 6.4 183.7 11.8 ;
+    LAYER M1 ;
+      RECT 181.1 39 183.7 51.2 ;
+    LAYER M1 ;
+      RECT 189.1 6.4 191.7 11.8 ;
+    LAYER M1 ;
+      RECT 189.1 39 191.7 51.2 ;
+    LAYER M1 ;
+      RECT 197.1 6.4 199.7 11.8 ;
+    LAYER M1 ;
+      RECT 197.1 39 199.7 51.2 ;
+    LAYER M1 ;
+      RECT 199.1 16.4 201.7 16.7 ;
+    LAYER M1 ;
+      RECT 199.1 18.7 201.7 19 ;
+    LAYER M1 ;
+      RECT 199.1 31.8 201.7 32.1 ;
+    LAYER M1 ;
+      RECT 199.1 34.1 201.7 34.4 ;
+    LAYER M1 ;
+      RECT 205.1 6.4 207.7 11.8 ;
+    LAYER M1 ;
+      RECT 205.1 39 207.7 51.2 ;
+    LAYER M1 ;
+      RECT 213.1 6.4 215.7 11.8 ;
+    LAYER M1 ;
+      RECT 213.1 39 215.7 51.2 ;
+    LAYER M1 ;
+      RECT 219.1 16.4 221.7 16.7 ;
+    LAYER M1 ;
+      RECT 219.1 18.7 221.7 19 ;
+    LAYER M1 ;
+      RECT 219.1 31.8 221.7 32.1 ;
+    LAYER M1 ;
+      RECT 219.1 34.1 221.7 34.4 ;
+    LAYER M1 ;
+      RECT 221.1 6.4 223.7 11.8 ;
+    LAYER M1 ;
+      RECT 221.1 39 223.7 51.2 ;
+    LAYER M1 ;
+      RECT 229.1 6.4 231.7 11.8 ;
+    LAYER M1 ;
+      RECT 229.1 39 231.7 51.2 ;
+    LAYER M1 ;
+      RECT 237.1 6.4 239.7 11.8 ;
+    LAYER M1 ;
+      RECT 237.1 39 239.7 51.2 ;
+    LAYER M1 ;
+      RECT 239.1 16.4 241.7 16.7 ;
+    LAYER M1 ;
+      RECT 239.1 18.7 241.7 19 ;
+    LAYER M1 ;
+      RECT 239.1 31.8 241.7 32.1 ;
+    LAYER M1 ;
+      RECT 239.1 34.1 241.7 34.4 ;
+    LAYER M1 ;
+      RECT 245.1 6.4 247.7 11.8 ;
+    LAYER M1 ;
+      RECT 245.1 39 247.7 51.2 ;
+    LAYER M1 ;
+      RECT 253.1 6.4 255.7 11.8 ;
+    LAYER M1 ;
+      RECT 253.1 39 255.7 51.2 ;
+    LAYER M1 ;
+      RECT 259.1 16.4 261.7 16.7 ;
+    LAYER M1 ;
+      RECT 259.1 18.7 261.7 19 ;
+    LAYER M1 ;
+      RECT 259.1 31.8 261.7 32.1 ;
+    LAYER M1 ;
+      RECT 259.1 34.1 261.7 34.4 ;
+    LAYER M1 ;
+      RECT 261.1 6.4 263.7 11.8 ;
+    LAYER M1 ;
+      RECT 261.1 39 263.7 51.2 ;
+    LAYER M1 ;
+      RECT 269.1 6.4 271.7 11.8 ;
+    LAYER M1 ;
+      RECT 269.1 39 271.7 51.2 ;
+    LAYER M1 ;
+      RECT 277.1 6.4 279.7 11.8 ;
+    LAYER M1 ;
+      RECT 277.1 39 279.7 51.2 ;
+    LAYER M1 ;
+      RECT 279.1 16.4 281.7 16.7 ;
+    LAYER M1 ;
+      RECT 279.1 18.7 281.7 19 ;
+    LAYER M1 ;
+      RECT 279.1 31.8 281.7 32.1 ;
+    LAYER M1 ;
+      RECT 279.1 34.1 281.7 34.4 ;
+    LAYER M1 ;
+      RECT 285.1 6.4 287.7 11.8 ;
+    LAYER M1 ;
+      RECT 285.1 14.4 287.7 21.6 ;
+    LAYER M1 ;
+      RECT 285.1 21.6 288.5 25 ;
+    LAYER M1 ;
+      RECT 285.1 25 287.7 36.4 ;
+    LAYER M1 ;
+      RECT 285.1 39 287.7 51.2 ;
+    LAYER V1 ;
+      RECT 27.6 22.6 29 24 ;
+    LAYER V1 ;
+      RECT 286.1 22.6 287.5 24 ;
+  END
+END CLKBUF_X12
+MACRO CLKBUF_X16
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 392.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 387.1 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+        RECT 17.1 41 19.7 55 ;
+        RECT 25.1 41 27.7 55 ;
+        RECT 33.1 41 35.7 55 ;
+        RECT 41.1 41 43.7 55 ;
+        RECT 49.1 41 51.7 55 ;
+        RECT 57.1 41 59.7 55 ;
+        RECT 65.1 41 67.7 55 ;
+        RECT 73.1 41 75.7 55 ;
+        RECT 81.1 41 83.7 55 ;
+        RECT 89.1 41 91.7 55 ;
+        RECT 97.1 41 99.7 55 ;
+        RECT 105.1 41 107.7 55 ;
+        RECT 113.1 41 115.7 55 ;
+        RECT 121.1 41 123.7 55 ;
+        RECT 129.1 41 131.7 55 ;
+        RECT 137.1 41 139.7 55 ;
+        RECT 145.1 41 147.7 55 ;
+        RECT 153.1 41 155.7 55 ;
+        RECT 161.1 41 163.7 55 ;
+        RECT 169.1 41 171.7 55 ;
+        RECT 177.1 41 179.7 55 ;
+        RECT 185.1 41 187.7 55 ;
+        RECT 193.1 41 195.7 55 ;
+        RECT 201.1 41 203.7 55 ;
+        RECT 209.1 41 211.7 55 ;
+        RECT 217.1 41 219.7 55 ;
+        RECT 225.1 41 227.7 55 ;
+        RECT 233.1 41 235.7 55 ;
+        RECT 241.1 41 243.7 55 ;
+        RECT 249.1 41 251.7 55 ;
+        RECT 257.1 41 259.7 55 ;
+        RECT 265.1 41 267.7 55 ;
+        RECT 273.1 41 275.7 55 ;
+        RECT 281.1 41 283.7 55 ;
+        RECT 289.1 41 291.7 55 ;
+        RECT 297.1 41 299.7 55 ;
+        RECT 305.1 41 307.7 55 ;
+        RECT 313.1 41 315.7 55 ;
+        RECT 321.1 41 323.7 55 ;
+        RECT 329.1 41 331.7 55 ;
+        RECT 337.1 41 339.7 55 ;
+        RECT 345.1 41 347.7 55 ;
+        RECT 353.1 41 355.7 55 ;
+        RECT 361.1 41 363.7 55 ;
+        RECT 369.1 41 371.7 55 ;
+        RECT 377.1 41 379.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 387.1 3.4 ;
+        RECT 9.1 3.4 11.7 9.8 ;
+        RECT 17.1 3.4 19.7 9.8 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+        RECT 33.1 3.4 35.7 9.8 ;
+        RECT 41.1 3.4 43.7 9.8 ;
+        RECT 49.1 3.4 51.7 9.8 ;
+        RECT 57.1 3.4 59.7 9.8 ;
+        RECT 65.1 3.4 67.7 9.8 ;
+        RECT 73.1 3.4 75.7 9.8 ;
+        RECT 81.1 3.4 83.7 9.8 ;
+        RECT 89.1 3.4 91.7 9.8 ;
+        RECT 97.1 3.4 99.7 9.8 ;
+        RECT 105.1 3.4 107.7 9.8 ;
+        RECT 113.1 3.4 115.7 9.8 ;
+        RECT 121.1 3.4 123.7 9.8 ;
+        RECT 129.1 3.4 131.7 9.8 ;
+        RECT 137.1 3.4 139.7 9.8 ;
+        RECT 145.1 3.4 147.7 9.8 ;
+        RECT 153.1 3.4 155.7 9.8 ;
+        RECT 161.1 3.4 163.7 9.8 ;
+        RECT 169.1 3.4 171.7 9.8 ;
+        RECT 177.1 3.4 179.7 9.8 ;
+        RECT 185.1 3.4 187.7 9.8 ;
+        RECT 193.1 3.4 195.7 9.8 ;
+        RECT 201.1 3.4 203.7 9.8 ;
+        RECT 209.1 3.4 211.7 9.8 ;
+        RECT 217.1 3.4 219.7 9.8 ;
+        RECT 225.1 3.4 227.7 9.8 ;
+        RECT 233.1 3.4 235.7 9.8 ;
+        RECT 241.1 3.4 243.7 9.8 ;
+        RECT 249.1 3.4 251.7 9.8 ;
+        RECT 257.1 3.4 259.7 9.8 ;
+        RECT 265.1 3.4 267.7 9.8 ;
+        RECT 273.1 3.4 275.7 9.8 ;
+        RECT 281.1 3.4 283.7 9.8 ;
+        RECT 289.1 3.4 291.7 9.8 ;
+        RECT 297.1 3.4 299.7 9.8 ;
+        RECT 305.1 3.4 307.7 9.8 ;
+        RECT 313.1 3.4 315.7 9.8 ;
+        RECT 321.1 3.4 323.7 9.8 ;
+        RECT 329.1 3.4 331.7 9.8 ;
+        RECT 337.1 3.4 339.7 9.8 ;
+        RECT 345.1 3.4 347.7 9.8 ;
+        RECT 353.1 3.4 355.7 9.8 ;
+        RECT 361.1 3.4 363.7 9.8 ;
+        RECT 369.1 3.4 371.7 9.8 ;
+        RECT 377.1 3.4 379.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 32.100 21.600 35.500 25.000 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 373.100 21.600 376.500 25.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 11.8 ;
+    LAYER M1 ;
+      RECT 13.1 11.8 55.7 14.4 ;
+    LAYER M1 ;
+      RECT 13.1 36.4 55.7 39 ;
+    LAYER M1 ;
+      RECT 13.1 39 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 17.1 16.4 19.7 16.7 ;
+    LAYER M1 ;
+      RECT 17.1 16.7 51.7 18.7 ;
+    LAYER M1 ;
+      RECT 17.1 18.7 19.7 19 ;
+    LAYER M1 ;
+      RECT 17.1 31.8 19.7 32.1 ;
+    LAYER M1 ;
+      RECT 17.1 32.1 51.7 34.1 ;
+    LAYER M1 ;
+      RECT 17.1 34.1 19.7 34.4 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.8 ;
+    LAYER M1 ;
+      RECT 21.1 39 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 11.8 ;
+    LAYER M1 ;
+      RECT 29.1 39 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 32.1 21.6 36.1 25 ;
+    LAYER M1 ;
+      RECT 32.7 18.7 36.1 21.6 ;
+    LAYER M1 ;
+      RECT 32.7 25 36.1 32.1 ;
+    LAYER M1 ;
+      RECT 33.1 16.4 35.7 16.7 ;
+    LAYER M1 ;
+      RECT 33.1 34.1 35.7 34.4 ;
+    LAYER M1 ;
+      RECT 37.1 6.4 39.7 11.8 ;
+    LAYER M1 ;
+      RECT 37.1 39 39.7 51.2 ;
+    LAYER M1 ;
+      RECT 45.1 6.4 47.7 11.8 ;
+    LAYER M1 ;
+      RECT 45.1 39 47.7 51.2 ;
+    LAYER M1 ;
+      RECT 49.1 16.4 51.7 16.7 ;
+    LAYER M1 ;
+      RECT 49.1 18.7 51.7 19 ;
+    LAYER M1 ;
+      RECT 49.1 31.8 51.7 32.1 ;
+    LAYER M1 ;
+      RECT 49.1 34.1 51.7 34.4 ;
+    LAYER M1 ;
+      RECT 53.1 6.4 55.7 11.8 ;
+    LAYER M1 ;
+      RECT 53.1 14.4 55.7 21.6 ;
+    LAYER M1 ;
+      RECT 53.1 21.6 220.1 25 ;
+    LAYER M1 ;
+      RECT 53.1 25 55.7 36.4 ;
+    LAYER M1 ;
+      RECT 53.1 39 55.7 51.2 ;
+    LAYER M1 ;
+      RECT 61.1 6.4 63.7 11.8 ;
+    LAYER M1 ;
+      RECT 61.1 11.8 375.7 14.4 ;
+    LAYER M1 ;
+      RECT 61.1 36.4 375.7 39 ;
+    LAYER M1 ;
+      RECT 61.1 39 63.7 51.2 ;
+    LAYER M1 ;
+      RECT 67.1 16.4 69.7 16.7 ;
+    LAYER M1 ;
+      RECT 67.1 16.7 369.7 18.7 ;
+    LAYER M1 ;
+      RECT 67.1 18.7 69.7 19 ;
+    LAYER M1 ;
+      RECT 67.1 31.8 69.7 32.1 ;
+    LAYER M1 ;
+      RECT 67.1 32.1 369.7 34.1 ;
+    LAYER M1 ;
+      RECT 67.1 34.1 69.7 34.4 ;
+    LAYER M1 ;
+      RECT 69.1 6.4 71.7 11.8 ;
+    LAYER M1 ;
+      RECT 69.1 39 71.7 51.2 ;
+    LAYER M1 ;
+      RECT 77.1 6.4 79.7 11.8 ;
+    LAYER M1 ;
+      RECT 77.1 39 79.7 51.2 ;
+    LAYER M1 ;
+      RECT 85.1 6.4 87.7 11.8 ;
+    LAYER M1 ;
+      RECT 85.1 39 87.7 51.2 ;
+    LAYER M1 ;
+      RECT 87.1 16.4 89.7 16.7 ;
+    LAYER M1 ;
+      RECT 87.1 18.7 89.7 19 ;
+    LAYER M1 ;
+      RECT 87.1 31.8 89.7 32.1 ;
+    LAYER M1 ;
+      RECT 87.1 34.1 89.7 34.4 ;
+    LAYER M1 ;
+      RECT 93.1 6.4 95.7 11.8 ;
+    LAYER M1 ;
+      RECT 93.1 39 95.7 51.2 ;
+    LAYER M1 ;
+      RECT 101.1 6.4 103.7 11.8 ;
+    LAYER M1 ;
+      RECT 101.1 39 103.7 51.2 ;
+    LAYER M1 ;
+      RECT 107.1 16.4 109.7 16.7 ;
+    LAYER M1 ;
+      RECT 107.1 18.7 109.7 19 ;
+    LAYER M1 ;
+      RECT 107.1 31.8 109.7 32.1 ;
+    LAYER M1 ;
+      RECT 107.1 34.1 109.7 34.4 ;
+    LAYER M1 ;
+      RECT 109.1 6.4 111.7 11.8 ;
+    LAYER M1 ;
+      RECT 109.1 39 111.7 51.2 ;
+    LAYER M1 ;
+      RECT 117.1 6.4 119.7 11.8 ;
+    LAYER M1 ;
+      RECT 117.1 39 119.7 51.2 ;
+    LAYER M1 ;
+      RECT 125.1 6.4 127.7 11.8 ;
+    LAYER M1 ;
+      RECT 125.1 39 127.7 51.2 ;
+    LAYER M1 ;
+      RECT 127.1 16.4 129.7 16.7 ;
+    LAYER M1 ;
+      RECT 127.1 18.7 129.7 19 ;
+    LAYER M1 ;
+      RECT 127.1 31.8 129.7 32.1 ;
+    LAYER M1 ;
+      RECT 127.1 34.1 129.7 34.4 ;
+    LAYER M1 ;
+      RECT 133.1 6.4 135.7 11.8 ;
+    LAYER M1 ;
+      RECT 133.1 39 135.7 51.2 ;
+    LAYER M1 ;
+      RECT 141.1 6.4 143.7 11.8 ;
+    LAYER M1 ;
+      RECT 141.1 39 143.7 51.2 ;
+    LAYER M1 ;
+      RECT 147.1 16.4 149.7 16.7 ;
+    LAYER M1 ;
+      RECT 147.1 18.7 149.7 19 ;
+    LAYER M1 ;
+      RECT 147.1 31.8 149.7 32.1 ;
+    LAYER M1 ;
+      RECT 147.1 34.1 149.7 34.4 ;
+    LAYER M1 ;
+      RECT 149.1 6.4 151.7 11.8 ;
+    LAYER M1 ;
+      RECT 149.1 39 151.7 51.2 ;
+    LAYER M1 ;
+      RECT 157.1 6.4 159.7 11.8 ;
+    LAYER M1 ;
+      RECT 157.1 39 159.7 51.2 ;
+    LAYER M1 ;
+      RECT 165.1 6.4 167.7 11.8 ;
+    LAYER M1 ;
+      RECT 165.1 39 167.7 51.2 ;
+    LAYER M1 ;
+      RECT 167.1 16.4 169.7 16.7 ;
+    LAYER M1 ;
+      RECT 167.1 18.7 169.7 19 ;
+    LAYER M1 ;
+      RECT 167.1 31.8 169.7 32.1 ;
+    LAYER M1 ;
+      RECT 167.1 34.1 169.7 34.4 ;
+    LAYER M1 ;
+      RECT 173.1 6.4 175.7 11.8 ;
+    LAYER M1 ;
+      RECT 173.1 39 175.7 51.2 ;
+    LAYER M1 ;
+      RECT 181.1 6.4 183.7 11.8 ;
+    LAYER M1 ;
+      RECT 181.1 39 183.7 51.2 ;
+    LAYER M1 ;
+      RECT 187.1 16.4 189.7 16.7 ;
+    LAYER M1 ;
+      RECT 187.1 18.7 189.7 19 ;
+    LAYER M1 ;
+      RECT 187.1 31.8 189.7 32.1 ;
+    LAYER M1 ;
+      RECT 187.1 34.1 189.7 34.4 ;
+    LAYER M1 ;
+      RECT 189.1 6.4 191.7 11.8 ;
+    LAYER M1 ;
+      RECT 189.1 39 191.7 51.2 ;
+    LAYER M1 ;
+      RECT 197.1 6.4 199.7 11.8 ;
+    LAYER M1 ;
+      RECT 197.1 39 199.7 51.2 ;
+    LAYER M1 ;
+      RECT 205.1 6.4 207.7 11.8 ;
+    LAYER M1 ;
+      RECT 205.1 39 207.7 51.2 ;
+    LAYER M1 ;
+      RECT 207.1 16.4 209.7 16.7 ;
+    LAYER M1 ;
+      RECT 207.1 18.7 209.7 19 ;
+    LAYER M1 ;
+      RECT 207.1 31.8 209.7 32.1 ;
+    LAYER M1 ;
+      RECT 207.1 34.1 209.7 34.4 ;
+    LAYER M1 ;
+      RECT 213.1 6.4 215.7 11.8 ;
+    LAYER M1 ;
+      RECT 213.1 39 215.7 51.2 ;
+    LAYER M1 ;
+      RECT 216.7 18.7 220.1 21.6 ;
+    LAYER M1 ;
+      RECT 216.7 25 220.1 32.1 ;
+    LAYER M1 ;
+      RECT 221.1 6.4 223.7 11.8 ;
+    LAYER M1 ;
+      RECT 221.1 39 223.7 51.2 ;
+    LAYER M1 ;
+      RECT 227.1 16.4 229.7 16.7 ;
+    LAYER M1 ;
+      RECT 227.1 18.7 229.7 19 ;
+    LAYER M1 ;
+      RECT 227.1 31.8 229.7 32.1 ;
+    LAYER M1 ;
+      RECT 227.1 34.1 229.7 34.4 ;
+    LAYER M1 ;
+      RECT 229.1 6.4 231.7 11.8 ;
+    LAYER M1 ;
+      RECT 229.1 39 231.7 51.2 ;
+    LAYER M1 ;
+      RECT 237.1 6.4 239.7 11.8 ;
+    LAYER M1 ;
+      RECT 237.1 39 239.7 51.2 ;
+    LAYER M1 ;
+      RECT 245.1 6.4 247.7 11.8 ;
+    LAYER M1 ;
+      RECT 245.1 39 247.7 51.2 ;
+    LAYER M1 ;
+      RECT 247.1 16.4 249.7 16.7 ;
+    LAYER M1 ;
+      RECT 247.1 18.7 249.7 19 ;
+    LAYER M1 ;
+      RECT 247.1 31.8 249.7 32.1 ;
+    LAYER M1 ;
+      RECT 247.1 34.1 249.7 34.4 ;
+    LAYER M1 ;
+      RECT 253.1 6.4 255.7 11.8 ;
+    LAYER M1 ;
+      RECT 253.1 39 255.7 51.2 ;
+    LAYER M1 ;
+      RECT 261.1 6.4 263.7 11.8 ;
+    LAYER M1 ;
+      RECT 261.1 39 263.7 51.2 ;
+    LAYER M1 ;
+      RECT 267.1 16.4 269.7 16.7 ;
+    LAYER M1 ;
+      RECT 267.1 18.7 269.7 19 ;
+    LAYER M1 ;
+      RECT 267.1 31.8 269.7 32.1 ;
+    LAYER M1 ;
+      RECT 267.1 34.1 269.7 34.4 ;
+    LAYER M1 ;
+      RECT 269.1 6.4 271.7 11.8 ;
+    LAYER M1 ;
+      RECT 269.1 39 271.7 51.2 ;
+    LAYER M1 ;
+      RECT 277.1 6.4 279.7 11.8 ;
+    LAYER M1 ;
+      RECT 277.1 39 279.7 51.2 ;
+    LAYER M1 ;
+      RECT 285.1 6.4 287.7 11.8 ;
+    LAYER M1 ;
+      RECT 285.1 39 287.7 51.2 ;
+    LAYER M1 ;
+      RECT 287.1 16.4 289.7 16.7 ;
+    LAYER M1 ;
+      RECT 287.1 18.7 289.7 19 ;
+    LAYER M1 ;
+      RECT 287.1 31.8 289.7 32.1 ;
+    LAYER M1 ;
+      RECT 287.1 34.1 289.7 34.4 ;
+    LAYER M1 ;
+      RECT 293.1 6.4 295.7 11.8 ;
+    LAYER M1 ;
+      RECT 293.1 39 295.7 51.2 ;
+    LAYER M1 ;
+      RECT 301.1 6.4 303.7 11.8 ;
+    LAYER M1 ;
+      RECT 301.1 39 303.7 51.2 ;
+    LAYER M1 ;
+      RECT 307.1 16.4 309.7 16.7 ;
+    LAYER M1 ;
+      RECT 307.1 18.7 309.7 19 ;
+    LAYER M1 ;
+      RECT 307.1 31.8 309.7 32.1 ;
+    LAYER M1 ;
+      RECT 307.1 34.1 309.7 34.4 ;
+    LAYER M1 ;
+      RECT 309.1 6.4 311.7 11.8 ;
+    LAYER M1 ;
+      RECT 309.1 39 311.7 51.2 ;
+    LAYER M1 ;
+      RECT 317.1 6.4 319.7 11.8 ;
+    LAYER M1 ;
+      RECT 317.1 39 319.7 51.2 ;
+    LAYER M1 ;
+      RECT 325.1 6.4 327.7 11.8 ;
+    LAYER M1 ;
+      RECT 325.1 39 327.7 51.2 ;
+    LAYER M1 ;
+      RECT 327.1 16.4 329.7 16.7 ;
+    LAYER M1 ;
+      RECT 327.1 18.7 329.7 19 ;
+    LAYER M1 ;
+      RECT 327.1 31.8 329.7 32.1 ;
+    LAYER M1 ;
+      RECT 327.1 34.1 329.7 34.4 ;
+    LAYER M1 ;
+      RECT 333.1 6.4 335.7 11.8 ;
+    LAYER M1 ;
+      RECT 333.1 39 335.7 51.2 ;
+    LAYER M1 ;
+      RECT 341.1 6.4 343.7 11.8 ;
+    LAYER M1 ;
+      RECT 341.1 39 343.7 51.2 ;
+    LAYER M1 ;
+      RECT 347.1 16.4 349.7 16.7 ;
+    LAYER M1 ;
+      RECT 347.1 18.7 349.7 19 ;
+    LAYER M1 ;
+      RECT 347.1 31.8 349.7 32.1 ;
+    LAYER M1 ;
+      RECT 347.1 34.1 349.7 34.4 ;
+    LAYER M1 ;
+      RECT 349.1 6.4 351.7 11.8 ;
+    LAYER M1 ;
+      RECT 349.1 39 351.7 51.2 ;
+    LAYER M1 ;
+      RECT 357.1 6.4 359.7 11.8 ;
+    LAYER M1 ;
+      RECT 357.1 39 359.7 51.2 ;
+    LAYER M1 ;
+      RECT 365.1 6.4 367.7 11.8 ;
+    LAYER M1 ;
+      RECT 365.1 39 367.7 51.2 ;
+    LAYER M1 ;
+      RECT 367.1 16.4 369.7 16.7 ;
+    LAYER M1 ;
+      RECT 367.1 18.7 369.7 19 ;
+    LAYER M1 ;
+      RECT 367.1 31.8 369.7 32.1 ;
+    LAYER M1 ;
+      RECT 367.1 34.1 369.7 34.4 ;
+    LAYER M1 ;
+      RECT 373.1 6.4 375.7 11.8 ;
+    LAYER M1 ;
+      RECT 373.1 14.4 375.7 21.6 ;
+    LAYER M1 ;
+      RECT 373.1 21.6 376.5 25 ;
+    LAYER M1 ;
+      RECT 373.1 25 375.7 36.4 ;
+    LAYER M1 ;
+      RECT 373.1 39 375.7 51.2 ;
+    LAYER V1 ;
+      RECT 33.1 22.6 34.5 24 ;
+    LAYER V1 ;
+      RECT 374.1 22.6 375.5 24 ;
+  END
+END CLKBUF_X16
+MACRO CLKBUF_X2
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 78.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 73.6 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+        RECT 17.1 41 19.7 55 ;
+        RECT 25.1 41 27.7 55 ;
+        RECT 33.1 41 35.7 55 ;
+        RECT 41.1 41 43.7 55 ;
+        RECT 49.1 41 51.7 55 ;
+        RECT 57.1 41 59.7 55 ;
+        RECT 65.1 41 67.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 73.6 3.4 ;
+        RECT 9.1 3.4 11.7 9.8 ;
+        RECT 17.1 3.4 19.7 9.8 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+        RECT 33.1 3.4 35.7 9.8 ;
+        RECT 41.1 3.4 43.7 9.8 ;
+        RECT 49.1 3.4 51.7 9.8 ;
+        RECT 57.1 3.4 59.7 9.8 ;
+        RECT 65.1 3.4 67.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 21.600 19.000 25.000 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 59.600 21.600 63.000 25.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 11.8 ;
+    LAYER M1 ;
+      RECT 13.1 11.8 27.7 14.4 ;
+    LAYER M1 ;
+      RECT 13.1 36.4 27.7 39 ;
+    LAYER M1 ;
+      RECT 13.1 39 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 15.6 21.6 19.7 25 ;
+    LAYER M1 ;
+      RECT 16.3 16.4 19.7 21.6 ;
+    LAYER M1 ;
+      RECT 16.3 25 19.7 34.4 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.8 ;
+    LAYER M1 ;
+      RECT 21.1 39 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 25.1 14.4 27.7 21.6 ;
+    LAYER M1 ;
+      RECT 25.1 21.6 48.1 25 ;
+    LAYER M1 ;
+      RECT 25.1 25 27.7 36.4 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 11.8 ;
+    LAYER M1 ;
+      RECT 29.1 11.8 63.7 14.4 ;
+    LAYER M1 ;
+      RECT 29.1 36.4 63.7 39 ;
+    LAYER M1 ;
+      RECT 29.1 39 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 35.1 16.4 37.7 16.7 ;
+    LAYER M1 ;
+      RECT 35.1 16.7 57.7 18.7 ;
+    LAYER M1 ;
+      RECT 35.1 18.7 37.7 19 ;
+    LAYER M1 ;
+      RECT 35.1 31.8 37.7 32.1 ;
+    LAYER M1 ;
+      RECT 35.1 32.1 57.7 34.1 ;
+    LAYER M1 ;
+      RECT 35.1 34.1 37.7 34.4 ;
+    LAYER M1 ;
+      RECT 37.1 6.4 39.7 11.8 ;
+    LAYER M1 ;
+      RECT 37.1 39 39.7 51.2 ;
+    LAYER M1 ;
+      RECT 44.7 18.7 48.1 21.6 ;
+    LAYER M1 ;
+      RECT 44.7 25 48.1 32.1 ;
+    LAYER M1 ;
+      RECT 45.1 6.4 47.7 11.8 ;
+    LAYER M1 ;
+      RECT 45.1 39 47.7 51.2 ;
+    LAYER M1 ;
+      RECT 53.1 6.4 55.7 11.8 ;
+    LAYER M1 ;
+      RECT 53.1 39 55.7 51.2 ;
+    LAYER M1 ;
+      RECT 55.1 16.4 57.7 16.7 ;
+    LAYER M1 ;
+      RECT 55.1 18.7 57.7 19 ;
+    LAYER M1 ;
+      RECT 55.1 31.8 57.7 32.1 ;
+    LAYER M1 ;
+      RECT 55.1 34.1 57.7 34.4 ;
+    LAYER M1 ;
+      RECT 59.6 21.6 63.7 25 ;
+    LAYER M1 ;
+      RECT 61.1 6.4 63.7 11.8 ;
+    LAYER M1 ;
+      RECT 61.1 14.4 63.7 21.6 ;
+    LAYER M1 ;
+      RECT 61.1 25 63.7 36.4 ;
+    LAYER M1 ;
+      RECT 61.1 39 63.7 51.2 ;
+    LAYER V1 ;
+      RECT 16.6 22.6 18 24 ;
+    LAYER V1 ;
+      RECT 60.6 22.6 62 24 ;
+  END
+END CLKBUF_X2
+MACRO CLKBUF_X4
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 128.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 123.1 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+        RECT 17.1 41 19.7 55 ;
+        RECT 25.1 41 27.7 55 ;
+        RECT 33.1 41 35.7 55 ;
+        RECT 41.1 41 43.7 55 ;
+        RECT 49.1 41 51.7 55 ;
+        RECT 57.1 41 59.7 55 ;
+        RECT 65.1 41 67.7 55 ;
+        RECT 73.1 41 75.7 55 ;
+        RECT 81.1 41 83.7 55 ;
+        RECT 89.1 41 91.7 55 ;
+        RECT 97.1 41 99.7 55 ;
+        RECT 105.1 41 107.7 55 ;
+        RECT 113.1 41 115.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 123.1 3.4 ;
+        RECT 9.1 3.4 11.7 9.8 ;
+        RECT 17.1 3.4 19.7 9.8 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+        RECT 33.1 3.4 35.7 9.8 ;
+        RECT 41.1 3.4 43.7 9.8 ;
+        RECT 49.1 3.4 51.7 9.8 ;
+        RECT 57.1 3.4 59.7 9.8 ;
+        RECT 65.1 3.4 67.7 9.8 ;
+        RECT 73.1 3.4 75.7 9.8 ;
+        RECT 81.1 3.4 83.7 9.8 ;
+        RECT 89.1 3.4 91.7 9.8 ;
+        RECT 97.1 3.4 99.7 9.8 ;
+        RECT 105.1 3.4 107.7 9.8 ;
+        RECT 113.1 3.4 115.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 21.600 24.500 25.000 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 109.100 21.600 112.500 25.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 11.8 ;
+    LAYER M1 ;
+      RECT 13.1 11.8 35.7 14.4 ;
+    LAYER M1 ;
+      RECT 13.1 36.4 35.7 39 ;
+    LAYER M1 ;
+      RECT 13.1 39 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 15.1 16.4 17.7 16.7 ;
+    LAYER M1 ;
+      RECT 15.1 16.7 29.7 18.7 ;
+    LAYER M1 ;
+      RECT 15.1 18.7 17.7 19 ;
+    LAYER M1 ;
+      RECT 15.1 31.8 17.7 32.1 ;
+    LAYER M1 ;
+      RECT 15.1 32.1 29.7 34.1 ;
+    LAYER M1 ;
+      RECT 15.1 34.1 17.7 34.4 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.8 ;
+    LAYER M1 ;
+      RECT 21.1 18.7 24.5 32.1 ;
+    LAYER M1 ;
+      RECT 21.1 39 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 27.1 16.4 29.7 16.7 ;
+    LAYER M1 ;
+      RECT 27.1 18.7 29.7 19 ;
+    LAYER M1 ;
+      RECT 27.1 31.8 29.7 32.1 ;
+    LAYER M1 ;
+      RECT 27.1 34.1 29.7 34.4 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 11.8 ;
+    LAYER M1 ;
+      RECT 29.1 39 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 33.1 14.4 35.7 21.6 ;
+    LAYER M1 ;
+      RECT 33.1 21.6 76.1 25 ;
+    LAYER M1 ;
+      RECT 33.1 25 35.7 36.4 ;
+    LAYER M1 ;
+      RECT 37.1 6.4 39.7 11.8 ;
+    LAYER M1 ;
+      RECT 37.1 11.8 111.7 14.4 ;
+    LAYER M1 ;
+      RECT 37.1 36.4 111.7 39 ;
+    LAYER M1 ;
+      RECT 37.1 39 39.7 51.2 ;
+    LAYER M1 ;
+      RECT 43.1 16.4 45.7 16.7 ;
+    LAYER M1 ;
+      RECT 43.1 16.7 105.7 18.7 ;
+    LAYER M1 ;
+      RECT 43.1 18.7 45.7 19 ;
+    LAYER M1 ;
+      RECT 43.1 31.8 45.7 32.1 ;
+    LAYER M1 ;
+      RECT 43.1 32.1 105.7 34.1 ;
+    LAYER M1 ;
+      RECT 43.1 34.1 45.7 34.4 ;
+    LAYER M1 ;
+      RECT 45.1 6.4 47.7 11.8 ;
+    LAYER M1 ;
+      RECT 45.1 39 47.7 51.2 ;
+    LAYER M1 ;
+      RECT 53.1 6.4 55.7 11.8 ;
+    LAYER M1 ;
+      RECT 53.1 39 55.7 51.2 ;
+    LAYER M1 ;
+      RECT 61.1 6.4 63.7 11.8 ;
+    LAYER M1 ;
+      RECT 61.1 39 63.7 51.2 ;
+    LAYER M1 ;
+      RECT 63.1 16.4 65.7 16.7 ;
+    LAYER M1 ;
+      RECT 63.1 18.7 65.7 19 ;
+    LAYER M1 ;
+      RECT 63.1 31.8 65.7 32.1 ;
+    LAYER M1 ;
+      RECT 63.1 34.1 65.7 34.4 ;
+    LAYER M1 ;
+      RECT 69.1 6.4 71.7 11.8 ;
+    LAYER M1 ;
+      RECT 69.1 39 71.7 51.2 ;
+    LAYER M1 ;
+      RECT 72.7 18.7 76.1 21.6 ;
+    LAYER M1 ;
+      RECT 72.7 25 76.1 32.1 ;
+    LAYER M1 ;
+      RECT 77.1 6.4 79.7 11.8 ;
+    LAYER M1 ;
+      RECT 77.1 39 79.7 51.2 ;
+    LAYER M1 ;
+      RECT 83.1 16.4 85.7 16.7 ;
+    LAYER M1 ;
+      RECT 83.1 18.7 85.7 19 ;
+    LAYER M1 ;
+      RECT 83.1 31.8 85.7 32.1 ;
+    LAYER M1 ;
+      RECT 83.1 34.1 85.7 34.4 ;
+    LAYER M1 ;
+      RECT 85.1 6.4 87.7 11.8 ;
+    LAYER M1 ;
+      RECT 85.1 39 87.7 51.2 ;
+    LAYER M1 ;
+      RECT 93.1 6.4 95.7 11.8 ;
+    LAYER M1 ;
+      RECT 93.1 39 95.7 51.2 ;
+    LAYER M1 ;
+      RECT 101.1 6.4 103.7 11.8 ;
+    LAYER M1 ;
+      RECT 101.1 39 103.7 51.2 ;
+    LAYER M1 ;
+      RECT 103.1 16.4 105.7 16.7 ;
+    LAYER M1 ;
+      RECT 103.1 18.7 105.7 19 ;
+    LAYER M1 ;
+      RECT 103.1 31.8 105.7 32.1 ;
+    LAYER M1 ;
+      RECT 103.1 34.1 105.7 34.4 ;
+    LAYER M1 ;
+      RECT 109.1 6.4 111.7 11.8 ;
+    LAYER M1 ;
+      RECT 109.1 14.4 111.7 21.6 ;
+    LAYER M1 ;
+      RECT 109.1 21.6 112.5 25 ;
+    LAYER M1 ;
+      RECT 109.1 25 111.7 36.4 ;
+    LAYER M1 ;
+      RECT 109.1 39 111.7 51.2 ;
+    LAYER V1 ;
+      RECT 22.1 22.6 23.5 24 ;
+    LAYER V1 ;
+      RECT 110.1 22.6 111.5 24 ;
+  END
+END CLKBUF_X4
+MACRO CLKBUF_X8
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 216.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 211.1 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+        RECT 17.1 41 19.7 55 ;
+        RECT 25.1 41 27.7 55 ;
+        RECT 33.1 41 35.7 55 ;
+        RECT 41.1 41 43.7 55 ;
+        RECT 49.1 41 51.7 55 ;
+        RECT 57.1 41 59.7 55 ;
+        RECT 65.1 41 67.7 55 ;
+        RECT 73.1 41 75.7 55 ;
+        RECT 81.1 41 83.7 55 ;
+        RECT 89.1 41 91.7 55 ;
+        RECT 97.1 41 99.7 55 ;
+        RECT 105.1 41 107.7 55 ;
+        RECT 113.1 41 115.7 55 ;
+        RECT 121.1 41 123.7 55 ;
+        RECT 129.1 41 131.7 55 ;
+        RECT 137.1 41 139.7 55 ;
+        RECT 145.1 41 147.7 55 ;
+        RECT 153.1 41 155.7 55 ;
+        RECT 161.1 41 163.7 55 ;
+        RECT 169.1 41 171.7 55 ;
+        RECT 177.1 41 179.7 55 ;
+        RECT 185.1 41 187.7 55 ;
+        RECT 193.1 41 195.7 55 ;
+        RECT 201.1 41 203.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 211.1 3.4 ;
+        RECT 9.1 3.4 11.7 9.8 ;
+        RECT 17.1 3.4 19.7 9.8 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+        RECT 33.1 3.4 35.7 9.8 ;
+        RECT 41.1 3.4 43.7 9.8 ;
+        RECT 49.1 3.4 51.7 9.8 ;
+        RECT 57.1 3.4 59.7 9.8 ;
+        RECT 65.1 3.4 67.7 9.8 ;
+        RECT 73.1 3.4 75.7 9.8 ;
+        RECT 81.1 3.4 83.7 9.8 ;
+        RECT 89.1 3.4 91.7 9.8 ;
+        RECT 97.1 3.4 99.7 9.8 ;
+        RECT 105.1 3.4 107.7 9.8 ;
+        RECT 113.1 3.4 115.7 9.8 ;
+        RECT 121.1 3.4 123.7 9.8 ;
+        RECT 129.1 3.4 131.7 9.8 ;
+        RECT 137.1 3.4 139.7 9.8 ;
+        RECT 145.1 3.4 147.7 9.8 ;
+        RECT 153.1 3.4 155.7 9.8 ;
+        RECT 161.1 3.4 163.7 9.8 ;
+        RECT 169.1 3.4 171.7 9.8 ;
+        RECT 177.1 3.4 179.7 9.8 ;
+        RECT 185.1 3.4 187.7 9.8 ;
+        RECT 193.1 3.4 195.7 9.8 ;
+        RECT 201.1 3.4 203.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.600 21.600 30.000 25.000 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 197.100 21.600 200.500 25.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 11.8 ;
+    LAYER M1 ;
+      RECT 13.1 11.8 39.7 14.4 ;
+    LAYER M1 ;
+      RECT 13.1 36.4 39.7 39 ;
+    LAYER M1 ;
+      RECT 13.1 39 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 17.1 16.4 19.7 16.7 ;
+    LAYER M1 ;
+      RECT 17.1 16.7 35.7 18.7 ;
+    LAYER M1 ;
+      RECT 17.1 18.7 19.7 19 ;
+    LAYER M1 ;
+      RECT 17.1 31.8 19.7 32.1 ;
+    LAYER M1 ;
+      RECT 17.1 32.1 35.7 34.1 ;
+    LAYER M1 ;
+      RECT 17.1 34.1 19.7 34.4 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.8 ;
+    LAYER M1 ;
+      RECT 21.1 39 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 24.7 18.7 28.1 21.6 ;
+    LAYER M1 ;
+      RECT 24.7 21.6 30 25 ;
+    LAYER M1 ;
+      RECT 24.7 25 28.1 32.1 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 11.8 ;
+    LAYER M1 ;
+      RECT 29.1 39 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 33.1 16.4 35.7 16.7 ;
+    LAYER M1 ;
+      RECT 33.1 18.7 35.7 19 ;
+    LAYER M1 ;
+      RECT 33.1 31.8 35.7 32.1 ;
+    LAYER M1 ;
+      RECT 33.1 34.1 35.7 34.4 ;
+    LAYER M1 ;
+      RECT 37.1 6.4 39.7 11.8 ;
+    LAYER M1 ;
+      RECT 37.1 14.4 39.7 21.6 ;
+    LAYER M1 ;
+      RECT 37.1 21.6 124.1 25 ;
+    LAYER M1 ;
+      RECT 37.1 25 39.7 36.4 ;
+    LAYER M1 ;
+      RECT 37.1 39 39.7 51.2 ;
+    LAYER M1 ;
+      RECT 45.1 6.4 47.7 11.8 ;
+    LAYER M1 ;
+      RECT 45.1 11.8 199.7 14.4 ;
+    LAYER M1 ;
+      RECT 45.1 36.4 199.7 39 ;
+    LAYER M1 ;
+      RECT 45.1 39 47.7 51.2 ;
+    LAYER M1 ;
+      RECT 51.1 16.4 53.7 16.7 ;
+    LAYER M1 ;
+      RECT 51.1 16.7 193.7 18.7 ;
+    LAYER M1 ;
+      RECT 51.1 18.7 53.7 19 ;
+    LAYER M1 ;
+      RECT 51.1 31.8 53.7 32.1 ;
+    LAYER M1 ;
+      RECT 51.1 32.1 193.7 34.1 ;
+    LAYER M1 ;
+      RECT 51.1 34.1 53.7 34.4 ;
+    LAYER M1 ;
+      RECT 53.1 6.4 55.7 11.8 ;
+    LAYER M1 ;
+      RECT 53.1 39 55.7 51.2 ;
+    LAYER M1 ;
+      RECT 61.1 6.4 63.7 11.8 ;
+    LAYER M1 ;
+      RECT 61.1 39 63.7 51.2 ;
+    LAYER M1 ;
+      RECT 69.1 6.4 71.7 11.8 ;
+    LAYER M1 ;
+      RECT 69.1 39 71.7 51.2 ;
+    LAYER M1 ;
+      RECT 71.1 16.4 73.7 16.7 ;
+    LAYER M1 ;
+      RECT 71.1 18.7 73.7 19 ;
+    LAYER M1 ;
+      RECT 71.1 31.8 73.7 32.1 ;
+    LAYER M1 ;
+      RECT 71.1 34.1 73.7 34.4 ;
+    LAYER M1 ;
+      RECT 77.1 6.4 79.7 11.8 ;
+    LAYER M1 ;
+      RECT 77.1 39 79.7 51.2 ;
+    LAYER M1 ;
+      RECT 85.1 6.4 87.7 11.8 ;
+    LAYER M1 ;
+      RECT 85.1 39 87.7 51.2 ;
+    LAYER M1 ;
+      RECT 91.1 16.4 93.7 16.7 ;
+    LAYER M1 ;
+      RECT 91.1 18.7 93.7 19 ;
+    LAYER M1 ;
+      RECT 91.1 31.8 93.7 32.1 ;
+    LAYER M1 ;
+      RECT 91.1 34.1 93.7 34.4 ;
+    LAYER M1 ;
+      RECT 93.1 6.4 95.7 11.8 ;
+    LAYER M1 ;
+      RECT 93.1 39 95.7 51.2 ;
+    LAYER M1 ;
+      RECT 101.1 6.4 103.7 11.8 ;
+    LAYER M1 ;
+      RECT 101.1 39 103.7 51.2 ;
+    LAYER M1 ;
+      RECT 109.1 6.4 111.7 11.8 ;
+    LAYER M1 ;
+      RECT 109.1 39 111.7 51.2 ;
+    LAYER M1 ;
+      RECT 111.1 16.4 113.7 16.7 ;
+    LAYER M1 ;
+      RECT 111.1 18.7 113.7 19 ;
+    LAYER M1 ;
+      RECT 111.1 31.8 113.7 32.1 ;
+    LAYER M1 ;
+      RECT 111.1 34.1 113.7 34.4 ;
+    LAYER M1 ;
+      RECT 117.1 6.4 119.7 11.8 ;
+    LAYER M1 ;
+      RECT 117.1 39 119.7 51.2 ;
+    LAYER M1 ;
+      RECT 120.7 18.7 124.1 21.6 ;
+    LAYER M1 ;
+      RECT 120.7 25 124.1 32.1 ;
+    LAYER M1 ;
+      RECT 125.1 6.4 127.7 11.8 ;
+    LAYER M1 ;
+      RECT 125.1 39 127.7 51.2 ;
+    LAYER M1 ;
+      RECT 131.1 16.4 133.7 16.7 ;
+    LAYER M1 ;
+      RECT 131.1 18.7 133.7 19 ;
+    LAYER M1 ;
+      RECT 131.1 31.8 133.7 32.1 ;
+    LAYER M1 ;
+      RECT 131.1 34.1 133.7 34.4 ;
+    LAYER M1 ;
+      RECT 133.1 6.4 135.7 11.8 ;
+    LAYER M1 ;
+      RECT 133.1 39 135.7 51.2 ;
+    LAYER M1 ;
+      RECT 141.1 6.4 143.7 11.8 ;
+    LAYER M1 ;
+      RECT 141.1 39 143.7 51.2 ;
+    LAYER M1 ;
+      RECT 149.1 6.4 151.7 11.8 ;
+    LAYER M1 ;
+      RECT 149.1 39 151.7 51.2 ;
+    LAYER M1 ;
+      RECT 151.1 16.4 153.7 16.7 ;
+    LAYER M1 ;
+      RECT 151.1 18.7 153.7 19 ;
+    LAYER M1 ;
+      RECT 151.1 31.8 153.7 32.1 ;
+    LAYER M1 ;
+      RECT 151.1 34.1 153.7 34.4 ;
+    LAYER M1 ;
+      RECT 157.1 6.4 159.7 11.8 ;
+    LAYER M1 ;
+      RECT 157.1 39 159.7 51.2 ;
+    LAYER M1 ;
+      RECT 165.1 6.4 167.7 11.8 ;
+    LAYER M1 ;
+      RECT 165.1 39 167.7 51.2 ;
+    LAYER M1 ;
+      RECT 171.1 16.4 173.7 16.7 ;
+    LAYER M1 ;
+      RECT 171.1 18.7 173.7 19 ;
+    LAYER M1 ;
+      RECT 171.1 31.8 173.7 32.1 ;
+    LAYER M1 ;
+      RECT 171.1 34.1 173.7 34.4 ;
+    LAYER M1 ;
+      RECT 173.1 6.4 175.7 11.8 ;
+    LAYER M1 ;
+      RECT 173.1 39 175.7 51.2 ;
+    LAYER M1 ;
+      RECT 181.1 6.4 183.7 11.8 ;
+    LAYER M1 ;
+      RECT 181.1 39 183.7 51.2 ;
+    LAYER M1 ;
+      RECT 189.1 6.4 191.7 11.8 ;
+    LAYER M1 ;
+      RECT 189.1 39 191.7 51.2 ;
+    LAYER M1 ;
+      RECT 191.1 16.4 193.7 16.7 ;
+    LAYER M1 ;
+      RECT 191.1 18.7 193.7 19 ;
+    LAYER M1 ;
+      RECT 191.1 31.8 193.7 32.1 ;
+    LAYER M1 ;
+      RECT 191.1 34.1 193.7 34.4 ;
+    LAYER M1 ;
+      RECT 197.1 6.4 199.7 11.8 ;
+    LAYER M1 ;
+      RECT 197.1 14.4 199.7 21.6 ;
+    LAYER M1 ;
+      RECT 197.1 21.6 200.5 25 ;
+    LAYER M1 ;
+      RECT 197.1 25 199.7 36.4 ;
+    LAYER M1 ;
+      RECT 197.1 39 199.7 51.2 ;
+    LAYER V1 ;
+      RECT 27.6 22.6 29 24 ;
+    LAYER V1 ;
+      RECT 198.1 22.6 199.5 24 ;
+  END
+END CLKBUF_X8
+MACRO DEL1
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 51.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 46.1 57.6 ;
+        RECT 13.1 41 15.7 52.6 ;
+        RECT 13.1 52.6 37.7 55 ;
+        RECT 27.1 41 29.7 52.6 ;
+        RECT 35.1 41 37.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 46.1 3.4 ;
+        RECT 13.1 3.4 37.7 5 ;
+        RECT 13.1 5 15.7 9.8 ;
+        RECT 27.1 5 29.7 9.8 ;
+        RECT 35.1 5 37.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 27.100 13.500 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 37.600 16.100 41.000 19.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 9.1 6.4 11.7 9.8 ;
+    LAYER M1 ;
+      RECT 9.1 41 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 9.5 9.8 11.3 16.8 ;
+    LAYER M1 ;
+      RECT 9.5 16.8 16.9 18.6 ;
+    LAYER M1 ;
+      RECT 9.5 33 16.9 34.8 ;
+    LAYER M1 ;
+      RECT 9.5 34.8 11.3 41 ;
+    LAYER M1 ;
+      RECT 10.1 27.1 13.7 30.5 ;
+    LAYER M1 ;
+      RECT 11.1 22 13.7 24.6 ;
+    LAYER M1 ;
+      RECT 11.9 24.6 13.7 27.1 ;
+    LAYER M1 ;
+      RECT 14.3 18.6 16.9 19.4 ;
+    LAYER M1 ;
+      RECT 15.1 19.4 16.9 33 ;
+    LAYER M1 ;
+      RECT 18.1 6.4 20.7 9.8 ;
+    LAYER M1 ;
+      RECT 18.1 41 20.7 51.2 ;
+    LAYER M1 ;
+      RECT 18.5 9.8 20.3 27.5 ;
+    LAYER M1 ;
+      RECT 18.5 27.5 27.2 29.3 ;
+    LAYER M1 ;
+      RECT 18.5 29.3 20.3 41 ;
+    LAYER M1 ;
+      RECT 22.1 6.4 24.7 9.8 ;
+    LAYER M1 ;
+      RECT 22.1 41 24.7 51.2 ;
+    LAYER M1 ;
+      RECT 22.5 9.8 24.3 22.3 ;
+    LAYER M1 ;
+      RECT 22.5 22.3 31.6 24.1 ;
+    LAYER M1 ;
+      RECT 22.5 33 31.6 34.8 ;
+    LAYER M1 ;
+      RECT 22.5 34.8 24.3 41 ;
+    LAYER M1 ;
+      RECT 24.6 27.1 27.2 27.5 ;
+    LAYER M1 ;
+      RECT 24.6 29.3 27.2 29.7 ;
+    LAYER M1 ;
+      RECT 29 24.1 31.6 24.9 ;
+    LAYER M1 ;
+      RECT 29.8 24.9 31.6 33 ;
+    LAYER M1 ;
+      RECT 31.1 6.4 33.7 9.8 ;
+    LAYER M1 ;
+      RECT 31.1 41 33.7 51.2 ;
+    LAYER M1 ;
+      RECT 31.5 9.8 33.3 16.1 ;
+    LAYER M1 ;
+      RECT 31.5 16.1 41 17.9 ;
+    LAYER M1 ;
+      RECT 31.5 37.5 38.7 39.3 ;
+    LAYER M1 ;
+      RECT 31.5 39.3 33.3 41 ;
+    LAYER M1 ;
+      RECT 36.9 17.9 41 19.5 ;
+    LAYER M1 ;
+      RECT 36.9 19.5 38.7 37.5 ;
+    LAYER V1 ;
+      RECT 11.1 28.1 12.5 29.5 ;
+    LAYER V1 ;
+      RECT 38.6 17.1 40 18.5 ;
+  END
+END DEL1
+MACRO DEL2
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 73.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 68.1 57.6 ;
+        RECT 13.1 41 15.7 52.6 ;
+        RECT 13.1 52.6 57.7 55 ;
+        RECT 35.1 41 37.7 52.6 ;
+        RECT 55.1 41 57.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 68.1 3.4 ;
+        RECT 13.1 3.4 57.7 5 ;
+        RECT 13.1 5 15.7 9.8 ;
+        RECT 35.1 5 37.7 9.8 ;
+        RECT 55.1 5 57.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 27.100 13.500 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 59.600 21.600 63.000 25.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 9.1 6.4 11.7 9.8 ;
+    LAYER M1 ;
+      RECT 9.1 41 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 9.5 9.8 11.3 16.8 ;
+    LAYER M1 ;
+      RECT 9.5 16.8 18.6 18.6 ;
+    LAYER M1 ;
+      RECT 9.5 33 18.6 34.8 ;
+    LAYER M1 ;
+      RECT 9.5 34.8 11.3 41 ;
+    LAYER M1 ;
+      RECT 10.1 27.1 13.7 30.5 ;
+    LAYER M1 ;
+      RECT 11.9 22 14.5 24.6 ;
+    LAYER M1 ;
+      RECT 11.9 24.6 13.7 27.1 ;
+    LAYER M1 ;
+      RECT 16 18.6 18.6 19.4 ;
+    LAYER M1 ;
+      RECT 16.8 19.4 18.6 33 ;
+    LAYER M1 ;
+      RECT 20.1 6.4 22.7 9.8 ;
+    LAYER M1 ;
+      RECT 20.1 41 22.7 51.2 ;
+    LAYER M1 ;
+      RECT 20.5 9.8 22.3 22 ;
+    LAYER M1 ;
+      RECT 20.5 22 29.9 23.8 ;
+    LAYER M1 ;
+      RECT 20.5 23.8 22.3 41 ;
+    LAYER M1 ;
+      RECT 24.1 6.4 26.7 9.8 ;
+    LAYER M1 ;
+      RECT 24.1 41 26.7 51.2 ;
+    LAYER M1 ;
+      RECT 24.5 9.8 26.3 16.8 ;
+    LAYER M1 ;
+      RECT 24.5 16.8 33.6 18.6 ;
+    LAYER M1 ;
+      RECT 24.5 33 33.6 34.8 ;
+    LAYER M1 ;
+      RECT 24.5 34.8 26.3 41 ;
+    LAYER M1 ;
+      RECT 27.3 21.6 29.9 22 ;
+    LAYER M1 ;
+      RECT 27.3 23.8 29.9 24.2 ;
+    LAYER M1 ;
+      RECT 31.8 18.6 33.6 22 ;
+    LAYER M1 ;
+      RECT 31.8 22 39.9 23.8 ;
+    LAYER M1 ;
+      RECT 31.8 23.8 33.6 33 ;
+    LAYER M1 ;
+      RECT 37.3 21.6 39.9 22 ;
+    LAYER M1 ;
+      RECT 37.3 23.8 39.9 24.2 ;
+    LAYER M1 ;
+      RECT 44.1 6.4 46.7 9.8 ;
+    LAYER M1 ;
+      RECT 44.1 41 46.7 51.2 ;
+    LAYER M1 ;
+      RECT 44.5 9.8 46.3 21.9 ;
+    LAYER M1 ;
+      RECT 44.5 21.9 52.6 23.7 ;
+    LAYER M1 ;
+      RECT 44.5 23.7 46.3 41 ;
+    LAYER M1 ;
+      RECT 48.1 6.4 50.7 9.8 ;
+    LAYER M1 ;
+      RECT 48.1 41 50.7 51.2 ;
+    LAYER M1 ;
+      RECT 48.5 9.8 50.3 16.6 ;
+    LAYER M1 ;
+      RECT 48.5 16.6 57 18.4 ;
+    LAYER M1 ;
+      RECT 48.5 35.1 57 36.9 ;
+    LAYER M1 ;
+      RECT 48.5 36.9 50.3 41 ;
+    LAYER M1 ;
+      RECT 50 21.5 52.6 21.9 ;
+    LAYER M1 ;
+      RECT 50 23.7 52.6 24.1 ;
+    LAYER M1 ;
+      RECT 55.2 18.4 57 28 ;
+    LAYER M1 ;
+      RECT 55.2 28 57.8 30.6 ;
+    LAYER M1 ;
+      RECT 55.2 30.6 57 35.1 ;
+    LAYER M1 ;
+      RECT 59.1 6.4 61.7 9.8 ;
+    LAYER M1 ;
+      RECT 59.1 41 61.7 51.2 ;
+    LAYER M1 ;
+      RECT 59.5 9.8 61.3 21.6 ;
+    LAYER M1 ;
+      RECT 59.5 21.6 63 25 ;
+    LAYER M1 ;
+      RECT 59.5 25 61.3 41 ;
+    LAYER V1 ;
+      RECT 11.1 28.1 12.5 29.5 ;
+    LAYER V1 ;
+      RECT 60.6 22.6 62 24 ;
+  END
+END DEL2
+MACRO DEL4
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 117.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 112.1 57.6 ;
+        RECT 16.1 41 18.7 52.6 ;
+        RECT 16.1 52.6 100.7 55 ;
+        RECT 46.1 41 48.7 52.6 ;
+        RECT 76.1 41 78.7 52.6 ;
+        RECT 98.1 41 100.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 112.1 3.4 ;
+        RECT 16.1 3.4 100.7 5 ;
+        RECT 16.1 5 18.7 9.8 ;
+        RECT 46.1 5 48.7 9.8 ;
+        RECT 76.1 5 78.7 9.8 ;
+        RECT 98.1 5 100.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 27.100 13.500 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 103.600 21.600 107.000 25.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 9.1 6.4 11.7 9.8 ;
+    LAYER M1 ;
+      RECT 9.1 41 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 9.5 9.8 11.3 16.8 ;
+    LAYER M1 ;
+      RECT 9.5 16.8 18.6 18.6 ;
+    LAYER M1 ;
+      RECT 9.5 33 18.6 34.8 ;
+    LAYER M1 ;
+      RECT 9.5 34.8 11.3 41 ;
+    LAYER M1 ;
+      RECT 10.1 27.1 13.7 30.5 ;
+    LAYER M1 ;
+      RECT 11.9 22 14.5 24.6 ;
+    LAYER M1 ;
+      RECT 11.9 24.6 13.7 27.1 ;
+    LAYER M1 ;
+      RECT 16.8 18.6 18.6 24.5 ;
+    LAYER M1 ;
+      RECT 16.8 24.5 24 26.3 ;
+    LAYER M1 ;
+      RECT 16.8 26.3 18.6 33 ;
+    LAYER M1 ;
+      RECT 21.4 24.1 24 24.5 ;
+    LAYER M1 ;
+      RECT 21.4 26.3 24 26.7 ;
+    LAYER M1 ;
+      RECT 27.1 6.4 29.7 9.8 ;
+    LAYER M1 ;
+      RECT 27.1 41 29.7 51.2 ;
+    LAYER M1 ;
+      RECT 27.4 9.8 29.4 22 ;
+    LAYER M1 ;
+      RECT 27.4 22 39.9 23.8 ;
+    LAYER M1 ;
+      RECT 27.4 23.8 29.4 41 ;
+    LAYER M1 ;
+      RECT 31.1 6.4 33.7 9.8 ;
+    LAYER M1 ;
+      RECT 31.1 41 33.7 51.2 ;
+    LAYER M1 ;
+      RECT 31.4 9.8 33.4 15.4 ;
+    LAYER M1 ;
+      RECT 31.4 15.4 45.5 17.4 ;
+    LAYER M1 ;
+      RECT 31.4 33.3 45.5 35.3 ;
+    LAYER M1 ;
+      RECT 31.4 35.3 33.4 41 ;
+    LAYER M1 ;
+      RECT 37.3 21.6 39.9 22 ;
+    LAYER M1 ;
+      RECT 37.3 23.8 39.9 24.2 ;
+    LAYER M1 ;
+      RECT 43.5 17.4 45.5 25.7 ;
+    LAYER M1 ;
+      RECT 43.5 25.7 55.9 27.5 ;
+    LAYER M1 ;
+      RECT 43.5 27.5 45.5 33.3 ;
+    LAYER M1 ;
+      RECT 53.3 25.3 55.9 25.7 ;
+    LAYER M1 ;
+      RECT 53.3 27.5 55.9 27.9 ;
+    LAYER M1 ;
+      RECT 61.1 6.4 63.7 9.8 ;
+    LAYER M1 ;
+      RECT 61.1 41 63.7 51.2 ;
+    LAYER M1 ;
+      RECT 61.4 9.8 63.4 21.2 ;
+    LAYER M1 ;
+      RECT 61.4 21.2 73 23 ;
+    LAYER M1 ;
+      RECT 61.4 23 63.4 41 ;
+    LAYER M1 ;
+      RECT 65.1 6.4 67.7 9.8 ;
+    LAYER M1 ;
+      RECT 65.1 41 67.7 51.2 ;
+    LAYER M1 ;
+      RECT 65.4 9.8 67.4 14.7 ;
+    LAYER M1 ;
+      RECT 65.4 14.7 77.7 16.7 ;
+    LAYER M1 ;
+      RECT 65.4 34.1 77.7 36.1 ;
+    LAYER M1 ;
+      RECT 65.4 36.1 67.4 41 ;
+    LAYER M1 ;
+      RECT 70.4 20.8 73 21.2 ;
+    LAYER M1 ;
+      RECT 70.4 23 73 23.4 ;
+    LAYER M1 ;
+      RECT 75.7 16.7 77.7 26.6 ;
+    LAYER M1 ;
+      RECT 75.7 26.6 82.9 28.4 ;
+    LAYER M1 ;
+      RECT 75.7 28.4 77.7 34.1 ;
+    LAYER M1 ;
+      RECT 80.3 26.2 82.9 26.6 ;
+    LAYER M1 ;
+      RECT 80.3 28.4 82.9 28.8 ;
+    LAYER M1 ;
+      RECT 85.1 6.4 87.7 9.8 ;
+    LAYER M1 ;
+      RECT 85.1 41 87.7 51.2 ;
+    LAYER M1 ;
+      RECT 85.4 9.8 87.4 21.7 ;
+    LAYER M1 ;
+      RECT 85.4 21.7 95.9 23.5 ;
+    LAYER M1 ;
+      RECT 85.4 23.5 87.4 41 ;
+    LAYER M1 ;
+      RECT 89.1 6.4 91.7 9.8 ;
+    LAYER M1 ;
+      RECT 89.1 41 91.7 51.2 ;
+    LAYER M1 ;
+      RECT 89.4 9.8 91.4 16 ;
+    LAYER M1 ;
+      RECT 89.4 16 100.3 18 ;
+    LAYER M1 ;
+      RECT 89.4 34.1 100.3 36.1 ;
+    LAYER M1 ;
+      RECT 89.4 36.1 91.4 41 ;
+    LAYER M1 ;
+      RECT 93.3 21.3 95.9 21.7 ;
+    LAYER M1 ;
+      RECT 93.3 23.5 95.9 23.9 ;
+    LAYER M1 ;
+      RECT 98.3 18 100.3 26.4 ;
+    LAYER M1 ;
+      RECT 98.3 26.4 101.9 29 ;
+    LAYER M1 ;
+      RECT 98.3 29 100.3 34.1 ;
+    LAYER M1 ;
+      RECT 102.1 6.4 104.7 9.8 ;
+    LAYER M1 ;
+      RECT 102.1 41 104.7 51.2 ;
+    LAYER M1 ;
+      RECT 102.4 9.8 104.4 14.6 ;
+    LAYER M1 ;
+      RECT 102.4 14.6 106.3 16.6 ;
+    LAYER M1 ;
+      RECT 102.4 31.8 106.3 33.8 ;
+    LAYER M1 ;
+      RECT 102.4 33.8 104.4 41 ;
+    LAYER M1 ;
+      RECT 103.6 21.6 107 25 ;
+    LAYER M1 ;
+      RECT 104.3 16.6 106.3 21.6 ;
+    LAYER M1 ;
+      RECT 104.3 25 106.3 31.8 ;
+    LAYER V1 ;
+      RECT 11.1 28.1 12.5 29.5 ;
+    LAYER V1 ;
+      RECT 104.6 22.6 106 24 ;
+  END
+END DEL4
+MACRO DFFR
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 100.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 95.6 57.6 ;
+        RECT 13.1 41 15.7 55 ;
+        RECT 25.1 41 27.7 55 ;
+        RECT 41.9 41 44.5 55 ;
+        RECT 48.6 65.6 52 69.2 ;
+        RECT 49.4 57.6 51.2 65.6 ;
+        RECT 53.9 41 56.5 55 ;
+        RECT 66.7 41 69.3 55 ;
+        RECT 82.7 41 85.3 55 ;
+      LAYER M2 ;
+        RECT 48.6 66.4 52 69 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 95.6 3.4 ;
+        RECT 13.1 3.4 15.7 9.8 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+        RECT 41.9 3.4 44.5 9.8 ;
+        RECT 49.9 3.4 56.5 6 ;
+        RECT 49.9 6 52.5 9.8 ;
+        RECT 53.9 6 56.5 9.8 ;
+        RECT 66.7 3.4 69.3 9.8 ;
+        RECT 74.7 3.4 77.3 9.8 ;
+        RECT 82.7 3.4 85.3 9.8 ;
+      LAYER M2 ;
+        RECT 50.6 2.6 54 6 ;
+    END
+  END GND
+  PIN CK
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.050 19.000 30.450 ;
+    END
+  END CK
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.500 21.200 29.900 24.600 ;
+    END
+  END D
+  PIN Q
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 87.100 27.100 90.500 30.500 ;
+    END
+  END Q
+  PIN QB
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 81.600 27.100 85.000 30.500 ;
+    END
+  END QB
+  PIN RST
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 54.100 21.600 57.500 25.000 ;
+    END
+  END RST
+  OBS
+    LAYER M1 ;
+      RECT 9.1 6.4 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.1 14.35 15.7 19.2 ;
+    LAYER M1 ;
+      RECT 13.1 19.2 18.6 21.8 ;
+    LAYER M1 ;
+      RECT 13.1 29 19 30.5 ;
+    LAYER M1 ;
+      RECT 13.1 30.5 18.6 31.6 ;
+    LAYER M1 ;
+      RECT 13.1 31.6 15.7 34.15 ;
+    LAYER M1 ;
+      RECT 15.6 27.05 19 29 ;
+    LAYER M1 ;
+      RECT 16 21.8 18.6 27.05 ;
+    LAYER M1 ;
+      RECT 17.1 6.4 19.7 15.2 ;
+    LAYER M1 ;
+      RECT 17.1 15.2 24.9 17.8 ;
+    LAYER M1 ;
+      RECT 17.1 33 24.9 35.6 ;
+    LAYER M1 ;
+      RECT 17.1 35.6 19.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.2 ;
+    LAYER M1 ;
+      RECT 21.1 11.2 34 13.8 ;
+    LAYER M1 ;
+      RECT 21.1 37 34 39.6 ;
+    LAYER M1 ;
+      RECT 21.1 39.6 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 22.3 17.8 24.9 33 ;
+    LAYER M1 ;
+      RECT 26.3 15.2 29.6 17.8 ;
+    LAYER M1 ;
+      RECT 26.3 33 29.6 35.6 ;
+    LAYER M1 ;
+      RECT 26.5 21.2 29.9 21.6 ;
+    LAYER M1 ;
+      RECT 26.5 21.6 30 24.6 ;
+    LAYER M1 ;
+      RECT 26.6 24.6 30 25 ;
+    LAYER M1 ;
+      RECT 27 17.8 29.6 21.2 ;
+    LAYER M1 ;
+      RECT 27 25 29.6 33 ;
+    LAYER M1 ;
+      RECT 31.4 13.8 34 26.6 ;
+    LAYER M1 ;
+      RECT 31.4 26.6 34.8 30 ;
+    LAYER M1 ;
+      RECT 31.4 30 34 32.6 ;
+    LAYER M1 ;
+      RECT 31.4 32.6 39.3 35.2 ;
+    LAYER M1 ;
+      RECT 31.4 35.2 34 37 ;
+    LAYER M1 ;
+      RECT 31.5 6.4 38.1 9.8 ;
+    LAYER M1 ;
+      RECT 31.5 41 38.1 51.2 ;
+    LAYER M1 ;
+      RECT 35.5 9.8 38.1 15.6 ;
+    LAYER M1 ;
+      RECT 35.5 15.6 45.7 18.2 ;
+    LAYER M1 ;
+      RECT 35.5 36.6 47.3 39.2 ;
+    LAYER M1 ;
+      RECT 35.5 39.2 38.1 41 ;
+    LAYER M1 ;
+      RECT 36.7 19.6 39.3 31.2 ;
+    LAYER M1 ;
+      RECT 40.7 11.6 56.5 14.2 ;
+    LAYER M1 ;
+      RECT 40.7 18.2 43.3 36.6 ;
+    LAYER M1 ;
+      RECT 44.7 32.6 52.5 35.2 ;
+    LAYER M1 ;
+      RECT 45.9 6.4 48.5 11.6 ;
+    LAYER M1 ;
+      RECT 49.9 14.2 52.5 32.6 ;
+    LAYER M1 ;
+      RECT 49.9 35.2 52.5 36.6 ;
+    LAYER M1 ;
+      RECT 49.9 36.6 57.7 39.2 ;
+    LAYER M1 ;
+      RECT 49.9 39.2 52.5 51.2 ;
+    LAYER M1 ;
+      RECT 54.1 21.6 57.5 24.2 ;
+    LAYER M1 ;
+      RECT 54.1 24.2 60.3 25 ;
+    LAYER M1 ;
+      RECT 54.5 15.6 57.1 21.6 ;
+    LAYER M1 ;
+      RECT 54.5 25 60.3 26.8 ;
+    LAYER M1 ;
+      RECT 54.5 26.8 57.1 35.2 ;
+    LAYER M1 ;
+      RECT 59.1 32.6 64.7 35.2 ;
+    LAYER M1 ;
+      RECT 60.3 6.4 62.9 15.6 ;
+    LAYER M1 ;
+      RECT 60.3 15.6 70.5 18.2 ;
+    LAYER M1 ;
+      RECT 60.3 36.6 70.5 39.2 ;
+    LAYER M1 ;
+      RECT 60.3 39.2 62.9 51.2 ;
+    LAYER M1 ;
+      RECT 61.7 26.6 65.1 30 ;
+    LAYER M1 ;
+      RECT 62.1 20.2 64.7 26.6 ;
+    LAYER M1 ;
+      RECT 62.1 30 64.7 32.6 ;
+    LAYER M1 ;
+      RECT 65.5 11.6 77.3 14.2 ;
+    LAYER M1 ;
+      RECT 66.5 18.2 69.1 36.6 ;
+    LAYER M1 ;
+      RECT 70.5 32.6 77.3 35.2 ;
+    LAYER M1 ;
+      RECT 70.7 6.4 73.3 11.6 ;
+    LAYER M1 ;
+      RECT 74.7 14.2 77.3 22 ;
+    LAYER M1 ;
+      RECT 74.7 22 80.6 24.6 ;
+    LAYER M1 ;
+      RECT 74.7 24.6 77.3 32.6 ;
+    LAYER M1 ;
+      RECT 74.7 35.2 77.3 51.2 ;
+    LAYER M1 ;
+      RECT 78.7 6.4 81.3 11.2 ;
+    LAYER M1 ;
+      RECT 78.7 11.2 84.6 13.8 ;
+    LAYER M1 ;
+      RECT 78.7 37 84.6 39.6 ;
+    LAYER M1 ;
+      RECT 78.7 39.6 81.3 51.2 ;
+    LAYER M1 ;
+      RECT 81.6 27.1 85 30.5 ;
+    LAYER M1 ;
+      RECT 82 13.8 84.6 27.1 ;
+    LAYER M1 ;
+      RECT 82 30.5 84.6 37 ;
+    LAYER M1 ;
+      RECT 86.7 6.4 89.3 15.1 ;
+    LAYER M1 ;
+      RECT 86.7 15.1 90.1 17.7 ;
+    LAYER M1 ;
+      RECT 86.7 37 90.1 39.6 ;
+    LAYER M1 ;
+      RECT 86.7 39.6 89.3 51.2 ;
+    LAYER M1 ;
+      RECT 87.1 27.1 90.5 30.5 ;
+    LAYER M1 ;
+      RECT 87.5 17.7 90.1 27.1 ;
+    LAYER M1 ;
+      RECT 87.5 30.5 90.1 37 ;
+    LAYER V1 ;
+      RECT 16.6 28.05 18 29.45 ;
+    LAYER V1 ;
+      RECT 27.5 22.2 28.9 23.6 ;
+    LAYER V1 ;
+      RECT 32.4 27.6 33.8 29 ;
+    LAYER V1 ;
+      RECT 49.6 66.6 51 68 ;
+    LAYER V1 ;
+      RECT 51.6 3.6 53 5 ;
+    LAYER V1 ;
+      RECT 55.1 22.6 56.5 24 ;
+    LAYER V1 ;
+      RECT 62.7 27.6 64.1 29 ;
+    LAYER V1 ;
+      RECT 82.6 28.1 84 29.5 ;
+    LAYER V1 ;
+      RECT 88.1 28.1 89.5 29.5 ;
+    LAYER M2 ;
+      RECT 31.4 26.6 34.8 27 ;
+    LAYER M2 ;
+      RECT 31.4 27 65.1 30.4 ;
+    LAYER M2 ;
+      RECT 48.6 65.6 52 66.4 ;
+    LAYER M2 ;
+      RECT 61.7 26.6 65.1 27 ;
+  END
+END DFFR
+MACRO DFFS
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 100.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 95.6 57.6 ;
+        RECT 13.1 41 15.7 55 ;
+        RECT 25.1 41 27.7 55 ;
+        RECT 41.9 41 44.5 55 ;
+        RECT 49.9 41 52.5 55 ;
+        RECT 53.9 41 56.5 55 ;
+        RECT 66.7 41 69.3 55 ;
+        RECT 74.7 41 77.3 55 ;
+        RECT 82.7 41 85.3 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 95.6 3.4 ;
+        RECT 13.1 3.4 15.7 9.8 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+        RECT 41.9 3.4 44.5 9.8 ;
+        RECT 52.3 3.4 54.9 9.8 ;
+        RECT 65.1 3.4 67.7 9.8 ;
+        RECT 79.5 3.4 82.1 9.8 ;
+    END
+  END GND
+  PIN CK
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END CK
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.500 21.600 29.900 25.000 ;
+    END
+  END D
+  PIN Q
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 87.100 27.100 90.500 30.500 ;
+    END
+  END Q
+  PIN QB
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 81.600 27.100 85.000 30.500 ;
+    END
+  END QB
+  PIN SET
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 76.100 16.100 79.500 19.500 ;
+    END
+  END SET
+  OBS
+    LAYER M1 ;
+      RECT 9.1 6.4 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.1 13.6 15.7 19.75 ;
+    LAYER M1 ;
+      RECT 13.1 19.75 18.6 22.35 ;
+    LAYER M1 ;
+      RECT 13.1 29 19 30.5 ;
+    LAYER M1 ;
+      RECT 13.1 30.5 18.6 31.6 ;
+    LAYER M1 ;
+      RECT 13.1 31.6 15.7 37.2 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 29 ;
+    LAYER M1 ;
+      RECT 16 22.35 18.6 27.1 ;
+    LAYER M1 ;
+      RECT 17.1 6.4 19.7 15.2 ;
+    LAYER M1 ;
+      RECT 17.1 15.2 24.9 17.8 ;
+    LAYER M1 ;
+      RECT 17.1 33 24.9 35.6 ;
+    LAYER M1 ;
+      RECT 17.1 35.6 19.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.2 ;
+    LAYER M1 ;
+      RECT 21.1 11.2 34 13.8 ;
+    LAYER M1 ;
+      RECT 21.1 37 34 39.6 ;
+    LAYER M1 ;
+      RECT 21.1 39.6 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 22.3 17.8 24.9 33 ;
+    LAYER M1 ;
+      RECT 26.3 15.2 29.6 17.8 ;
+    LAYER M1 ;
+      RECT 26.3 33 29.6 35.6 ;
+    LAYER M1 ;
+      RECT 26.5 21.6 30 25 ;
+    LAYER M1 ;
+      RECT 27 17.8 29.6 21.6 ;
+    LAYER M1 ;
+      RECT 27 25 29.6 33 ;
+    LAYER M1 ;
+      RECT 31.4 13.8 34 37 ;
+    LAYER M1 ;
+      RECT 31.5 6.4 38.1 9.8 ;
+    LAYER M1 ;
+      RECT 31.5 41 38.1 51.2 ;
+    LAYER M1 ;
+      RECT 35.5 9.8 38.1 33 ;
+    LAYER M1 ;
+      RECT 35.5 33 43.2 35.6 ;
+    LAYER M1 ;
+      RECT 35.5 35.6 38.1 41 ;
+    LAYER M1 ;
+      RECT 39.5 15.2 42.1 29.2 ;
+    LAYER M1 ;
+      RECT 40.7 11.2 53.7 13.8 ;
+    LAYER M1 ;
+      RECT 40.7 37 53.7 39.6 ;
+    LAYER M1 ;
+      RECT 44.6 13.8 47.2 37 ;
+    LAYER M1 ;
+      RECT 45.9 39.6 48.5 51.2 ;
+    LAYER M1 ;
+      RECT 48.3 6.4 50.9 11.2 ;
+    LAYER M1 ;
+      RECT 49 17.6 51.6 35.6 ;
+    LAYER M1 ;
+      RECT 55.1 15.2 57.7 33 ;
+    LAYER M1 ;
+      RECT 55.1 33 64.1 35.6 ;
+    LAYER M1 ;
+      RECT 58.7 6.4 61.3 11.2 ;
+    LAYER M1 ;
+      RECT 58.7 11.2 68.9 13.8 ;
+    LAYER M1 ;
+      RECT 59.9 15.2 62.5 31.6 ;
+    LAYER M1 ;
+      RECT 60.3 37 68.1 39.6 ;
+    LAYER M1 ;
+      RECT 60.3 39.6 62.9 51.2 ;
+    LAYER M1 ;
+      RECT 65.5 13.8 68.1 33 ;
+    LAYER M1 ;
+      RECT 65.5 33 70.5 35.6 ;
+    LAYER M1 ;
+      RECT 65.5 35.6 68.1 37 ;
+    LAYER M1 ;
+      RECT 69.5 15.2 74.1 17.8 ;
+    LAYER M1 ;
+      RECT 69.5 28.7 79.3 31.3 ;
+    LAYER M1 ;
+      RECT 70.7 37 74.5 39.6 ;
+    LAYER M1 ;
+      RECT 70.7 39.6 73.3 51.2 ;
+    LAYER M1 ;
+      RECT 71.5 6.4 74.1 15.2 ;
+    LAYER M1 ;
+      RECT 71.5 17.8 74.1 28.7 ;
+    LAYER M1 ;
+      RECT 71.9 31.3 74.5 37 ;
+    LAYER M1 ;
+      RECT 75.5 6.4 78.1 11.2 ;
+    LAYER M1 ;
+      RECT 75.5 11.2 84.6 13.8 ;
+    LAYER M1 ;
+      RECT 76.1 16.1 79.5 19.5 ;
+    LAYER M1 ;
+      RECT 76.5 19.5 79.1 22.75 ;
+    LAYER M1 ;
+      RECT 78.7 37 84.6 39.6 ;
+    LAYER M1 ;
+      RECT 78.7 39.6 81.3 51.2 ;
+    LAYER M1 ;
+      RECT 81.6 27.1 85 30.5 ;
+    LAYER M1 ;
+      RECT 82 13.8 84.6 27.1 ;
+    LAYER M1 ;
+      RECT 82 30.5 84.6 37 ;
+    LAYER M1 ;
+      RECT 83.5 6.4 90.1 9.8 ;
+    LAYER M1 ;
+      RECT 86.7 41 90.1 43.6 ;
+    LAYER M1 ;
+      RECT 86.7 43.6 89.3 51.2 ;
+    LAYER M1 ;
+      RECT 87.1 27.1 90.5 30.5 ;
+    LAYER M1 ;
+      RECT 87.5 9.8 90.1 27.1 ;
+    LAYER M1 ;
+      RECT 87.5 30.5 90.1 41 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 27.5 22.6 28.9 24 ;
+    LAYER V1 ;
+      RECT 77.1 17.1 78.5 18.5 ;
+    LAYER V1 ;
+      RECT 82.6 28.1 84 29.5 ;
+    LAYER V1 ;
+      RECT 88.1 28.1 89.5 29.5 ;
+  END
+END DFFS
+MACRO INV_X1
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 21.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 54.2 21.6 57.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 0 21.6 3.4 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 8.050 27.100 11.450 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 13.550 32.600 16.950 36.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.05 3.4 9.65 9.8 ;
+    LAYER M1 ;
+      RECT 7.05 41 9.65 54.2 ;
+    LAYER M1 ;
+      RECT 8.05 27.1 11.45 30.5 ;
+    LAYER M1 ;
+      RECT 8.25 30.5 10.85 35.5 ;
+    LAYER M1 ;
+      RECT 11.05 6.4 13.65 15.2 ;
+    LAYER M1 ;
+      RECT 11.05 15.2 16.55 17.8 ;
+    LAYER M1 ;
+      RECT 11.05 36.9 16.55 39.5 ;
+    LAYER M1 ;
+      RECT 11.05 39.5 13.65 51.2 ;
+    LAYER M1 ;
+      RECT 13.55 32.6 16.95 36 ;
+    LAYER M1 ;
+      RECT 13.55 36 16.55 36.9 ;
+    LAYER M1 ;
+      RECT 13.95 17.8 16.55 32.6 ;
+    LAYER V1 ;
+      RECT 9.05 28.1 10.45 29.5 ;
+    LAYER V1 ;
+      RECT 14.55 33.6 15.95 35 ;
+  END
+END INV_X1
+MACRO INV_X12
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 73.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 68.1 57.6 ;
+        RECT 9.1 41 11.7 52.6 ;
+        RECT 9.1 52.6 59.7 55 ;
+        RECT 17.1 41 19.7 52.6 ;
+        RECT 25.1 41 27.7 52.6 ;
+        RECT 33.1 41 35.7 52.6 ;
+        RECT 41.1 41 43.7 52.6 ;
+        RECT 49.1 41 51.7 52.6 ;
+        RECT 57.1 41 59.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 68.1 3.4 ;
+        RECT 9.1 3.4 59.7 5 ;
+        RECT 9.1 5 11.7 9.8 ;
+        RECT 17.1 5 19.7 9.8 ;
+        RECT 25.1 5 27.7 9.8 ;
+        RECT 33.1 5 35.7 9.8 ;
+        RECT 41.1 5 43.7 9.8 ;
+        RECT 49.1 5 51.7 9.8 ;
+        RECT 57.1 5 59.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 27.100 13.500 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 54.100 27.100 57.500 30.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 10.1 27.1 13.5 27.5 ;
+    LAYER M1 ;
+      RECT 10.1 27.5 34.5 30.1 ;
+    LAYER M1 ;
+      RECT 10.1 30.1 13.5 30.5 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 11.4 ;
+    LAYER M1 ;
+      RECT 13.1 11.4 55.7 14 ;
+    LAYER M1 ;
+      RECT 13.1 36.8 55.7 39.4 ;
+    LAYER M1 ;
+      RECT 13.1 39.4 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 16.4 32.3 51.5 34.9 ;
+    LAYER M1 ;
+      RECT 16.6 15.9 51.5 18.5 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.4 ;
+    LAYER M1 ;
+      RECT 21.1 39.4 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 11.4 ;
+    LAYER M1 ;
+      RECT 29.1 39.4 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 31.9 18.5 34.5 27.5 ;
+    LAYER M1 ;
+      RECT 31.9 30.1 34.5 32.3 ;
+    LAYER M1 ;
+      RECT 37.1 6.4 39.7 11.4 ;
+    LAYER M1 ;
+      RECT 37.1 39.4 39.7 51.2 ;
+    LAYER M1 ;
+      RECT 45.1 6.4 47.7 11.4 ;
+    LAYER M1 ;
+      RECT 45.1 39.4 47.7 51.2 ;
+    LAYER M1 ;
+      RECT 53.1 6.4 55.7 11.4 ;
+    LAYER M1 ;
+      RECT 53.1 14 55.7 27.1 ;
+    LAYER M1 ;
+      RECT 53.1 27.1 57.5 30.5 ;
+    LAYER M1 ;
+      RECT 53.1 30.5 55.7 36.8 ;
+    LAYER M1 ;
+      RECT 53.1 39.4 55.7 51.2 ;
+    LAYER V1 ;
+      RECT 11.1 28.1 12.5 29.5 ;
+    LAYER V1 ;
+      RECT 55.1 28.1 56.5 29.5 ;
+  END
+END INV_X12
+MACRO INV_X16
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 89.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 84.6 57.6 ;
+        RECT 9.1 41 11.7 52.6 ;
+        RECT 9.1 52.6 75.7 55 ;
+        RECT 17.1 41 19.7 52.6 ;
+        RECT 25.1 41 27.7 52.6 ;
+        RECT 33.1 41 35.7 52.6 ;
+        RECT 41.1 41 43.7 52.6 ;
+        RECT 49.1 41 51.7 52.6 ;
+        RECT 57.1 41 59.7 52.6 ;
+        RECT 65.1 41 67.7 52.6 ;
+        RECT 73.1 41 75.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 84.6 3.4 ;
+        RECT 9.1 3.4 75.7 5 ;
+        RECT 9.1 5 11.7 9.8 ;
+        RECT 17.1 5 19.7 9.8 ;
+        RECT 25.1 5 27.7 9.8 ;
+        RECT 33.1 5 35.7 9.8 ;
+        RECT 41.1 5 43.7 9.8 ;
+        RECT 49.1 5 51.7 9.8 ;
+        RECT 57.1 5 59.7 9.8 ;
+        RECT 65.1 5 67.7 9.8 ;
+        RECT 73.1 5 75.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 27.100 13.500 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 70.600 27.100 74.000 30.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 10.1 27.1 13.5 27.5 ;
+    LAYER M1 ;
+      RECT 10.1 27.5 43.7 30.1 ;
+    LAYER M1 ;
+      RECT 10.1 30.1 13.5 30.5 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 11.4 ;
+    LAYER M1 ;
+      RECT 13.1 11.4 71.7 14 ;
+    LAYER M1 ;
+      RECT 13.1 36.8 71.7 39.4 ;
+    LAYER M1 ;
+      RECT 13.1 39.4 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 16.4 32.3 67.5 34.9 ;
+    LAYER M1 ;
+      RECT 16.6 15.9 67.5 18.5 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.4 ;
+    LAYER M1 ;
+      RECT 21.1 39.4 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 11.4 ;
+    LAYER M1 ;
+      RECT 29.1 39.4 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 37.1 6.4 39.7 11.4 ;
+    LAYER M1 ;
+      RECT 37.1 39.4 39.7 51.2 ;
+    LAYER M1 ;
+      RECT 41.1 18.5 43.7 27.5 ;
+    LAYER M1 ;
+      RECT 41.1 30.1 43.7 32.3 ;
+    LAYER M1 ;
+      RECT 45.1 6.4 47.7 11.4 ;
+    LAYER M1 ;
+      RECT 45.1 39.4 47.7 51.2 ;
+    LAYER M1 ;
+      RECT 53.1 6.4 55.7 11.4 ;
+    LAYER M1 ;
+      RECT 53.1 39.4 55.7 51.2 ;
+    LAYER M1 ;
+      RECT 61.1 6.4 63.7 11.4 ;
+    LAYER M1 ;
+      RECT 61.1 39.4 63.7 51.2 ;
+    LAYER M1 ;
+      RECT 69.1 6.4 71.7 11.4 ;
+    LAYER M1 ;
+      RECT 69.1 14 71.7 27.1 ;
+    LAYER M1 ;
+      RECT 69.1 27.1 74 30.5 ;
+    LAYER M1 ;
+      RECT 69.1 30.5 71.7 36.8 ;
+    LAYER M1 ;
+      RECT 69.1 39.4 71.7 51.2 ;
+    LAYER V1 ;
+      RECT 11.1 28.1 12.5 29.5 ;
+    LAYER V1 ;
+      RECT 71.6 28.1 73 29.5 ;
+  END
+END INV_X16
+MACRO INV_X2
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 27.000 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 54.2 27 57.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 0 27 3.4 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 8.050 27.100 11.450 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 13.550 32.600 16.950 36.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.05 3.4 17.65 5 ;
+    LAYER M1 ;
+      RECT 7.05 5 9.65 9.8 ;
+    LAYER M1 ;
+      RECT 7.05 41 9.65 52.6 ;
+    LAYER M1 ;
+      RECT 7.05 52.6 17.65 54.2 ;
+    LAYER M1 ;
+      RECT 8.05 27.1 11.45 30.5 ;
+    LAYER M1 ;
+      RECT 8.25 30.5 10.85 35.5 ;
+    LAYER M1 ;
+      RECT 11.05 6.4 13.65 15.2 ;
+    LAYER M1 ;
+      RECT 11.05 15.2 16.55 17.8 ;
+    LAYER M1 ;
+      RECT 11.05 36.9 16.55 39.5 ;
+    LAYER M1 ;
+      RECT 11.05 39.5 13.65 51.2 ;
+    LAYER M1 ;
+      RECT 13.55 32.6 16.95 36 ;
+    LAYER M1 ;
+      RECT 13.55 36 16.55 36.9 ;
+    LAYER M1 ;
+      RECT 13.95 17.8 16.55 32.6 ;
+    LAYER M1 ;
+      RECT 15.05 5 17.65 9.8 ;
+    LAYER M1 ;
+      RECT 15.05 41 17.65 52.6 ;
+    LAYER V1 ;
+      RECT 9.05 28.1 10.45 29.5 ;
+    LAYER V1 ;
+      RECT 14.55 33.6 15.95 35 ;
+  END
+END INV_X2
+MACRO INV_X4
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 40.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 35.1 57.6 ;
+        RECT 9.1 41 11.7 52.6 ;
+        RECT 9.1 52.6 27.7 55 ;
+        RECT 17.1 41 19.7 52.6 ;
+        RECT 25.1 41 27.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 35.1 3.4 ;
+        RECT 9.1 3.4 27.7 5 ;
+        RECT 9.1 5 11.7 9.8 ;
+        RECT 17.1 5 19.7 9.8 ;
+        RECT 25.1 5 27.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 27.100 13.500 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.600 32.600 30.000 36.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 10.1 27.1 13.5 27.5 ;
+    LAYER M1 ;
+      RECT 10.1 27.5 18.4 30.1 ;
+    LAYER M1 ;
+      RECT 10.1 30.1 13.5 30.5 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.5 9.8 15.3 12.2 ;
+    LAYER M1 ;
+      RECT 13.5 12.2 23.7 14 ;
+    LAYER M1 ;
+      RECT 13.5 36.8 23.7 38.6 ;
+    LAYER M1 ;
+      RECT 13.5 38.6 15.3 41 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 12.2 ;
+    LAYER M1 ;
+      RECT 21.1 14 23.7 33 ;
+    LAYER M1 ;
+      RECT 21.1 33 30 35.6 ;
+    LAYER M1 ;
+      RECT 21.1 35.6 23.7 36.8 ;
+    LAYER M1 ;
+      RECT 21.1 38.6 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 26.6 32.6 30 33 ;
+    LAYER M1 ;
+      RECT 26.6 35.6 30 36 ;
+    LAYER V1 ;
+      RECT 11.1 28.1 12.5 29.5 ;
+    LAYER V1 ;
+      RECT 27.6 33.6 29 35 ;
+  END
+END INV_X4
+MACRO INV_X8
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 56.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 51.6 57.6 ;
+        RECT 9.1 41 11.7 52.6 ;
+        RECT 9.1 52.6 43.7 55 ;
+        RECT 17.1 41 19.7 52.6 ;
+        RECT 25.1 41 27.7 52.6 ;
+        RECT 33.1 41 35.7 52.6 ;
+        RECT 41.1 41 43.7 52.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 51.6 3.4 ;
+        RECT 9.1 3.4 43.7 5 ;
+        RECT 9.1 5 11.7 9.8 ;
+        RECT 17.1 5 19.7 9.8 ;
+        RECT 25.1 5 27.7 9.8 ;
+        RECT 33.1 5 35.7 9.8 ;
+        RECT 41.1 5 43.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 10.100 27.100 13.500 30.500 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 37.600 27.100 41.000 30.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 10.1 27.1 13.5 27.5 ;
+    LAYER M1 ;
+      RECT 10.1 27.5 26.2 30.1 ;
+    LAYER M1 ;
+      RECT 10.1 30.1 13.5 30.5 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 11.4 ;
+    LAYER M1 ;
+      RECT 13.1 11.4 39.7 14 ;
+    LAYER M1 ;
+      RECT 13.1 36.8 39.7 39.4 ;
+    LAYER M1 ;
+      RECT 13.1 39.4 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 16.4 32.3 34.5 34.9 ;
+    LAYER M1 ;
+      RECT 16.6 15.9 34.5 18.5 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.4 ;
+    LAYER M1 ;
+      RECT 21.1 39.4 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 23.6 18.5 26.2 27.5 ;
+    LAYER M1 ;
+      RECT 23.6 30.1 26.2 32.3 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 11.4 ;
+    LAYER M1 ;
+      RECT 29.1 39.4 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 37.1 6.4 39.7 11.4 ;
+    LAYER M1 ;
+      RECT 37.1 14 39.7 27.1 ;
+    LAYER M1 ;
+      RECT 37.1 27.1 41 30.5 ;
+    LAYER M1 ;
+      RECT 37.1 30.5 39.7 36.8 ;
+    LAYER M1 ;
+      RECT 37.1 39.4 39.7 51.2 ;
+    LAYER V1 ;
+      RECT 11.1 28.1 12.5 29.5 ;
+    LAYER V1 ;
+      RECT 38.6 28.1 40 29.5 ;
+  END
+END INV_X8
+MACRO MUX2
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 62.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 57.1 57.6 ;
+        RECT 13.1 44.4 15.7 55 ;
+        RECT 25.1 44.4 27.7 55 ;
+        RECT 29.1 46.1 31.7 55 ;
+        RECT 37.1 46.1 39.7 55 ;
+        RECT 49.1 44.4 51.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 57.1 3.4 ;
+        RECT 13.1 3.4 15.7 9.8 ;
+        RECT 29.1 3.4 31.7 9.8 ;
+        RECT 49.9 3.4 52.5 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 43.000 27.100 46.400 30.500 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 32.100 27.100 35.500 30.500 ;
+    END
+  END B
+  PIN S
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END S
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 37.600 27.100 41.000 30.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 9.1 6.4 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.1 32.4 18.6 35 ;
+    LAYER M1 ;
+      RECT 13.1 35 15.7 43 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 30.5 ;
+    LAYER M1 ;
+      RECT 16 17.2 18.6 27.1 ;
+    LAYER M1 ;
+      RECT 16 30.5 18.6 32.4 ;
+    LAYER M1 ;
+      RECT 16.3 12.4 19.7 15.8 ;
+    LAYER M1 ;
+      RECT 17.1 6.4 19.7 12.4 ;
+    LAYER M1 ;
+      RECT 17.1 36.4 23.7 39 ;
+    LAYER M1 ;
+      RECT 17.1 39 19.7 51.2 ;
+    LAYER M1 ;
+      RECT 20.3 35.6 23.7 36.4 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 35.6 ;
+    LAYER M1 ;
+      RECT 21.1 40.4 27.7 43 ;
+    LAYER M1 ;
+      RECT 21.1 43 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 25.1 6.4 27.7 12.4 ;
+    LAYER M1 ;
+      RECT 25.1 12.4 28.5 15.8 ;
+    LAYER M1 ;
+      RECT 25.1 15.8 27.7 40.4 ;
+    LAYER M1 ;
+      RECT 29.1 17.2 31.7 27.1 ;
+    LAYER M1 ;
+      RECT 29.1 27.1 35.5 30.5 ;
+    LAYER M1 ;
+      RECT 29.1 30.5 31.7 42.3 ;
+    LAYER M1 ;
+      RECT 33.1 6.4 35.7 20 ;
+    LAYER M1 ;
+      RECT 33.1 20 40.6 22.6 ;
+    LAYER M1 ;
+      RECT 33.1 32.4 40.6 35 ;
+    LAYER M1 ;
+      RECT 33.1 35 35.7 51.2 ;
+    LAYER M1 ;
+      RECT 37.1 11.2 40.5 14.6 ;
+    LAYER M1 ;
+      RECT 37.1 36.4 50.5 39 ;
+    LAYER M1 ;
+      RECT 37.6 27.1 41 30.5 ;
+    LAYER M1 ;
+      RECT 37.9 6.4 40.5 11.2 ;
+    LAYER M1 ;
+      RECT 38 22.6 40.6 27.1 ;
+    LAYER M1 ;
+      RECT 38 30.5 40.6 32.4 ;
+    LAYER M1 ;
+      RECT 39.9 39 43.7 39.8 ;
+    LAYER M1 ;
+      RECT 41.1 39.8 43.7 51.2 ;
+    LAYER M1 ;
+      RECT 41.9 6.4 44.5 16 ;
+    LAYER M1 ;
+      RECT 41.9 16 50.5 18.6 ;
+    LAYER M1 ;
+      RECT 43 27.1 46.5 30.5 ;
+    LAYER M1 ;
+      RECT 43.5 20 46.1 27.1 ;
+    LAYER M1 ;
+      RECT 43.5 30.5 46.1 35 ;
+    LAYER M1 ;
+      RECT 45.1 40.4 54.5 43 ;
+    LAYER M1 ;
+      RECT 45.1 43 47.7 51.2 ;
+    LAYER M1 ;
+      RECT 45.9 6.4 48.5 11.2 ;
+    LAYER M1 ;
+      RECT 45.9 11.2 54.5 13.8 ;
+    LAYER M1 ;
+      RECT 47.9 18.6 50.5 36.4 ;
+    LAYER M1 ;
+      RECT 49.9 13.8 54.5 14.6 ;
+    LAYER M1 ;
+      RECT 51.9 14.6 54.5 40.4 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 17.3 13.4 18.7 14.8 ;
+    LAYER V1 ;
+      RECT 21.3 36.6 22.7 38 ;
+    LAYER V1 ;
+      RECT 26.1 13.4 27.5 14.8 ;
+    LAYER V1 ;
+      RECT 33.1 28.1 34.5 29.5 ;
+    LAYER V1 ;
+      RECT 38.1 12.2 39.5 13.6 ;
+    LAYER V1 ;
+      RECT 38.6 28.1 40 29.5 ;
+    LAYER V1 ;
+      RECT 40.9 37.4 42.3 38.8 ;
+    LAYER V1 ;
+      RECT 44 28.1 45.4 29.5 ;
+    LAYER V1 ;
+      RECT 50.9 12.2 52.3 13.6 ;
+    LAYER M2 ;
+      RECT 16.3 12.4 28.5 15.8 ;
+    LAYER M2 ;
+      RECT 20.3 35.6 43.3 39 ;
+    LAYER M2 ;
+      RECT 37.1 11.2 53.3 14.6 ;
+    LAYER M2 ;
+      RECT 39.9 39 43.3 39.8 ;
+  END
+END MUX2
+MACRO NAND2
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 27.000 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 54.2 27 57.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 0 27 3.4 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 8.050 27.100 11.450 30.500 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 8.050 16.100 11.450 19.500 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 13.550 21.600 16.950 25.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.05 3.4 17.25 5 ;
+    LAYER M1 ;
+      RECT 7.05 5 9.65 9.8 ;
+    LAYER M1 ;
+      RECT 7.05 41 9.65 52.6 ;
+    LAYER M1 ;
+      RECT 7.05 52.6 17.65 54.2 ;
+    LAYER M1 ;
+      RECT 8.05 15.3 16.05 17.9 ;
+    LAYER M1 ;
+      RECT 8.05 17.9 11.45 19.5 ;
+    LAYER M1 ;
+      RECT 8.05 27.1 11.45 30.5 ;
+    LAYER M1 ;
+      RECT 8.25 30.5 10.85 34.8 ;
+    LAYER M1 ;
+      RECT 11.05 6.4 13.65 9.8 ;
+    LAYER M1 ;
+      RECT 11.05 36.4 19.45 39 ;
+    LAYER M1 ;
+      RECT 11.05 39 13.65 51.2 ;
+    LAYER M1 ;
+      RECT 13.55 21.6 19.45 25 ;
+    LAYER M1 ;
+      RECT 15.05 6.4 17.65 9.8 ;
+    LAYER M1 ;
+      RECT 15.05 41 17.65 52.6 ;
+    LAYER M1 ;
+      RECT 15.85 9.8 17.65 11.8 ;
+    LAYER M1 ;
+      RECT 15.85 11.8 19.45 13.6 ;
+    LAYER M1 ;
+      RECT 17.65 13.6 19.45 21.6 ;
+    LAYER M1 ;
+      RECT 17.65 25 19.45 36.4 ;
+    LAYER V1 ;
+      RECT 9.05 17.1 10.45 18.5 ;
+    LAYER V1 ;
+      RECT 9.05 28.1 10.45 29.5 ;
+    LAYER V1 ;
+      RECT 14.55 22.6 15.95 24 ;
+  END
+END NAND2
+MACRO NAND3
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 34.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 29.6 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+        RECT 15.6 65.6 19 69.2 ;
+        RECT 16.4 57.6 18.2 65.6 ;
+        RECT 17.1 41 19.7 55 ;
+      LAYER M2 ;
+        RECT 15.6 66.4 19 69 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 29.6 3.4 ;
+        RECT 13.4 3.4 16.8 5 ;
+        RECT 21.1 3.4 23.7 9.8 ;
+      LAYER M2 ;
+        RECT 13.4 1.6 16.8 5 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 14.800 17.100 18.200 20.500 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 21.550 24.500 24.950 ;
+    END
+  END C
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.200 33.900 24.600 37.300 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.3 6.4 11.7 9.8 ;
+    LAYER M1 ;
+      RECT 7.3 9.8 9.3 37.2 ;
+    LAYER M1 ;
+      RECT 7.3 37.2 24.6 37.3 ;
+    LAYER M1 ;
+      RECT 7.3 37.3 23.7 39.2 ;
+    LAYER M1 ;
+      RECT 10.7 33.2 17.6 35.2 ;
+    LAYER M1 ;
+      RECT 10.7 35.2 13.3 35.8 ;
+    LAYER M1 ;
+      RECT 12 14.6 14.6 16.1 ;
+    LAYER M1 ;
+      RECT 12 16.1 19 19.5 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 13.1 39.2 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 14.8 19.5 18.2 20.5 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 30.5 ;
+    LAYER M1 ;
+      RECT 15.6 30.5 17.6 33.2 ;
+    LAYER M1 ;
+      RECT 17.1 6.4 19.7 9.8 ;
+    LAYER M1 ;
+      RECT 21.1 21.55 26 25 ;
+    LAYER M1 ;
+      RECT 21.1 32.6 24.5 33.9 ;
+    LAYER M1 ;
+      RECT 21.1 33.9 24.6 37.2 ;
+    LAYER M1 ;
+      RECT 21.1 39.2 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 23.4 16.95 26 21.55 ;
+    LAYER V1 ;
+      RECT 14.4 2.6 15.8 4 ;
+    LAYER V1 ;
+      RECT 15.8 18.1 17.2 19.5 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 16.6 66.6 18 68 ;
+    LAYER V1 ;
+      RECT 22.1 22.55 23.5 23.95 ;
+    LAYER V1 ;
+      RECT 22.2 34.9 23.6 36.3 ;
+    LAYER M2 ;
+      RECT 15.6 65.6 19 66.4 ;
+  END
+END NAND3
+MACRO NAND4
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 40.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 35.1 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+        RECT 17.1 41 19.7 55 ;
+        RECT 25.1 41 27.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 35.1 3.4 ;
+        RECT 9.1 3.4 11.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 16.100 19.000 19.500 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 21.600 24.500 25.000 ;
+    END
+  END C
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 32.600 24.500 36.000 ;
+    END
+  END D
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.600 27.100 30.000 30.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.2 11.7 9.8 14.3 ;
+    LAYER M1 ;
+      RECT 7.6 14.3 9.4 16.9 ;
+    LAYER M1 ;
+      RECT 7.6 16.9 19 18.7 ;
+    LAYER M1 ;
+      RECT 10.5 23.9 13.1 26.5 ;
+    LAYER M1 ;
+      RECT 10.9 26.5 12.7 28 ;
+    LAYER M1 ;
+      RECT 10.9 28 19 29.8 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.5 37.5 30 39.3 ;
+    LAYER M1 ;
+      RECT 13.5 39.3 15.3 41 ;
+    LAYER M1 ;
+      RECT 15.6 16.1 19 16.9 ;
+    LAYER M1 ;
+      RECT 15.6 18.7 19 19.5 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 28 ;
+    LAYER M1 ;
+      RECT 15.6 29.8 19 30.5 ;
+    LAYER M1 ;
+      RECT 17.1 6.4 19.7 9.8 ;
+    LAYER M1 ;
+      RECT 17.9 22.4 24.5 25 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 9.8 ;
+    LAYER M1 ;
+      RECT 21.1 21.6 24.5 22.4 ;
+    LAYER M1 ;
+      RECT 21.1 32.6 24.5 36 ;
+    LAYER M1 ;
+      RECT 21.1 41 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.5 39.3 23.3 41 ;
+    LAYER M1 ;
+      RECT 22.2 28.4 24.8 31 ;
+    LAYER M1 ;
+      RECT 22.7 31 24.5 32.6 ;
+    LAYER M1 ;
+      RECT 25.1 6.4 27.7 9.8 ;
+    LAYER M1 ;
+      RECT 25.5 9.8 27.3 12.6 ;
+    LAYER M1 ;
+      RECT 25.5 12.6 30 14.4 ;
+    LAYER M1 ;
+      RECT 26.6 27.1 30 30.5 ;
+    LAYER M1 ;
+      RECT 28.2 14.4 30 27.1 ;
+    LAYER M1 ;
+      RECT 28.2 30.5 30 37.5 ;
+    LAYER V1 ;
+      RECT 16.6 17.1 18 18.5 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 22.1 22.6 23.5 24 ;
+    LAYER V1 ;
+      RECT 22.1 33.6 23.5 35 ;
+    LAYER V1 ;
+      RECT 27.6 28.1 29 29.5 ;
+  END
+END NAND4
+MACRO NOR2
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 27.000 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 54.2 27 57.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 0 27 3.4 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 8.050 21.600 11.450 25.000 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 8.050 32.600 11.450 36.000 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 13.550 27.100 16.950 30.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.05 3.4 17.65 5 ;
+    LAYER M1 ;
+      RECT 7.05 5 9.65 9.8 ;
+    LAYER M1 ;
+      RECT 7.05 41 9.65 52.6 ;
+    LAYER M1 ;
+      RECT 7.05 52.6 17.65 54.2 ;
+    LAYER M1 ;
+      RECT 8.05 21.6 11.45 25 ;
+    LAYER M1 ;
+      RECT 8.05 32.6 11.45 32.9 ;
+    LAYER M1 ;
+      RECT 8.05 32.9 16.05 35.5 ;
+    LAYER M1 ;
+      RECT 8.05 35.5 11.45 36 ;
+    LAYER M1 ;
+      RECT 8.25 16 10.85 21.6 ;
+    LAYER M1 ;
+      RECT 11.05 6.4 13.65 11.8 ;
+    LAYER M1 ;
+      RECT 11.05 11.8 19.45 14.4 ;
+    LAYER M1 ;
+      RECT 11.05 41 13.65 51.2 ;
+    LAYER M1 ;
+      RECT 13.55 27.1 19.45 30.5 ;
+    LAYER M1 ;
+      RECT 15.05 5 17.65 9.8 ;
+    LAYER M1 ;
+      RECT 15.05 41 17.65 51.2 ;
+    LAYER M1 ;
+      RECT 15.85 37.2 19.45 39 ;
+    LAYER M1 ;
+      RECT 15.85 39 17.65 41 ;
+    LAYER M1 ;
+      RECT 17.65 14.4 19.45 27.1 ;
+    LAYER M1 ;
+      RECT 17.65 30.5 19.45 37.2 ;
+    LAYER V1 ;
+      RECT 9.05 22.6 10.45 24 ;
+    LAYER V1 ;
+      RECT 9.05 33.6 10.45 35 ;
+    LAYER V1 ;
+      RECT 14.55 28.1 15.95 29.5 ;
+  END
+END NOR2
+MACRO NOR3
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 34.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 29.6 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 29.6 3.4 ;
+        RECT 9.1 3.4 19.7 5 ;
+        RECT 9.1 5 11.7 9.8 ;
+        RECT 17.1 5 19.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 16.100 19.000 19.500 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 21.600 24.500 25.000 ;
+    END
+  END C
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 32.600 24.500 36.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.1 12.3 23.3 14.1 ;
+    LAYER M1 ;
+      RECT 7.1 14.1 8.9 37.7 ;
+    LAYER M1 ;
+      RECT 7.1 37.7 23.7 39.5 ;
+    LAYER M1 ;
+      RECT 10.4 33.1 13 33.5 ;
+    LAYER M1 ;
+      RECT 10.4 33.5 18.2 35.3 ;
+    LAYER M1 ;
+      RECT 10.4 35.3 13 35.7 ;
+    LAYER M1 ;
+      RECT 12.6 21.3 18.2 23.1 ;
+    LAYER M1 ;
+      RECT 12.6 23.1 15.2 23.9 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.5 9.8 15.3 12.3 ;
+    LAYER M1 ;
+      RECT 15.6 16.1 19 19.5 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 30.5 ;
+    LAYER M1 ;
+      RECT 16.4 19.5 18.2 21.3 ;
+    LAYER M1 ;
+      RECT 16.4 30.5 18.2 33.5 ;
+    LAYER M1 ;
+      RECT 17.1 41 19.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 9.8 ;
+    LAYER M1 ;
+      RECT 21.1 21.6 24.5 25 ;
+    LAYER M1 ;
+      RECT 21.1 32.6 24.5 36 ;
+    LAYER M1 ;
+      RECT 21.1 39.5 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.5 9.8 23.3 12.3 ;
+    LAYER M1 ;
+      RECT 21.5 16.5 24.1 19.1 ;
+    LAYER M1 ;
+      RECT 21.9 19.1 23.7 21.6 ;
+    LAYER M1 ;
+      RECT 21.9 36 23.7 37.7 ;
+    LAYER V1 ;
+      RECT 16.6 17.1 18 18.5 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 22.1 22.6 23.5 24 ;
+    LAYER V1 ;
+      RECT 22.1 33.6 23.5 35 ;
+  END
+END NOR3
+MACRO NOR4
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 40.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 35.1 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 35.1 3.4 ;
+        RECT 9.1 3.4 11.7 9.8 ;
+        RECT 17.1 3.4 19.7 9.8 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 16.100 19.000 19.500 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 32.500 24.500 35.900 ;
+    END
+  END C
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 21.600 24.500 25.000 ;
+    END
+  END D
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.600 27.100 30.000 30.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.3 11.2 23.7 13.2 ;
+    LAYER M1 ;
+      RECT 7.3 13.2 9.3 37.4 ;
+    LAYER M1 ;
+      RECT 7.3 37.4 30 39.4 ;
+    LAYER M1 ;
+      RECT 10.7 33.2 13.3 35.8 ;
+    LAYER M1 ;
+      RECT 11.3 28.5 19 30.5 ;
+    LAYER M1 ;
+      RECT 11.3 30.5 13.3 33.2 ;
+    LAYER M1 ;
+      RECT 12 14.6 14.6 16.1 ;
+    LAYER M1 ;
+      RECT 12 16.1 19 19.5 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 11.2 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 28.5 ;
+    LAYER M1 ;
+      RECT 17.1 41 19.7 51.2 ;
+    LAYER M1 ;
+      RECT 18.1 32.6 24.5 36 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.2 ;
+    LAYER M1 ;
+      RECT 21.1 21.6 27.6 25 ;
+    LAYER M1 ;
+      RECT 21.1 32.5 24.5 32.6 ;
+    LAYER M1 ;
+      RECT 21.1 41 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 25.1 39.4 27.7 51.2 ;
+    LAYER M1 ;
+      RECT 26.6 27.1 30 30.5 ;
+    LAYER M1 ;
+      RECT 27.4 30.5 30 37.4 ;
+    LAYER V1 ;
+      RECT 16.6 17.1 18 18.5 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 22.1 22.6 23.5 24 ;
+    LAYER V1 ;
+      RECT 22.1 33.5 23.5 34.9 ;
+    LAYER V1 ;
+      RECT 27.6 28.1 29 29.5 ;
+  END
+END NOR4
+MACRO OR2
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 34.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 29.6 57.6 ;
+        RECT 17.1 41 19.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 29.6 3.4 ;
+        RECT 9.1 3.4 11.7 9.8 ;
+        RECT 17.1 3.4 19.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 16.100 19.000 19.500 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 32.600 24.500 36.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.4 12.7 15.3 14.5 ;
+    LAYER M1 ;
+      RECT 7.4 14.5 9.2 22.3 ;
+    LAYER M1 ;
+      RECT 7.4 22.3 20.9 24.1 ;
+    LAYER M1 ;
+      RECT 7.4 24.1 9.2 37.5 ;
+    LAYER M1 ;
+      RECT 7.4 37.5 11.3 39.3 ;
+    LAYER M1 ;
+      RECT 9.1 41 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 9.5 39.3 11.3 41 ;
+    LAYER M1 ;
+      RECT 10.6 16.9 19 18.7 ;
+    LAYER M1 ;
+      RECT 10.6 18.7 13.2 19.5 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 13.5 9.8 15.3 12.7 ;
+    LAYER M1 ;
+      RECT 14.4 32.6 17.4 35.2 ;
+    LAYER M1 ;
+      RECT 15.6 16.1 19 16.9 ;
+    LAYER M1 ;
+      RECT 15.6 18.7 19 19.5 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 30.5 ;
+    LAYER M1 ;
+      RECT 15.6 30.5 17.4 32.6 ;
+    LAYER M1 ;
+      RECT 18.3 21.9 20.9 22.3 ;
+    LAYER M1 ;
+      RECT 18.3 24.1 20.9 24.5 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 9.8 ;
+    LAYER M1 ;
+      RECT 21.1 32.6 24.5 36 ;
+    LAYER M1 ;
+      RECT 21.1 41 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.5 9.8 23.3 12.1 ;
+    LAYER M1 ;
+      RECT 21.5 12.1 24.5 13.9 ;
+    LAYER M1 ;
+      RECT 21.5 37.5 24.5 39.3 ;
+    LAYER M1 ;
+      RECT 21.5 39.3 23.3 41 ;
+    LAYER M1 ;
+      RECT 22.7 13.9 24.5 32.6 ;
+    LAYER M1 ;
+      RECT 22.7 36 24.5 37.5 ;
+    LAYER V1 ;
+      RECT 16.6 17.1 18 18.5 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 22.1 33.6 23.5 35 ;
+  END
+END OR2
+MACRO OR3
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 40.100 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 35.1 57.6 ;
+        RECT 21.1 41 23.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 35.1 3.4 ;
+        RECT 13.1 3.4 23.7 5 ;
+        RECT 13.1 5 15.7 9.8 ;
+        RECT 21.1 5 23.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 16.100 19.000 19.500 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 21.600 24.500 25.000 ;
+    END
+  END C
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.600 32.600 30.000 36.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.1 12.3 25.7 14.1 ;
+    LAYER M1 ;
+      RECT 7.1 14.1 8.9 37.7 ;
+    LAYER M1 ;
+      RECT 7.1 37.7 11.3 39.5 ;
+    LAYER M1 ;
+      RECT 9.1 6.4 11.7 9.8 ;
+    LAYER M1 ;
+      RECT 9.1 41 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 9.5 9.8 11.3 12.3 ;
+    LAYER M1 ;
+      RECT 9.5 39.5 11.3 41 ;
+    LAYER M1 ;
+      RECT 10.4 33.1 13 33.5 ;
+    LAYER M1 ;
+      RECT 10.4 33.5 18.2 35.3 ;
+    LAYER M1 ;
+      RECT 10.4 35.3 13 35.7 ;
+    LAYER M1 ;
+      RECT 12.6 21.3 18.2 23.1 ;
+    LAYER M1 ;
+      RECT 12.6 23.1 15.2 23.9 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 15.6 16.1 19 19.5 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 30.5 ;
+    LAYER M1 ;
+      RECT 16.4 19.5 18.2 21.3 ;
+    LAYER M1 ;
+      RECT 16.4 30.5 18.2 33.5 ;
+    LAYER M1 ;
+      RECT 17.1 6.4 19.7 9.8 ;
+    LAYER M1 ;
+      RECT 17.1 41 19.7 51.2 ;
+    LAYER M1 ;
+      RECT 17.5 9.8 19.3 12.3 ;
+    LAYER M1 ;
+      RECT 21.1 21.6 24.5 25 ;
+    LAYER M1 ;
+      RECT 21.4 27.1 24 29.7 ;
+    LAYER M1 ;
+      RECT 21.8 25 23.6 27.1 ;
+    LAYER M1 ;
+      RECT 23.1 11.8 25.7 12.3 ;
+    LAYER M1 ;
+      RECT 23.1 14.1 25.7 14.4 ;
+    LAYER M1 ;
+      RECT 25.1 6.4 29.2 9.8 ;
+    LAYER M1 ;
+      RECT 25.1 41 27.7 51.2 ;
+    LAYER M1 ;
+      RECT 25.5 37.4 29.2 39.2 ;
+    LAYER M1 ;
+      RECT 25.5 39.2 27.3 41 ;
+    LAYER M1 ;
+      RECT 26.6 32.6 30 36 ;
+    LAYER M1 ;
+      RECT 27.4 9.8 29.2 32.6 ;
+    LAYER M1 ;
+      RECT 27.4 36 29.2 37.4 ;
+    LAYER V1 ;
+      RECT 16.6 17.1 18 18.5 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 22.1 22.6 23.5 24 ;
+    LAYER V1 ;
+      RECT 27.6 33.6 29 35 ;
+  END
+END OR3
+MACRO OR4
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 45.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 40.6 57.6 ;
+        RECT 25.1 41 27.7 55 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 40.6 3.4 ;
+        RECT 9.1 3.4 11.7 9.8 ;
+        RECT 17.1 3.4 19.7 9.8 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 21.600 24.500 25.000 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 21.100 32.600 24.500 36.000 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 16.100 19.000 19.500 ;
+    END
+  END C
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 27.100 19.000 30.500 ;
+    END
+  END D
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.600 27.100 30.000 30.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7.3 11.2 27.7 13.2 ;
+    LAYER M1 ;
+      RECT 7.3 13.2 9.3 37.4 ;
+    LAYER M1 ;
+      RECT 7.3 37.4 11.7 39.4 ;
+    LAYER M1 ;
+      RECT 9.1 39.4 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 10.7 33.2 13.3 35.8 ;
+    LAYER M1 ;
+      RECT 11.3 28.5 19 30.5 ;
+    LAYER M1 ;
+      RECT 11.3 30.5 13.3 33.2 ;
+    LAYER M1 ;
+      RECT 12 14.6 14.6 16.1 ;
+    LAYER M1 ;
+      RECT 12 16.1 19 19.5 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 11.2 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 15.6 27.1 19 28.5 ;
+    LAYER M1 ;
+      RECT 17.1 41 19.7 51.2 ;
+    LAYER M1 ;
+      RECT 18.1 32.6 24.5 36 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 11.2 ;
+    LAYER M1 ;
+      RECT 21.1 21.6 27.6 25 ;
+    LAYER M1 ;
+      RECT 21.1 41 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 25.1 13.2 27.7 18.8 ;
+    LAYER M1 ;
+      RECT 26.6 27.1 31.7 30.5 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 27.1 ;
+    LAYER M1 ;
+      RECT 29.1 30.5 31.7 51.2 ;
+    LAYER V1 ;
+      RECT 16.6 17.1 18 18.5 ;
+    LAYER V1 ;
+      RECT 16.6 28.1 18 29.5 ;
+    LAYER V1 ;
+      RECT 22.1 22.6 23.5 24 ;
+    LAYER V1 ;
+      RECT 22.1 33.6 23.5 35 ;
+    LAYER V1 ;
+      RECT 27.6 28.1 29 29.5 ;
+  END
+END OR4
+MACRO XNOR2
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 45.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 40.6 57.6 ;
+        RECT 13.1 41 15.7 55 ;
+        RECT 21.1 65.6 24.5 69.2 ;
+        RECT 21.9 57.6 23.7 65.6 ;
+        RECT 25.1 41 27.7 55 ;
+      LAYER M2 ;
+        RECT 21.1 66.4 24.5 69 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 40.6 3.4 ;
+        RECT 9.1 3.4 11.7 9.8 ;
+        RECT 18.9 3.4 22.3 5 ;
+        RECT 29.1 3.4 31.7 9.8 ;
+      LAYER M2 ;
+        RECT 18.9 1.6 22.3 5 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 21.600 19.000 25.000 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.600 27.100 30.000 30.500 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 36.200 15.100 39.600 18.500 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7 16.8 19.3 18.6 ;
+    LAYER M1 ;
+      RECT 7 18.6 8.8 36.3 ;
+    LAYER M1 ;
+      RECT 7 36.3 19.3 38.1 ;
+    LAYER M1 ;
+      RECT 9.1 41 11.7 51.2 ;
+    LAYER M1 ;
+      RECT 9.5 38.1 11.3 41 ;
+    LAYER M1 ;
+      RECT 10.3 20.1 12.9 20.6 ;
+    LAYER M1 ;
+      RECT 10.3 20.6 32.9 22.4 ;
+    LAYER M1 ;
+      RECT 10.3 22.4 12.9 22.7 ;
+    LAYER M1 ;
+      RECT 13.1 6.4 15.7 9.8 ;
+    LAYER M1 ;
+      RECT 15.6 22.4 19 25 ;
+    LAYER M1 ;
+      RECT 15.9 26.6 30 28.4 ;
+    LAYER M1 ;
+      RECT 15.9 28.4 18.5 29.2 ;
+    LAYER M1 ;
+      RECT 16.7 16 19.3 16.8 ;
+    LAYER M1 ;
+      RECT 17.1 6.4 19.7 9.8 ;
+    LAYER M1 ;
+      RECT 17.1 41 19.7 51.2 ;
+    LAYER M1 ;
+      RECT 17.5 9.8 19.3 16 ;
+    LAYER M1 ;
+      RECT 17.5 38.1 19.3 41 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 9.8 ;
+    LAYER M1 ;
+      RECT 21.1 41 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.5 9.8 23.3 15 ;
+    LAYER M1 ;
+      RECT 21.5 15 38.6 15.1 ;
+    LAYER M1 ;
+      RECT 21.5 15.1 39.6 16.8 ;
+    LAYER M1 ;
+      RECT 21.5 36 35.5 37.8 ;
+    LAYER M1 ;
+      RECT 21.5 37.8 23.3 41 ;
+    LAYER M1 ;
+      RECT 25.1 6.4 27.7 9.8 ;
+    LAYER M1 ;
+      RECT 25.5 9.8 27.3 11.8 ;
+    LAYER M1 ;
+      RECT 25.5 11.8 35.3 13.6 ;
+    LAYER M1 ;
+      RECT 26.3 23.8 30 26.6 ;
+    LAYER M1 ;
+      RECT 26.3 28.4 30 30.5 ;
+    LAYER M1 ;
+      RECT 29.1 41 31.7 51.2 ;
+    LAYER M1 ;
+      RECT 30.3 19 32.9 20.6 ;
+    LAYER M1 ;
+      RECT 32.1 32.6 38.6 34.4 ;
+    LAYER M1 ;
+      RECT 32.1 34.4 35.5 36 ;
+    LAYER M1 ;
+      RECT 33.1 6.4 35.7 9.8 ;
+    LAYER M1 ;
+      RECT 33.1 41 35.7 51.2 ;
+    LAYER M1 ;
+      RECT 33.5 9.8 35.3 11.8 ;
+    LAYER M1 ;
+      RECT 33.7 37.8 35.5 41 ;
+    LAYER M1 ;
+      RECT 36.2 16.8 39.6 18.5 ;
+    LAYER M1 ;
+      RECT 36.8 18.5 38.6 32.6 ;
+    LAYER V1 ;
+      RECT 16.6 22.6 18 24 ;
+    LAYER V1 ;
+      RECT 19.9 2.6 21.3 4 ;
+    LAYER V1 ;
+      RECT 22.1 66.6 23.5 68 ;
+    LAYER V1 ;
+      RECT 27.6 28.1 29 29.5 ;
+    LAYER V1 ;
+      RECT 37.2 16.1 38.6 17.5 ;
+    LAYER M2 ;
+      RECT 21.1 65.6 24.5 66.4 ;
+  END
+END XNOR2
+MACRO XOR2
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SIZE 45.600 BY 70.200 ;
+  SYMMETRY X Y ;
+  SITE TR10_access_site ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 5 55 40.6 57.6 ;
+        RECT 9.1 41 11.7 55 ;
+        RECT 21.1 65.6 24.5 69.2 ;
+        RECT 21.9 57.6 23.7 65.6 ;
+        RECT 29.1 41 31.7 55 ;
+      LAYER M2 ;
+        RECT 21.1 66.4 24.5 69 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 5 0 40.6 3.4 ;
+        RECT 13.1 3.4 15.7 9.8 ;
+        RECT 18.9 3.4 22.3 5 ;
+        RECT 25.1 3.4 27.7 9.8 ;
+      LAYER M2 ;
+        RECT 18.9 1.6 22.3 5 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 15.600 21.600 19.000 25.000 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 26.600 27.100 30.000 30.500 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 33.400 31.600 36.800 35.000 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+      RECT 7 16.8 19.3 18.6 ;
+    LAYER M1 ;
+      RECT 7 18.6 8.8 36.3 ;
+    LAYER M1 ;
+      RECT 7 36.3 19.3 38.1 ;
+    LAYER M1 ;
+      RECT 9.1 6.4 11.7 9.8 ;
+    LAYER M1 ;
+      RECT 9.5 9.8 11.3 16.8 ;
+    LAYER M1 ;
+      RECT 10.3 20.1 12.9 20.6 ;
+    LAYER M1 ;
+      RECT 10.3 20.6 32.9 22.4 ;
+    LAYER M1 ;
+      RECT 10.3 22.4 12.9 22.7 ;
+    LAYER M1 ;
+      RECT 13.1 41 15.7 51.2 ;
+    LAYER M1 ;
+      RECT 15.6 22.4 19 25 ;
+    LAYER M1 ;
+      RECT 15.9 26.6 30 28.4 ;
+    LAYER M1 ;
+      RECT 15.9 28.4 18.5 29.2 ;
+    LAYER M1 ;
+      RECT 16.7 16 19.3 16.8 ;
+    LAYER M1 ;
+      RECT 17.1 6.4 19.7 9.8 ;
+    LAYER M1 ;
+      RECT 17.1 41 19.7 51.2 ;
+    LAYER M1 ;
+      RECT 17.5 9.8 19.3 16 ;
+    LAYER M1 ;
+      RECT 17.5 38.1 19.3 41 ;
+    LAYER M1 ;
+      RECT 21.1 6.4 23.7 9.8 ;
+    LAYER M1 ;
+      RECT 21.1 41 23.7 51.2 ;
+    LAYER M1 ;
+      RECT 21.5 9.8 23.3 15 ;
+    LAYER M1 ;
+      RECT 21.5 15 38.6 16.8 ;
+    LAYER M1 ;
+      RECT 21.5 32.6 38.6 34.4 ;
+    LAYER M1 ;
+      RECT 21.5 34.4 23.3 41 ;
+    LAYER M1 ;
+      RECT 25.1 41 27.7 51.2 ;
+    LAYER M1 ;
+      RECT 25.5 37.4 35.5 39.2 ;
+    LAYER M1 ;
+      RECT 25.5 39.2 27.3 41 ;
+    LAYER M1 ;
+      RECT 26.3 23.8 30 26.6 ;
+    LAYER M1 ;
+      RECT 26.3 28.4 30 30.5 ;
+    LAYER M1 ;
+      RECT 29.1 6.4 31.7 9.8 ;
+    LAYER M1 ;
+      RECT 30.3 19 32.9 20.6 ;
+    LAYER M1 ;
+      RECT 32.1 34.4 36.8 35 ;
+    LAYER M1 ;
+      RECT 32.1 35 35.5 36 ;
+    LAYER M1 ;
+      RECT 33.1 6.4 35.7 9.8 ;
+    LAYER M1 ;
+      RECT 33.1 41 35.7 51.2 ;
+    LAYER M1 ;
+      RECT 33.4 31.6 38.6 32.6 ;
+    LAYER M1 ;
+      RECT 33.5 9.8 35.3 15 ;
+    LAYER M1 ;
+      RECT 33.7 39.2 35.5 41 ;
+    LAYER M1 ;
+      RECT 36.8 16.8 38.6 31.6 ;
+    LAYER V1 ;
+      RECT 16.6 22.6 18 24 ;
+    LAYER V1 ;
+      RECT 19.9 2.6 21.3 4 ;
+    LAYER V1 ;
+      RECT 22.1 66.6 23.5 68 ;
+    LAYER V1 ;
+      RECT 27.6 28.1 29 29.5 ;
+    LAYER V1 ;
+      RECT 34.4 32.6 35.8 34 ;
+    LAYER M2 ;
+      RECT 21.1 65.6 24.5 66.4 ;
+  END
+END XOR2
+MACRO TIEHI
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SITE TR10_access_site ;
+  SIZE 10.800 BY 70.200 ;
+  PIN HI
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 3.700 54.200 7.100 57.600 ;
+    END
+  END HI
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 54.2 10.8 57.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 0 10.8 3.4 ;
+    END
+  END GND
+  OBS
+    LAYER V1 ;
+      RECT 4.7 55.2 6.1 56.6 ;
+  END
+END TIEHI
+MACRO TIELO
+  CLASS CORE ;
+  ORIGIN 0 0 ;
+  SITE TR10_access_site ;
+  SIZE 10.800 BY 70.200 ;
+  PIN LO
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 3.700 1.1 7.100 4.5 ;
+    END
+  END LO
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 54.2 10.8 57.6 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 0 10.8 3.4 ;
+        RECT 3.7 3.4 7.1 4.5 ;
+    END
+  END GND
+  OBS
+    LAYER V1 ;
+      RECT 4.7 2.1 6.1 3.5 ;
+  END
+END TIELO

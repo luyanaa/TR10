@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  TR-1um engineering PEX stackup for ext2fasthenry.py.
+
+  M1/M2 conductor thicknesses are derived from the routing LEF sheet
+  resistances (0.05/0.03 ohm per square) and copper-like conductivity
+  58 MS/m.  Dielectric and silicon values are explicit engineering defaults,
+  not foundry-qualified process data.  Replace this file with qualified
+  process data before signoff use.
+-->
+<Stackup schemaVersion="1.0" lengthUnit="um">
+  <Materials>
+    <Material Name="Aluminum" Conductivity="58000000" RelativePermittivity="1.0" />
+    <Material Name="ViaMetal" Conductivity="58000000" RelativePermittivity="1.0" />
+    <Material Name="Silicon" Conductivity="10" RelativePermittivity="11.7" />
+    <Material Name="Oxide" Conductivity="0" RelativePermittivity="3.9" />
+    <Material Name="IntermetalOxide" Conductivity="0" RelativePermittivity="4.0" />
+  </Materials>
+  <Dielectrics>
+    <Dielectric Name="Substrate" Thickness="100.0" Material="Silicon" />
+    <Dielectric Name="PMD" Thickness="0.2" Material="Oxide" />
+    <Dielectric Name="IMD1" Thickness="0.3" Material="IntermetalOxide" />
+  </Dielectrics>
+  <Layers>
+    <Layer Name="M1" Type="conductor" Layer="13" Zmin="100.2" Zmax="100.5448275862" Material="Aluminum" />
+    <Layer Name="V1" Type="via" Layer="19" Zmin="100.5448275862" Zmax="100.8448275862" Material="ViaMetal" />
+    <Layer Name="M2" Type="conductor" Layer="20" Zmin="100.8448275862" Zmax="101.4195402299" Material="Aluminum" />
+  </Layers>
+</Stackup>

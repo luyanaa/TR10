@@ -1,0 +1,46 @@
+# Explicit post-MDP Mask input for the standard-cell CMOS/diode subset.
+# Reuse the Mask DRC's physical implant recognition and the ordinary strict LVS
+# comparator. This is not a Drawing-layer remap or an analog extraction deck.
+raise "Mask standard-cell LVS forbids waiver geometry" unless input(63, 0).is_empty?
+# %include ../drc/IP62/00_Layers.drc
+# %include ../drc/IP62/02_Device.drc
+
+recognized_active = AAMP + AAMN + AAPE + AANE + AADP + AADN + AAGP + AAGN + AARR + AAGR + AACC + AAGC
+raise "Unrecognized Mask active geometry" unless (L - recognized_active).is_empty?
+raise "Analog or high-voltage Mask devices require a dedicated extraction deck" unless (AARR + AAGR + AACC + AAGC + R + RS + HPBE + HNBE).is_empty?
+
+WN = NWMP
+GC = SG
+CO = CONT
+V1 = TC
+MP = AAMP
+MN = AAMN
+MPE = AAPE
+MNE = AANE
+DP = AADP
+DN = AADN
+GP = AAGP
+GN = AAGN
+SDP = MP - GC
+SDN = MN - GC
+SDPE = MPE - GC
+SDNE = MNE - GC
+
+# These are the same physical conductor connections as Drawing extraction,
+# expressed using the independently recognized Mask device regions above.
+connect(WN, GP)
+connect(SDP, CO)
+connect(SDN, CO)
+connect(SDPE, CO)
+connect(SDNE, CO)
+connect(GP, CO)
+connect(GN, CO)
+connect(DP, CO)
+connect(DN, CO)
+connect(GC, CO)
+connect(CO, M1)
+connect(M1, V1)
+connect(V1, M2)
+connect(M1, M1_LBL)
+connect(M2, M2_LBL)
+connect_global(GN, "GND")

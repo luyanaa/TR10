@@ -1,0 +1,47 @@
+{
+  "schema": "tr10-magic-geometry-capacitance-v1",
+  "capacitance_unit": "fF",
+  "length_unit": "um",
+  "qualification": "native_magic_full_matrix_pass_independent_heldout_required",
+  "technology_sha256": "a6c9c7a5290c339c95aeed624a7a1cb22b1d3876856a8933c8f7ba633c36090c",
+  "technology_path": "../../magic/TR10.tech",
+  "layers": {
+    "M1": {
+      "ground_area_ff_per_um2": 0.035,
+      "perimeter_ff_per_um": 0.05,
+      "sheet_resistance_ohm": 0.05
+    },
+    "M2": {
+      "ground_area_ff_per_um2": 0.018,
+      "perimeter_ff_per_um": 0.05,
+      "sheet_resistance_ohm": 0.03
+    }
+  },
+  "upper_ground_area_shielded_by_lower": true,
+  "interlayer_overlap_ff_per_um2": 0.02,
+  "via_cut_resistance_prior_ohm": 1.0,
+  "cap_localization": "native LEF-R pi sections after explicit SHORT-equivalence restoration; C replacement changes no R endpoints or ohms",
+  "scope": "M1/M2 rectilinear routing metal and explicit fixed-AC-ground metal; not cell-device C or general Magic technology compilation",
+  "native_resistance": {
+    "rules": "TR10_native_lef_resistance.rules",
+    "rules_sha256": "d1635ba4566173903b631d532b4f660c4f63c576dbbd3912e5ce3e437856a603",
+    "merge_via_wire": false,
+    "max_res_ohm": 0,
+    "source": "Pinned native OpenRCX LEF-R values with explicit native SHORT-equivalence restoration; all seeded C replaced before native SPEF output."
+  },
+  "implementation_sha256": {
+    "magic_capacitance.py": "7bc5283dd8c5b01cd84b73f1b2dce147fafbf8c268bd9b9c9d31cb7d84e8e497",
+    "extract_magic_rcx.py": "f16313172753df5d121630d017de3ff344ce5811d656ee4ab28cd84c20247e50",
+    "export_magic_rcx_geometry.py": "3c0f1af89529204a52cd0bef2929a81be18d7e4b1dc381bc6a75b83e66e89cec",
+    "native_wire_topology.py": "e1d22b5e6b751d50a22eab29761d2f3d7863f4da5313e50244864c9dc92f0750",
+    "check_magic_rcx_heldout.py": "7c80da26f71f106a882208e31e97bfb65ab5024387fa02cd0d336d0021182546"
+  },
+  "calibration": {
+    "validation_report": "TR10_magic_nom.geometry.json.validation.json",
+    "validation_sha256": "565dcc4c6c6f3da41c7396d0b4ef78013dd5b1c83eefb472ad9f9a369adb707c",
+    "native_magic_spef_sha256": "0781ac13d12d30649f57df61166bd88daa17b384ad2b7d0350dacbc2c749687a",
+    "reference_geometry_sha256": "3ee5218a53f936ff937ed8898fa6e3be36f8dcfa94bec83653035aee35fdbf6d",
+    "ground_net_checks": 2502,
+    "mutual_pair_checks": 7741
+  }
+}

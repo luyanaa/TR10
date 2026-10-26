@@ -1,0 +1,135 @@
+######################################### DRC checks #######################################
+# OpenSUSI IP62 mosfets dimension checks
+proc fet_drc {instance symbol model w l} {
+  set res {}
+  # strip off the "u" suffix
+  regsub {u$} $w {e-06} w
+  regsub {u$} $l {e-06} l
+  # puts "$instance $model $symbol w=$w l=$l"
+  if { [string is double $w] && [string is double $l] } {
+
+    switch -regexp $model {
+      {MN$|MP$} {
+        if { $w < 3.4e-06 } {
+          append res "${instance} ($model): finger width is too small, w = $w, min.w >= 3.4u" \n
+        }
+        if { $w > 60.0e-06 } {
+          append res "${instance} ($model): finger width is too big, w = $w, max.w <= 60.0u" \n
+        }
+        if { $l < 1.0e-06 } {
+          append res "${instance} ($model): length is too small, l = $l, min.l >= 1.0u" \n
+        }
+        if { $l > 30.0e-06 } {
+          append res "${instance} ($model): length is too big, l = $l, max.l <= 30.0u" \n
+        }
+      }
+      {MNE$|MPE$} {
+        if { $w < 11.0e-06 } {
+          append res "${instance} ($model): finger width is too small, w = $w, min.w >= 11.0u" \n
+        }
+        if { $l < 2.0e-06 } {
+         append res "${instance} ($model): length is too small, l = $l, min.l >= 2.0u" \n
+        }
+      }
+    } ;# switch
+  }
+  return $res
+}
+
+# OpenSUSI IP62 resistors dimension checks
+proc res_drc {instance symbol model w l} {
+  set res {}
+  regsub {u$} $w {e-06} w
+  regsub {u$} $l {e-06} l
+  # puts "$instance $model $symbol w=$w l=$l"
+  if { [string is double $w] && [string is double $l] } {
+
+    switch -regexp $model {
+      {RR$} {
+        # Valid w values = {2.8, 4.0, 6.0, 12.0, 20.0}
+        set valid_w1 [expr abs($w -  2.80e-6) < 1e-12]
+        set valid_w2 [expr abs($w -  4.00e-6) < 1e-12]
+        set valid_w3 [expr abs($w -  6.00e-6) < 1e-12]
+        set valid_w4 [expr abs($w - 12.00e-6) < 1e-12]
+        set valid_w5 [expr abs($w - 20.00e-6) < 1e-12]
+
+        if {!($valid_w1 || $valid_w2 || $valid_w3 || $valid_w4 || $valid_w5)} {
+          append res "${instance} ($model): Invalid resistor width, w=$w, Allowed w: 2.8, 4.0, 6.0, 12.0 and 20.0 um" \n
+        }
+        if { $l < 13.0e-6 } {
+          append res "${instance} ($model): resistor length is too small, l = $l, min.l >= 13.0u" \n
+        }
+        if { $l > 100.0e-6 } {
+          append res "${instance} ($model): resistor length is too big, l = $l, max.l <= 100.0u" \n
+        }
+      }
+      {RS$} {
+        # Valid w values = {4.0, 6.0, 12.0, 20.0}
+        set valid_w2 [expr abs($w -  4.00e-6) < 1e-12]
+        set valid_w3 [expr abs($w -  6.00e-6) < 1e-12]
+        set valid_w4 [expr abs($w - 12.00e-6) < 1e-12]
+        set valid_w5 [expr abs($w - 20.00e-6) < 1e-12]
+
+        if {!($valid_w2 || $valid_w3 || $valid_w4 || $valid_w5)} {
+          append res "${instance} ($model): Invalid resistor width, w=$w, Allowed: 4.0, 6.0, 12.0 and 20.0 um" \n
+        }
+
+        if { $l < 20.0e-6 } {
+          append res "${instance} ($model): resistor length is too small, l = $l, min. l > 20.0u" \n
+        }
+        if { $l > 100.0e-6 } {
+          append res "${instance} ($model): resistor length is too big, l = $l, max. l < 100.0u" \n
+        }
+      }
+    } ;# switch
+  }
+  return $res
+}
+
+# OpenSUSI IP62 CSIO capacitor dimension checks
+proc cap_drc {instance symbol model w l} {
+  set res {}
+  # strip off the "u" suffix
+  regsub {u$} $w {e-06} w
+  regsub {u$} $l {e-06} l
+
+  if { [string is double $w] && [string is double $l] } {
+
+    if { $w < 28.5e-6 } {
+      append res "${instance} ($model): CSIO capacitor width is too small, w = $w, min.w >= 28.5 um" \n
+    }
+    if { $w > 120.0e-6 } {
+      append res "${instance} ($model): CSIO capacitor width is too big, w = $w, max.w >= 120.0 um" \n
+    }
+    if { $l < 28.5e-6 } {
+      append res "${instance} ($model): CSIO capacitor length is too small, l = $l, min.l >= 28.5 um" \n
+    }
+    if { $l > 120.0e-6 } {
+      append res "${instance} ($model): CSIO capacitor length is too big, l = $l, max.l >= 120.0 um" \n
+    }
+  }
+  return $res
+}
+
+# OpenSUSI IP62 diodes checks
+proc diode_drc {instance symbol model w l} {
+  set res {}
+  regsub {u$} $w {e-06} w
+  regsub {u$} $l {e-06} l
+  # puts "$instance $model $symbol w=$w l=$l"
+  if { [string is double $w] && [string is double $l] } {
+
+    switch -regexp $model {
+      {DN$|DP$} {
+        # Valid {w,l} values = {3.6, 3.6}
+        set valid_w [expr abs($w -  3.60e-06) < 1e-12]
+        set valid_l [expr abs($l -  3.60e-06) < 1e-12]
+        if {!($valid_w && $valid_l)} {
+          append res "${instance} ($model): Invalid diode size {$w,$l}. Allowed {w,l} = {3.6um,3.6um}" \n
+        }
+      }
+    } ;# switch
+  }
+  return $res
+}
+

@@ -1,0 +1,3 @@
+# Explicit Mask input; retain the ordinary strict port/device comparator.
+$tr10_mask_stdcell = true
+# %include run.lvs

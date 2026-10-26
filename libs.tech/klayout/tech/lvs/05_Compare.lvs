@@ -1,0 +1,89 @@
+# TR10 LVS comparison, based on the existing TR-1um extraction flow.
+# Original extraction: jun1okamura; Apache License, Version 2.0.
+# Metal-only TIEHI/TIELO are ideal wiring constants, not protective tie devices.
+
+Lay_file = $extracted || (source.cell_name + '.extracted')
+Sch_file = $circuit || ('simulation/' + source.cell_name + '.spice')
+writer = RBA::NetlistSpiceWriter.new(MyWriter.new)
+writer.use_net_names = true
+
+['fet_p*', 'fet_n*', 'diode_p*', 'diode_n*', 'res_poly*', 'res_diff*', 'moscap*'].each do |name|
+  netlist.flatten_circuit(name)
+end
+netlist.make_top_level_pins
+netlist.purge
+netlist.purge_nets
+
+# Preserve every port name while grouping aliases on the SAME electrical net.
+# A physical HI,VDD net must match both reference names, not just VDD.
+# This does not join layout nets or ignore missing/mismatched ports.
+def canonicalize_top_ports(nl)
+  nl.top_circuits.each do |circuit|
+    groups = []
+    circuit.each_pin.to_a.each do |pin|
+      net = circuit.net_for_pin(pin.id)
+      raise "Unconnected top port #{circuit.name}/#{pin.name}" unless net
+      group = groups.find { |entry| entry[0] == net }
+      unless group
+        group = [net, pin, [], []]
+        groups << group
+      end
+      group[2].concat(pin.name.split(',').map(&:upcase))
+      group[3] << pin.id if pin.id != group[1].id
+    end
+    groups.each do |net, keep, names, redundant|
+      circuit.rename_pin(keep.id, names.uniq.sort.join(','))
+      redundant.sort.reverse_each { |id| circuit.remove_pin(id) }
+    end
+  end
+end
+
+if NET_ONLY
+  puts 'TR10 LVS extraction only: no comparison performed'
+else
+  schematic(Sch_file, RBA::NetlistSpiceReader.new(MyReader.new))
+
+  # The current FD TIE masters contain no transistors: HI is wired to VDD;
+  # LO is wired to GND. Encode that reference contract before flattening.
+  {'TIEHI' => ['HI', 'VDD'], 'TIELO' => ['LO', 'GND']}.each do |name, pair|
+    tie = schematic.circuit_by_name(name)
+    next unless tie
+    expected = (pair + ['VDD', 'GND']).uniq.sort
+    actual = tie.each_pin.map { |pin| pin.name.upcase }.sort
+    raise "Unexpected #{name} pin contract: #{actual}" unless actual == expected
+    unless tie.each_device.to_a.empty? && tie.each_subcircuit.to_a.empty?
+      raise "#{name} is not a metal-only tie; its LVS contract must be revisited"
+    end
+    tie.join_nets(tie.net_by_name(pair[1]), tie.net_by_name(pair[0]))
+    schematic.flatten_circuit(name)
+  end
+  schematic.purge
+  schematic.purge_nets
+
+  # Retain the existing finite cell flattening convention on both sides.
+  ['AND4_X1', 'DFFR', 'NAND2', 'NAND3', 'XNOR2', 'XOR2'].each do |name|
+    schematic.flatten_circuit(name)
+    netlist.flatten_circuit(name)
+  end
+  canonicalize_top_ports(netlist)
+  canonicalize_top_ports(schematic)
+  align
+  schematic.combine_devices
+  netlist.combine_devices
+
+  {'AND2_X1' => ['A', 'B'], 'AND3_X1' => ['A', 'B', 'C'],
+   'AND4_X1' => ['A', 'B', 'C', 'D'], 'NAND2' => ['A', 'B'],
+   'NAND3' => ['A', 'B', 'C'], 'NAND4' => ['A', 'B', 'C', 'D'],
+   'NOR2' => ['A', 'B'], 'NOR3' => ['A', 'B', 'C'],
+   'NOR4' => ['A', 'B', 'C', 'D'], 'OR2' => ['A', 'B'],
+   'OR3' => ['A', 'B', 'C'], 'OR4' => ['A', 'B', 'C', 'D'],
+   'XOR2' => ['A', 'B'], 'XNOR2' => ['A', 'B']}.each do |cell, pins|
+    equivalent_pins(cell, *pins)
+  end
+  puts 'Starting TR10 LVS comparison in strict alias-preserving port mode'
+  comparison_ok = compare
+  ports_ok = flag_missing_ports
+  puts(comparison_ok && ports_ok ? 'TR10_LVS PASS' : 'TR10_LVS FAIL')
+end
+
+target_netlist(Lay_file, writer, 'Created by KLayout: TR10 strict LVS')

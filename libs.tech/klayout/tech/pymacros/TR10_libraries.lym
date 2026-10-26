@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<klayout-macro>
+ <description>TR10</description>
+ <version/>
+ <category/>
+ <prolog/>
+ <epilog/>
+ <doc/>
+ <autorun>true</autorun>
+ <autorun-early>false</autorun-early>
+ <priority>0</priority>
+ <shortcut/>
+ <show-in-menu>false</show-in-menu>
+ <group-name/>
+ <menu-path/>
+ <interpreter>python</interpreter>
+ <dsl-interpreter-name/>
+ <text>
+# TR10: Copyright 2025 OpenSUSI non-profit organaization 
+#
+# Original version was made by jun1okamura
+# LICENSE: Apache License Version 2.0, January 2004,
+#          http://www.apache.org/licenses/
+# ----- ------ ----- ----- ------ ----- ----- ------ ----- 
+#
+import sys
+import os
+import pya
+
+tech_name = "TR10"
+
+# install the path to the PCell lib unless it is there already
+here = os.path.dirname(__file__)
+tech_dir = os.path.dirname(here)
+pcell_path = os.path.realpath(os.path.join(tech_dir, "python"))
+if not pcell_path in sys.path:
+    sys.path.insert(0, pcell_path)
+
+from cells import tr_1um
+
+# Register the library
+tr_1um(tech_name)
+
+print("Loaded TR10 PCells.")
+
+# directory containing this script
+libraries = [{ "name":         "TR10_stdcell", 
+               "description":  "TR10 standard cells",
+               "gds":          "TR10_STDCELL.gds"
+             },
+             { "name":         "TR10_frame",     
+               "description":  "TR10 pad frame",
+               "gds":          "TR10_frame_25x25.gds"
+             },
+             { "name":         "TR10_ESD",     
+               "description":  "TR10 ESD devices",
+               "gds":          "TR10_ESD.gds"
+             },
+             { "name":         "TR10_Characters1",     
+               "description":  "TR10 Metal1 0-1,A-Z",
+               "gds":          "TR10_Characters1.gds"
+             },
+             { "name":         "TR10_Characters2",     
+               "description":  "TR10 Metal2 0-1,A-Z",
+               "gds":          "TR10_Characters2.gds"
+             },
+            ]
+
+library_path = os.path.join(os.path.dirname(tech_dir), "libraries")
+
+for library in libraries:
+    lib = pya.Library()
+    lib.layout().read(os.path.join(library_path, library["gds"]))
+    lib.description = library["description"]
+    lib.add_technology(tech_name)
+    lib.register(library["name"])
+
+</text>
+</klayout-macro>

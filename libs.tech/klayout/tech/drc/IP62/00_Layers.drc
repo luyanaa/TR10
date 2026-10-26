@@ -1,0 +1,51 @@
+# Layer generation
+# ----- ------ ----- ----- ------ ----- ----- ------ ----- 
+# Original version was made by jun1okamura from TokaiRika's document 
+# LICENSE: Apache License Version 2.0, January 2004,
+#          http://www.apache.org/licenses/
+# ----- ------ ----- ----- ------ ----- ----- ------ ----- 
+# Input layers
+#
+MASK  = input(63, 0)                            # DRC check waiver area
+MEAS  = input(63, 1)                            # MEASUREMT area recognition
+ESD   = input(63, 2)                            # IO/ESD area recognition
+RS    = input(63,61)                            # RS area recognition
+DLRS  = input(165,0)                            # RS area recognition
+TEMP  = input(80, 0)               # SCRB
+BULK  = extent
+SCRB  = TEMP.drc(switch(TEMP.holes, (BULK - TEMP.holes + TEMP), (BULK - BULK) ))
+#
+PSUB  = input(140, 0).not(MASK + SCRB)          # Nwell/Pwell
+NW    = input(36,  0).not(MASK + SCRB)          # N-well mask
+HVNW  = input(141, 0).not(MASK + SCRB)          # HV N-well mask
+L     = input(3,   0).not(MASK + SCRB)          # Acitive = inverse LOCOS 
+NF    = input(25,  0).not(MASK + SCRB)          # S/D P+ impla
+PF    = input(26,  0).not(MASK + SCRB)          # S/D N+ impla
+CL    = input(143, 0).not(MASK + SCRB)          # CSIO bottom impla
+HPBE  = input(144, 0).not(MASK + SCRB)          # HV PMOS channel impla
+HNBE  = input(145, 0).not(MASK + SCRB)          # HV NMOS channel impla
+PBE   = input(146, 0).not(MASK + SCRB)          # PMOS channel impla
+NBE   = input(147, 0).not(MASK + SCRB)          # NMOS channel impla
+HPM   = input(33,  0).not(MASK + SCRB)          # ???
+RHP   = input(148, 0).not(MASK + SCRB)          # Hi-res impla
+SG    = input(8,   0).not(MASK + SCRB)          # Salisaide
+PM    = input(35,  0).not(MASK + SCRB)          # PMOS LDD
+NM    = input(7,   0).not(MASK + SCRB)          # NMOS LDD
+R     = input(12,  0).not(MASK + SCRB)          # Resistor
+PSD   = input(9,   0).not(MASK + SCRB)          # PMOS S/D
+NSD   = input(28,  0).not(MASK + SCRB)          # NMOS S/D
+CONT  = input(11,  0).not(MASK + SCRB)          # Contact
+M1    = input(13,  0).not(MASK + SCRB)          # Metal-1
+TC    = input(19,  0).not(MASK + SCRB)          # Via1
+M2    = input(20,  0).not(MASK + SCRB)          # Metal-2
+PRO   = input(14,  0).not(MASK) & SCRB.holes    # PAD
+#
+# ----- ------ ----- ----- ------ ----- ----- ------ ----- 
+#  Label Layer
+#
+M1_LBL = labels(48,  0).not(MASK + SCRB)  # M1 Label
+M2_LBL = labels(49,  0).not(MASK + SCRB)  # M2 Label
+# ----- ------ ----- ----- ------ ----- ----- ------ ----- 
+#  Bounding box means BULK
+#
+# BULK  = extent
