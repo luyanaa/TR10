@@ -1,0 +1,7 @@
+* TR10 engineering SS corner (slow NMOS + slow PMOS).
+* Weaker drive on both polarities + high-R + low-C. Engineering offsets only.
+.include ../ip62_models_calibrated
+* +Vth on NMOS makes it weaker; -Vth (more negative) on PMOS makes it weaker.
+* The model computes vth0 = base + vth*, so NMOS slow = +50mV, PMOS slow = -50mV.
+.param vthMN=0.05 vthMNE=0.05 vthMP=-0.05 vthMPE=-0.05
+.param magRR=1.10 magRS=1.10 magCSIO=0.90

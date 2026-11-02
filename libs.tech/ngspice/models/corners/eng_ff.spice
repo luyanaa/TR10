@@ -1,0 +1,5 @@
+* TR10 engineering FF corner (fast NMOS + fast PMOS).
+* Stronger drive on both polarities + low-R + high-C. Engineering offsets only.
+.include ../ip62_models_calibrated
+.param vthMN=-0.05 vthMNE=-0.05 vthMP=0.05 vthMPE=0.05
+.param magRR=0.90 magRS=0.90 magCSIO=1.10

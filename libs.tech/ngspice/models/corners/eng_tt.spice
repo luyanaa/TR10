@@ -1,0 +1,4 @@
+* TR10 engineering TT corner (baseline OS00-calibrated, zero offsets).
+* Self-contained: includes the manifest then pins all hooks to nominal.
+.include ../ip62_models_calibrated
+.param vthMP=0 vthMN=0 vthMPE=0 vthMNE=0 magRR=1 magRS=1 magCSIO=1
