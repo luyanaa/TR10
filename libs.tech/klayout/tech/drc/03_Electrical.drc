@@ -134,3 +134,21 @@ V15V_NW.interacting(V15V_NW_NORMAL).output(
 V27V_PWELL.interacting(NW - V27V_PWELL).output(
     "ERC_HV_SHORT:27 V N-well directly abuts a normal-voltage N-well"
 )
+
+# ----- ------ ----- ----- ------ ----- ----- ------ -----
+# EMIR proxy (geometric only -- this deck has no current data).
+#
+# A single via feeding a wide metal stripe is a current-crowding /
+# electromigration bottleneck: the via carries the stripe's full current.
+# Flag any V1 whose surrounding M2 is much wider than the via itself as a
+# single-via-fed wide strap. This is a screening heuristic, not a true
+# current-density sign-off (which needs a netlist + current model).
+V1_WIDE_M2 = V1 & M2.sized(3.0)          # via under a >=6um-wide M2 region
+V1_WIDE_M2.output(
+    "EMIR_VIA_CROWDING:single via under a wide M2 stripe (possible current bottleneck)"
+)
+# A narrow M1 segment carrying a wide M2 down is the same bottleneck in M1.
+M1_NARROW = M1.drc(width(projection) < 1.2).polygons
+(M1_NARROW & V1.sized(0.5)).output(
+    "EMIR_M1_NECK:narrow M1 segment under a via (possible current bottleneck)"
+)
