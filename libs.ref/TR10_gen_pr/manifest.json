@@ -12,7 +12,7 @@
     "GND"
   ],
   "vdd_contract": "No VDD device or port; custom row PDN must span the intentionally empty VDD track region",
-  "model": "/home/yanlu/Documents/TR-1um_stdcell/inputs/baseline/libs.tech/spice/models/ip62_models_calibrated",
+  "model": "libs.tech/ngspice/models/ip62_models_calibrated",
   "model_sha256": "d9583c6b44da1c418f8113a317d7cff6dc08375be9053f343fe6b7723ef2024f",
   "magic_tech_sha256": "a6c9c7a5290c339c95aeed624a7a1cb22b1d3876856a8933c8f7ba633c36090c",
   "native_ac": [
@@ -21,48 +21,48 @@
       "frequency_hz": 1000000.0,
       "capacitance_pf": 0.0178444677651113,
       "input_source_current_a": 0.0,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_00/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_00/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_00/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_00/native.log"
     },
     {
       "bias_v": 0.0,
       "frequency_hz": 100000000.0,
       "capacitance_pf": 0.0178444677651113,
       "input_source_current_a": 0.0,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_01/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_01/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_01/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_01/native.log"
     },
     {
       "bias_v": 2.5,
       "frequency_hz": 1000000.0,
       "capacitance_pf": 0.00978890285214662,
       "input_source_current_a": -4.45812966231171e-12,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_02/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_02/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_02/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_02/native.log"
     },
     {
       "bias_v": 2.5,
       "frequency_hz": 100000000.0,
       "capacitance_pf": 0.00978890285214662,
       "input_source_current_a": -4.45812966231171e-12,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_03/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_03/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_03/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_03/native.log"
     },
     {
       "bias_v": 5.0,
       "frequency_hz": 1000000.0,
       "capacitance_pf": 0.007935359685879256,
       "input_source_current_a": -7.37113836757997e-12,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_04/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_04/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_04/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_04/native.log"
     },
     {
       "bias_v": 5.0,
       "frequency_hz": 100000000.0,
       "capacitance_pf": 0.007935359685879256,
       "input_source_current_a": -7.37113836757997e-12,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_05/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_05/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_05/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/gen_row_contract_fix/candidate_ant_v3/characterization/ac_05/native.log"
     }
   ],
   "metal": {
@@ -418,5 +418,7 @@
     "characterization/ac_04/native.log": "8c4ece929d7cb83c7e182aa1b61398f2573cc835e7c2c455e2c17e72fd9b404c",
     "characterization/ac_05/case.spice": "10a83ebebe45d3b5aa97ead0ae605b74ae39ea3636fe7f4326527ad851f9bcd9",
     "characterization/ac_05/native.log": "8c4ece929d7cb83c7e182aa1b61398f2573cc835e7c2c455e2c17e72fd9b404c"
-  }
+  },
+  "model_provenance": "in-repo; sha256 verified identical to baseline input",
+  "characterization_provenance": "deck_provenance/log_provenance record the absolute paths of the originating characterization run outside this package; they are metadata only. The portable qualification data are the numeric bias_v/frequency_hz/capacitance_pf/input_source_current_a values."
 }

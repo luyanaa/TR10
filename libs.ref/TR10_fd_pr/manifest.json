@@ -11,7 +11,7 @@
     "GND"
   ],
   "vdd_contract": "No VDD device or port; custom row PDN must span the intentionally empty VDD track region",
-  "model": "/home/yanlu/Documents/TR-1um_stdcell/inputs/baseline/libs.tech/spice/models/ip62_models_calibrated",
+  "model": "libs.tech/ngspice/models/ip62_models_calibrated",
   "model_sha256": "d9583c6b44da1c418f8113a317d7cff6dc08375be9053f343fe6b7723ef2024f",
   "magic_tech_sha256": "a6c9c7a5290c339c95aeed624a7a1cb22b1d3876856a8933c8f7ba633c36090c",
   "native_ac": [
@@ -20,48 +20,48 @@
       "frequency_hz": 1000000.0,
       "capacitance_pf": 0.0178444677651113,
       "input_source_current_a": 0.0,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_00/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_00/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_00/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_00/native.log"
     },
     {
       "bias_v": 0.0,
       "frequency_hz": 100000000.0,
       "capacitance_pf": 0.0178444677651113,
       "input_source_current_a": 0.0,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_01/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_01/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_01/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_01/native.log"
     },
     {
       "bias_v": 2.5,
       "frequency_hz": 1000000.0,
       "capacitance_pf": 0.00978890285214662,
       "input_source_current_a": -4.45812966231171e-12,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_02/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_02/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_02/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_02/native.log"
     },
     {
       "bias_v": 2.5,
       "frequency_hz": 100000000.0,
       "capacitance_pf": 0.00978890285214662,
       "input_source_current_a": -4.45812966231171e-12,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_03/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_03/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_03/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_03/native.log"
     },
     {
       "bias_v": 5.0,
       "frequency_hz": 1000000.0,
       "capacitance_pf": 0.007935359685879256,
       "input_source_current_a": -7.37113836757997e-12,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_04/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_04/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_04/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_04/native.log"
     },
     {
       "bias_v": 5.0,
       "frequency_hz": 100000000.0,
       "capacitance_pf": 0.007935359685879256,
       "input_source_current_a": -7.37113836757997e-12,
-      "deck": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_05/case.spice",
-      "log": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_05/native.log"
+      "deck_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_05/case.spice",
+      "log_provenance": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/antenna_access/native_v1/characterization/ac_05/native.log"
     }
   ],
   "metal": {
@@ -80,5 +80,7 @@
     "lib/TR10_antenna.lib": "3867f6bb595b8aa44a2ee0de504d17388a200949da8adfeebe47fa7e2f6da681",
     "verilog/TR10_antenna.v": "79f0b2088e14e186e75d8a61aa9427509577f56ce4a4b3b0ba140742d0cb85d6"
   },
-  "generator_sha256": "0dcd4bdd4acd447938663d216820f0d73d444a432ef9edc914d5146a4166a0aa"
+  "generator_sha256": "0dcd4bdd4acd447938663d216820f0d73d444a432ef9edc914d5146a4166a0aa",
+  "model_provenance": "in-repo; sha256 verified identical to baseline input",
+  "characterization_provenance": "deck_provenance/log_provenance record the absolute paths of the originating characterization run outside this package; they are metadata only. The portable qualification data are the numeric bias_v/frequency_hz/capacitance_pf/input_source_current_a values."
 }
