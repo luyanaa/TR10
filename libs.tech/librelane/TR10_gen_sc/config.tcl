@@ -13,7 +13,11 @@ set ::env(PLACE_SITE) TR10_access_site
 set ::env(GPL_CELL_PADDING) 2
 set ::env(DPL_CELL_PADDING) 1
 set ::env(CELL_PAD_EXCLUDE) [list]
-set ::env(FILL_CELLS) [list FILL_1 FILL_2]
+# TR10_gen_sc has no qualified filler cells yet (FD fillers are 75.6 um rows,
+# GEN rows are 70.2 um).  Keep fill insertion disabled until a GEN-compatible
+# FILL_1/FILL_2 master is built; declaring FD fillers here produces malformed
+# fill placement.
+set ::env(FILL_CELLS) [list]
 set ::env(DECAP_CELLS) [list]
 set ::env(RT_MIN_LAYER) "M1"
 set ::env(RT_MAX_LAYER) "M2"

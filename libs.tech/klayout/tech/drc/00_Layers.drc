@@ -17,8 +17,12 @@ SCRB = TEMP.drc(switch(TEMP.holes, (BULK - TEMP.holes + TEMP), (BULK - BULK) ))
 WN    = input(140, 0).not(MASK + SCRB)    # Nwell/Pwell
 NW    = input(36,  0).not(MASK + SCRB)    # N-well mask for voltage-domain checks
 # Project-owned voltage annotations; these are overlay layers, not foundry masks.
-V15_MARKER = input(150, 0).not(MASK + SCRB)  # 15 V domain annotation
-V27_MARKER = input(151, 0).not(MASK + SCRB)  # 27 V domain annotation
+# Project-owned voltage-domain annotation layers.  They deliberately live in
+# the 240/241 annotation space: foundry recognition layers DLWLMP/DLWLMN are
+# emitted by run_mdp.drc on 150/0 and 151/0, so the markers must not reuse
+# those numbers.
+V15_MARKER = input(240, 0).not(MASK + SCRB)  # 15 V domain annotation
+V27_MARKER = input(241, 0).not(MASK + SCRB)  # 27 V domain annotation
 AP    = input(3,   1).not(MASK + SCRB)    # Acitive = inverse LOCOS 
 AN    = input(3,   2).not(MASK + SCRB)    # Acitive = inverse LOCOS 
 AR    = input(3,   3).not(MASK + SCRB)    # Acitive = inverse LOCOS 

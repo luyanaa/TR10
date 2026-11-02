@@ -18,4 +18,19 @@ if {[tech name] != "TR10"} {quit -noprompt}
 drc on
 catch {random seed}
 ext2spice scale off
+ext2spice cthresh 0
+ext2spice rthresh 0
 snap lambda
+
+# ---------------------------------------------------------------------------
+# Parasitic resistance extraction options (magic >= 8.3.597)
+#
+# `extresist threshold` is a cutoff in MILLIOHMS on the lumped node
+# resistance: only nodes above it get a detailed resistor network.  The
+# default is 10 ohm, which silently drops every on-chip metal segment,
+# leaving the netlist with zero resistors.  Set it to 0 so all nodes are
+# considered, and lower `minresist` so short segments are not pruned out of
+# the network.
+# ---------------------------------------------------------------------------
+catch {extresist threshold 0}
+catch {extresist minresist 0}

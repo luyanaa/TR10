@@ -69,7 +69,7 @@ GC_FL_LBL_TOP = (GC - (GC_MP + GC_MN + GC_PE + GC_NE + GC_DP + GC_DN + GC_GP + G
 
 # Project-owned voltage-domain annotations.
 #
-# V15_MARKER (150/0) and V27_MARKER (151/0) are intentionally separate from
+# V15_MARKER (240/0) and V27_MARKER (241/0) are intentionally separate from
 # foundry mask layers.  When present, they annotate the NW/M1 regions that
 # carry the corresponding electrical domain.  No marker means no inferred
 # voltage class; the annotation must be supplied for these checks to apply.

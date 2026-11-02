@@ -1,0 +1,24 @@
+{
+  "schema": "tr10-sequential-liberty-compile-v1",
+  "qualification": "engineering_prior_not_foundry_signoff",
+  "input_lib_sha256": "dfcfcc304a8bd9b697ee75dc0a4ae37a6a97a27301590813eb2b4c43e21b8a07",
+  "output_lib_sha256": "876b9a5e7191381e30951a8f398db92b2942a919c655e7b4fd14845846ec805c",
+  "characterization": "/home/yanlu/Documents/TR-1um_stdcell/reports/phase2/sequential_characterization/fd_native_gear2/summary.json",
+  "characterization_sha256": "2c8a6dbf35a8ac023bbfe6fe82d4535d8149284a0259f97b2310cb273af58111",
+  "spice_sha256": "69ffb67978c0ff9b7e74a5b11b2185c58c8fdfcf19bd6ddf57558a7d57c82b9d",
+  "cells": [
+    "DFFR",
+    "DFFS"
+  ],
+  "constraint_loads_pf": {
+    "Q": 0.5,
+    "QB": 0.025
+  },
+  "other_output_loads_pf": {
+    "when_Q_characterized_QB": 0.025,
+    "when_QB_characterized_Q": 0.5
+  },
+  "signed_constraints_preserved": true,
+  "unrelated_cells_unchanged": true,
+  "async_assertion_delays": "existing lack of assertion-delay arcs unchanged; recorded assertion waves are functional polarity evidence, not a timing model for all CK phases"
+}

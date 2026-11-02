@@ -44,7 +44,7 @@ center-line segment and each V1 cut becomes a point via.  This provides a
 repeatable geometry input for FastHenry but is not a substitute for a foundry
 extraction database.
 
-`tr1um_stackup.xml` contains explicit engineering values.  Metal thicknesses
+`TR10_stackup.xml` contains explicit engineering values.  Metal thicknesses
 are derived from the routing LEF sheet resistances (0.05 ohm/square for M1 and
 0.03 ohm/square for M2) using 58 MS/m conductivity.  Dielectric thicknesses
 and substrate conductivity are placeholders and must be replaced by qualified
@@ -55,7 +55,7 @@ process data before signoff.
 The PDK remains usable today through the existing LibreLane manual-PDK path:
 `$PDK_ROOT/pdk_root/TR-1um` with `--manual-pdk`.  The directory follows the
 Open PDK shape (`libs.ref`, `libs.tech`) and keeps PEX tools under
-`libs.tech/pex`, which is the package boundary a Ciel adapter should expose.
+`libs.tech/parasitics`, which is the package boundary a Ciel adapter should expose.
 
 Ciel 2.4.0 currently recognizes only the built-in `sky130`, `gf180mcu`, and
 `ihp-sg13g2` families.  It cannot select `TR-1um` merely because this

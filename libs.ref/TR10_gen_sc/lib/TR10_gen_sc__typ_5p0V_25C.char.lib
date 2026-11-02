@@ -1,0 +1,92 @@
+library (TR-1um_stdcell_typ_5p0V_25C) {
+  technology (cmos) ;
+  delay_model : table_lookup ;
+  time_unit : "1ns" ;
+  voltage_unit : "1V" ;
+  capacitive_load_unit (1, pf) ;
+  leakage_power_unit : "1nW" ;
+  nom_process : 1 ;
+  nom_temperature : 25 ;
+  nom_voltage : 5.0 ;
+  operating_conditions (typ) { process : 1 ; temperature : 25 ; voltage : 5.0 ; }
+  default_fanout_load : 1.0 ;
+  default_inout_pin_cap : 0.05 ;
+  default_input_pin_cap : 0.05 ;
+  default_output_pin_cap : 0.05 ;
+  default_max_transition : 20.0 ;
+  default_max_fanout : 10.0 ;
+  slew_lower_threshold_pct_fall : 20.0 ;
+  slew_upper_threshold_pct_fall : 80.0 ;
+  slew_lower_threshold_pct_rise : 20.0 ;
+  slew_upper_threshold_pct_rise : 80.0 ;
+  input_threshold_pct_fall : 50.0 ;
+  input_threshold_pct_rise : 50.0 ;
+  output_threshold_pct_fall : 50.0 ;
+  output_threshold_pct_rise : 50.0 ;
+  lu_table_template (delay_template) {
+    variable_1 : input_net_transition ;
+    variable_2 : total_output_net_capacitance ;
+    index_1 ("0.5, 1.0, 2.0, 5.0, 10.0, 15.0, 20.0");
+    index_2 ("0.1, 0.5, 2.0");
+  }
+  lu_table_template (constraint_template) {
+    variable_1 : constrained_pin_transition ;
+    variable_2 : related_pin_transition ;
+    index_1 ("0.5, 1.0, 2.0, 5.0, 10.0, 15.0, 20.0");
+    index_2 ("0.5, 1.0, 2.0, 5.0, 10.0, 15.0, 20.0");
+  }
+  cell (INV_X1) {
+    area : 1516.320000 ;
+    cell_leakage_power : 1 ;
+    pin (A) {
+      direction : input ;
+      capacitance : 0.084148 ;
+      rise_capacitance : 0.084207 ;
+      fall_capacitance : 0.084089 ;
+    }
+    pin (Y) {
+      direction : output ;
+      function : "!A" ;
+      timing () {
+        related_pin : "A" ;
+        timing_sense : negative_unate ;
+        cell_rise (delay_template) {
+          values ("0.9572, 2.6410, 8.8551", "1.0993, 2.7738, 8.9901", "1.4051, 3.0678, 9.2692", "2.0489, 4.0568, 10.1625", "2.8299, 5.4071, 11.7702", "3.4648, 6.4773, 13.4639", "4.0235, 7.4057, 15.1403");
+        }
+        cell_fall (delay_template) {
+          values ("0.6679, 1.7842, 5.9491", "0.8320, 1.9393, 6.1011", "1.0520, 2.2642, 6.4107", "1.4239, 3.1598, 7.3741", "1.7393, 4.0874, 9.0469", "1.9109, 4.7158, 10.6110", "2.0090, 5.1925, 11.8666");
+        }
+        rise_transition (delay_template) {
+          values ("0.6347, 2.2476, 8.3033", "0.7360, 2.2476, 8.3033", "1.0012, 2.3095, 8.3034", "1.6119, 2.9563, 8.3178", "2.4361, 4.1273, 8.9572", "3.1315, 5.1532, 10.0230", "3.7605, 6.0947, 11.2523");
+        }
+        fall_transition (delay_template) {
+          values ("0.8220, 3.0770, 11.5344", "0.8388, 3.0771, 11.5344", "1.0233, 3.0771, 11.5344", "1.5903, 3.4529, 11.5345", "2.3347, 4.5024, 11.7241", "2.9647, 5.4392, 12.3963", "3.5301, 6.2977, 13.3058");
+        }
+      }
+    }
+  }
+  cell (TIEHI) {
+    area : 561.600000 ;
+    pg_pin (VDD) {
+      voltage_name : "VDD" ;
+      pg_type : primary_power ;
+    }
+    pg_pin (GND) {
+      voltage_name : "GND" ;
+      pg_type : primary_ground ;
+    }
+    pin (HI) { direction : output ; function : "1" ; capacitance : 0.05 ; }
+  }
+  cell (TIELO) {
+    area : 561.600000 ;
+    pg_pin (VDD) {
+      voltage_name : "VDD" ;
+      pg_type : primary_power ;
+    }
+    pg_pin (GND) {
+      voltage_name : "GND" ;
+      pg_type : primary_ground ;
+    }
+    pin (LO) { direction : output ; function : "0" ; capacitance : 0.05 ; }
+  }
+}

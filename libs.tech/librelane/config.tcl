@@ -55,10 +55,14 @@ set ::env(LEFT_MARGIN_MULT) 0
 set ::env(RIGHT_MARGIN_MULT) 0
 
 set ::env(FP_TRACKS_INFO) "$::env(PDK_ROOT)/$::env(PDK)/libs.tech/librelane/$lib/tracks.info"
-# Source-bound experimental geometry RCX, qualified against native Magic and heldout v4.
-set geometry_model "$::env(PDK_ROOT)/$::env(PDK)/libs.tech/librelane/openrcx/TR10_magic_nom.geometry.json"
+# OpenRCX extraction rules.  RCX_RULESETS must point at an OpenRCX rules
+# file, not a geometry-model JSON.  The checked-in rules are derived from the
+# routing techlef (M1/M2 RPERSQ/CPERSQDIST); regenerate them with
+#   python3 libs.tech/openroad/gen_rcx_rules.py libs.tech/openroad/TR10.rcx_rules
+# TR10_magic_nom.geometry.json is retained as the Magic calibration dataset
+# only; it is not a valid OpenRCX input.
 set ::env(RCX_RULESETS) [dict create]
-dict set ::env(RCX_RULESETS) "nom_*" $geometry_model
+dict set ::env(RCX_RULESETS) "nom_*" "$::env(PDK_ROOT)/$::env(PDK)/libs.tech/openroad/TR10.rcx_rules"
 
 # ANT views are an engineering prior, not foundry or ESD signoff.
 set ::env(DIODE_CELL) "ANTENNAN_X1/ANT"

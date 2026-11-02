@@ -3410,7 +3410,7 @@
  <xfill>false</xfill>
  <animation>0</animation>
  <name>V15_MARKER</name>
- <source>150/0@1</source>
+ <source>240/0@1</source>
 </properties>
 <properties>
  <expanded>false</expanded>
@@ -3428,7 +3428,7 @@
  <xfill>false</xfill>
  <animation>0</animation>
  <name>V27_MARKER</name>
- <source>151/0@1</source>
+ <source>241/0@1</source>
 </properties>
  <custom-line-style>
   <pattern/>

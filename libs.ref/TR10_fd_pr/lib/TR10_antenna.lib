@@ -1,0 +1,29 @@
+/* Engineering prior only. Real off-NMOS antenna access; not a full ESD network.
+   Cap includes native transistor AC and native Magic metal C. No fabricated power table. */
+library (TR10_antenna) {
+  delay_model : table_lookup ;
+  time_unit : "1ns" ;
+  voltage_unit : "1V" ;
+  current_unit : "1mA" ;
+  leakage_power_unit : "1nW" ;
+  capacitive_load_unit (1, pf) ;
+  nom_process : 1 ;
+  nom_temperature : 25 ;
+  nom_voltage : 5 ;
+  operating_conditions (typ) { process : 1 ; temperature : 25 ; voltage : 5 ; }
+  slew_lower_threshold_pct_fall : 20 ;
+  slew_upper_threshold_pct_fall : 80 ;
+  slew_lower_threshold_pct_rise : 20 ;
+  slew_upper_threshold_pct_rise : 80 ;
+  input_threshold_pct_fall : 50 ;
+  input_threshold_pct_rise : 50 ;
+  output_threshold_pct_fall : 50 ;
+  output_threshold_pct_rise : 50 ;
+  cell (ANTENNAN_X1) {
+    area : 2041.2 ;
+    dont_use : true ;
+    is_antenna_diode : true ;
+    pg_pin (GND) { voltage_name : "GND" ; pg_type : primary_ground ; }
+    pin (ANT) { direction : input ; capacitance : 0.0226388477651 ; }
+  }
+}
