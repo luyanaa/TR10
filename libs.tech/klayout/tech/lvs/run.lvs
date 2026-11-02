@@ -37,15 +37,16 @@ else
 end
 # Top-level ports are always checked in comparison mode.
 #----
+# %include 03_Combiner.lvs
 if $tr10_mask_stdcell
     # %include 00_MaskStdcell.lvs
+    # %include 01_Extract.lvs
+elsif $tr10_mask_analog
+    # %include 00_MaskAnalog.lvs
 else
     # %include ../drc/00_Layers.drc
     # %include ../drc/02_Device.drc
-end
-# %include 01_Extract.lvs
-# %include 03_Combiner.lvs
-unless $tr10_mask_stdcell
+    # %include 01_Extract.lvs
     # %include 02_Extract.lvs
 end
 ### %include 03_Extract.lvs

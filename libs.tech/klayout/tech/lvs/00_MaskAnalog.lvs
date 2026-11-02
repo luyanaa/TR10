@@ -1,0 +1,217 @@
+# Post-MDP Mask LVS: full analog + standard-cell device coverage.
+#
+# Unlike 00_MaskStdcell.lvs (which raises on analog/HV geometry), this deck
+# recognizes every Mask active region that run_mdp.drc can emit and extracts
+# the same device classes as the Drawing LVS path (01_Extract + 02_Extract):
+#   PMOS, NMOS, PMOS(ESD), NMOSE, DP, DN, F_RR, F_RS, F_CSIO.
+#
+# The Mask view is the authoritative check that MDP's independently-recognized
+# implant/active layers still resolve to the intended devices and nets.
+
+raise "Mask analog LVS forbids waiver geometry" unless input(63, 0).is_empty?
+# %include ../drc/IP62/00_Layers.drc
+# %include ../drc/IP62/02_Device.drc
+
+# Reject any Mask active that the implant-recognition table did not classify.
+# This is the analog-capable superset of the stdcell check: AARR/AAGR/AACC/
+# AAGC are legal here, but completely unrecognized geometry still fails.
+recognized_active = AAMP + AAMN + AAPE + AANE + AADP + AADN + AAGP + AAGN + AARR + AAGR + AACC + AAGC
+raise "Unrecognized Mask active geometry" unless (L - recognized_active).is_empty?
+
+# ---------------------------------------------------------------------------
+# Device-combiner classes (duplicated from 02_Extract.lvs so this deck is
+# self-contained; run.lvs skips 02_Extract for the Mask analog path).
+# ---------------------------------------------------------------------------
+class LWCapacitorWithBulk < RBA::DeviceClassCapacitorWithBulk
+  def initialize
+    super
+    enable_parameter("A", true)
+    enable_parameter("P", true)
+    add_parameter(RBA::DeviceParameterDefinition.new('W', 'Width', 0, false))
+    add_parameter(RBA::DeviceParameterDefinition.new('L', 'Length', 0, false))
+    add_parameter(RBA::DeviceParameterDefinition.new('m', 'multiplier', 1, true))
+    enable_parameter("m", true)
+
+    self.combiner = CAPDeviceCombiner.new
+    self.supports_serial_combination = false
+    self.supports_parallel_combination = true
+    clear_equivalent_terminal_ids
+  end
+end
+
+class LWResistor < RBA::DeviceClassResistor
+  def initialize
+    super
+    enable_parameter("W", true)
+    enable_parameter("L", true)
+    add_parameter(RBA::DeviceParameterDefinition.new('m', 'multiplier', 1, true))
+    enable_parameter("m", true)
+
+    self.combiner = RESDeviceCombiner.new
+    self.supports_serial_combination = true
+    self.supports_parallel_combination = true
+  end
+end
+
+class LWResistorWithBulk < RBA::DeviceClassResistorWithBulk
+  def initialize
+    super
+    enable_parameter("W", true)
+    enable_parameter("L", true)
+    add_parameter(RBA::DeviceParameterDefinition.new('m', 'multiplier', 1, true))
+    enable_parameter("m", true)
+
+    self.combiner = RESDeviceCombiner.new
+    self.supports_serial_combination = true
+    self.supports_parallel_combination = true
+  end
+end
+
+# ---------------------------------------------------------------------------
+# Conductor / device regions expressed in Mask terms
+# ---------------------------------------------------------------------------
+WN   = NWMP          # N-well for PMOS / diodes / CSIO / RR bulk
+WR   = NWRR          # HV N-well for RR body
+WC   = NWCS          # N-well for CSIO bulk
+WP   = PWMN          # P-well region (NMOS bulk)
+GC   = SG            # silicided gate/poly
+CO   = CONT
+V1   = TC
+MP   = AAMP
+MN   = AAMN
+MPE  = AAPE
+MNE  = AANE
+DP   = AADP
+DN   = AADN
+GP   = AAGP
+GN   = AAGN
+RR   = AARR          # active resistor body (HV N-well resistor)
+BGRR = AAGR          # HV N-well backgate contact for RR
+CSIO = AACC          # CSIO capacitor bottom-plate active
+BGCS = AAGC          # CSIO backgate contact
+
+SDP  = MP  - GC
+SDN  = MN  - GC
+SDPE = MPE - GC
+SDNE = MNE - GC
+
+# RR terminals: the part of the RR active that contacts CO.  In Mask space the
+# resistor body is the AA region minus its contact ends; contacts land on the
+# ends of the AA finger.
+RRC  = (RR & CO).sized(0.5).sized(-0.5)   # merged CO clusters on RR ends
+RRB  = RR - RRC.extents                   # RR body between contact clusters
+# CSIO: top plate is poly (GC) over the NWCS active; bottom plate is the AA.
+CSI  = CSIO & GC                          # CSIO capacitor area (gate-over-active)
+CSB  = CSIO - GC                          # CSIO bottom plate (active under field)
+
+# RS: poly resistor.  In Mask space the resistor is the part of SG marked by
+# the R implant; its terminals are the SG ends touching CO.
+RSG  = SG & R                             # poly resistor body region
+RSC  = (RSG & CO).sized(0.5).sized(-0.5)  # RS contact clusters
+RSB  = RSG - RSC.extents                  # RS body
+
+# ---------------------------------------------------------------------------
+# Connections — same physical netlist as Drawing extraction, expressed with
+# the independently recognized Mask device regions.
+# ---------------------------------------------------------------------------
+connect(WN,  GP)
+connect(WN,  DP)
+connect(WR,  BGRR)
+connect(WR,  RR)
+connect(WC,  BGCS)
+connect(WC,  CSIO)
+connect(WP,  GN)
+connect(WP,  DN)
+connect(SDP,  CO)
+connect(SDN,  CO)
+connect(SDPE, CO)
+connect(SDNE, CO)
+connect(GP,   CO)
+connect(GN,   CO)
+connect(DP,   CO)
+connect(DN,   CO)
+connect(RRC,  CO)
+connect(RSC,  CO)
+connect(BGRR, CO)
+connect(BGCS, CO)
+connect(GC,   CO)
+connect(CO,   M1)
+connect(M1,   V1)
+connect(V1,   M2)
+connect(M1,   M1_LBL)
+connect(M2,   M2_LBL)
+connect_global(GN, "GND")
+connect_global(BULK, "GND")
+
+# ---------------------------------------------------------------------------
+# Device extraction — same device classes / terminal wiring as Drawing LVS.
+# ---------------------------------------------------------------------------
+extract_devices(mos4("PMOS"),
+                    { "SD" => (MP - GC),        "G"  => (MP & GC),
+                      "W"  => (MP & GC & WN),   "tS" => (SDP),
+                      "tD" => (SDP),            "tG" => (GC),
+                      "tB" => (WN) })
+tolerance("PMOS", "W", :relative => 0.01)
+tolerance("PMOS", "L", :relative => 0.0)
+
+extract_devices(mos4("NMOS" ),
+                    { "SD" => (MN - GC),        "G"  => (MN & GC),
+                      "W"  => (MN & GC & BULK), "tS" => (SDN),
+                      "tD" => (SDN),            "tG" => (GC),
+                      "tB" => (BULK) })
+tolerance("NMOS", "W", :relative => 0.01)
+tolerance("NMOS", "L", :relative => 0.0)
+
+extract_devices(mos4("PMOS" ),
+                    { "SD" => (MPE - GC),       "G"  => (MPE & GC),
+                      "W"  => (MPE & GC & WN),  "tS" => (SDPE),
+                      "tD" => (SDPE),           "tG" => (GC),
+                      "tB" => (WN) })
+
+extract_devices(mos4("NMOSE" ),
+                    { "SD" => (MNE - GC),       "G"  => (MNE & GC),
+                      "W"  => (MNE & GC & BULK),"tS" => (SDNE),
+                      "tD" => (SDNE),           "tG" => (GC),
+                      "tB" => (BULK) })
+tolerance("NMOSE", "W", :relative => 0.01)
+tolerance("NMOSE", "L", :relative => 0.0)
+
+extract_devices(diode("DP"),
+                    { "P"  => (DP),   "N"  => (DP & WN),
+                      "tA" => (DP),   "tC" => (WN) })
+tolerance("DP", "A", :relative => 0.05)
+tolerance("DP", "P", :relative => 0.05)
+
+extract_devices(diode("DN"),
+                    { "P"  => (DN & BULK), "N"  => (DN),
+                      "tA" => (BULK),      "tC" => (DN) })
+tolerance("DN", "A", :relative => 0.05)
+tolerance("DN", "P", :relative => 0.05)
+
+extract_devices(resistor("F_RS", 1, LWResistor),
+                    { "R"  => (RSB),  "C"  => (RSC),
+                      "tA" => (RSC),  "tB" => (RSC) })
+tolerance("F_RS", "W", :relative => 0.01)
+tolerance("F_RS", "L", :relative => 0.01)
+ignore_parameter("F_RS", "R")
+
+extract_devices(resistor_with_bulk("F_RR", 1, LWResistorWithBulk),
+                    { "R"  => (RRB),  "C"  => (RRC),
+                      "W"  => (RR),   "tA" => (RRC),
+                      "tB" => (RRC),  "tW" => (WR) })
+tolerance("F_RR", "W", :relative => 0.01)
+tolerance("F_RR", "L", :relative => 0.01)
+ignore_parameter("F_RR", "R")
+
+extract_devices(capacitor_with_bulk("F_CSIO", 0.6e-15, LWCapacitorWithBulk),
+                    { "P1" => (GC),   "P2" => (CSIO),
+                      "W"  => (WC),   "tA" => (GC),
+                      "tB" => (WC),   "tW" => (BULK) })
+tolerance("F_CSIO", "A", :relative => 0.01)
+tolerance("F_CSIO", "P", :relative => 0.01)
+ignore_parameter("F_CSIO", "C")
+ignore_parameter("F_CSIO", "W")
+ignore_parameter("F_CSIO", "L")
+
+equivalent_pins("F_RS", "A", "B")
+equivalent_pins("F_RR", "A", "B")

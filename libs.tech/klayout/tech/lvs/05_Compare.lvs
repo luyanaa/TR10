@@ -28,13 +28,34 @@ def canonicalize_top_ports(nl)
         group = [net, pin, [], []]
         groups << group
       end
-      group[2].concat(pin.name.split(',').map(&:upcase))
+      group[2].concat(pin.name.split(',').map { |n| n.upcase })
       group[3] << pin.id if pin.id != group[1].id
     end
     groups.each do |net, keep, names, redundant|
       circuit.rename_pin(keep.id, names.uniq.sort.join(','))
       redundant.sort.reverse_each { |id| circuit.remove_pin(id) }
     end
+  end
+end
+
+# flag_missing_ports is not a KLayout builtin in all versions; provide an
+# explicit top-level pin-name comparison so missing/mislabeled ports are
+# treated as errors instead of silently passing.
+unless respond_to?(:flag_missing_ports)
+  def flag_missing_ports
+    missing = []
+    netlist.top_circuits.each do |lc|
+      sc = schematic.circuit_by_name(lc.name)
+      next unless sc
+      lpins = lc.each_pin.map { |p| p.name }.sort
+      spins = sc.each_pin.map { |p| p.name }.sort
+      if lpins != spins
+        missing << "#{lc.name}: layout-only=#{(lpins - spins).inspect} " \
+                   "schematic-only=#{(spins - lpins).inspect}"
+      end
+    end
+    missing.each { |m| puts "PORT MISMATCH: #{m}" }
+    missing.empty?
   end
 end
 

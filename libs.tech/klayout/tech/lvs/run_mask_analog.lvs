@@ -1,0 +1,6 @@
+# Explicit Mask input for the full analog + standard-cell device set.
+# Unlike run_mask_stdcell.lvs (CMOS/diode only), this path recognizes the
+# complete implant-derived device palette: PMOS/NMOS/ESD MOS, DP/DN, RR/RS
+# resistors, CSIO capacitor, and their backgate contacts.
+$tr10_mask_analog = true
+# %include run.lvs
