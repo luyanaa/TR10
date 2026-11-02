@@ -1,0 +1,35 @@
+* TR10 engineering device-mismatch wrapper (NOT statistical / NOT sign-off).
+*
+* The OS00-calibrated baseline has no measured mismatch model, so this file
+* provides an *engineering* Monte-Carlo-style package built on ngspice's
+* agauss() and the BSIM4 per-instance `delvto` threshold-offset parameter.
+* It is a robustness probe, not a Pelgrom-fitted model -- do not extract
+* sigma(Vth) or matching coefficients from it.
+*
+* Verified mechanism (ngspice-44.2):
+*   * agauss(0, sigma, 1) returns an independent gaussian draw per use.
+*   * `delvto` is a per-INSTANCE threshold offset accepted by the *_mst
+*     BSIM4 models (NMOS_mst / PMOS_mst / MNE_mst / MPE_mst). Two instances
+*     with independent agauss draws produce different drain currents.
+*   * The file-level manifest params (vthMN/vthMP/...) shift ALL devices
+*     together -- they model process corners, not per-device mismatch, so
+*     they are NOT the right hook for mismatch. Use delvto instead.
+*
+* Usage -- instantiate the *_mst model directly and add a delvto draw:
+*
+*   .include ".../ip62_models_calibrated"
+*   .param mm_vth_p = 'agauss(0, 0.030, 1)'   * one handle per device
+*   .param mm_vth_n = 'agauss(0, 0.030, 1)'
+*   Mp d g s b PMOS_mst w=.. l=.. delvto='mm_vth_p'
+*   Mn d g s b NMOS_mst w=.. l=.. delvto='mm_vth_n'
+*
+* For a matched pair that should still see independent mismatch, give each
+* device its OWN agauss handle (mm_vth_a, mm_vth_b); sharing a handle makes
+* them track (models a common-centroid / correlated pair).
+*
+* Engineering sigma suggestions (screening only, not fitted):
+*   MOS Vth mismatch : agauss(0, 0.030, 1)   -> ~30 mV sigma
+*   Resistor         : scale R by '1+agauss(0,0.05,1)' or via magRR/magRS
+*   Capacitor        : scale C by '1+agauss(0,0.05,1)' or via magCSIO
+*
+* To draw N independent samples, declare N distinct .param handles.

@@ -1,0 +1,9 @@
+* TR10 engineering RC-MIN corner (fastest interconnect/device parasitics).
+*
+* Self-contained: includes the baseline manifest then minimizes the exposed
+* resistive/capacitive magnitudes -- the "everything parasitic is
+* best-case" engineering bound for RC screening. NOT sign-off.
+* Pair with rc_max.spice to bracket the RC envelope.
+.include ../ip62_models_calibrated
+.param magRR=0.90 magRS=0.90 magCSIO=0.90
+.param vthMP=0 vthMN=0 vthMPE=0 vthMNE=0

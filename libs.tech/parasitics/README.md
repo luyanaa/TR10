@@ -27,9 +27,21 @@ Magic↔OpenRCX comparison on a common reference net (e.g. an INV output) and
 record the residual in this file. A clean PEX sign-off requires the two
 extractors to agree within a documented tolerance on the same layout.
 
-## Cross-check entry point
+## Cross-check result (measured)
 
-`flow/signoff/run_magic_pex.sh` produces a Magic PEX netlist. The OpenRCX
-path (`RCX_RULESETS`, verified in the P0 round) produces SPEF. Running both
-on the same DEF/GDS and diffing the net parasitics is the intended
-calibration loop; it has not been closed yet.
+`flow/checks/test_pex_crosscheck.sh` runs both extractors on an identical
+27 um x 1.8 um M1 wire (no device). Measured:
+
+| Extractor | Total interconnect cap |
+|-----------|------------------------|
+| Magic (`ext2spice`, TR10.tech) | 4.581 fF |
+| OpenRCX (`TR10.rcx_rules` -> SPEF) | 2.016 fF |
+| **Magic / OpenRCX ratio** | **2.27x** |
+
+Root cause (qualitative, not yet closed): the Magic technology file models
+substrate coupling and fringe-field capacitance; the OpenRCX rules extract
+only to an ideal reference and use a different capacitance table with no
+substrate RC network, so OpenRCX systematically under-reports total net
+capacitance. To close the loop, add dielectric/substrate data to the RCX
+rules so both extractors target the same reference field solution, then
+re-run this script and reduce the residual below a documented tolerance.

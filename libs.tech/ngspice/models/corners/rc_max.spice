@@ -1,0 +1,15 @@
+* TR10 engineering RC-MAX corner (slowest interconnect/device parasitics).
+*
+* Self-contained: includes the baseline manifest then maximizes the exposed
+* resistive/capacitive magnitudes. This models the "everything parasitic is
+* worst-case" engineering bound for delay / RC screening. NOT sign-off.
+*
+* Interconnect R/C variation lives in the PEX path (stackup), not in these
+* device-level hooks; this corner bounds the DEVICE-side R and C magnitudes
+* that the simulator sees. See libs.tech/parasitics/README.md for the
+* interconnect-side open calibration loop.
+.include ../ip62_models_calibrated
+* high device resistance + high device capacitance
+.param magRR=1.10 magRS=1.10 magCSIO=1.10
+* thresholds left at nominal: RC corner is about parasitic magnitude, not drive
+.param vthMP=0 vthMN=0 vthMPE=0 vthMNE=0
