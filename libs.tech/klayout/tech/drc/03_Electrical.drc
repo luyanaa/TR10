@@ -66,6 +66,11 @@ GC_M1LBL_TOP = antenna_check(M1LBL_TOP, GC, 0.0)
 GC_M2LBL_TOP = antenna_check(M2LBL_TOP, GC, 0.0)
 #
 GC_FL_LBL_TOP = (GC - (GC_MP + GC_MN + GC_PE + GC_NE + GC_DP + GC_DN + GC_GP + GC_GN + GC_M1LBL_TOP + GC_M2LBL_TOP + GC_PAD))  # Floating Gate
+#
+# A gate that reaches no S/D, backgate, well/substrate tap, pad, or top label
+# is electrically floating. Report it; a floating oxide is an ESD/reliability
+# hazard and was previously computed but never emitted.
+GC_FL_LBL_TOP.output("ERC_FLOATING_GATE:gate poly not connected to any diffusion, tap, pad, or top label")
 
 # Project-owned voltage-domain annotations.
 #
@@ -94,4 +99,38 @@ V15_MARKER.not_interacting(NW + M1).output(
 )
 V27_MARKER.not_interacting(NW).output(
     "V27V_MARKER:27 V marker does not annotate NW"
+)
+
+# ----- ------ ----- ----- ------ ----- ----- ------ -----
+# ERC additions: floating well/bulk and HV domain crossing.
+# ----- ------ ----- ----- ------ ----- ----- ------ -----
+#
+# An N-well island that hosts a PMOS but has no GP (P+ backgate) contact is a
+# floating bulk: its body is unreachable and the device is a latch-up /
+# leakage hazard. WN is the PMOS well; GP is the only conductor that ties it
+# to a supply, so an island with PMOS and no GP contact cannot be biased.
+WN_WITH_MOS = WN.interacting(MP + MPE)
+WN_UNTIED   = WN_WITH_MOS.not_interacting(GP)
+WN_UNTIED.output(
+    "ERC_FLOATING_NWELL:N-well hosts a PMOS but has no P+ backgate (GP) tie contact"
+)
+#
+# Complementary check: a P-well/substrate region hosting an NMOS must reach a
+# GN (N+ backgate) contact. GN is globally tied to VSS, so an NMOS whose
+# surrounding P-well has no GN contact is left floating.
+WP_WITH_MOS = WP.interacting(MN + MNE)
+WP_UNTIED   = WP_WITH_MOS.not_interacting(GN)
+WP_UNTIED.output(
+    "ERC_FLOATING_PWELL:P-well hosts an NMOS but has no N+ backgate (GN) tie contact"
+)
+#
+# Overvoltage: a 15 V or 27 V annotated NW must not abut an un-annotated NW at
+# a spacing tighter than the domain rule already encoded above; additionally
+# flag an annotated NW that directly touches a normal NW (zero spacing is a
+# hard domain short, not just a spacing violation).
+V15V_NW.interacting(V15V_NW_NORMAL).output(
+    "ERC_HV_SHORT:15 V N-well directly abuts a normal-voltage N-well"
+)
+V27V_PWELL.interacting(NW - V27V_PWELL).output(
+    "ERC_HV_SHORT:27 V N-well directly abuts a normal-voltage N-well"
 )
