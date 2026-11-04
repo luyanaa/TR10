@@ -45,26 +45,57 @@ import re
 t=open('$LIB').read().split('cell (INV_X1)')[1]
 print(re.search(r'cell_fall\s*\(delay_template\)\s*\{\s*values\s*\(\"([^\",]+)', t).group(1))")
 
-# Simulate the *shipped* INV_X1 subckt (real AS/AD/PS/PD parasitics and the
-# characterized device sizes), not a hand-written pair.  Pin order is
+# Simulate the *shipped* INV_X1 subckt directly (real AS/AD/PS/PD parasitics
+# and the characterized device sizes), not a hand-written pair.  Pin order is
 # (VDD A Y GND) per libs.ref/TR10_fd_sc/spice/TR10_fd_sc.spice.
 #
-# The shipped netlist instantiates devices as M-elements
-# (M$1 ... PMOS).  The PDK exposes PMOS/NMOS as .subckt wrappers around
-# level-49 .model devices, so an M-element cannot resolve them -- extract
-# the subckt and rewrite its M-devices to X-instances so ngspice binds them
-# to the subckt wrapper.  Only INV_X1 is pulled out; the full library
-# netlist also pulls unrelated osdi capacitance deps.
+# Acceptance: the shipped netlist must load WITHOUT the caller rewriting
+# transistor instances.  PMOS/NMOS are .subckt wrappers over level-49
+# .model devices, so the shipped file uses X-instances (X$1 ... PMOS).
+#
+# Stage A: full-library elaboration.  Include the whole shipped netlist and
+# instantiate a representative subset (combinational + sequential) so any
+# M-element/subckt binding error anywhere fails fast.
 CELL_NETLIST="$PDK/libs.ref/TR10_fd_sc/spice/TR10_fd_sc.spice"
-sed -n '/^\.SUBCKT INV_X1 /,/^\.ENDS INV_X1/p' "$CELL_NETLIST" \
-  | sed 's/^M\$/X$/' > inv_x1.spice
-if ! grep -q "INV_X1" inv_x1.spice; then
-  echo "ERROR: could not extract INV_X1 subckt from $CELL_NETLIST" >&2
+if grep -qE '^M(\$|[0-9])' "$CELL_NETLIST"; then
+  echo "ERROR: shipped spice still uses M-instances for .subckt models" >&2
   exit 2
 fi
+cat > elab.spice <<EOF
+.include $MODELS/ip62_models_calibrated
+.include $CELL_NETLIST
+* elaborate one instance of every shipped subckt by tying its pins to a
+* common net -- a parse/elaboration failure (unbound model, bad primitive)
+* aborts ngspice here.
+EOF
+# Emit one X-instance per .SUBCKT; pin count read from the subckt header.
+python3 - "$CELL_NETLIST" >>elab.spice <<'PY'
+import re, sys
+n = 0
+for line in open(sys.argv[1]):
+    m = re.match(r'\.SUBCKT\s+(\S+)\s+(.*)', line, re.I)
+    if m:
+        pins = m.group(2).split()
+        print(f"Xe{n} " + " ".join(["n0"] * len(pins)) + " " + m.group(1))
+        n += 1
+print("Vn n0 0 0")
+print(".end")
+sys.stderr.write(f"elaborated {n} subckts\n")
+PY
+# ngspice exits nonzero for a deck with no analysis; that is expected for an
+# elaboration-only smoke.  Success = no unbound-model / parse errors.
+ngspice -n -b elab.spice -o elab.out >elab.log 2>&1 || true
+if grep -qiE "could not find a valid modelname|Error on line|syntax error|unrecognized" elab.out; then
+  echo "ERROR: shipped spice failed ngspice elaboration" >&2
+  grep -iE "error|modelname|could not|unrecognized" elab.out | head >&2
+  exit 2
+fi
+echo "elaboration smoke: shipped netlist loads clean"
+
+# Stage B: real transient on INV_X1.
 cat > tb.spice <<EOF
 .include $MODELS/ip62_models_calibrated
-.include inv_x1.spice
+.include $CELL_NETLIST
 VDD vdd 0 5
 VIN a 0 PULSE(0 5 1n 0.5n 0.5n 20n 40n)
 Xinv vdd a y 0 INV_X1

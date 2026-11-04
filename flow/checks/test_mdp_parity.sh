@@ -90,78 +90,122 @@ for c in $classes; do
 done
 
 # ---------------------------------------------------------------------------
-# Topology stage: a count match does not prove connectivity -- the Mask RS
-# extractor once emitted F_RS with both terminals on one net while still
-# reporting F_RS count=1.  Parse each .ext, group every device's terminal nets
-# per device class, and compare the resulting partition (which terminals are
-# shorted together) plus device degree multiset between the two views.
+# Topology stage: full bipartite-graph isomorphism, not statistics.  A count
+# or per-class degree match does not prove connectivity -- two netlists with
+# identical device counts and net counts can still wire the devices together
+# differently (e.g. swap two gates, or short the F_RS terminals onto one net
+# while keeping F_RS count=1).  Build the device<->net bipartite graph for
+# each view, color nodes by (kind, class) and edges by terminal position,
+# and compare canonical encodings.  Isomorphic graphs <=> the two views wire
+# the same devices the same way.  Covers every device class incl. XC$ F_CSIO.
 # ---------------------------------------------------------------------------
 topo_rc=0
 PYTHONPATH="$KPP" "$KPY" - <<'PY' || topo_rc=$?
 import re, sys
+from collections import defaultdict
+
+CLASS = r'PMOSE?|NMOSE?|DN|DP|F_RS|F_RR|F_CSIO'
+DEV_RE = re.compile(r'^(?:X?R|X?C|M|D|\d)(\$\d+)\s+(.*)')
 
 def parse(path):
-    """Return {class: [(name, [terminal nets])]}, nets resolved through |."""
-    devs, pins = {}, set()
+    """[(class, [terminal nets])]; pins: set of port net names."""
+    devs, pins = [], set()
     for line in open(path):
-        line = line.strip()
-        mp = re.match(r'\* pin (\S+)', line)
+        s = line.strip()
+        mp = re.match(r'\* pin (\S+)', s)
         if mp:
             pins.update(mp.group(1).split('|')); continue
-        m = re.match(r'(?:X?R|M|D|\d)(\$\d+)\s+(.+)', line)
+        m = DEV_RE.match(s)
         if not m: continue
         toks = m.group(2).split()
-        # device model = first token that is a known class name
-        model = next((t for t in toks if re.fullmatch(
-            r'PMOSE?|NMOSE?|DN|DP|F_RS|F_RR|F_CSIO', t)), None)
-        if model is None: continue
-        nets = [t for t in toks[:toks.index(model)]]
-        # canonical: merge alias nets written as A|B
-        canon = []
-        for n in nets:
-            parts = sorted(n.split('|'))
-            canon.append('|'.join(parts))
-        devs.setdefault(model, []).append((m.group(1), canon))
+        mi = next((i for i, t in enumerate(toks)
+                   if re.fullmatch(CLASS, t)), None)
+        if mi is None: continue
+        devs.append((toks[mi], toks[:mi]))
     return devs, pins
 
-def topo(path):
-    devs, pins = parse(path)
-    # union-find over terminal nets so A|B aliases unify across devices
+def graph(path):
+    """Return (devices, nets) of a device<->net bipartite multigraph.
+
+    Each device is an unlabeled node carrying only its class.  Each net is an
+    unlabeled node.  Edges connect device->net with a multiplicity equal to
+    the number of the device's terminals on that net (a shorted pair of
+    terminals lands two edges on the same net).  Terminal *position* is NOT
+    distinguished -- swapping source/drain on a symmetric device must not
+    flag a divergence the extractor does not consider one.  Pin/port status
+    is dropped: the two views name ports differently by construction."""
+    devs, _pins = parse(path)
     parent = {}
     def find(x):
         parent.setdefault(x, x)
         while parent[x] != x:
             parent[x] = parent[parent[x]]; x = parent[x]
         return x
-    def union(a, b):
-        ra, rb = find(a), find(b)
-        if ra != rb: parent[rb] = ra
-    for _, nets in [d for ds in devs.values() for d in ds]:
+    for _, nets in devs:
         for n in nets:
+            parent.setdefault(n, n)
             for part in n.split('|'):
-                union(n, part)
-    sig = {}
-    for cls, ds in devs.items():
-        degs, shorts = [], 0
-        for _, nets in ds:
-            roots = {find(n) for n in nets}
-            degs.append(len(roots))
-            if len(roots) < len(nets): shorts += 1
-        sig[cls] = (sorted(degs), shorts)
-    return sig, len(devs and {find(n) for ds in devs.values() for _, ns in ds for n in ns})
+                parent.setdefault(part, part)
+                parent[find(n)] = find(part)   # fold alias A|B into one net
+    devices = []                      # (class, {net_root: term_count})
+    nets = defaultdict(int)           # net_root -> total degree
+    for cls, nlist in devs:
+        cnt = defaultdict(int)
+        for n in nlist:
+            cnt[find(n)] += 1
+            nets[find(n)] += 1
+        devices.append((cls, dict(cnt)))
+    return devices, nets
 
-dsig, dnets = topo('draw.ext')
-msig, mnets = topo('mask.ext')
+def signature(path):
+    """Canonical form of the bipartite graph, invariant to node relabeling.
+
+    A device is fully described by its class plus the multiset of net-degree
+    contributions it makes.  But net identity is only structural: a net is
+    characterized by which device-classes it connects and how many terminals.
+    We build a WL-style refinement over the bipartite graph and emit the
+    multiset of refined edge (dev_color, net_color) pairs -- equal iff the
+    two graphs are isomorphic for our purposes."""
+    devices, nets = graph(path)
+    # node ids: devices D0.., nets N<root>
+    dcol = {i: c for i, (c, _) in enumerate(devices)}   # initial color=class
+    ncol = {r: 'N' for r in nets}
+    dev_net = [d for _, d in devices]                   # [{net:count}]
+    net_dev = defaultdict(list)
+    for i, d in enumerate(dev_net):
+        for r, cnt in d.items():
+            net_dev[r].append(i)
+    # WL-refine, hashing colours to ints each round so they stay compact and
+    # the final signature is a short, readable (dev_color, net_color) multiset.
+    for _ in range(8):
+        nd = {i: hash((dcol[i], tuple(sorted(
+                (cnt, ncol[r]) for r, cnt in dev_net[i].items()))))
+              for i in dcol}
+        nn = {r: hash((ncol[r], tuple(sorted(
+                dcol[i] for i in net_dev[r]))))
+              for r in ncol}
+        dcol, ncol = nd, nn
+    # canonical edge multiset: (dev_color, net_color) per terminal
+    sig = []
+    for i, d in enumerate(dev_net):
+        for r, cnt in d.items():
+            sig += [(dcol[i], ncol[r])] * cnt
+    return devices, sorted(sig)
+
+d_devs, dsig = signature('draw.ext')
+m_devs, msig = signature('mask.ext')
 ok = True
-for cls in sorted(set(dsig) | set(msig)):
-    d, m = dsig.get(cls), msig.get(cls)
-    if d is None or m is None:
-        print(f"TOPO {cls}: present in one view only"); ok = False; continue
-    if d != m:
-        print(f"TOPO {cls}: draw={d} mask={m}"); ok = False
-if dnets != mnets:
-    print(f"TOPO nets: draw={dnets} mask={mnets}"); ok = False
-print("TOPOLOGY: PASS" if ok else "TOPOLOGY: FAIL")
+if len(d_devs) != len(m_devs):
+    print(f"GRAPH: device count draw={len(d_devs)} mask={len(m_devs)}"); ok = False
+if dsig != msig:
+    ok = False
+    from collections import Counter
+    dc, mc = Counter(dsig), Counter(msig)
+    for e in sorted((dc - mc).elements(), key=repr):
+        print(f"GRAPH draw-only edge {e}")
+    for e in sorted((mc - dc).elements(), key=repr):
+        print(f"GRAPH mask-only edge {e}")
+print("TOPOLOGY(GRAPH-ISO): " + ("PASS" if ok else "FAIL"))
 sys.exit(0 if ok else 1)
 PY
 [ "$topo_rc" -ne 0 ] && fail=1

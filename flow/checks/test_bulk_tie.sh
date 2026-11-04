@@ -88,6 +88,24 @@ cat > untied.spice <<'EOF'
 M1 GND n2 n1 GND NMOS W=8u L=2u
 .ENDS
 EOF
+# Negative schematics driven against the TIED layout.  The layout is
+# unchanged; only the reference changes, so a PASS here is impossible for a
+# correct comparator.
+cat > missing.spice <<'EOF'
+.SUBCKT TIED GND
+* schematic expects the NMOS the layout provides, plus a second one it
+* does not -- a device-count mismatch, not a connectivity one.
+M1 GND n2 n1 GND NMOS W=8u L=2u
+M2 GND n2 n1 GND NMOS W=8u L=2u
+.ENDS
+EOF
+cat > srcshort.spice <<'EOF'
+.SUBCKT TIED GND
+* schematic ties source and bulk to the SAME pin (n1 == bulk); the layout
+* keeps them on separate regions -> connectivity mismatch.
+M1 n1 n2 n1 n1 NMOS W=8u L=2u
+.ENDS
+EOF
 
 run() {  # cell spice
   klayout -b -r "$PDK/libs.tech/klayout/tech/lvs/run_mask_analog.lvs" \
@@ -95,39 +113,46 @@ run() {  # cell spice
     -rd "report=$1.lvsdb" 2>&1
 }
 
-echo "--- TIED cell ---"
-tied_status=0
-tied_out=$(run TIED tied.spice) || tied_status=$?
-echo "$tied_out" | grep -E "PASS|FAIL" || true
-# Positive contract: the NMOS bulk terminal must land on the labeled GND net.
-# In the extracted netlist the NMOS bulk is the 4th pin; a tied body prints
-# the literal net "GND", while an untied body splits into "GND$1".
-if ! grep -q "NMOS" TIED.ext; then
-  echo "REGRESSION: TIED cell extracted no NMOS device" >&2
-  cat TIED.ext >&2
-  exit 1
-fi
+# Strict assertion: an LVS run must produce BOTH the expected exit code AND
+# the expected verdict line.  A nonzero exit with no TR10_LVS verdict means
+# the deck errored before comparing -- that is not a real LVS result.
+#   expect <label> <cell> <spice> <exit:zero|nonzero> <verdict:PASS|FAIL>
+fail=0
+expect() {
+  local label="$1" cell="$2" spice="$3" want_exit="$4" want_verdict="$5"
+  local status=0 out
+  out=$(run "$cell" "$spice") || status=$?
+  local verdict=""
+  verdict=$(echo "$out" | grep -oE "TR10_LVS (PASS|FAIL)" | head -1 | awk '{print $2}')
+  local ok=1 why=""
+  if [[ "$want_exit" == zero && $status -ne 0 ]]; then ok=0; why="exit=$status want 0"; fi
+  if [[ "$want_exit" == nonzero && $status -eq 0 ]]; then ok=0; why="exit=0 want nonzero"; fi
+  if [[ "$verdict" != "$want_verdict" ]]; then ok=0; why="${why:+$why; }verdict='${verdict:-none}' want $want_verdict"; fi
+  printf "  %-14s exit=%-8s verdict=%-5s : %s\n" \
+    "$label" "$status" "${verdict:-none}" "$([ $ok -eq 1 ] && echo OK || echo "FAIL ($why)")"
+  if [ $ok -eq 0 ]; then echo "$out" | tail -8 >&2; fail=1; fi
+  return 0
+}
+
+echo "--- assertion matrix (layout vs schematic) ---"
+# TIED layout + matching schematic           -> clean PASS
+expect TIED          TIED   tied.spice    zero    PASS
+# UNTIED layout (no body tie) + same schematic -> split island, FAIL
+expect UNTIED        UNTIED untied.spice  nonzero FAIL
+# TIED layout but schematic asks for a 2nd MOS -> device mismatch, FAIL
+expect MISSING_MOS   TIED   missing.spice nonzero FAIL
+# TIED layout but schematic shorts src=bulk   -> connectivity mismatch, FAIL
+expect SRC_BODY_SHORT TIED  srcshort.spice nonzero FAIL
+
+# Belt-and-suspenders: the tied bulk still must not split onto GND$1.
 if grep -E "NMOS" TIED.ext | grep -q 'GND\$1'; then
   echo "REGRESSION: tied NMOS bulk split onto GND\$1 (body tie broken)" >&2
-  grep "NMOS" TIED.ext >&2
-  exit 1
+  fail=1
 fi
-echo "tied: NMOS bulk on labeled GND net, no split island (compare status=$tied_status)"
 
-echo "--- UNTIED cell ---"
-untied_status=0
-out=$(run UNTIED untied.spice) || untied_status=$?
-echo "$out" | grep -E "PASS|FAIL" || true
-
-# The untied body must NOT compare clean: it should surface either a FAIL or
-# a GND$1 split island in the extracted netlist.  With the fail-closed
-# contract in 05_Compare.lvs it must also exit non-zero.
-if echo "$out" | grep -q "TR10_LVS PASS" && ! grep -q 'GND\$1' UNTIED.ext; then
-  echo "REGRESSION: untied bulk silently passed LVS" >&2
-  exit 1
+if [ "$fail" -eq 0 ]; then
+  echo "bulk-tie regression: all four rows asserted OK"
+else
+  echo "bulk-tie regression: ASSERTION FAILURE (see above)" >&2
 fi
-if [[ $untied_status -eq 0 ]] && echo "$out" | grep -q "TR10_LVS FAIL"; then
-  echo "REGRESSION: LVS FAIL printed but klayout exited 0 (fail-closed contract broken)" >&2
-  exit 1
-fi
-echo "bulk-tie negative regression: OK (tied PASS, untied FAIL status=$untied_status)"
+exit "$fail"
