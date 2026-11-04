@@ -11,8 +11,9 @@ LibreLane flow end to end.  Run inside the IIC-OSIC docker image:
       bash -lc 'librelane --pdk-root $PDK_ROOT --pdk $PDK --manual-pdk \
                 --run-tag smoke config.json'
 
-Last verified status (run tag `multi`): flow exits 0, Netgen LVS reports
-"Circuits match uniquely", KLayout DRC 0 across all rule categories.
+Last verified status: flow exits 0; Netgen LVS reports "Circuits match
+uniquely"; KLayout DRC 0 across all rule categories; and the PDK KLayout LVS
+deck reports `TR10_LVS PASS` via `flow/checks/test_klayout_lvs.sh`.
 
 ## Config notes
 
@@ -52,3 +53,18 @@ Last verified status (run tag `multi`): flow exits 0, Netgen LVS reports
   deck; the comparison still runs and matches, but the authoritative LVS is
   `libs.tech/klayout/tech/lvs/run.lvs` + `05_Compare.lvs`.
 - Magic DRC is not calibrated for TR10 and is disabled for flow signoff.
+
+## KLayout LVS assertion
+
+`flow/checks/test_klayout_lvs.sh <run-dir> <top-cell>` builds a strict
+transistor-level SPICE contract from the powered Verilog netlist plus the
+checked-in cell CDL/Liberty, then runs the PDK KLayout LVS deck
+(`libs.tech/klayout/tech/lvs/run.lvs`) and asserts `TR10_LVS PASS`.
+`flow/checks/run_librelane_lvs.sh inv inv` runs the flow and the assertion
+together; that is what `.github/workflows/pdk-regression.yml` invokes.
+
+CI also runs `flow/checks/test_tr1um_fixtures_lvs.sh`: the TR-1um use-case
+artifacts (`tr1um_alu8`, `tr1um_fifo4`, `tr1um_irqctrl` connected-power GDS
+plus their strict SPICE contracts) are checked with the same KLayout LVS
+deck.  These are real multi-hundred-instance cores, independent of whether
+the RTL flow can place/route them.

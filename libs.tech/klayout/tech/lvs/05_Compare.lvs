@@ -28,7 +28,10 @@ def canonicalize_top_ports(nl)
         group = [net, pin, [], []]
         groups << group
       end
-      group[2].concat(pin.name.split(',').map { |n| n.upcase })
+      # Alias lists reach here as "A,B" after in-memory canonicalisation and
+      # as "A|B" when a netlist was written/read through the SPICE writer
+      # (KLayout writes alias pins with a vertical bar).  Accept both.
+      group[2].concat(pin.name.split(/[,|]/).map { |n| n.upcase })
       group[3] << pin.id if pin.id != group[1].id
     end
     groups.each do |net, keep, names, redundant|
@@ -49,6 +52,7 @@ def check_top_ports
     next unless sc
     lpins = lc.each_pin.map { |p| p.name }.sort
     spins = sc.each_pin.map { |p| p.name }.sort
+
     if lpins != spins
       missing << "#{lc.name}: layout-only=#{(lpins - spins).inspect} " \
                  "schematic-only=#{(spins - lpins).inspect}"

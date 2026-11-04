@@ -17,7 +17,7 @@
 # Exit 0 always (informational); prints the measured values and ratio.
 set -euo pipefail
 
-PDK="$(cd "$(dirname "$0")/../.." && pwd)"
+REPO="$(cd "$(dirname "$0")/../.." && pwd)"
 WORK="$(mktemp -d)"; trap 'rm -rf "$WORK"' EXIT; cd "$WORK"
 
 OPENROAD="${OPENROAD_BIN:-$(command -v openroad || echo /nix/store/6qbn5zjnnnyna6md4rsmiqw4y26y8556-openroad-26Q3/bin/openroad)}"
@@ -38,9 +38,9 @@ fi
 if [[ -z "$KPY" ]]; then
   echo "ERROR: no python can import klayout.db" >&2; exit 2
 fi
-LEF_TECH="$PDK/libs.ref/TR10_fd_sc/techlef/TR10_tech.tlef"
-LEF_SC="$PDK/libs.ref/TR10_fd_sc/lef/TR10_fd_sc.lef"
-RCX="$PDK/libs.tech/openroad/TR10.rcx_rules"
+LEF_TECH="$REPO/libs.ref/TR10_fd_sc/techlef/TR10_tech.tlef"
+LEF_SC="$REPO/libs.ref/TR10_fd_sc/lef/TR10_fd_sc.lef"
+RCX="$REPO/libs.tech/openroad/TR10.rcx_rules"
 
 # 1. GDS: 27um x 1.8um M1 wire
 PYTHONPATH="$KPP" "$KPY" - <<'PY'
@@ -54,7 +54,7 @@ PY
 
 # 2. Magic PEX
 if ! PEX_GDS="$WORK/wire.gds" PEX_TOP=WIRE PEX_OUT="$WORK/wire_pex.spice" \
-    bash "$PDK/flow/signoff/run_magic_pex.sh" >/dev/null 2>&1; then
+    bash "$REPO/flow/signoff/run_magic_pex.sh" >/dev/null 2>&1; then
   echo "ERROR: Magic PEX did not run (magic/tech missing?)" >&2
   exit 2
 fi
