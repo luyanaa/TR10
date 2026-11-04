@@ -54,3 +54,12 @@ line.  The regression check will report if the workaround becomes obsolete.
 **Upstream.** The instability is in OpenROAD's pin-density adjustment for
 these cell aspect ratios; the clean long-term fix is an upstream change (or
 a LibreLane config knob for `-disable_pin_density_adjust`).
+
+## Same file: deterministic manual placement hook
+
+`gpl.tcl` additionally sources `$DESIGN_DIR/manual_place.tcl` when the design
+provides one, then writes the views and exits the step.  This mirrors the
+TR-1um flow's override (`flow/librelane_override/librelane/scripts/openroad/
+gpl.tcl`) and is what makes the 75.6 um-cell designs placeable without
+RePlAce spreading cells into the illegal well-spacing band.  See
+`examples/tr1um_fifo4/manual_place.tcl` and that design's README.

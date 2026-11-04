@@ -228,3 +228,8 @@ __marimo__/
 examples/inv/runs/
 examples/inv/ll.log
 examples/inv/core.*
+
+# Example flow run artifacts
+examples/*/runs/
+examples/*/ll.log
+examples/*/fifo_run.log

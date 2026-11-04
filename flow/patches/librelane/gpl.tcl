@@ -16,6 +16,18 @@ source $::env(SCRIPTS_DIR)/openroad/common/resizer.tcl
 
 read_current_odb
 
+# TR10: deterministic sparse placement for designs that ship
+# manual_place.tcl (every second row, all R0, wide horizontal gaps).  This
+# keeps the 75.6 um cell n-wells either merged or >= 12 um apart, which is
+# what the WN.S1/WN.S7 well-spacing rules require, and avoids RePlAce
+# spreading cells into the illegal 0 < gap < 12 um band.
+if { [info exists ::env(DESIGN_DIR)] && [file exists $::env(DESIGN_DIR)/manual_place.tcl] } {
+    puts "\[INFO\] Using deterministic manual placement from $::env(DESIGN_DIR)/manual_place.tcl"
+    source $::env(DESIGN_DIR)/manual_place.tcl
+    write_views
+    exit_unless_gui
+}
+
 set_dont_touch_objects
 
 set ::insts [$::block getInsts]

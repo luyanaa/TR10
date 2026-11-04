@@ -41,9 +41,18 @@ jobs:
             "$EDA_IMAGE" --skip bash -lc 'bash flow/checks/run_all.sh'
 
   librelane-klayout-lvs:
-    name: inv (LibreLane RTL-to-GDS + KLayout LVS)
+    name: ${{ matrix.design }} (LibreLane RTL-to-GDS + KLayout LVS)
     runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - design: inv
+            top: inv
+          - design: tr1um_fifo4
+            top: tr1um_fifo4
     steps:
       - name: Check out TR10 PDK
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -61,16 +70,17 @@ jobs:
             -e PDK_ROOT=/pdk_root -e PDK=TR10 \
             -e USER_ID="$(id -u)" -e GROUP_ID="$(id -g)" \
             "$EDA_IMAGE" --skip bash -lc \
-              'bash flow/checks/run_librelane_lvs.sh inv inv ci'
+              'bash flow/checks/run_librelane_lvs.sh "'${{ matrix.design }}'" "'${{ matrix.top }}'" ci'
 
       - name: Upload run logs
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: librelane-lvs-inv
+          name: librelane-lvs-${{ matrix.design }}
           if-no-files-found: warn
           retention-days: 14
           path: |
-            TR10/examples/inv/ll.log
-            TR10/examples/inv/runs/ci/**/*.log
-            TR10/examples/inv/runs/ci/**/*.rpt
+            TR10/examples/${{ matrix.design }}/ll.log
+            TR10/examples/${{ matrix.design }}/runs/ci/**/*.log
+            TR10/examples/${{ matrix.design }}/runs/ci/**/*.rpt
+            TR10/examples/${{ matrix.design }}/runs/ci/**/*.drc

@@ -215,11 +215,23 @@ def main() -> int:
         raise SystemExit(f"ERROR: physical extraction has no top {args.top}")
 
     powered_text = args.powered_netlist.read_text()
+    # Tie cells are metal-only: the layout extractor drops them and merges the
+    # tied net into the supply.  Alias the tie net to the *physical* supply
+    # port name, not a hard-coded VDD/VSS -- otherwise a design whose ground
+    # port is "GND,VSS" gets a floating "VSS" net and every RST connected to
+    # the tie fails to match.
+    power_name, ground_name = "VDD", "VSS"
+    for port in port_order(physical[top_key]):
+        parts = [part.upper() for part in re.split(r"[,|]", port) if part]
+        if parts and all(part in {"GND", "VSS"} for part in parts):
+            ground_name = translate_net(port)
+        elif parts and all(part in {"VDD", "VCC"} for part in parts):
+            power_name = translate_net(port)
     constant_aliases: dict[str, str] = {}
     for cell, _, named in verilog_instances(powered_text, {"TIEHI", "TIELO"}):
         pin = "HI" if cell == "TIEHI" else "LO"
         if pin in named:
-            constant_aliases[named[pin]] = "VDD" if cell == "TIEHI" else "VSS"
+            constant_aliases[named[pin]] = power_name if cell == "TIEHI" else ground_name
 
     common_cells = set(physical) & set(source_cdl)
     instances = verilog_instances(powered_text, common_cells)

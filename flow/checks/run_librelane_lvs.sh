@@ -30,5 +30,21 @@ cd "$DESIGN_DIR"
 librelane --pdk-root "$PDK_ROOT" --pdk "$PDK" --manual-pdk --run-tag "$TAG" config.json
 
 RUN_DIR="$DESIGN_DIR/runs/$TAG"
+
+echo "== Detailed-routing DRC assertion"
+drt_reports=( $(find "$RUN_DIR" -maxdepth 2 -path "*-openroad-detailedrouting/$TOP.drc" -print) )
+if [[ ${#drt_reports[@]} -eq 0 ]]; then
+    echo "ERROR: no DRT report found under $RUN_DIR" >&2
+    exit 1
+fi
+for report in "${drt_reports[@]}"; do
+    if [[ -s "$report" ]]; then
+        echo "ERROR: detailed routing left violations ($report)" >&2
+        cat "$report" >&2
+        exit 1
+    fi
+done
+echo "DRT: 0 violations ($report)"
+
 echo "== KLayout LVS assertion"
 bash "$PDK_REPO/flow/checks/test_klayout_lvs.sh" "$RUN_DIR" "$TOP"
