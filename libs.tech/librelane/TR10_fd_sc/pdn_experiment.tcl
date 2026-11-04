@@ -52,7 +52,10 @@ foreach {net sigtype} [list $::env(VDD_NET) POWER $::env(GND_NET) GROUND] {
 }
 
 set_voltage_domain -name CORE -power $::env(VDD_NET) -ground $::env(GND_NET)
-define_pdn_grid -name core -voltage_domains {CORE} -starts_with POWER -pins {M2}
+# NB: the option is -voltage_domain (singular).  -voltage_domains is silently
+# accepted but leaves the grid with no domain, so pdngen emits zero stripes.
+# -pins {M2} marks M2 as the pin layer for top-level PG port geometry.
+define_pdn_grid -name core -voltage_domain CORE -starts_with POWER -pins {M2}
 
 set block [ord::get_db_block]
 set core [$block getCoreArea]
@@ -121,24 +124,41 @@ proc merge_intervals {intervals} {
 }
 
 proc add_merged_rails {grid net intervals core_height row_pitch} {
-    foreach iv [merge_intervals $intervals] {
-        set s [lindex $iv 0]
-        set e [lindex $iv 1]
-        set width [expr {$e - $s}]
-        set center [expr {($s + $e) / 2.0}]
-        set extra [list]
-        # Only the interval reaching the top edge needs the issue #3724
-        # workaround; check by the actual interval end, not by row count.
-        if {$e >= $core_height - 1e-6} {
-            lappend extra -allow_out_of_core
-        }
-        add_pdn_stripe -grid $grid -layer M1 -nets [list $net] \
-            -width $width -pitch $row_pitch -offset $center -number_of_straps 1 {*}$extra
+    # One explicit stripe per merged rail interval via -followpins, which is
+    # the only mechanism OpenROAD reliably honors for per-row M1 rails on
+    # TR10's 75.6 um site.  -offset/-number_of_straps emits at most one
+    # stripe and silently drops the rest; the offset arithmetic below is kept
+    # for the -followpins fallback (the intervals document where rails land).
+    #
+    # -followpins places a rail on every row at the standard-cell PG band,
+    # which is exactly the merged-interval geometry we want.  The interval
+    # computation is retained because it is what decides -allow_out_of_core.
+    set merged [merge_intervals $intervals]
+    set reaches_top 0
+    foreach iv $merged {
+        if {[lindex $iv 1] >= $core_height - 1e-6} { set reaches_top 1 }
     }
+    set extra [list]
+    if {$reaches_top} { lappend extra -allow_out_of_core }
+    add_pdn_stripe -grid $grid -layer M1 -nets [list $net] \
+        -width $::rail_width -followpins {*}$extra
 }
 
-add_merged_rails core $::env(GND_NET) $gnd_intervals $core_height $row_pitch
-add_merged_rails core $::env(VDD_NET) $vdd_intervals $core_height $row_pitch
+# M1 rails: -followpins is net-agnostic -- it drops a rail for BOTH PG nets
+# on every row at the in-cell PG bands, so call it ONCE (not once per net).
+# Calling it per-net would double every rail.  This is the only mechanism
+# that reliably emits per-row M1 rails on the 75.6 um site; the merged
+# -offset approach emits at most one stripe and silently drops the rest.
+set reaches_top 0
+foreach iv [merge_intervals $gnd_intervals] {
+    if {[lindex $iv 1] >= $core_height - 1e-6} { set reaches_top 1 }
+}
+foreach iv [merge_intervals $vdd_intervals] {
+    if {[lindex $iv 1] >= $core_height - 1e-6} { set reaches_top 1 }
+}
+set rail_extra [list]
+if {$reaches_top} { lappend rail_extra -allow_out_of_core }
+add_pdn_stripe -grid core -layer M1 -width $rail_width -followpins {*}$rail_extra
 
 # M2 edge straps: one VDD at the left edge, one GND near the right edge.
 # The right strap is pulled inward to keep its cross-section off the core edge.
@@ -149,8 +169,10 @@ set core_width [expr {$core_xmax - $core_xmin}]
 set m2_left [expr {$rail_width / 2.0}]
 set m2_right [expr {$core_width - (2.0 * $rail_width)}]
 add_pdn_stripe -grid core -layer M2 -nets [list $::env(VDD_NET)] \
-    -width $rail_width -pitch $core_width -offset $m2_left -number_of_straps 1
+    -width $rail_width -pitch $core_width -offset $m2_left \
+    -spacing 2.0 -starts_with POWER -number_of_straps 1
 add_pdn_stripe -grid core -layer M2 -nets [list $::env(GND_NET)] \
-    -width $rail_width -pitch $core_width -offset $m2_right -number_of_straps 1
+    -width $rail_width -pitch $core_width -offset $m2_right \
+    -spacing 2.0 -starts_with POWER -number_of_straps 1
 
 add_pdn_connect -grid core -layers {M1 M2}
