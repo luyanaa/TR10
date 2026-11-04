@@ -14,8 +14,9 @@ concurrency:
 
 env:
   # Pinned tools image: LibreLane + OpenROAD + KLayout + Magic + ngspice.
-  # Bump this tag deliberately; the flows are only validated against it.
-  EDA_IMAGE: hpretl/iic-osic-tools:latest
+  # The GPL patch in flow/patches/librelane was generated from this exact
+  # image; bump the digest and regenerate the patch together.
+  EDA_IMAGE: hpretl/iic-osic-tools@sha256:306585de35d198e70ea58950f77147c86f56c698726a19afea9f1c83009557be
 
 jobs:
   pdk-checks:
