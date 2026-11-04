@@ -55,6 +55,7 @@ jobs:
           set -euo pipefail
           docker run --rm \
             -v "$GITHUB_WORKSPACE:/pdk_root" \
+            -v "$GITHUB_WORKSPACE/TR10/flow/patches/librelane/gpl.tcl:/usr/local/lib/python3.12/dist-packages/librelane/scripts/openroad/gpl.tcl:ro" \
             -w /pdk_root/TR10 \
             -e PDK_ROOT=/pdk_root -e PDK=TR10 \
             -e USER_ID="$(id -u)" -e GROUP_ID="$(id -g)" \

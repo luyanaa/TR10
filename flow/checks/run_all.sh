@@ -19,6 +19,7 @@ checks=(
   "test_liberty_spice.sh|Liberty<->SPICE INV_X1|bash"
   "test_pex_crosscheck.sh|Magic<->OpenRCX PEX|bash"
   "test_tr1um_fixtures_lvs.sh|TR-1um use-case KLayout LVS fixtures|bash"
+  "test_gpl_stability.sh|global-placement stability (pin-density workaround)|bash"
 )
 
 # Optional subset selection by script basename.
