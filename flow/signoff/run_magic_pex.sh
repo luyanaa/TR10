@@ -103,14 +103,40 @@ if [[ ! -s "$MAGIC_EXT" ]]; then
 fi
 cp "$MAGIC_EXT" "$PEX_EXT_OUT"
 
+# layout.json must describe the CURRENT GDS.  A stale, pre-existing
+# layout.json silently re-uses old geometry with a new SPICE netlist, so
+# only reuse it when the caller explicitly opts in via PEX_LAYOUT_JSON_REUSE
+# *and* the recorded source matches this GDS+top.  The manifest records the
+# GDS sha256 the JSON was generated from; a mismatch forces regeneration.
+layout_json_matches() {
+    [[ -s "$PEX_LAYOUT_JSON" ]] || return 1
+    "$PYTHON_BIN" - "$PEX_LAYOUT_JSON" "$PEX_GDS" "$PEX_TOP" <<'PY'
+import hashlib, json, sys
+jp, gds, top = sys.argv[1:4]
+try:
+    meta = json.load(open(jp))
+except Exception:
+    sys.exit(1)
+src = meta.get("source", meta)          # tolerate flat or nested provenance
+rec_sha = src.get("gds_sha256") or src.get("source_gds_sha256")
+rec_top = src.get("top") or src.get("top_cell")
+want_sha = hashlib.sha256(open(gds, "rb").read()).hexdigest()
+# If the JSON records no provenance we cannot trust reuse -> regenerate.
+sys.exit(0 if (rec_sha == want_sha and (rec_top is None or rec_top == top)) else 1)
+PY
+}
+
 if [[ -n "${PEX_LAYOUT_JSON_EXTERNAL:-}" ]]; then
     PEX_LAYOUT_JSON="$PEX_LAYOUT_JSON_EXTERNAL"
 elif [[ -n "${PEX_DEF:-}" ]]; then
     if [[ "$PEX_DEF" != /* ]]; then PEX_DEF="$PWD/$PEX_DEF"; fi
     "$PYTHON_BIN" "$LAYOUT_CONVERTER" --def "$PEX_DEF" --output "$PEX_LAYOUT_JSON"
-elif [[ -n "${PEX_LAYOUT_JSON:-}" && -s "$PEX_LAYOUT_JSON" ]]; then
-    :
+elif [[ "${PEX_LAYOUT_JSON_REUSE:-0}" == "1" && -s "${PEX_LAYOUT_JSON:-}" ]] && layout_json_matches; then
+    echo "Reusing validated layout.json: $PEX_LAYOUT_JSON"
 else
+    if [[ -s "${PEX_LAYOUT_JSON:-}" && "${PEX_LAYOUT_JSON_REUSE:-0}" != "1" ]]; then
+        echo "NOTE: regenerating layout.json (set PEX_LAYOUT_JSON_REUSE=1 to reuse)" >&2
+    fi
     "$PYTHON_BIN" "$LAYOUT_CONVERTER" --gds "$PEX_GDS" --top "$PEX_TOP" --output "$PEX_LAYOUT_JSON"
 fi
 

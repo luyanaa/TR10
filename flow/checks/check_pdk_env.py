@@ -115,6 +115,30 @@ def main() -> int:
     else:
         ok("xschemrc model path -> libs.tech/ngspice/models")
 
+    # ---- cheap content smoke: liberty + ngspice manifest parse ----------------
+    # A file can exist and still be un-loadable; a light parse catches a
+    # truncated or wrong-format artifact that the sha256 layer would miss if
+    # the hash were regenerated over a broken file.
+    lib_dir = pdk_dir / "libs.ref/TR10_fd_sc/lib"
+    libs = list(lib_dir.glob("*.lib")) if lib_dir.is_dir() else []
+    if not libs:
+        fail("no liberty files under libs.ref/TR10_fd_sc/lib")
+    for lib in libs:
+        t = lib.read_text(errors="replace")
+        if "library" not in t or "cell (" not in t:
+            fail(f"liberty {lib.name} has no library/cell structure")
+        elif "cell_rise" not in t and "cell_fall" not in t:
+            fail(f"liberty {lib.name} has no delay tables")
+    ok(f"liberty parse smoke: {len(libs)} file(s) have cells + delay tables")
+
+    mos_lib = pdk_dir / "libs.tech/ngspice/models/models_IP62_mos_os00_calibrated.lib"
+    if mos_lib.is_file():
+        t = mos_lib.read_text(errors="replace")
+        for need in (".subckt PMOS", ".subckt NMOS", "level"):
+            if need not in t:
+                fail(f"mos model lib missing '{need}'")
+        ok("ngspice mos manifest contains PMOS/NMOS subckts")
+
     # ---- voltage-marker layer sanity -----------------------------------------
     layers_drc = (pdk_dir / "libs.tech/klayout/tech/drc/00_Layers.drc").read_text()
     if re.search(r"V15_MARKER\s*=\s*input\(150", layers_drc):

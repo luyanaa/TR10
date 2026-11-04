@@ -10,6 +10,7 @@ for replacing a signoff router database.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import sys
@@ -369,7 +370,13 @@ def from_gds(path: Path, top: str) -> dict[str, Any]:
         grouped_vias,
         connections,
         set(),
-        {"kind": "gds", "path": str(path), "top": top, "dbu_to_um": dbu_to_um},
+        {
+            "kind": "gds",
+            "path": str(path),
+            "top": top,
+            "dbu_to_um": dbu_to_um,
+            "gds_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        },
         warnings,
     )
 

@@ -19,10 +19,13 @@ the parasitics stackup):
                 8.854e-6 * 3.9 * t / s  fF/um
 
 Metal thicknesses come from TR10_stackup.xml, which back-derives them from
-RPERSQ at 58 MS/m conductivity:
+RPERSQ at 58 MS/m conductivity.  NOTE the units: 1/(sigma*Rs) is in
+*meters*, so the value must be converted to um before use:
 
-    M1: t = 1 / (58e6 * 0.050) um ~= 0.3448 um
-    M2: t = 1 / (58e6 * 0.030) um ~= 0.5747 um
+    M1: t = 1 / (58e6 * 0.050) m = 3.448e-7 m = 0.3448 um
+    M2: t = 1 / (58e6 * 0.030) m = 5.747e-7 m = 0.5747 um
+
+eps0 = 8.854e-12 F/m = 8.854e-3 fF/um  (NOT 8.854e-6 -- that is fF/mm).
 
 Usage:
     python3 gen_rcx_rules.py > TR10.rcx_rules      (or with an output path)
@@ -30,11 +33,17 @@ Usage:
 import sys
 
 N_LAYERS = 2
-T = {1: 1.0 / (58e6 * 0.050), 2: 1.0 / (58e6 * 0.030)}   # um (from stackup)
+# 1/(sigma*Rs) is thickness in METERS; convert to um (*1e6) for all
+# downstream um-based tables.  Previous bug: the raw meter value was used
+# as "um", making sidewall coupling ~1e6x too small.
+T = {1: 1.0 / (58e6 * 0.050) * 1e6, 2: 1.0 / (58e6 * 0.030) * 1e6}  # um
 LEF_RPERSQ = {1: 0.050, 2: 0.030}                        # ohm/sq
 CAREA = {1: 3.5e-05, 2: 1.75e-05}                        # fF/um^2
 CFRINGE = 5.0e-05                                        # fF/um
-EPS0 = 8.854e-6                                          # fF/um
+# eps0 = 8.854e-12 F/m.  In fF/um: 8.854e-12 F/m * 1e15 fF/F * 1e-6 m/um
+# = 8.854e-3 fF/um.  Previous bug: 8.854e-6 (fF/mm) under-counted coupling
+# by another 1e3x on top of the meter/um thickness error.
+EPS0 = 8.854e-3                                          # fF/um
 EPSR = 3.9
 
 WIDTHS = {1: [1.8], 2: [3.0]}                            # routing width (um)

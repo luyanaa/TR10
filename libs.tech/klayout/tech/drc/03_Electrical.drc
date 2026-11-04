@@ -140,12 +140,29 @@ V27V_PWELL.interacting(NW - V27V_PWELL).output(
 #
 # A single via feeding a wide metal stripe is a current-crowding /
 # electromigration bottleneck: the via carries the stripe's full current.
-# Flag any V1 whose surrounding M2 is much wider than the via itself as a
-# single-via-fed wide strap. This is a screening heuristic, not a true
-# current-density sign-off (which needs a netlist + current model).
-V1_WIDE_M2 = V1 & M2.sized(3.0)          # via under a >=6um-wide M2 region
-V1_WIDE_M2.output(
-    "EMIR_VIA_CROWDING:single via under a wide M2 stripe (possible current bottleneck)"
+# Select the *wide* M2 stripes first (width >= ~6um), then flag those that
+# are fed by fewer than two vias -- a wide strap needs parallel vias to
+# share the current.  A narrow wire that is itself under a via is not the
+# target and is left out.
+#
+# NOTE: geometric screening heuristic only -- no netlist/current model, so
+# this reports a *suspect* wide-strap region, not a measured current
+# density.  Treat as an informational warning for engineering review; do
+# not raise to a blocking DRC failure without a current source.
+# Isolate the *wide* M2 stripes: M2 polygons wider than ~4um (the routing
+# minimum is 3.0um).  width(projection) <= 4.0 selects the narrow polygons;
+# subtracting them leaves the wide straps.  (width > N alone does not
+# select the parent polygon reliably, so use the complement.)
+M2_NARROW  = M2.drc(width(projection) <= 4.0).polygons
+M2_WIDE    = M2 - M2_NARROW                            # stripes wider than ~4um
+# A wide stripe is adequately fed when vias are spaced along it; a single
+# via leaves a long un-fed span.  Grow each via by the via-pitch reach
+# (~4um): the part of a wide stripe NOT within reach of any via is the
+# current-starved section.  Report wide-stripe area that is via-starved.
+V1_REACH  = V1.sized(4.0)                             # each via feeds ~4um around it
+M2_WIDE_STARVED = M2_WIDE - V1_REACH                  # wide stripe out of via reach
+M2_WIDE_STARVED.output(
+    "EMIR_VIA_CROWDING:wide M2 stripe fed by too few vias (possible current bottleneck; informational)"
 )
 # A narrow M1 segment carrying a wide M2 down is the same bottleneck in M1.
 M1_NARROW = M1.drc(width(projection) < 1.2).polygons

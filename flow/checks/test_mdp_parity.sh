@@ -22,8 +22,19 @@ set -euo pipefail
 PDK="$(cd "$(dirname "$0")/../.." && pwd)"
 WORK="$(mktemp -d)"; trap 'rm -rf "$WORK"' EXIT; cd "$WORK"
 
-KPY=/nix/store/xahxrjs30p3mw0a42bqg9ikgkikskw8m-python3-3.14.8/bin/python3
-KPP=/nix/store/xppxb7azjilh33kvgp12830bzwhsq4kq-python3.14-klayout-0.30.12/lib/python3.14/site-packages
+# KLayout python + module path: prefer env overrides, then nix-shell env,
+# then the pinned /nix/store paths as a last resort.
+KPY="${KPY:-${PYTHON_BIN:-python3}}"
+KPP="${KPP:-${KLAYOUT_PYTHONPATH:-/nix/store/xppxb7azjilh33kvgp12830bzwhsq4kq-python3.14-klayout-0.30.12/lib/python3.14/site-packages}}"
+if ! PYTHONPATH="$KPP" "$KPY" -c 'import klayout.db' 2>/dev/null; then
+  for cand in /nix/store/*python3*/bin/python3; do
+    for pp in /nix/store/*klayout*/lib/python*/site-packages; do
+      if PYTHONPATH="$pp" "$cand" -c 'import klayout.db' 2>/dev/null; then
+        KPY="$cand"; KPP="$pp"; break 2
+      fi
+    done
+  done
+fi
 
 PYTHONPATH="$KPP" "$KPY" - <<'PY'
 import klayout.db as db
@@ -47,6 +58,14 @@ box((3,2),30,40,50,55); box((11,0),38,45,42,50)
 box((140,0),30,-10,90,30)
 box((3,3),35,5,75,17)
 box((11,0),36,5,38,17); box((11,0),72,5,74,17)
+# F_RS: poly resistor on drawn GR (8/2).  W=6um, 2um-wide merged-CO head at
+# each end; Drawing extracts L = GR length - 2x(CO enclosure + 2.0um halo).
+# CO enclosure is 1.5um, so drawn L = 24.0 - 2*(1.5+2.0) = 17.0um.
+box((8,2),-60,80,-36,86)                 # GR 24 x 6
+box((11,0),-60,81.5,-58,84.5)            # head CO cluster x1
+box((11,0),-60,83.0,-58,85.0)
+box((11,0),-38,81.5,-36,84.5)            # head CO cluster x2
+box((11,0),-38,83.0,-36,85.0)
 lay.write("parity.gds")
 PY
 
@@ -70,8 +89,85 @@ for c in $classes; do
   fi
 done
 
+# ---------------------------------------------------------------------------
+# Topology stage: a count match does not prove connectivity -- the Mask RS
+# extractor once emitted F_RS with both terminals on one net while still
+# reporting F_RS count=1.  Parse each .ext, group every device's terminal nets
+# per device class, and compare the resulting partition (which terminals are
+# shorted together) plus device degree multiset between the two views.
+# ---------------------------------------------------------------------------
+topo_rc=0
+PYTHONPATH="$KPP" "$KPY" - <<'PY' || topo_rc=$?
+import re, sys
+
+def parse(path):
+    """Return {class: [(name, [terminal nets])]}, nets resolved through |."""
+    devs, pins = {}, set()
+    for line in open(path):
+        line = line.strip()
+        mp = re.match(r'\* pin (\S+)', line)
+        if mp:
+            pins.update(mp.group(1).split('|')); continue
+        m = re.match(r'(?:X?R|M|D|\d)(\$\d+)\s+(.+)', line)
+        if not m: continue
+        toks = m.group(2).split()
+        # device model = first token that is a known class name
+        model = next((t for t in toks if re.fullmatch(
+            r'PMOSE?|NMOSE?|DN|DP|F_RS|F_RR|F_CSIO', t)), None)
+        if model is None: continue
+        nets = [t for t in toks[:toks.index(model)]]
+        # canonical: merge alias nets written as A|B
+        canon = []
+        for n in nets:
+            parts = sorted(n.split('|'))
+            canon.append('|'.join(parts))
+        devs.setdefault(model, []).append((m.group(1), canon))
+    return devs, pins
+
+def topo(path):
+    devs, pins = parse(path)
+    # union-find over terminal nets so A|B aliases unify across devices
+    parent = {}
+    def find(x):
+        parent.setdefault(x, x)
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]; x = parent[x]
+        return x
+    def union(a, b):
+        ra, rb = find(a), find(b)
+        if ra != rb: parent[rb] = ra
+    for _, nets in [d for ds in devs.values() for d in ds]:
+        for n in nets:
+            for part in n.split('|'):
+                union(n, part)
+    sig = {}
+    for cls, ds in devs.items():
+        degs, shorts = [], 0
+        for _, nets in ds:
+            roots = {find(n) for n in nets}
+            degs.append(len(roots))
+            if len(roots) < len(nets): shorts += 1
+        sig[cls] = (sorted(degs), shorts)
+    return sig, len(devs and {find(n) for ds in devs.values() for _, ns in ds for n in ns})
+
+dsig, dnets = topo('draw.ext')
+msig, mnets = topo('mask.ext')
+ok = True
+for cls in sorted(set(dsig) | set(msig)):
+    d, m = dsig.get(cls), msig.get(cls)
+    if d is None or m is None:
+        print(f"TOPO {cls}: present in one view only"); ok = False; continue
+    if d != m:
+        print(f"TOPO {cls}: draw={d} mask={m}"); ok = False
+if dnets != mnets:
+    print(f"TOPO nets: draw={dnets} mask={mnets}"); ok = False
+print("TOPOLOGY: PASS" if ok else "TOPOLOGY: FAIL")
+sys.exit(0 if ok else 1)
+PY
+[ "$topo_rc" -ne 0 ] && fail=1
+
 if [ "$fail" -eq 0 ]; then
-  echo "MDP parity: all device classes match between Drawing and Mask views"
+  echo "MDP parity: device counts AND connectivity match between Drawing and Mask views"
 else
   echo "MDP parity: DIVERGENCE detected (see above)" >&2
 fi

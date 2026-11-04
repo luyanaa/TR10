@@ -32,12 +32,12 @@ The active runset accepts these controls through KLayout `-rd` variables:
 - `report`: output `.lvsdb` report, or the interactive report window when absent;
 - `run_mode=flat|deep`: flat extraction is opt-in; deep extraction is default;
 - `netlist_only`: extract and write the layout netlist without schematic compare;
-- `extracted` and `circuit`: explicit layout-netlist and schematic paths;
-- `ignore_top_ports_mismatch`: opt out of strict top-level port checking.
+- `extracted` and `circuit`: explicit layout-netlist and schematic paths.
 
-Unless `ignore_top_ports_mismatch` is set, the comparison stage requires both
-netlist comparison and `flag_missing_ports`. A clean device comparison with a
-missing or renamed top-level port is therefore not an LVS pass.
+Top-level port checking is strict and always on. The comparison stage
+requires both `compare` and a clean `check_top_ports` port match; a clean
+device comparison with a missing, extra, or renamed top-level port is not
+an LVS pass, and a failing comparison exits non-zero (fail-closed).
 
 ## Authoritative source files
 

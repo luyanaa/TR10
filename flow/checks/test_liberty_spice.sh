@@ -45,12 +45,29 @@ import re
 t=open('$LIB').read().split('cell (INV_X1)')[1]
 print(re.search(r'cell_fall\s*\(delay_template\)\s*\{\s*values\s*\(\"([^\",]+)', t).group(1))")
 
+# Simulate the *shipped* INV_X1 subckt (real AS/AD/PS/PD parasitics and the
+# characterized device sizes), not a hand-written pair.  Pin order is
+# (VDD A Y GND) per libs.ref/TR10_fd_sc/spice/TR10_fd_sc.spice.
+#
+# The shipped netlist instantiates devices as M-elements
+# (M$1 ... PMOS).  The PDK exposes PMOS/NMOS as .subckt wrappers around
+# level-49 .model devices, so an M-element cannot resolve them -- extract
+# the subckt and rewrite its M-devices to X-instances so ngspice binds them
+# to the subckt wrapper.  Only INV_X1 is pulled out; the full library
+# netlist also pulls unrelated osdi capacitance deps.
+CELL_NETLIST="$PDK/libs.ref/TR10_fd_sc/spice/TR10_fd_sc.spice"
+sed -n '/^\.SUBCKT INV_X1 /,/^\.ENDS INV_X1/p' "$CELL_NETLIST" \
+  | sed 's/^M\$/X$/' > inv_x1.spice
+if ! grep -q "INV_X1" inv_x1.spice; then
+  echo "ERROR: could not extract INV_X1 subckt from $CELL_NETLIST" >&2
+  exit 2
+fi
 cat > tb.spice <<EOF
 .include $MODELS/ip62_models_calibrated
+.include inv_x1.spice
 VDD vdd 0 5
 VIN a 0 PULSE(0 5 1n 0.5n 0.5n 20n 40n)
-Xp y a vdd vdd PMOS w=10.2u l=1u
-Xn y a 0 0 NMOS w=3.4u l=1u
+Xinv vdd a y 0 INV_X1
 CL y 0 0.1p
 .tran 0.05n 60n
 .control
@@ -63,9 +80,20 @@ print tphl
 .end
 EOF
 
-ngspice -b tb.spice -o tb.out >/dev/null 2>&1 || true
+# -n skips the user ~/.spiceinit, which may preload unrelated osdi/model
+# files and either break the deck or mask a missing TR10 dependency.
+if ! ngspice -n -b tb.spice -o tb.out >tb.log 2>&1; then
+  echo "ERROR: ngspice failed; see tb.out/tb.log" >&2
+  tail -20 tb.out tb.log >&2 || true
+  exit 2
+fi
 tplh=$(grep -oE 'tplh *= *[0-9.eE+-]+' tb.out | head -1 | grep -oE '[0-9.eE+-]+$')
 tphl=$(grep -oE 'tphl *= *[0-9.eE+-]+' tb.out | head -1 | grep -oE '[0-9.eE+-]+$')
+if [[ -z "$tplh" || -z "$tphl" ]]; then
+  echo "ERROR: ngspice produced no measurands (model/netlist broken?)" >&2
+  tail -20 tb.out >&2 || true
+  exit 2
+fi
 
 python3 - "$ref_rise" "$ref_fall" "$tplh" "$tphl" <<'PY'
 import sys

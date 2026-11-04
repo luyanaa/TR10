@@ -104,11 +104,15 @@ RRB  = RR - RRC.extents                   # RR body between contact clusters
 CSI  = CSIO & GC                          # CSIO capacitor area (gate-over-active)
 CSB  = CSIO - GC                          # CSIO bottom plate (active under field)
 
-# RS: poly resistor.  In Mask space the resistor is the part of SG marked by
-# the R implant; its terminals are the SG ends touching CO.
-RSG  = SG & R                             # poly resistor body region
-RSC  = (RSG & CO).sized(0.5).sized(-0.5)  # RS contact clusters
-RSB  = RSG - RSC.extents                  # RS body
+# RS: poly resistor.  Mask SG (8/0) is GC+GR flattened (drawn GR datatype is
+# lost in MDP).  DLRS (165/0) is the GR recognition marker MDP emits
+# (GR.sized(1.4)); layer R (12/0) is the diffusion-RR implant and never
+# covers poly, so SG & R is empty for every poly resistor.  Select the GR
+# polygons via DLRS, then split body/heads with the same 2.0um CO halo the
+# Drawing extractor uses (02_Device.drc) so mask W/L match drawing W/L.
+RSG  = SG.interacting(DLRS)                                    # original GR polygons
+RSC  = (RSG - ((RSG - (RSG & CO).sized(2.0)).sized(2.0) & RSG).merged)  # contact heads
+RSB  = RSG - RSC                                               # RS body
 
 # ---------------------------------------------------------------------------
 # Connections — same physical netlist as Drawing extraction, expressed with
@@ -131,10 +135,16 @@ connect(GN,   CO)
 connect(DP,   CO)
 connect(DN,   CO)
 connect(RRC,  CO)
-connect(RSC,  CO)
+connect(RSC,  CO)   # RS heads -> CO (keeps terminals A/B on separate nets)
 connect(BGRR, CO)
 connect(BGCS, CO)
-connect(GC,   CO)
+# GC-CO must exclude the resistor poly: on Mask, GC = SG = GC+GR flattened, so
+# an unqualified connect(GC, CO) would join the two RSC head nets through RSG
+# and short F_RS terminals A/B.  (Drawing avoids this because GR is a separate
+# datatype there.)  Gate terminals must also reference the *connected* poly
+# layer GCN, not raw GC, or KLayout reports an unconnected 'G' terminal.
+GCN = GC - RSG
+connect(GCN, CO)
 connect(CO,   M1)
 connect(M1,   V1)
 connect(V1,   M2)
@@ -149,7 +159,7 @@ connect_global(BULK, "GND")
 extract_devices(mos4("PMOS"),
                     { "SD" => (MP - GC),        "G"  => (MP & GC),
                       "W"  => (MP & GC & WN),   "tS" => (SDP),
-                      "tD" => (SDP),            "tG" => (GC),
+                      "tD" => (SDP),            "tG" => (GCN),
                       "tB" => (WN) })
 tolerance("PMOS", "W", :relative => 0.01)
 tolerance("PMOS", "L", :relative => 0.0)
@@ -157,7 +167,7 @@ tolerance("PMOS", "L", :relative => 0.0)
 extract_devices(mos4("NMOS" ),
                     { "SD" => (MN - GC),        "G"  => (MN & GC),
                       "W"  => (MN & GC & BULK), "tS" => (SDN),
-                      "tD" => (SDN),            "tG" => (GC),
+                      "tD" => (SDN),            "tG" => (GCN),
                       "tB" => (BULK) })
 tolerance("NMOS", "W", :relative => 0.01)
 tolerance("NMOS", "L", :relative => 0.0)
@@ -165,13 +175,13 @@ tolerance("NMOS", "L", :relative => 0.0)
 extract_devices(mos4("PMOS" ),
                     { "SD" => (MPE - GC),       "G"  => (MPE & GC),
                       "W"  => (MPE & GC & WN),  "tS" => (SDPE),
-                      "tD" => (SDPE),           "tG" => (GC),
+                      "tD" => (SDPE),           "tG" => (GCN),
                       "tB" => (WN) })
 
 extract_devices(mos4("NMOSE" ),
                     { "SD" => (MNE - GC),       "G"  => (MNE & GC),
                       "W"  => (MNE & GC & BULK),"tS" => (SDNE),
-                      "tD" => (SDNE),           "tG" => (GC),
+                      "tD" => (SDNE),           "tG" => (GCN),
                       "tB" => (BULK) })
 tolerance("NMOSE", "W", :relative => 0.01)
 tolerance("NMOSE", "L", :relative => 0.0)

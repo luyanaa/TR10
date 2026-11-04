@@ -38,25 +38,24 @@ def canonicalize_top_ports(nl)
   end
 end
 
-# flag_missing_ports is not a KLayout builtin in all versions; provide an
-# explicit top-level pin-name comparison so missing/mislabeled ports are
-# treated as errors instead of silently passing.
-unless respond_to?(:flag_missing_ports)
-  def flag_missing_ports
-    missing = []
-    netlist.top_circuits.each do |lc|
-      sc = schematic.circuit_by_name(lc.name)
-      next unless sc
-      lpins = lc.each_pin.map { |p| p.name }.sort
-      spins = sc.each_pin.map { |p| p.name }.sort
-      if lpins != spins
-        missing << "#{lc.name}: layout-only=#{(lpins - spins).inspect} " \
-                   "schematic-only=#{(spins - lpins).inspect}"
-      end
+# check_top_ports: explicit top-level pin-name comparison so missing or
+# mislabeled ports are treated as errors instead of silently passing.  This
+# is always defined locally (not behind respond_to?) so its boolean return
+# is trustworthy for the fail-closed exit below.
+def check_top_ports
+  missing = []
+  netlist.top_circuits.each do |lc|
+    sc = schematic.circuit_by_name(lc.name)
+    next unless sc
+    lpins = lc.each_pin.map { |p| p.name }.sort
+    spins = sc.each_pin.map { |p| p.name }.sort
+    if lpins != spins
+      missing << "#{lc.name}: layout-only=#{(lpins - spins).inspect} " \
+                 "schematic-only=#{(spins - lpins).inspect}"
     end
-    missing.each { |m| puts "PORT MISMATCH: #{m}" }
-    missing.empty?
   end
+  missing.each { |m| puts "PORT MISMATCH: #{m}" }
+  missing.empty?
 end
 
 if NET_ONLY
@@ -103,8 +102,23 @@ else
   end
   puts 'Starting TR10 LVS comparison in strict alias-preserving port mode'
   comparison_ok = compare
-  ports_ok = flag_missing_ports
-  puts(comparison_ok && ports_ok ? 'TR10_LVS PASS' : 'TR10_LVS FAIL')
+  # flag_missing_ports (the builtin) logs port errors into the LVS report but
+  # does not document a boolean return, so compute the verdict with the local
+  # comparator and call the builtin only for its log side-effect.
+  ports_ok = check_top_ports
+  flag_missing_ports if respond_to?(:flag_missing_ports)
+  lvs_pass = comparison_ok && ports_ok
+  puts(lvs_pass ? 'TR10_LVS PASS' : 'TR10_LVS FAIL')
+
+  # Fail-closed contract: deferred writers (target_netlist / report_lvs) only
+  # run if the script returns cleanly, so a failing compare would take the
+  # .extracted netlist and the .lvsdb report with it.  Write the extracted
+  # netlist immediately, then exit non-zero so automation that only checks
+  # the klayout exit status still rejects the FAIL.
+  netlist.write(Lay_file, writer, 'Created by KLayout: TR10 strict LVS')
+  exit(lvs_pass ? 0 : 1)
 end
 
-target_netlist(Lay_file, writer, 'Created by KLayout: TR10 strict LVS')
+if NET_ONLY
+  target_netlist(Lay_file, writer, 'Created by KLayout: TR10 strict LVS')
+end

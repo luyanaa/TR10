@@ -123,19 +123,20 @@ entire design hierarchy.
 
 ## Strict top-level comparison
 
-The default is strict top-level port checking. The opt-out is explicit:
+Top-level port checking is strict and always on; there is no opt-out. The
+compare stage and the fail-closed exit are:
 
 ```ruby
-if IGNORE_TOP_PORTS_MISMATCH
-  success = compare
-else
-  compare_result = compare
-  port_check_result = flag_missing_ports
-  success = compare_result && port_check_result
-end
+comparison_ok = compare
+ports_ok      = check_top_ports
+lvs_pass      = comparison_ok && ports_ok
+puts(lvs_pass ? 'TR10_LVS PASS' : 'TR10_LVS FAIL')
+netlist.write(Lay_file, writer, 'Created by KLayout: TR10 strict LVS')
+exit(lvs_pass ? 0 : 1)
 ```
 
 A successful device comparison with a missing, extra, or misnamed top-level
-port is therefore a failure unless `ignore_top_ports_mismatch` was deliberately
-set. The final result emits `INFO : Congratulations! Netlists match.` only
-when the selected comparison mode succeeds.
+port is a failure. The extracted netlist is written immediately (before the
+exit) so a failing run still leaves its `.extracted` netlist and `.lvsdb`
+report for inspection, and the non-zero exit lets automation reject the
+result without scraping the PASS/FAIL line.
