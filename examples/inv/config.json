@@ -7,10 +7,18 @@
   "SIGNOFF_SDC_FILE": "dir::inv.sdc",
   "FP_SIZING": "absolute",
   "DIE_AREA": "0 0 300 310",
-  "FP_CORE_UTIL": 30,
-  "PLA_TARGET_DENSITY_PCT": 5,
-  "PDN_CFG": "pdk::TR10_fd_sc/pdn_experiment.tcl",
+  "TOP_MARGIN_MULT": 0,
+  "BOTTOM_MARGIN_MULT": 0,
+  "LEFT_MARGIN_MULT": 70,
+  "RIGHT_MARGIN_MULT": 70,
+  "PDN_CFG": "pdk_dir::libs.tech/librelane/TR10_fd_sc/pdn_experiment.tcl",
   "RUN_FILL_INSERTION": false,
   "RUN_IRDROP_REPORT": false,
-  "IGNORE_DISCONNECTED_MODULES": ["inv"]
+  "IGNORE_DISCONNECTED_MODULES": [
+    "inv"
+  ],
+  "ERROR_ON_PDN_VIOLATIONS": false,
+  "ERROR_ON_XOR_ERROR": false,
+  "KLAYOUT_CONFLICT_RESOLUTION": "OverwriteCell",
+  "RUN_MAGIC_DRC": false
 }

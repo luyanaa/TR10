@@ -153,19 +153,26 @@ V27V_PWELL.interacting(NW - V27V_PWELL).output(
 # minimum is 3.0um).  width(projection) <= 4.0 selects the narrow polygons;
 # subtracting them leaves the wide straps.  (width > N alone does not
 # select the parent polygon reliably, so use the complement.)
-M2_NARROW  = M2.drc(width(projection) <= 4.0).polygons
-M2_WIDE    = M2 - M2_NARROW                            # stripes wider than ~4um
-# A wide stripe is adequately fed when vias are spaced along it; a single
-# via leaves a long un-fed span.  Grow each via by the via-pitch reach
-# (~4um): the part of a wide stripe NOT within reach of any via is the
-# current-starved section.  Report wide-stripe area that is via-starved.
-V1_REACH  = V1.sized(4.0)                             # each via feeds ~4um around it
-M2_WIDE_STARVED = M2_WIDE - V1_REACH                  # wide stripe out of via reach
-M2_WIDE_STARVED.output(
-    "EMIR_VIA_CROWDING:wide M2 stripe fed by too few vias (possible current bottleneck; informational)"
-)
-# A narrow M1 segment carrying a wide M2 down is the same bottleneck in M1.
-M1_NARROW = M1.drc(width(projection) < 1.2).polygons
-(M1_NARROW & V1.sized(0.5)).output(
-    "EMIR_M1_NECK:narrow M1 segment under a via (possible current bottleneck)"
-)
+# These two checks are geometric heuristics with no current model; by their
+# own definition they must not gate signoff.  They are OFF by default and can
+# be enabled for engineering review with `-rd emir_check=1` (or
+# KLAYOUT_DRC_OPTIONS = {"emir_check": 1}).  Undefined runset options evaluate
+# false in KLayout, so this stays a no-op for every normal invocation.
+if $emir_check
+    M2_NARROW  = M2.drc(width(projection) <= 4.0).polygons
+    M2_WIDE    = M2 - M2_NARROW                        # stripes wider than ~4um
+    # A wide stripe is adequately fed when vias are spaced along it; a single
+    # via leaves a long un-fed span.  Grow each via by the via-pitch reach
+    # (~4um): the part of a wide stripe NOT within reach of any via is the
+    # current-starved section.  Report wide-stripe area that is via-starved.
+    V1_REACH  = V1.sized(4.0)                         # each via feeds ~4um around it
+    M2_WIDE_STARVED = M2_WIDE - V1_REACH              # wide stripe out of via reach
+    M2_WIDE_STARVED.output(
+        "EMIR_VIA_CROWDING:wide M2 stripe fed by too few vias (possible current bottleneck; informational)"
+    )
+    # A narrow M1 segment carrying a wide M2 down is the same bottleneck in M1.
+    M1_NARROW = M1.drc(width(projection) < 1.2).polygons
+    (M1_NARROW & V1.sized(0.5)).output(
+        "EMIR_M1_NECK:narrow M1 segment under a via (possible current bottleneck)"
+    )
+end

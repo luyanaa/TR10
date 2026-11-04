@@ -1,87 +1,123 @@
-# TR10 PDN experiment A (R0 + MX), 2026-10-24.
+# TR10 PDN (M1 rails at the true cell PG bands + margin tie straps).
 #
-# Principle:
-#   - M1 is horizontal: one rail per standard-cell row, intersecting the
-#     actual in-cell VDD/GND M1 access conductors.
-#   - M2 is the ONLY vertical routing layer and must carry all signal
-#     routing, so it cannot host a pdngen power-strap mesh -- any M2 strap
-#     (even pitch 32.4 um) is a continuous placement/DPL blockage.  The
-#     routed M2 power segments in the hand-crafted reference DEF
-#     (connected_power.def) were emitted by the power router AFTER
-#     placement, not by pdngen, so they are out of scope here.
+# Why this is not the stock pdngen flow:
+#   TR10 stdcells are 75.6 um tall but their VDD pin sits at y=54.2..57.6 and
+#   GND at y=0..3.4 inside the cell -- i.e. VDD is 18 um BELOW the row top.
+#   pdngen's -followpins places rails at the row BOUNDARIES (y=1.7 and
+#   y=73.9), so the VDD rail never touches the cell VDD pin; explicit
+#   -offset stripes are dropped at PDN time as "floating" because placement
+#   has not run yet.  The only reliable route is to emit the rails directly
+#   with the odb API at the PG bands the cells actually expose.
 #
-# Mechanism:
-#   -followpins drops an M1 rail on every row at the site's canonical PG
-#   band.  It is the ONLY mechanism that emits M1 stripes on the degenerate
-#   75.6x0.1 um site -- explicit -offset M1 stripes are silently dropped by
-#   this OpenROAD build regardless of -pitch/-number_of_straps/-nets.
+# Topology:
+#   For every row, one full-width M1 rail per net at the orientation-correct
+#   band:
+#     R0 row: GND [base+0    .. base+3.4 ]  VDD [base+54.2 .. base+57.6]
+#     MX row: GND [base+72.2 .. base+75.6]  VDD [base+18.0 .. base+21.4]
+#   Cell signal pins are on M2 (A/B/Y) with V1 to M1, so full-width M1 rails
+#   do not short signals; the cell M1 OBS stops at the PG bands, which is
+#   exactly where the rails live.
 #
-# Residual gap (documented, requires a library or placer fix):
-#   TR10 cells are X/Y-symmetric, so a cell flipped vertically *within* a
-#   row (FN/MY) exposes VDD/GND on the mirror band (e.g. VDD@~19.7 instead
-#   of @~55.9).  -followpins covers only the canonical band, leaving such a
-#   cell's PG pin unconnected (LVS power-pin fragment).  Full coverage needs
-#   EITHER cells with flip-invariant PG bands (a stdcell-layout change) OR a
-#   placer constraint forbidding within-row vertical flips -- neither is
-#   expressible in pdngen.
+#   Multi-row tie: VDD rails are extended to the die's LEFT edge and GND
+#   rails to the RIGHT edge.  A vertical M2 strap in each die margin (outside
+#   the core, so it never blocks placement or signal routing) ties every rail
+#   of its net through a V1 cut at each crossing.  Rails of the opposite net
+#   stop at the core boundary, so they cannot reach the other margin strap.
+#   This requires a die margin of at least ~6 um on each side; the example
+#   config sets LEFT/RIGHT_MARGIN_MULT accordingly.
 #
-# This is NOT a production PDN.  It requires:
-#   - rows in R0 or MX orientation; cells kept to canonical-band
-#     orientations for power to connect;
-#   - VDD/GND pin names VDD/GND (the LibreLane nets are taken from
-#     VDD_NETS/GND_NETS);
-#   - in-cell M1 PG conductors intersecting the 3.4 um buses at GND y=0..3.4
-#     and VDD y=54.2..57.6 in R0 (mirrored in flipped rows);
-#   - die extending at least 1.7 um above the top row boundary when the top
-#     rail reaches the core edge (OpenROAD issue #3724).
+#   -followpins is still configured so the LibreLane pdn step's pdngen call
+#   succeeds (an empty grid makes pdngen error out); its boundary rails are
+#   same-net overlaps or harmless floating metal.
 
 source $::env(SCRIPTS_DIR)/openroad/common/set_global_connections.tcl
 set_global_connections
 
-# Synthesis exposes PG ports as SIGNAL unless the library declares pg_pin.
-# Type the logical ports before pdngen so I/O placement does not move them
-# away from the physical grid pins.
-foreach {net sigtype} [list $::env(VDD_NET) POWER $::env(GND_NET) GROUND] {
-    set term [[ord::get_db_block] findBTerm $net]
-    if {$term != "NULL"} {
-        $term setSigType $sigtype
-        $term setIoType INOUT
+proc ensure_pg_net {name sigtype} {
+    set block [ord::get_db_block]
+    set net [$block findNet $name]
+    if {$net == "NULL"} {
+        set net [odb::dbNet_create $block $name]
     }
+    $net setSpecial
+    $net setSigType $sigtype
+    return $net
 }
 
+set vdd_net [ensure_pg_net $::env(VDD_NET) POWER]
+set gnd_net [ensure_pg_net $::env(GND_NET) GROUND]
+
+# Keep pdngen happy: it must produce at least one shape/via or it exits with
+# PDN-0232/PDN-0233.  -followpins is net-agnostic and always emits rails.
 set_voltage_domain -name CORE -power $::env(VDD_NET) -ground $::env(GND_NET)
-# NB: the option is -voltage_domain (singular).  -voltage_domains is silently
-# accepted but leaves the grid bound to no domain, so pdngen emits zero
-# stripes and then segfaults PDNSim::checkConnectivity on the empty net.
 define_pdn_grid -name core -voltage_domain CORE -starts_with POWER
+add_pdn_stripe -grid core -layer M1 -width 3.4 -followpins
+
+# One special wire per net; every rail/strap/via box is added to it.  Using
+# a separate wire per box (in particular V1-only wires) makes OpenRCX crash.
+proc new_pg_swire {net} {
+    return [odb::dbSWire_create $net "ROUTED"]
+}
+proc add_sbox {sw layer_name x1 y1 x2 y2} {
+    set block [ord::get_db_block]
+    set layer [[$block getTech] findLayer $layer_name]
+    odb::dbSBox_create $sw $layer $x1 $y1 $x2 $y2 "STRIPE"
+}
 
 set block [ord::get_db_block]
 set core [$block getCoreArea]
 set die [$block getDieArea]
-set core_ymin [expr {[$core yMin] / 1000.0}]
-set core_ymax [expr {[$core yMax] / 1000.0}]
-set core_height [expr {$core_ymax - $core_ymin}]
-set die_ymax [expr {[$die yMax] / 1000.0}]
-set rail_width 3.4
-set rows [$block getRows]
-if {[llength $rows] == 0} { error "TR10 PDN experiment: no rows" }
-set site [[lindex $rows 0] getSite]
-set row_pitch [expr {[$site getHeight] / 1000.0}]
+set core_xmin [$core xMin]
+set core_xmax [$core xMax]
+set core_ymin [$core yMin]
+set core_ymax [$core yMax]
+set die_xmin [$die xMin]
+set die_xmax [$die xMax]
 
-# Top-row margin for the issue #3724 workaround: the top rail's outer edge
-# must be allowed to sit within 1.7 um of the die top.
-set top_row_boundary 0.0
-foreach row $rows {
-    set oy [expr {[lindex [$row getOrigin] 1] / 1000.0}]
-    set top [expr {$core_ymin + ($oy - $core_ymin) + $row_pitch}]
-    if {$top > $top_row_boundary} { set top_row_boundary $top }
-}
-if {$die_ymax < ($top_row_boundary + 1.7)} {
-    error "TR10 PDN experiment: die top $die_ymax < top row boundary + 1.7 ($top_row_boundary + 1.7); OpenROAD issue #3724 workaround requires die margin"
-}
-set reaches_top [expr {$top_row_boundary >= ($core_ymin + $core_height) - 1e-6}]
-set rail_extra [list]
-if {$reaches_top} { lappend rail_extra -allow_out_of_core }
+set sw_vdd [new_pg_swire $vdd_net]
+set sw_gnd [new_pg_swire $gnd_net]
 
-# One M1 rail per net per row at the site's canonical PG band.
-add_pdn_stripe -grid core -layer M1 -width $rail_width -followpins {*}$rail_extra
+set strap_w 3400
+# Tie straps live in the die margins; require room for them plus a 2 um gap.
+if {($core_xmin - $die_xmin) < 2 * $strap_w} {
+    error "TR10 PDN: left die margin too small for the VDD tie strap (need >= 6.8 um)"
+}
+if {($die_xmax - $core_xmax) < 2 * $strap_w} {
+    error "TR10 PDN: right die margin too small for the GND tie strap (need >= 6.8 um)"
+}
+
+# Band offsets from the row base, in DBU (0.001 um units).
+set GND_R0_LO 0      ; set GND_R0_HI 3400
+set VDD_R0_LO 54200  ; set VDD_R0_HI 57600
+set GND_MX_LO 72200  ; set GND_MX_HI 75600
+set VDD_MX_LO 18000  ; set VDD_MX_HI 21400
+set via_size 1400
+
+
+foreach row [$block getRows] {
+    set orient [$row getOrient]
+    set oy [lindex [$row getOrigin] 1]
+    if {[string equal $orient "R0"]} {
+        set gnd_lo [expr {$oy + $GND_R0_LO}]
+        set gnd_hi [expr {$oy + $GND_R0_HI}]
+        set vdd_lo [expr {$oy + $VDD_R0_LO}]
+        set vdd_hi [expr {$oy + $VDD_R0_HI}]
+    } elseif {[string equal $orient "MX"]} {
+        set gnd_lo [expr {$oy + $GND_MX_LO}]
+        set gnd_hi [expr {$oy + $GND_MX_HI}]
+        set vdd_lo [expr {$oy + $VDD_MX_LO}]
+        set vdd_hi [expr {$oy + $VDD_MX_HI}]
+    } else {
+        error "TR10 PDN: unsupported row orientation '$orient'"
+    }
+    # VDD rail reaches the left margin strap; GND rail reaches the right one.
+    add_sbox $sw_vdd M1 $die_xmin $vdd_lo $core_xmax $vdd_hi
+    add_sbox $sw_gnd M1 $core_xmin $gnd_lo $die_xmax $gnd_hi
+}
+
+# Margin tie straps on M1: VDD left, GND right, spanning the core height.
+# M1 is preferred-horizontal but geometry on it may be vertical (the reference
+# flow's DEF has vertical M1 tie wires).  Keeping the tie on the same layer
+# as the rails means no V1/M2 is needed, which also keeps OpenRCX happy.
+add_sbox $sw_vdd M1 $die_xmin $core_ymin [expr {$die_xmin + $strap_w}] $core_ymax
+add_sbox $sw_gnd M1 [expr {$die_xmax - $strap_w}] $core_ymin $die_xmax $core_ymax

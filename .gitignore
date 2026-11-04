@@ -223,3 +223,8 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+
+# LibreLane example run artifacts
+examples/inv/runs/
+examples/inv/ll.log
+examples/inv/core.*
