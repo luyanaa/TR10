@@ -185,6 +185,25 @@ Two gotchas cost us a debugging cycle — keep them in mind:
   can hit `DRT-0206 checkConnectivity` on the partially-ripped nets —
   resume from a `detailedplacement` ODB instead.
 
+## Provenance and license
+
+`TR10_cmp_sc` is derived from **jun1okamura/TR-1um_C4004**
+(<https://github.com/jun1okamura/TR-1um_C4004>; the same cells are also
+published as `TR-1um_Async_I2C`), licensed under Apache-2.0:
+
+```
+Copyright 2025 OpenSUSI ( https://www.opensusi.org/ )
+Copyright 2025 ISHI-KAI ( https://ishi-kai.org/ )
+Copyright 2025 TOKAI RIKA CO., LTD
+```
+
+- `libs.ref/TR10_cmp_sc/LICENSE` — the full Apache-2.0 text as distributed
+  upstream.
+- `libs.ref/TR10_cmp_sc/NOTICE` — attribution and the list of modifications
+  made for this PDK.
+- `libs.ref/TR10_cmp_sc/TR10_cmp_sc_manifest.json` — SHA-256 of every
+  distributed view (including LICENSE and NOTICE).
+
 ## How to run the reproduction
 
 ```bash

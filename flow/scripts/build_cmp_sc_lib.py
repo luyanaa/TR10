@@ -553,6 +553,8 @@ def main() -> int:
         "lib": "libs.ref/TR10_cmp_sc/lib/TR10_cmp_sc__typ_5p0V_25C.lib",
         "spice": "libs.ref/TR10_cmp_sc/spice/TR10_cmp_sc.spice",
         "verilog": "libs.ref/TR10_cmp_sc/verilog/TR10_cmp_sc.v",
+        "license": "libs.ref/TR10_cmp_sc/LICENSE",
+        "notice": "libs.ref/TR10_cmp_sc/NOTICE",
     }
     hashes = {}
     for rel in manifest.values():

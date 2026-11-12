@@ -1,0 +1,52 @@
+TR10_cmp_sc — compact 59.4 um standard cell library for the TR10 PDK.
+
+This library is derived from the TR-1um compact standard cell library
+published by jun1okamura:
+
+    jun1okamura/TR-1um_C4004
+    https://github.com/jun1okamura/TR-1um_C4004
+    (the same cells are also published as TR-1um_Async_I2C)
+
+Copyright 2025 OpenSUSI ( https://www.opensusi.org/ )
+Copyright 2025 ISHI-KAI ( https://ishi-kai.org/ )
+Copyright 2025 TOKAI RIKA CO., LTD
+
+Licensed under the Apache License, Version 2.0.
+A copy of the license is included in this directory as `LICENSE`.
+
+Source material taken from the upstream repository
+--------------------------------------------------
+    module/STDCELL/src/TR-1um_cells.lef
+    module/STDCELL/src/TR-1um_STDCELL.gds
+    module/STDCELL/src/TR-1um_tech.lef
+    module/STDCELL/src/tr1um_typ_5v0_25c.lib
+    module/STDCELL/src/cell_info.json
+    module/STDCELL/simulation/   (SPICE/CDL cell models)
+
+These files are pinned under `src/`; their provenance is recorded in the
+library manifest.
+
+Modifications made to produce TR10_cmp_sc
+-----------------------------------------
+  * library renamed to `TR10_cmp_sc`; Liberty corner renamed to
+    `TR10_cmp_sc_typ_5p0V_25C`;
+  * power pins replaced by TR10 full-width abutment rails on M1, with the
+    PDK supply names VDD/GND; TAP2/TAP3 keep the source M2 rail stubs;
+  * a TR10 technology LEF added (5.4 um site/track pitch, M1 1.8/1.4,
+    M2 3.4/2.0) and the layer names remapped to M1/V1/M2;
+  * the GDS power labels renamed vdd/vss -> VDD/GND, flip-flop debug
+    labels and the C4004 `via_1` helper cell removed, TIEHI/TIELO added;
+  * two cell-LEF views emitted (M1-pin GRT view and M2-pin DRT view with a
+    full-cell M1/V1 obstruction), plus CDL/SPICE/Verilog wrappers;
+  * `TR10_cmp_sc_v1hole.lef` and the `TAP_SOURCE_M2`/`TAP_M2_OBS` generator
+    switches are measurement variants (not part of the default views).
+
+The place-and-route flow, the two-LEF/expanded-guide recipe, the
+`add_well_bridges.py` well fill and everything under `flow/` and
+`examples/` are original work of this PDK and are not part of the
+upstream library.
+
+Integrity
+---------
+SHA-256 digests for every distributed view are recorded in
+`TR10_cmp_sc_manifest.json` next to this file.

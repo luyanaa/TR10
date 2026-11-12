@@ -8,6 +8,8 @@
  "lib": "libs.ref/TR10_cmp_sc/lib/TR10_cmp_sc__typ_5p0V_25C.lib",
  "spice": "libs.ref/TR10_cmp_sc/spice/TR10_cmp_sc.spice",
  "verilog": "libs.ref/TR10_cmp_sc/verilog/TR10_cmp_sc.v",
+ "license": "libs.ref/TR10_cmp_sc/LICENSE",
+ "notice": "libs.ref/TR10_cmp_sc/NOTICE",
  "sha256": {
   "TR10_cmp_sc.gds": "5c870aa74d3d8cf82f07b36af621e944f031a67c973df3fd3d8e3b2403a43e4b",
   "TR10_cmp_sc.lef": "0c3ffe73e8a7de1cc5f4472ef99fb1e55705ffd08fd461e51784e06237f9fa27",
@@ -16,6 +18,8 @@
   "TR10_cmp_sc.cdl": "cc9dc631246a0db24abf56bf43d51f19fafb49ce19caf56186947333108c0ab4",
   "TR10_cmp_sc__typ_5p0V_25C.lib": "16c66a7d4ca46ec311b1f2380ff3eb8ea2859d2adb0fc98cc43d3bd5e323dd7b",
   "TR10_cmp_sc.spice": "e0326a35aaba07a33cfae79c98eeabd3ee688dee3b56fe3ce151aa540b47e2bc",
-  "TR10_cmp_sc.v": "67e3b18983145bd57194dd5fb40539d26c0e97d7779b7306cd43e0989309c0bd"
+  "TR10_cmp_sc.v": "67e3b18983145bd57194dd5fb40539d26c0e97d7779b7306cd43e0989309c0bd",
+  "LICENSE": "6863509ccf02291e916f566f36f0e0ed5d218d55a0c08d8abadad6f55aa9540d",
+  "NOTICE": "aeec9f668c9a685033abec70719a1e5c4fd308a1eff45fa8b7ad36c9d8860a02"
  }
 }
