@@ -378,5 +378,15 @@
   ],
   "sites": 18.0,
   "width_um": 97.2
+ },
+ "DFF2": {
+  "cls": "CORE",
+  "height_um": 59.4,
+  "origin": [
+   0.0,
+   0.0
+  ],
+  "sites": 24.0,
+  "width_um": 129.6
  }
 }

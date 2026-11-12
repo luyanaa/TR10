@@ -100,6 +100,35 @@ def build_edff(layout: pya.Layout) -> None:
     target.copy_tree(source)
 
 
+def build_dff2(layout: pya.Layout) -> None:
+    """Two DFFs side by side with a shared CK pin (M2 strap in the CK band)."""
+    source = layout.cell("DFF")
+    if source is None:
+        return
+    target = layout.create_cell("DFF2")
+    ci = source.cell_index()
+    target.insert(pya.CellInstArray(ci, pya.Trans(pya.Vector(0, 0))))
+    target.insert(pya.CellInstArray(ci, pya.Trans(pya.Vector(64800, 0))))
+    # join the two CK pins (y 50.9..54.3); the D/Q/QB pins are at y 27.9..31.3
+    target.shapes(layout.layer(20, 0)).insert(pya.Box(6400, 50900, 74600, 54300))
+    # DFF2-level pin labels (the sub-DFF labels stay inside the DFF cells;
+    # the LVS needs the macro pins labelled on the DFF2 cell itself).
+    labels = {
+        48: [("VDD", 2700, 57100), ("GND", 2700, 2400)],
+        49: [
+            ("CK", 8100, 52700),
+            ("D0", 13500, 29700), ("Q0", 62100, 29700), ("QB0", 56700, 29700),
+            ("D1", 13500 + 64800, 29700), ("Q1", 62100 + 64800, 29700),
+            ("QB1", 56700 + 64800, 29700),
+        ],
+    }
+    for layer, texts in labels.items():
+        for text, x, y in texts:
+            target.shapes(layout.layer(layer, 0)).insert(
+                pya.Text(text, pya.Trans(pya.Vector(x, y)))
+            )
+
+
 def main() -> int:
     source = os.environ["CMP_GDS_SRC"]
     output = os.environ["CMP_GDS_OUT"]
@@ -133,6 +162,7 @@ def main() -> int:
     build_tie(layout, "TIEHI", high=True)
     build_tie(layout, "TIELO", high=False)
     build_edff(layout)
+    build_dff2(layout)
 
     layout.write(output)
     print(f"wrote {output}: {layout.cells()} cells")

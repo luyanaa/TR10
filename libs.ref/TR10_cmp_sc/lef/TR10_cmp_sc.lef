@@ -2311,4 +2311,90 @@ MACRO EDFF
         RECT 0 0 97.2 59.4 ;
   END
 END EDFF
+MACRO DFF2
+  CLASS CORE ;
+  FOREIGN DFF2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 129.6 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 129.6 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 129.6 3.7 ;
+    END
+  END GND
+  PIN CK
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 50.9 74.6 54.3 ;
+    END
+  END CK
+  PIN D0
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 27.9 15.2 31.3 ;
+    END
+  END D0
+  PIN D1
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 76.6 27.9 80 31.3 ;
+    END
+  END D1
+  PIN Q0
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 60.4 27.9 63.8 31.3 ;
+    END
+  END Q0
+  PIN Q1
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 125.2 27.9 128.6 31.3 ;
+    END
+  END Q1
+  PIN QB0
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 55 27.9 58.4 31.3 ;
+    END
+  END QB0
+  PIN QB1
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 119.8 27.9 123.2 31.3 ;
+    END
+  END QB1
+  OBS
+    LAYER M1 ;
+        RECT 0 0 129.6 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 129.6 59.4 ;
+  END
+END DFF2
 END LIBRARY

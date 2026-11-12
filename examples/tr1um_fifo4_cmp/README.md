@@ -82,6 +82,29 @@ reuse cannot provide.  The same mapping can be applied to any netlist by
 running `map_edff.py` after `Yosys.Synthesis` and resuming from
 `Checker.YosysUnmappedCells`.
 
+### DFF2 implementation (paired flops, one CK pin, verified)
+
+`DFF2` is two DFF layouts abutted with their CK pins joined by an M2 strap
+in the CK band (`y 50.9..54.3`, clear of the D/Q/QB pins at `y 27.9..31.3`).
+It has one CK pin and `D0/Q0/QB0/D1/Q1/QB1`; the area is neutral (two DFF
+footprints) but the clock pin count halves.
+
+`flow/scripts/map_dff2.py` pairs DFFs that share a clock (an odd DFF is
+left alone).  Run `runs/dff2` (760x1570, 0-gap):
+
+| check | result |
+|---|---|
+| netlist | 20 EDFF + 1 DFF2 + 1 DFF + 1 MUX2 + 1 TIEHI |
+| detailed routing | **0** |
+| KLayout DRC | **0** (1 well bridge) |
+| KLayout LVS | **PASS** |
+| die / instance area | 1,193,200 / 222,928 um2 |
+| utilization / routed WL | 19.66 % / 67,760 um |
+
+LVS detail worth keeping: the DFF2 SPICE `X` lines must use the **extracted
+DFF port order** `QB,D,Q,CK,VDD,GND`, not the CDL's `CK,D,QB,Q`; the LVS
+contract builder is positional for nested subcircuits.
+
 ### Layout optimization study (measured)
 
 **1. The 10.8 µm via gap is not required with free-direction routing.**

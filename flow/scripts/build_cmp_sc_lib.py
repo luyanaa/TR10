@@ -466,7 +466,7 @@ def build_spice() -> tuple[str, str]:
         "* Derived from TR-1um_C4004/module/STDCELL/simulation (Apache-2.0).\n"
         "* Supplies renamed vdd/vss -> VDD/GND for the TR10 PDK LVS decks.\n\n"
     )
-    body = derive_edff_spice(header + "\n".join(chunks))
+    body = derive_dff2_spice(derive_edff_spice(header + "\n".join(chunks)))
     cdl = body.replace("\nMP", "\nM").replace("\nMN", "\nM")
     return body, cdl
 
@@ -511,6 +511,20 @@ def build_verilog() -> str:
             out.append("  assign LO = 1'b0;")
         out.append("endmodule")
         out.append("")
+        if name == "DFF":
+            dports = ["VDD", "GND", "CK", "D0", "Q0", "QB0", "D1", "Q1", "QB1"]
+            ddecl = []
+            for pin in dports:
+                if pin in {"VDD", "GND"}:
+                    ddecl.append(f"  inout {pin};")
+                elif pin in {"Q0", "Q1", "QB0", "QB1"}:
+                    ddecl.append(f"  output {pin};")
+                else:
+                    ddecl.append(f"  input {pin};")
+            out.append(f"module DFF2 ({', '.join(dports)});")
+            out.extend(ddecl)
+            out.append("endmodule")
+            out.append("")
         if name == "EDFFRB":
             eports = ["VDD", "GND"] + list(signal)
             edecl = []
@@ -564,6 +578,119 @@ def derive_edff_spice(body: str) -> str:
     return body + "\n" + block
 
 
+def build_dff2_lef(signal_layer: str = "M2") -> str:
+    """Two DFFs with one shared CK pin.
+
+    The second DFF's CK pin is joined to the first with an M2 strap in the
+    CK band (y 50.9..54.3); the other DFF pins are in the y 27.9..31.3 band,
+    so the strap does not cross them.  ``signal_layer`` is M1 for the GRT
+    view and M2 for the DRT view, matching the two-LEF recipe.
+    """
+    w = 129.6
+    lines = [
+        "MACRO DFF2",
+        "  CLASS CORE ;",
+        "  FOREIGN DFF2 0 0 ;",
+        "  ORIGIN 0 0 ;",
+        f"  SIZE {fmt(w)} BY 59.4 ;",
+        "  SITE TR1UM ;",
+        "  SYMMETRY X Y ;",
+        "  PIN VDD",
+        "    DIRECTION INOUT ;",
+        "    USE POWER ;",
+        "    PORT",
+        "      LAYER M1 ;",
+        rect(0, 55.7, w, 58.3),
+        "    END",
+        "  END VDD",
+        "  PIN GND",
+        "    DIRECTION INOUT ;",
+        "    USE GROUND ;",
+        "    PORT",
+        "      LAYER M1 ;",
+        rect(0, 1.1, w, 3.7),
+        "    END",
+        "  END GND",
+    ]
+    pins = [
+        ("CK", 6.4, 74.6, 50.9, 54.3, "INPUT"),
+        ("D0", 11.8, 15.2, 27.9, 31.3, "INPUT"),
+        ("D1", 76.6, 80.0, 27.9, 31.3, "INPUT"),
+        ("Q0", 60.4, 63.8, 27.9, 31.3, "OUTPUT"),
+        ("Q1", 125.2, 128.6, 27.9, 31.3, "OUTPUT"),
+        ("QB0", 55.0, 58.4, 27.9, 31.3, "OUTPUT"),
+        ("QB1", 119.8, 123.2, 27.9, 31.3, "OUTPUT"),
+    ]
+    for name, x0, x1, y0, y1, direction in pins:
+        lines += [
+            f"  PIN {name}",
+            f"    DIRECTION {direction} ;",
+            "    USE SIGNAL ;",
+            "    PORT",
+            f"      LAYER {signal_layer} ;",
+            rect(x0, y0, x1, y1),
+            "    END",
+            f"  END {name}",
+        ]
+    lines += [
+        "  OBS",
+        "    LAYER M1 ;",
+        rect(0, 0, w, 59.4),
+        "    LAYER V1 ;",
+        rect(0, 0, w, 59.4),
+        "  END",
+        "END DFF2",
+    ]
+    return "\n".join(lines)
+
+
+def derive_dff2_liberty(text: str) -> str:
+    """Clone DFF as DFF2: two state groups, D/Q/QB pins suffixed."""
+    match = re.search(r"(?i)\bcell\s*\(\s*DFF\s*\)\s*\{", text)
+    if not match:
+        return text
+    block = balanced(text, match)
+    block = block.replace("area : 3849.1;", "area : 7698.2;")
+    block = re.sub(r"(?i)cell\s*\(\s*DFF\s*\)", "cell (DFF2)", block)
+    ff = re.search(r"(?s)ff\s*\(IQ, IQN\)\s*\{.*?\n    \}", block)
+    if ff:
+        two = (
+            'ff (IQ0, IQN0) {\n      next_state : "D0";\n      clocked_on : "CK";\n    }\n'
+            '    ff (IQ1, IQN1) {\n      next_state : "D1";\n      clocked_on : "CK";\n    }'
+        )
+        block = block.replace(ff.group(0), two)
+    for pin, p0, p1 in [("D", "D0", "D1"), ("Q", "Q0", "Q1"), ("QB", "QB0", "QB1")]:
+        mm = re.search(rf"(?i)\bpin\s*\(\s*{pin}\s*\)\s*\{{", block)
+        if not mm:
+            continue
+        blk = balanced(block, mm)
+        b0 = blk.replace(f"pin ({pin})", f"pin ({p0})")
+        if pin == "Q":
+            b0 = b0.replace('function : "IQ"', 'function : "IQ0"')
+        if pin == "QB":
+            b0 = b0.replace('function : "IQN"', 'function : "IQN0"')
+        b1 = b0.replace(f"pin ({p0})", f"pin ({p1})")
+        if pin == "Q":
+            b1 = b1.replace('function : "IQ0"', 'function : "IQ1"')
+        if pin == "QB":
+            b1 = b1.replace('function : "IQN0"', 'function : "IQN1"')
+        block = block.replace(blk, b0 + "\n    " + b1)
+    return text.rstrip().rstrip("}") + block + "\n}\n"
+
+
+def derive_dff2_spice(body: str) -> str:
+    """Add the DFF2 subckt: two DFF instances sharing CK."""
+    block = (
+        ".subckt DFF2 CK D0 QB0 Q0 D1 QB1 Q1 VDD GND\n"
+        # the LVS contract orders the DFF cell's ports QB,D,Q,CK,VDD,GND
+        # (from the extracted layout), so the positional X lines follow it
+        "X0 QB0 D0 Q0 CK VDD GND DFF\n"
+        "X1 QB1 D1 Q1 CK VDD GND DFF\n"
+        ".ends\n"
+    )
+    return body + "\n" + block
+
+
 def write_if_changed(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text)
@@ -571,11 +698,13 @@ def write_if_changed(path: Path, text: str) -> None:
 
 def main() -> int:
     write_if_changed(LIB / "techlef/TR10_tech.tlef", build_techlef())
-    write_if_changed(LIB / "lef/TR10_cmp_sc.lef", derive_edff_lef(build_lef()))
+    lef = derive_edff_lef(build_lef())
+    write_if_changed(LIB / "lef/TR10_cmp_sc.lef", lef.replace("END LIBRARY", build_dff2_lef() + "\nEND LIBRARY", 1))
     # Global-route variant: identical except signal pins live on M1 so
     # global_route spends M1 guides over the cells; detail route still uses
     # the M2-pin LEF above (mirrors the upstream C4004 two-LEF flow).
-    write_if_changed(LIB / "lef/TR10_cmp_sc_grt.lef", derive_edff_lef(build_lef(signal_layer="M1")))
+    grt = derive_edff_lef(build_lef(signal_layer="M1"))
+    write_if_changed(LIB / "lef/TR10_cmp_sc_grt.lef", grt.replace("END LIBRARY", build_dff2_lef("M1") + "\nEND LIBRARY", 1))
     # Sparse-OBS experiment variant: real upstream M1 obstruction polygons +
     # full-cell V1 blockage, so M1 may cross the cell interior on empty
     # columns.  Selected per-design via TR10_CMP_SC_SPARSE_LEF.
@@ -587,7 +716,7 @@ def main() -> int:
     globals()["PIN_HOLES"] = True
     write_if_changed(LIB / "lef/TR10_cmp_sc_v1hole.lef", build_lef())
     globals()["PIN_HOLES"] = False
-    write_if_changed(LIB / "lib/TR10_cmp_sc__typ_5p0V_25C.lib", derive_edff_liberty(build_liberty()))
+    write_if_changed(LIB / "lib/TR10_cmp_sc__typ_5p0V_25C.lib", derive_dff2_liberty(derive_edff_liberty(build_liberty())))
     spice, cdl = build_spice()
     write_if_changed(LIB / "spice/TR10_cmp_sc.spice", spice)
     write_if_changed(LIB / "cdl/TR10_cmp_sc.cdl", cdl)

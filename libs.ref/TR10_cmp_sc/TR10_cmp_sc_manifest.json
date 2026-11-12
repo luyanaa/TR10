@@ -11,14 +11,14 @@
  "license": "libs.ref/TR10_cmp_sc/LICENSE",
  "notice": "libs.ref/TR10_cmp_sc/NOTICE",
  "sha256": {
-  "TR10_cmp_sc.gds": "d199879786034f103623576190562aa2e6cb1e5982e6e1db4b10655d01a47430",
-  "TR10_cmp_sc.lef": "bce998f4d732d29f19231a759491f9e5ba6e10772b1ab83037c641f1d1316ed5",
-  "TR10_cmp_sc_grt.lef": "4c905fefc1d8bf59b399cdf7805f43409045d6349c1a1016ae4985a0dd8a4360",
+  "TR10_cmp_sc.gds": "c039fc0bd71252a88815d5605c0f73dc587ff4fcf4f03b4e5c61cf1be2bd7164",
+  "TR10_cmp_sc.lef": "5135b0f26e565bbd49c1f34e43dbcdcc4e2fb24e5f700b57ad486ed65ec6ea8a",
+  "TR10_cmp_sc_grt.lef": "10dd8739ef727895ac30e895d011ed5cb401842a05199e94c4e6b027dcedc235",
   "TR10_tech.tlef": "37a18bdbedbdbd406d0ee84baed6fc074538b7cf059478407e35855ea3c6e4d4",
-  "TR10_cmp_sc.cdl": "207aa6f415a80e2866ce9f7c61c6a2aa5d1f7ec5e2cf5546b852e8a5a2352740",
-  "TR10_cmp_sc__typ_5p0V_25C.lib": "90bafd376e01d8881a99decb270b8be2e2c0eb971598dbd3e7dbaaaea240d5cc",
-  "TR10_cmp_sc.spice": "d7b99b0f13602c79d13e0512578e77bff369e580332801c68d677576429b77e3",
-  "TR10_cmp_sc.v": "06eae24344defe817ab54384c4b90ee1bd4f169640d314cfc3672882a9bc53ad",
+  "TR10_cmp_sc.cdl": "51f45d1e7b841f580421b5a00912537da728bbfd545ffb55ab662e557540858d",
+  "TR10_cmp_sc__typ_5p0V_25C.lib": "13e1e5551c5f9c6e28bfd666cf558db42f7f7a54ba441fa45fbf517c6c0a0dc3",
+  "TR10_cmp_sc.spice": "cd216f3b8cd2b836b614bb5ea17d41474ecb82b31e787b2a0e9807c747edcc73",
+  "TR10_cmp_sc.v": "bd399eaad02fffe0e39da1c36094e2fddd4d59780e8d31fe54f4a8ae1bbbe59e",
   "LICENSE": "6863509ccf02291e916f566f36f0e0ed5d218d55a0c08d8abadad6f55aa9540d",
   "NOTICE": "aeec9f668c9a685033abec70719a1e5c4fd308a1eff45fa8b7ad36c9d8860a02"
  }

@@ -83,6 +83,18 @@ module DFF (VDD, GND, CK, D, Q, QB);
   output QB;
 endmodule
 
+module DFF2 (VDD, GND, CK, D0, Q0, QB0, D1, Q1, QB1);
+  inout VDD;
+  inout GND;
+  input CK;
+  input D0;
+  output Q0;
+  output QB0;
+  input D1;
+  output Q1;
+  output QB1;
+endmodule
+
 module DFFRB (VDD, GND, CK, D, Q, QB, RSTB);
   inout VDD;
   inout GND;
