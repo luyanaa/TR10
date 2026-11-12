@@ -2433,7 +2433,7 @@ MACRO MUXTG2
   CLASS CORE ;
   FOREIGN MUXTG2 0 0 ;
   ORIGIN 0 0 ;
-  SIZE 21.6 BY 59.4 ;
+  SIZE 54.0 BY 59.4 ;
   SITE TR1UM ;
   SYMMETRY X Y ;
   PIN VDD
@@ -2441,7 +2441,7 @@ MACRO MUXTG2
     USE POWER ;
     PORT
       LAYER M1 ;
-        RECT 0 55.7 21.6 58.3 ;
+        RECT 0 55.7 54 58.3 ;
     END
   END VDD
   PIN GND
@@ -2449,45 +2449,49 @@ MACRO MUXTG2
     USE GROUND ;
     PORT
       LAYER M1 ;
-        RECT 0 1.1 21.6 3.7 ;
+        RECT 0 1.1 54 3.7 ;
     END
   END GND
   PIN A
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER M1 ;
-        RECT 1 25.1 4.4 31.3 ;
+      LAYER M2 ;
+        RECT 13.5 27.9 16.9 31.3 ;
     END
   END A
   PIN Y
     DIRECTION OUTPUT ;
     USE SIGNAL ;
     PORT
-      LAYER M1 ;
-        RECT 9.8 27.9 12.4 31.3 ;
+      LAYER M2 ;
+        RECT 22 27.9 25.4 31.3 ;
     END
   END Y
   PIN B
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER M1 ;
-        RECT 13.8 27.9 16.4 31.3 ;
+      LAYER M2 ;
+        RECT 32.1 27.9 35.5 31.3 ;
     END
   END B
   PIN S
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER M1 ;
-        RECT 6 43.1 11.2 46.5 ;
+      LAYER M2 ;
+        RECT 38.2 27.9 41.6 31.3 ;
     END
   END S
   OBS
     LAYER M1 ;
-        RECT 17.8 13.8 19.6 52.8 ;
-        RECT 5.8 47.8 8.4 52.8 ;
+        RECT 0 0 54 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 54 59.4 ;
+    LAYER M2 ;
+        RECT 9.8 33 13.4 49.2 ;
+        RECT 34.8 33 40.2 54 ;
   END
 END MUXTG2
 END LIBRARY

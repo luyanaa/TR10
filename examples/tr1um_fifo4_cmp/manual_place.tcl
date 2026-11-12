@@ -132,7 +132,10 @@ for {set r 0} {$r < $n_rows && $index < $total} {incr r} {
     # Fill this row with up to per_row cells, in GPL (y, x) order.  If the
     # next cell in that order no longer fits, it simply moves to the next
     # row instead of aborting — cell widths vary 2x across the library.
-    while {$placed < $per_row && $index < $total} {
+    # No fixed per-row cell count: keep filling until the next cell no
+    # longer fits.  With 54 um MUXTG2 the count cap left one cell unplaced
+    # even though the seven rows have ample total width.
+    while {$index < $total} {
         set inst [lindex $sorted $index]
         set width [[$inst getMaster] getWidth]
         # Step over any tap cell that collides with [x, x+width).
@@ -141,6 +144,13 @@ for {set r 0} {$r < $n_rows && $index < $total} {incr r} {
             if {$oby == $y && $x < $oxmax && [expr {$x + $width}] > $oxmin} {
                 set x $oxmax
             }
+        }
+        # The PCell MUXTG2 keeps its leftmost M1 at x=0.1 and the INV_X1
+        # cell to its left keeps signal M1 at width-1.0; abutting them leaves
+        # a 1.1 um M1 gap (rule 1.4).  Give the wide TG cell one extra site
+        # of breathing room instead of deforming the cell.
+        if {[string match "MUXTG2" [[$inst getMaster] getName]]} {
+            set x [expr {$x + 5400}]
         }
         if {[expr {$x + $width}] > $x_max} { break }
         set px [expr {int(ceil(($x - 10800) / 5400.0)) * 5400 + 10800}]

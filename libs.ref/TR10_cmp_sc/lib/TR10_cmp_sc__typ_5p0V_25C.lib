@@ -4885,7 +4885,7 @@ cell (DFF2) {
     }
   }
 cell (MUXTG2) {
-    area : 1283.04;
+    area : 3207.6;
     pin (A) {
       direction : input;
       capacitance : 36.327;

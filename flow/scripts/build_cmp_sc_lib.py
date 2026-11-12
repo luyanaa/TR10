@@ -751,40 +751,47 @@ def build_feedthru_spice() -> str:
     return ".subckt FEEDTHRU A VDD GND\n.ends\n"
 
 
-def build_tgmux_lef(signal_layer: str = "M1") -> str:
-    """Experimental 6T transmission-gate MUX core (21.6 x 59.4).
-
-    All signal pins are on M1: the original A pad, the A/Y/B M1 straps and the
-    new S pad.  A V1/M2 pin set was attempted, but the 4.0 um strap pitch and
-    the V1-CO/M1 enclosure rules leave no clean landing pad for B; the M1 pin
-    set is DRC-clean and LVS-extractable, while the detailed router still
-    reports DRT-0073 for the in-cell B pin.  A new pin-access layout is the
-    next step before this macro can be used by the flow.
-    """
+def build_tgmux_lef(signal_layer: str = "M2") -> str:
+    """PCell-based 6T TG MUX2 (54.0 x 59.4, M2 signal pins)."""
+    # Keep the M1 (global-route) Y pin identical to the M2 (detail-route)
+    # pin.  The old 19.0..30.1 M1 pin made global_route approach Y from the
+    # lower-left, which forced a Y wire 0.7 um above the internal n4 strap.
+    y_pin = (22.0, 27.9, 25.4, 31.3)
     lines = [
         "MACRO MUXTG2",
         "  CLASS CORE ;",
         "  FOREIGN MUXTG2 0 0 ;",
         "  ORIGIN 0 0 ;",
-        "  SIZE 21.6 BY 59.4 ;",
+        "  SIZE 54.0 BY 59.4 ;",
         "  SITE TR1UM ;",
         "  SYMMETRY X Y ;",
     ]
+    s_rect = (38.2, 27.9, 41.6, 31.3)
+    a_rect = (13.5, 27.9, 16.9, 31.3)
     pins = [
-        ("VDD", "INOUT", "POWER", 0.0, 55.7, 21.6, 58.3),
-        ("GND", "INOUT", "GROUND", 0.0, 1.1, 21.6, 3.7),
-        ("A", "INPUT", "SIGNAL", 1.0, 25.1, 4.4, 31.3),
-        ("Y", "OUTPUT", "SIGNAL", 9.8, 27.9, 12.4, 31.3),
-        ("B", "INPUT", "SIGNAL", 13.8, 27.9, 16.4, 31.3),
-        ("S", "INPUT", "SIGNAL", 6.0, 43.1, 11.2, 46.5),
+        ("VDD", "INOUT", "POWER", 0.0, 55.7, 54.0, 58.3),
+        ("GND", "INOUT", "GROUND", 0.0, 1.1, 54.0, 3.7),
+        ("A", "INPUT", "SIGNAL", *a_rect),
+        ("Y", "OUTPUT", "SIGNAL", *y_pin),
+        ("B", "INPUT", "SIGNAL", 32.1, 27.9, 35.5, 31.3),
+        ("S", "INPUT", "SIGNAL", *s_rect),
     ]
+    # Local M2 keep-outs for the two internal straps.  Detail routing may
+    # still cross the cell at the pin band (y27.9..31.3), but must not run
+    # parallel at the 0.6/1.4 um spacing seen in the first flow run.
+    obs_m2 = [
+        (9.8, 33.0, 13.4, 49.2),
+        (34.8, 33.0, 40.2, 54.0),
+    ]
+
     for name, direction, use, x0, y0, x1, y1 in pins:
+        layer = "M1" if name in {"VDD", "GND"} else signal_layer
         lines += [
             f"  PIN {name}",
             f"    DIRECTION {direction} ;",
             f"    USE {use} ;",
             "    PORT",
-            "      LAYER M1 ;",
+            f"      LAYER {layer} ;",
             f"        RECT {fmt(x0)} {fmt(y0)} {fmt(x1)} {fmt(y1)} ;",
             "    END",
             f"  END {name}",
@@ -792,8 +799,13 @@ def build_tgmux_lef(signal_layer: str = "M1") -> str:
     lines += [
         "  OBS",
         "    LAYER M1 ;",
-        rect(17.8, 13.8, 19.6, 52.8),
-        rect(5.8, 47.8, 8.4, 52.8),
+        rect(0, 0, 54.0, 59.4),
+        "    LAYER V1 ;",
+        rect(0, 0, 54.0, 59.4),
+        "    LAYER M2 ;",
+    ]
+    lines += [rect(*r) for r in obs_m2]
+    lines += [
         "  END",
         "END MUXTG2",
     ]
@@ -806,7 +818,7 @@ def derive_tgmux_liberty(text: str) -> str:
         return text
     block = balanced(text, match)
     block = re.sub(r"(?i)cell\s*\(\s*MUX2\s*\)", "cell (MUXTG2)", block)
-    block = block.replace("area : 1924.6;", "area : 1283.04;")
+    block = block.replace("area : 1924.6;", "area : 3207.6;")
     return text.rstrip().rstrip("}") + block + "\n}\n"
 
 

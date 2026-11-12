@@ -109,11 +109,17 @@ contract builder is positional for nested subcircuits.
 
 The source `MUX2` is a 12T gate-input mux: its middle row already contains
 two transmission gates (`MP3/MN2`, `MP4/MN3`) and the S inverter
-(`MP0/MN5`); the other six devices are the A/B input inverters and the output
-inverter.  `build_cmp_sc_gds.py` derives a **21.6 um** `MUXTG2` by trimming
-the middle active to the shared S/D and reusing the 6T core.  The original S
-pin falls outside 21.6 um, so the cell gets a new S GC pad/CO/M1 pad, an n4
-M1 bridge and an A-pin bridge; all four signal pins are on M1.
+(`MP0/MN5`).  Two implementations were evaluated:
+
+* **21.6 um MUX2 surgery** — KLayout DRC **0**, cell-level LVS **PASS**
+  (A, B, S, Y, VDD, GND; 6 devices), but the 4.0 um M1 strap pitch leaves
+  no legal B landing pad: detail routing aborts with
+  `[DRT-0073] No access point for _150_/B`.  The 27.0/32.4 um pin-ring
+  variants also failed cell-level DRC/LVS and were rejected.
+* **54.0 x 59.4 um PCell 6T cell** — `flow/scripts/build_tgmux_pcell.py`
+  instantiates `fet_n`/`fet_p`, moves each gate pad to a 5.4 x 3.4 M1 pad
+  with CO/V1 side by side, routes the internal S/n4 distribution on M2 and
+  puts A/B/S/Y on M2 pins.  This is now the library `MUXTG2` view.
 
 Cell-level checks (`libs.ref/TR10_cmp_sc/gds`, top `MUXTG2`):
 
@@ -122,36 +128,46 @@ Cell-level checks (`libs.ref/TR10_cmp_sc/gds`, top `MUXTG2`):
 | KLayout DRC | **0** |
 | KLayout LVS extraction | **A, B, S, Y, VDD, GND**; 6 devices |
 | extracted netlist | `MP0/MN5` inverter + `MP3/MN2` + `MP4/MN3` TG pairs |
-| footprint | 21.6 x 59.4 um (33 % smaller than MUX2) |
+| footprint | 54.0 x 59.4 um (10 sites) |
+| LEF | M2 signal pins A/Y/B/S, M1 VDD/GND, local M2 keep-outs |
 
-**PCell-based from-scratch attempt (WIP):** `flow/scripts/build_tgmux_pcell.py`
-instantiates `fet_n`/`fet_p`, relocates the gate pads to 5.4x3.4 M1 pads with
-CO/V1 side-by-side, and routes S/n4 on M2.  The first 54 um version reduces
-KLayout DRC from 34 to 33 items after a region-subtraction erase of the
-original PCell gate pad; the extraction now separates S from the merged
-A/B/S/Y net, but A/B/Y are still merged and the subtraction also removed the
-PCell gate CO/poly, leaving CO.Z1/GC.EN items.  It is not used by the flow yet.
+Flow run `runs/tgmux` (FIFO mapped to 20 EDFF + 1 DFF2 + 1 DFF + 1 MUXTG2
++ 1 TIEHI):
 
-**Blocker (not flow-usable yet):** the detailed router reports
-`[DRT-0073] No access point for _150_/B`.  The 4.0 um M1 strap pitch
-(A 5.8..8.4, Y 9.8..12.4, B 13.8..16.4) leaves only 1.4 um gaps, so a
-3.4 um M1 landing pad plus a 1.4 um V1 cannot be placed on the B/Y straps
-without violating V1-CO separation or M1 enclosure.
+| check | result |
+|---|---|
+| DRT | **0** (`runs/tgmux/419` / `131`) |
+| KLayout DRC | **0** after 3 well bridges (`429-klayout-drc`) |
+| KLayout LVS | **FAIL** |
 
-Two dedicated pin-ring variants were measured and rejected:
+The flow-level LVS failure is real, not a contract-builder issue.  The
+KLayout extractor promotes the PCell's internal n4 node to a port (`$3`)
+and the top-level instance becomes:
 
-* **27.0 um (5 sites)**: B/Y pads moved to the free band y43..47, M2 pins
-  added.  The B terminal CO (y17.4) plus the bottom n4 M1 (y11.2..13.8)
-  leaves only 3.6 um vertically; V1(1.4) + 2x M1 enclosure(1.0) +
-  V1-CO(1.0) needs 4.4 um.  The variant still shorts `VDD|Y` and loses S.
-* **32.4 um (6 sites)**: S network trimmed to x19.4 with a new GC island/CO
-  at x20.2, B/Y pads in the signal band, n4 bridge at x27.4.  The old
-  output-inverter M1 remnants still short S to GND/VDD (12..15 DRC items).
+```
+.SUBCKT MUXTG2 S $3 A Y B VDD GND
+X$1 $1 $1 $1 $1 $1 VDD GND|VSS MUXTG2
+```
 
-The **21.6 um core is the validated cell-level result**; a from-scratch
-layout that moves the B terminal CO and the bottom n4 strap (not MUX2
-surgery) is required for DRT.  `flow/scripts/map_tgmux.py` is ready to
-rename remaining `MUX2` instances once the cell is flow-clean.
+i.e. S, n4, A, Y and B are all on one net.  The shorting path is the
+top-level `_028_` B wire, which runs horizontally at y=18.9 um across the
+MUXTG2 footprint and crosses the internal n4 M2 vertical at x=6.5..11.2.
+DRT does not see that internal M2 strap as a pin or obstruction, and the
+expanded M1/M2 guide deliberately lets detail routing enter the cell
+interior, so the wire lands on it.
+
+Attempts to solve this with LEF-only keep-outs failed: blocking the n4
+crossing also blocks the only A-pin access corridor, and the full n4 OBS
+made DRT abort with `[DRT-0073] No access point for _150_/A`.  Moving the
+n4 vertical to M1 fixed that wall, but the n4 M2 horizontal at y=40.8..45
+is still a wall crossed by the A/B routing.
+
+The **next required change is a cell-level redesign**: route the whole n4
+net (vertical and both horizontal segments) on M1, or re-place the n4 gate
+distribution so no M2 wall crosses the expanded-guide channels.  The
+21.6 um surgical cell and the 54.0 um PCell are both preserved; the PCell
+is the current library view and the 21.6 um cell remains the cell-level
+reference.  `flow/scripts/map_tgmux.py` maps `MUX2` to `MUXTG2`.
 
 ### FEEDTHRU (one-site physical cell)
 

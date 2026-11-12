@@ -267,7 +267,11 @@ def main() -> int:
     build_edff(layout)
     build_dff2(layout)
     build_feedthru(layout)
-    build_tgmux(layout)
+    pcell_gds = os.environ.get("TGMUX_PCELL_GDS")
+    if pcell_gds:
+        layout.read(pcell_gds)
+    else:
+        build_tgmux(layout)
 
     layout.write(output)
     print(f"wrote {output}: {layout.cells()} cells")
