@@ -124,6 +124,13 @@ Cell-level checks (`libs.ref/TR10_cmp_sc/gds`, top `MUXTG2`):
 | extracted netlist | `MP0/MN5` inverter + `MP3/MN2` + `MP4/MN3` TG pairs |
 | footprint | 21.6 x 59.4 um (33 % smaller than MUX2) |
 
+**PCell-based from-scratch attempt (WIP):** `flow/scripts/build_tgmux_pcell.py`
+instantiates `fet_n`/`fet_p`, relocates the gate pads to 5.4x3.4 M1 pads with
+CO/V1 side-by-side, and routes S/n4 on M2.  The first 54 um version reduces
+KLayout DRC from 34 to 17 items, but the extraction still merges A/B/S/Y and
+the V1/M2 alignment and M1/M2 spacing are not clean; it is not used by the
+flow yet.
+
 **Blocker (not flow-usable yet):** the detailed router reports
 `[DRT-0073] No access point for _150_/B`.  The 4.0 um M1 strap pitch
 (A 5.8..8.4, Y 9.8..12.4, B 13.8..16.4) leaves only 1.4 um gaps, so a
