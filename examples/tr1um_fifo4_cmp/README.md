@@ -127,12 +127,23 @@ Cell-level checks (`libs.ref/TR10_cmp_sc/gds`, top `MUXTG2`):
 **Blocker (not flow-usable yet):** the detailed router reports
 `[DRT-0073] No access point for _150_/B`.  The 4.0 um M1 strap pitch
 (A 5.8..8.4, Y 9.8..12.4, B 13.8..16.4) leaves only 1.4 um gaps, so a
-3.4 um M1 landing pad plus a 1.4 um V1 cannot be placed without violating
-V1-CO separation or M1 enclosure.  A 32.4 um variant with M2 pins was also
-prototyped; it reintroduced S/n4 shorts from the original output-inverter
-wiring.  A **new layout with a dedicated pin-access plan** (not MUX2 surgery)
-is the remaining work.  `flow/scripts/map_tgmux.py` is ready to rename
-remaining `MUX2` instances once the cell is flow-clean.
+3.4 um M1 landing pad plus a 1.4 um V1 cannot be placed on the B/Y straps
+without violating V1-CO separation or M1 enclosure.
+
+Two dedicated pin-ring variants were measured and rejected:
+
+* **27.0 um (5 sites)**: B/Y pads moved to the free band y43..47, M2 pins
+  added.  The B terminal CO (y17.4) plus the bottom n4 M1 (y11.2..13.8)
+  leaves only 3.6 um vertically; V1(1.4) + 2x M1 enclosure(1.0) +
+  V1-CO(1.0) needs 4.4 um.  The variant still shorts `VDD|Y` and loses S.
+* **32.4 um (6 sites)**: S network trimmed to x19.4 with a new GC island/CO
+  at x20.2, B/Y pads in the signal band, n4 bridge at x27.4.  The old
+  output-inverter M1 remnants still short S to GND/VDD (12..15 DRC items).
+
+The **21.6 um core is the validated cell-level result**; a from-scratch
+layout that moves the B terminal CO and the bottom n4 strap (not MUX2
+surgery) is required for DRT.  `flow/scripts/map_tgmux.py` is ready to
+rename remaining `MUX2` instances once the cell is flow-clean.
 
 ### FEEDTHRU (one-site physical cell)
 
@@ -144,12 +155,21 @@ be used to carry a net through a row or to keep the well continuous.
 |---|---|
 | KLayout DRC (top `FEEDTHRU`) | **0** |
 | views | GDS + LEF (DRT/GRT) + Liberty + SPICE/CDL + Verilog + `cell_info.json` |
-| LVS | vacuous: the extractor emits no top cell for a device-less cell; there is nothing to compare |
+| flow-level LVS | **PASS** via `FEEDTHRU_TEST` (INV_X1 + FEEDTHRU) |
 | footprint | 5.4 x 59.4 um (one site) |
 
-For a flow-level LVS assertion the cell must be instantiated in a test
-design (the extractor drops empty cells); the DRC and the pin/label views are
-already in the library.
+The device-less cell alone produces no top cell in the KLayout extractor, so
+the flow-level check uses a small harness: one `INV_X1` drives the
+feedthrough A strap, with top pins A/Y/VDD/GND/VSS.  Reproduce with:
+
+```bash
+mkdir -p /tmp/feedthru_lvs/final/gds /tmp/feedthru_lvs/final/pnl
+klayout -b -r flow/scripts/build_feedthru_test.py \
+    -rd lib_path=$PWD/libs.ref/TR10_cmp_sc/gds/TR10_cmp_sc.gds \
+    -rd out_path=/tmp/feedthru_lvs/final/gds/FEEDTHRU_TEST.gds
+cp flow/checks/feedthru_test/FEEDTHRU_TEST.pnl.v /tmp/feedthru_lvs/final/pnl/
+bash flow/checks/test_klayout_lvs.sh /tmp/feedthru_lvs FEEDTHRU_TEST TR10_cmp_sc
+```
 
 ### Layout optimization study (measured)
 
