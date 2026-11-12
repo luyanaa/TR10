@@ -94,7 +94,20 @@ it is not used.
 | routed wirelength | 79,173 µm | 64,818 µm | **−18.1 %** |
 | instance area | 221,645 µm² | 212,664 µm² | −4 % (fewer TAPs) |
 
-**4. What is left (cell-library work, quantified).**
+**4. ABC area-first (measured, not adopted).**
+
+| strategy | synthesis cell area | placed instance area | routed WL |
+|---|---|---|---|
+| `AREA 0` (default) | 185,719.5 µm² | 212,664 µm² | 64,818 µm |
+| `AREA 3` (ORFS area script) | 195,342.6 (+5.2 %) | — | — |
+| `AREA 0` + `SYNTH_ABC_AREA_USE_NF` (`&nf -R 1000`) | **183,794.9 (−1.0 %)** | 222,287 (+4.5 %) | 67,423 (+4.0 %) |
+
+The `NF` mapper shrinks the synthesis netlist by 1 % but remaps it to 107
+cells instead of 96; the extra buffers make the *placed* area and wirelength
+worse, so the flag is documented but left `false`.  `SYNTH_STRATEGY` can be
+switched per run.
+
+**5. What is left (cell-library work, quantified).**
 
 * **EDFF / DFF2.**  DFF 23 + MUX2 20 dominate.  The *existing* `EDFFRB` is
   97.2 µm = DFF 64.8 + MUX2 32.4, so mapping it saves only the 10.8 µm gap
