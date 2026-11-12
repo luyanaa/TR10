@@ -55,9 +55,15 @@ legal M1 track exists inside it.  An eroded-free-space analysis over all
 | `TR10_cmp_sc_v1hole.lef` | 88 | 66 | 36 | **36** |
 
 Both runs use the same placement, guide and seeds.  Neither run has a
-single M1 marker in the pin band (y 27..32), i.e. the router never used a
-hole.  The residual floor is **not** cell pin access: it is M1 channel
-shorts near the TAP column plus the TAP M2 shorts above.
+single M1 marker in the pin band (y 27..32).  A 3-iteration probe that
+dumps the routed DEF confirms the mechanism: of **591 routed
+`M1M2_V1` via instances, only 2 (0.3 %) land inside a logic-cell
+footprint** — both exactly on a pin centre.  The holes are usable but
+irrelevant: the router reaches every other pin from the M2 side (the pin
+band is directly open to the 178 µm channels between rows), so opening M1
+landing pads saves nothing and the extra M1 geometry only perturbs the
+channel routes.  The residual floor is **not** cell pin access: it is M1
+channel shorts near the TAP column plus the TAP M2 shorts above.
 
 ## Previous status: 69 DRC with the long-I/O-pin bug
 
