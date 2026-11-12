@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Map DFF + enable-MUX2 pairs in a synthesised netlist to the EDFF cell.
+"""Map DFF + enable-MUX (MUX2 or MUXTG2) pairs in a synthesised netlist to the EDFF cell.
 
 The TR10_cmp_sc ``EDFF`` macro is the source ``EDFFRB`` layout with the
 active-low reset gate tied to VDD inside the cell (M2/V1/M1 strap).  It is a
@@ -30,7 +30,7 @@ from __future__ import annotations
 import re
 import sys
 
-INST_RE = re.compile(r"(?ms)^  (DFF|MUX2) (\S+) \(\n(.*?)\);\n")
+INST_RE = re.compile(r"(?ms)^  (DFF|MUX2|MUXTG2) (\S+) \(\n(.*?)\);\n")
 PIN_RE = re.compile(r"\.(\w+)\s*\(\s*([^)]*?)\s*\)")
 
 
@@ -58,7 +58,7 @@ def main() -> int:
 
     insts = parse(text)
     dffs = {name: (pins, span) for name, (cell, pins, span) in insts.items() if cell == "DFF"}
-    muxes = {name: (pins, span) for name, (cell, pins, span) in insts.items() if cell == "MUX2"}
+    muxes = {name: (pins, span) for name, (cell, pins, span) in insts.items() if cell in {"MUX2", "MUXTG2"}}
 
     # index the DFFs by their D and Q nets
     by_d = {pins.get("D"): (name, pins, span) for name, (pins, span) in dffs.items()}
@@ -120,7 +120,7 @@ def main() -> int:
         )
 
     open(dst, "w", encoding="utf8").write(text)
-    print(f"EDFF: replaced {len(replacements)} DFF+MUX2 pair(s) -> {dst}")
+    print(f"EDFF: replaced {len(replacements)} DFF+MUX pair(s) -> {dst}")
     return 0
 
 

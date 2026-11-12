@@ -129,6 +129,109 @@ def build_dff2(layout: pya.Layout) -> None:
             )
 
 
+def build_feedthru(layout: pya.Layout) -> None:
+    """One-site feedthrough: M1 rails + N-well + a full-height M2 strap."""
+    target = layout.create_cell("FEEDTHRU")
+    wn = layout.layer(140, 0)
+    m1 = layout.layer(13, 0)
+    m2 = layout.layer(20, 0)
+    target.shapes(wn).insert(pya.Box(-6300, 29600, 11700, 63400))
+    target.shapes(m1).insert(pya.Box(0, 1100, 5400, 3700))
+    target.shapes(m1).insert(pya.Box(0, 55700, 5400, 58300))
+    target.shapes(m2).insert(pya.Box(1000, 0, 4400, 59400))
+    for layer, text, x, y in [
+        (48, "VDD", 2700, 57100),
+        (48, "GND", 2700, 2400),
+        (49, "A", 2700, 29700),
+    ]:
+        target.shapes(layout.layer(layer, 0)).insert(
+            pya.Text(text, pya.Trans(pya.Vector(x, y)))
+        )
+
+
+def build_tgmux(layout: pya.Layout) -> None:
+    """6T transmission-gate MUX core (experimental, 21.6 um).
+
+    The MUX2 middle row contains two transmission gates (MP3/MN2 and MP4/MN3)
+    plus the S inverter (MP0/MN5); the other six devices are input/output
+    inverters.  This keeps only the 6T core and trims the middle active to the
+    shared S/D at x 5.8..16.4.  The original S pin is outside the 21.6 um
+    cell, so a new S GC pad/CO/M1 pad is added; an n4 M1 bridge and an A pin
+    bridge complete the connectivity.  All signal pins are on M1.
+
+    The cell is DRC-clean and extracts the intended 6T netlist, but the
+    detailed router cannot access the in-cell M1 B pin (DRT-0073); a new
+    pin-access layout is required before it can be used in the flow.
+    """
+    src = layout.cell("MUX2")
+    if src is None:
+        return
+    dst = layout.create_cell("MUXTG2")
+    W = 21600
+    ap = layout.layer(3, 1); an = layout.layer(3, 2); gc = layout.layer(8, 1)
+    co = layout.layer(11, 0); m1 = layout.layer(13, 0); nw = layout.layer(140, 0)
+    lbl = layout.layer(48, 0); bd = layout.layer(235, 0)
+
+    def reg(layer, datatype):
+        return pya.Region(src.begin_shapes_rec(layout.layer(layer, datatype)))
+
+    for layer, datatype in ((3, 1), (3, 2)):
+        r = reg(layer, datatype)
+        mid = r & pya.Region(pya.Box(0, 15000, W, 43000))
+        tb = r - pya.Region(pya.Box(0, 15000, W, 43000))
+        mid &= pya.Region(pya.Box(5800, 15000, 16400, 43000))
+        tb &= pya.Region(pya.Box(0, 0, W, 59400))
+        dst.shapes(layout.layer(layer, datatype)).insert(mid + tb)
+
+    keep = pya.Region()
+    for poly in reg(8, 1).each():
+        b = poly.bbox()
+        if 1000 <= b.left and b.right <= 6000 and b.bottom < 16000 and b.top > 42000:
+            continue
+        if 16000 <= b.left and b.right <= 20000 and b.bottom < 16000 and b.top > 42000:
+            continue
+        if b.left >= 12000 and b.right > 24000:
+            continue
+        if 9800 <= b.left and b.right <= 12400 and b.bottom >= 46600 and b.top <= 49200:
+            continue
+        keep.insert(poly)
+    keep &= pya.Region(pya.Box(0, 0, 20800, 59400))
+    dst.shapes(gc).insert(keep)
+
+    for layer in (co, m1):
+        dst.shapes(layer).insert(pya.Region(src.begin_shapes_rec(layer)) & pya.Region(pya.Box(0, 0, W, 59400)))
+
+    co_reg = pya.Region(dst.shapes(co))
+    allowed = pya.Region(dst.shapes(ap)) + pya.Region(dst.shapes(an)) + pya.Region(dst.shapes(gc))
+    co_reg -= (co_reg - allowed)
+    dst.shapes(co).clear(); dst.shapes(co).insert(co_reg)
+
+    m1_reg = pya.Region(dst.shapes(m1))
+    for x0, y0, x1, y1 in (
+        (9800, 41700, 12400, 49200),
+        (17000, 25100, 21600, 27700),
+        (17800, 36700, 21600, 41700),
+        (17800, 16600, 21600, 19300),
+        (5800, 47800, 8400, 48200),
+    ):
+        m1_reg -= pya.Region(pya.Box(x0, y0, x1, y1))
+    m1_reg += pya.Region(pya.Box(16200, 51000, 17800, 52800))
+    m1_reg += pya.Region(pya.Box(17800, 13800, 19600, 52800))
+    m1_reg += pya.Region(pya.Box(4400, 28000, 5800, 31000))
+    m1_reg += pya.Region(pya.Box(6000, 43100, 11200, 46500))
+    dst.shapes(m1).clear(); dst.shapes(m1).insert(m1_reg)
+
+    dst.shapes(gc).insert(pya.Box(8600, 43100, 11200, 45700))
+    dst.shapes(co).insert(pya.Box(9400, 43900, 10400, 44900))
+    dst.shapes(nw).insert(pya.Region(pya.Box(-6300, 29600, W + 6300, 63400)))
+    dst.shapes(bd).insert(pya.Box(0, 0, W, 59400))
+    for text, x, y in (
+        ("VDD", 2700, 57100), ("GND", 2700, 2400),
+        ("A", 2700, 29600), ("Y", 11100, 29600),
+        ("B", 15100, 29600), ("S", 8600, 44800),
+    ):
+        dst.shapes(lbl).insert(pya.Text(text, pya.Trans(pya.Vector(x, y))))
+
 def main() -> int:
     source = os.environ["CMP_GDS_SRC"]
     output = os.environ["CMP_GDS_OUT"]
@@ -163,6 +266,8 @@ def main() -> int:
     build_tie(layout, "TIELO", high=False)
     build_edff(layout)
     build_dff2(layout)
+    build_feedthru(layout)
+    build_tgmux(layout)
 
     layout.write(output)
     print(f"wrote {output}: {layout.cells()} cells")

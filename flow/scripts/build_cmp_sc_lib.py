@@ -466,7 +466,7 @@ def build_spice() -> tuple[str, str]:
         "* Derived from TR-1um_C4004/module/STDCELL/simulation (Apache-2.0).\n"
         "* Supplies renamed vdd/vss -> VDD/GND for the TR10 PDK LVS decks.\n\n"
     )
-    body = derive_dff2_spice(derive_edff_spice(header + "\n".join(chunks)))
+    body = derive_dff2_spice(derive_edff_spice(header + "\n".join(chunks))) + "\n" + build_feedthru_spice() + "\n" + build_tgmux_spice()
     cdl = body.replace("\nMP", "\nM").replace("\nMN", "\nM")
     return body, cdl
 
@@ -538,6 +538,21 @@ def build_verilog() -> str:
             out.extend(edecl)
             out.append("endmodule")
             out.append("")
+    out.append("module FEEDTHRU (VDD, GND, A);")
+    out.append("  inout VDD;")
+    out.append("  inout GND;")
+    out.append("  inout A;")
+    out.append("endmodule")
+    out.append("")
+    out.append("module MUXTG2 (A, B, Y, S, VDD, GND);")
+    out.append("  input A;")
+    out.append("  input B;")
+    out.append("  input S;")
+    out.append("  output Y;")
+    out.append("  inout VDD;")
+    out.append("  inout GND;")
+    out.append("endmodule")
+    out.append("")
     return "\n".join(out)
 
 
@@ -691,6 +706,123 @@ def derive_dff2_spice(body: str) -> str:
     return body + "\n" + block
 
 
+def build_feedthru_lef() -> str:
+    """One-site feedthrough: M2 strap through the row + M1 rails + N-well.
+
+    The A pin is a full-height M2 strap; the VDD/GND rails are M1.  There are
+    no transistors, so the cell carries the N-well only (to keep the row well
+    continuous) and no AA/GP.
+    """
+    w = 5.4
+    lines = [
+        "MACRO FEEDTHRU",
+        "  CLASS CORE ;",
+        "  FOREIGN FEEDTHRU 0 0 ;",
+        "  ORIGIN 0 0 ;",
+        f"  SIZE {fmt(w)} BY 59.4 ;",
+        "  SITE TR1UM ;",
+        "  SYMMETRY X Y ;",
+        "  PIN VDD", "    DIRECTION INOUT ;", "    USE POWER ;", "    PORT", "      LAYER M1 ;", rect(0, 55.7, w, 58.3), "    END", "  END VDD",
+        "  PIN GND", "    DIRECTION INOUT ;", "    USE GROUND ;", "    PORT", "      LAYER M1 ;", rect(0, 1.1, w, 3.7), "    END", "  END GND",
+        "  PIN A", "    DIRECTION INOUT ;", "    USE SIGNAL ;", "    PORT", "      LAYER M2 ;", rect(1.0, 0.0, 4.4, 59.4), "    END", "  END A",
+        "END FEEDTHRU",
+    ]
+    return "\n".join(lines)
+
+
+def build_feedthru_liberty() -> str:
+    return """
+  cell (FEEDTHRU) {
+    area : 320.760000 ;
+    pg_pin (VDD) {
+      voltage_name : "VDD" ;
+      pg_type : primary_power ;
+    }
+    pg_pin (GND) {
+      voltage_name : "GND" ;
+      pg_type : primary_ground ;
+    }
+    pin (A) { direction : inout ; capacitance : 0.05 ; }
+  }
+"""
+
+
+def build_feedthru_spice() -> str:
+    return ".subckt FEEDTHRU A VDD GND\n.ends\n"
+
+
+def build_tgmux_lef(signal_layer: str = "M1") -> str:
+    """Experimental 6T transmission-gate MUX core (21.6 x 59.4).
+
+    All signal pins are on M1: the original A pad, the A/Y/B M1 straps and the
+    new S pad.  A V1/M2 pin set was attempted, but the 4.0 um strap pitch and
+    the V1-CO/M1 enclosure rules leave no clean landing pad for B; the M1 pin
+    set is DRC-clean and LVS-extractable, while the detailed router still
+    reports DRT-0073 for the in-cell B pin.  A new pin-access layout is the
+    next step before this macro can be used by the flow.
+    """
+    lines = [
+        "MACRO MUXTG2",
+        "  CLASS CORE ;",
+        "  FOREIGN MUXTG2 0 0 ;",
+        "  ORIGIN 0 0 ;",
+        "  SIZE 21.6 BY 59.4 ;",
+        "  SITE TR1UM ;",
+        "  SYMMETRY X Y ;",
+    ]
+    pins = [
+        ("VDD", "INOUT", "POWER", 0.0, 55.7, 21.6, 58.3),
+        ("GND", "INOUT", "GROUND", 0.0, 1.1, 21.6, 3.7),
+        ("A", "INPUT", "SIGNAL", 1.0, 25.1, 4.4, 31.3),
+        ("Y", "OUTPUT", "SIGNAL", 9.8, 27.9, 12.4, 31.3),
+        ("B", "INPUT", "SIGNAL", 13.8, 27.9, 16.4, 31.3),
+        ("S", "INPUT", "SIGNAL", 6.0, 43.1, 11.2, 46.5),
+    ]
+    for name, direction, use, x0, y0, x1, y1 in pins:
+        lines += [
+            f"  PIN {name}",
+            f"    DIRECTION {direction} ;",
+            f"    USE {use} ;",
+            "    PORT",
+            "      LAYER M1 ;",
+            f"        RECT {fmt(x0)} {fmt(y0)} {fmt(x1)} {fmt(y1)} ;",
+            "    END",
+            f"  END {name}",
+        ]
+    lines += [
+        "  OBS",
+        "    LAYER M1 ;",
+        rect(17.8, 13.8, 19.6, 52.8),
+        rect(5.8, 47.8, 8.4, 52.8),
+        "  END",
+        "END MUXTG2",
+    ]
+    return "\n".join(lines)
+
+def derive_tgmux_liberty(text: str) -> str:
+    """Clone MUX2 as MUXTG2 (same function and pins, 4-site footprint)."""
+    match = re.search(r"(?i)\bcell\s*\(\s*MUX2\s*\)\s*\{", text)
+    if not match:
+        return text
+    block = balanced(text, match)
+    block = re.sub(r"(?i)cell\s*\(\s*MUX2\s*\)", "cell (MUXTG2)", block)
+    block = block.replace("area : 1924.6;", "area : 1283.04;")
+    return text.rstrip().rstrip("}") + block + "\n}\n"
+
+
+def build_tgmux_spice() -> str:
+    return (
+        ".subckt MUXTG2 A B Y S VDD GND\n"
+        "MP0 VDD S n4 VDD PMOS W=5.2u L=1.0u\n"
+        "MN5 GND S n4 GND NMOS W=3.4u L=1.0u\n"
+        "MP3 A S Y VDD PMOS W=5.2u L=1.0u\n"
+        "MN2 A n4 Y GND NMOS W=3.4u L=1.0u\n"
+        "MP4 Y n4 B VDD PMOS W=5.2u L=1.0u\n"
+        "MN3 Y S B GND NMOS W=3.4u L=1.0u\n"
+        ".ends\n"
+    )
+
+
 def write_if_changed(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text)
@@ -699,12 +831,12 @@ def write_if_changed(path: Path, text: str) -> None:
 def main() -> int:
     write_if_changed(LIB / "techlef/TR10_tech.tlef", build_techlef())
     lef = derive_edff_lef(build_lef())
-    write_if_changed(LIB / "lef/TR10_cmp_sc.lef", lef.replace("END LIBRARY", build_dff2_lef() + "\nEND LIBRARY", 1))
+    write_if_changed(LIB / "lef/TR10_cmp_sc.lef", lef.replace("END LIBRARY", build_dff2_lef() + "\n" + build_feedthru_lef() + "\n" + build_tgmux_lef("M2") + "\nEND LIBRARY", 1))
     # Global-route variant: identical except signal pins live on M1 so
     # global_route spends M1 guides over the cells; detail route still uses
     # the M2-pin LEF above (mirrors the upstream C4004 two-LEF flow).
     grt = derive_edff_lef(build_lef(signal_layer="M1"))
-    write_if_changed(LIB / "lef/TR10_cmp_sc_grt.lef", grt.replace("END LIBRARY", build_dff2_lef("M1") + "\nEND LIBRARY", 1))
+    write_if_changed(LIB / "lef/TR10_cmp_sc_grt.lef", grt.replace("END LIBRARY", build_dff2_lef("M1") + "\n" + build_feedthru_lef() + "\n" + build_tgmux_lef("M1") + "\nEND LIBRARY", 1))
     # Sparse-OBS experiment variant: real upstream M1 obstruction polygons +
     # full-cell V1 blockage, so M1 may cross the cell interior on empty
     # columns.  Selected per-design via TR10_CMP_SC_SPARSE_LEF.
@@ -716,7 +848,9 @@ def main() -> int:
     globals()["PIN_HOLES"] = True
     write_if_changed(LIB / "lef/TR10_cmp_sc_v1hole.lef", build_lef())
     globals()["PIN_HOLES"] = False
-    write_if_changed(LIB / "lib/TR10_cmp_sc__typ_5p0V_25C.lib", derive_dff2_liberty(derive_edff_liberty(build_liberty())))
+    lib_text = derive_tgmux_liberty(derive_dff2_liberty(derive_edff_liberty(build_liberty())))
+    lib_text = lib_text.rstrip().rstrip("}") + build_feedthru_liberty() + "\n}\n"
+    write_if_changed(LIB / "lib/TR10_cmp_sc__typ_5p0V_25C.lib", lib_text)
     spice, cdl = build_spice()
     write_if_changed(LIB / "spice/TR10_cmp_sc.spice", spice)
     write_if_changed(LIB / "cdl/TR10_cmp_sc.cdl", cdl)

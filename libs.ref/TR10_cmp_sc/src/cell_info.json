@@ -388,5 +388,25 @@
   ],
   "sites": 24.0,
   "width_um": 129.6
+ },
+ "FEEDTHRU": {
+  "cls": "CORE",
+  "height_um": 59.4,
+  "origin": [
+   0.0,
+   0.0
+  ],
+  "sites": 1.0,
+  "width_um": 5.4
+ },
+ "MUXTG2": {
+  "cls": "CORE",
+  "height_um": 59.4,
+  "origin": [
+   0.0,
+   0.0
+  ],
+  "sites": 4.0,
+  "width_um": 21.6
  }
 }

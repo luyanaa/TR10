@@ -346,3 +346,18 @@ module TIELO (VDD, GND, LO);
   output LO;
   assign LO = 1'b0;
 endmodule
+
+module FEEDTHRU (VDD, GND, A);
+  inout VDD;
+  inout GND;
+  inout A;
+endmodule
+
+module MUXTG2 (A, B, Y, S, VDD, GND);
+  input A;
+  input B;
+  input S;
+  output Y;
+  inout VDD;
+  inout GND;
+endmodule

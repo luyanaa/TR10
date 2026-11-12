@@ -2397,4 +2397,97 @@ MACRO DFF2
         RECT 0 0 129.6 59.4 ;
   END
 END DFF2
+MACRO FEEDTHRU
+  CLASS CORE ;
+  FOREIGN FEEDTHRU 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 5.4 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 5.4 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 5.4 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 0 4.4 59.4 ;
+    END
+  END A
+END FEEDTHRU
+MACRO MUXTG2
+  CLASS CORE ;
+  FOREIGN MUXTG2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 21.6 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 21.6 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 21.6 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M1 ;
+        RECT 1 25.1 4.4 31.3 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M1 ;
+        RECT 9.8 27.9 12.4 31.3 ;
+    END
+  END Y
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M1 ;
+        RECT 13.8 27.9 16.4 31.3 ;
+    END
+  END B
+  PIN S
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M1 ;
+        RECT 6 43.1 11.2 46.5 ;
+    END
+  END S
+  OBS
+    LAYER M1 ;
+        RECT 17.8 13.8 19.6 52.8 ;
+        RECT 5.8 47.8 8.4 52.8 ;
+  END
+END MUXTG2
 END LIBRARY

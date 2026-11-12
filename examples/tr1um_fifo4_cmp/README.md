@@ -105,6 +105,52 @@ LVS detail worth keeping: the DFF2 SPICE `X` lines must use the **extracted
 DFF port order** `QB,D,Q,CK,VDD,GND`, not the CDL's `CK,D,QB,Q`; the LVS
 contract builder is positional for nested subcircuits.
 
+### TG MUX2 (6T transmission-gate core, experimental)
+
+The source `MUX2` is a 12T gate-input mux: its middle row already contains
+two transmission gates (`MP3/MN2`, `MP4/MN3`) and the S inverter
+(`MP0/MN5`); the other six devices are the A/B input inverters and the output
+inverter.  `build_cmp_sc_gds.py` derives a **21.6 um** `MUXTG2` by trimming
+the middle active to the shared S/D and reusing the 6T core.  The original S
+pin falls outside 21.6 um, so the cell gets a new S GC pad/CO/M1 pad, an n4
+M1 bridge and an A-pin bridge; all four signal pins are on M1.
+
+Cell-level checks (`libs.ref/TR10_cmp_sc/gds`, top `MUXTG2`):
+
+| check | result |
+|---|---|
+| KLayout DRC | **0** |
+| KLayout LVS extraction | **A, B, S, Y, VDD, GND**; 6 devices |
+| extracted netlist | `MP0/MN5` inverter + `MP3/MN2` + `MP4/MN3` TG pairs |
+| footprint | 21.6 x 59.4 um (33 % smaller than MUX2) |
+
+**Blocker (not flow-usable yet):** the detailed router reports
+`[DRT-0073] No access point for _150_/B`.  The 4.0 um M1 strap pitch
+(A 5.8..8.4, Y 9.8..12.4, B 13.8..16.4) leaves only 1.4 um gaps, so a
+3.4 um M1 landing pad plus a 1.4 um V1 cannot be placed without violating
+V1-CO separation or M1 enclosure.  A 32.4 um variant with M2 pins was also
+prototyped; it reintroduced S/n4 shorts from the original output-inverter
+wiring.  A **new layout with a dedicated pin-access plan** (not MUX2 surgery)
+is the remaining work.  `flow/scripts/map_tgmux.py` is ready to rename
+remaining `MUX2` instances once the cell is flow-clean.
+
+### FEEDTHRU (one-site physical cell)
+
+`FEEDTHRU` is 5.4 x 59.4 um: M1 VDD/GND rails, a full-height M2 `A` strap
+(x 1.0..4.4) and the standard N-well halo.  It has no transistors, so it can
+be used to carry a net through a row or to keep the well continuous.
+
+| check | result |
+|---|---|
+| KLayout DRC (top `FEEDTHRU`) | **0** |
+| views | GDS + LEF (DRT/GRT) + Liberty + SPICE/CDL + Verilog + `cell_info.json` |
+| LVS | vacuous: the extractor emits no top cell for a device-less cell; there is nothing to compare |
+| footprint | 5.4 x 59.4 um (one site) |
+
+For a flow-level LVS assertion the cell must be instantiated in a test
+design (the extractor drops empty cells); the DRC and the pin/label views are
+already in the library.
+
 ### Layout optimization study (measured)
 
 **1. The 10.8 µm via gap is not required with free-direction routing.**
