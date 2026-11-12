@@ -45,11 +45,12 @@ if { [info exists ::env(DESIGN_DIR)] && [file exists $::env(DESIGN_DIR)/expanded
 }
 
 # TR10_cmp_sc: optional per-layer unidirectional routing (mirrors the
-# upstream C4004 run_drt.tcl).  On this 2-layer process, letting M2 jog
-# horizontally creates tight spacing/short clusters at the cell pin band;
-# forcing each layer onto its preferred direction roughly halves the
-# violation count.  Opt in per design with a plain text file listing the
-# layers, e.g. "M1 M2".
+# upstream C4004 run_drt.tcl).  Measured on this library it is a
+# pessimisation: with M1 pinned to horizontal, TritonRoute repeatedly
+# assigns the *same* M1 track to two different nets and cannot jog out of
+# the conflict (64 start / 34 end).  Leaving both layers free drops that to
+# 26 start / 0 end.  Nothing opts in by default; a design can still enable
+# it with a plain text file listing the layers, e.g. "M1 M2".
 if { [info exists ::env(DESIGN_DIR)] && [file exists $::env(DESIGN_DIR)/unidirectional_layers.txt] } {
     set fh [open $::env(DESIGN_DIR)/unidirectional_layers.txt r]
     set layers [split [string trim [read $fh]]]

@@ -6,31 +6,50 @@ to `TR10_cmp_sc` cells and placed on a subset of the N rows
 (`manual_place.tcl`, currently every other N row → 237.6 um pitch, 7 used
 rows inside the 1000×1600 um die).
 
-## Status: **34 DRC** after fixing the I/O-pin length; sparse-V1-hole LEF is negative
+## Status: **0 DRC** (DRT + KLayout sign-off), KLayout LVS PASS
 
-Two independent PDK-view bugs were found and fixed after the routing recipe
-was stable.  Both are in the generated views, not in the router:
+Final run `runs/final0` (96 signal cells, 7 used rows, 1000×1600 µm die):
 
-1. **North/south I/O pins were 1,323,529 µm long.**  LibreLane's
-   `io_place.py` derives a pin's length from the routing layer's LEF
-   `AREA`; OpenDB stores that area in dbu² but the script multiplies by
-   `DATABASE MICRONS²` again.  With `AREA 9.0` on M2 every I/O pin became a
-   6.8 × 1,323,529 µm M2 bar, leaving 0.3 µm to the neighbouring tracks
-   *across the whole die*.  All 69 residual violations were on those bars.
+| check | report | result |
+|---|---|---|
+| detailed routing | `34-openroad-detailedrouting/tr1um_fifo4_cmp.drc` | **0** (empty file) |
+| KLayout DRC | `61-klayout-drc/reports/drc.klayout.json` | **0** (`total: 0`) |
+| KLayout LVS | `flow/checks/test_klayout_lvs.sh` | **PASS** |
+| cell area | `final/metrics.json` | 221,645 µm² (fd_sc 406,388 → **54.5 %**) |
+| utilization | `final/metrics.json` | 14.68 % (fd_sc 14.74 %) |
+
+Three independent causes were removed in this order:
+
+1. **I/O pin length (69 → 34).**  LibreLane's `io_place.py` derives a pin's
+   length from the routing layer's LEF `AREA`; OpenDB stores that area in
+   dbu² but the script multiplies by `DATABASE MICRONS²` again.  With
+   `AREA 9.0` on M2 every north pin became a 6.8 × 1,323,529 µm M2 bar,
+   leaving 0.3 µm to the neighbouring tracks *across the whole die*.  All
+   69 residual violations were on those bars.
    `TR10_cmp_sc/config.tcl` now sets `IO_PIN_V_LENGTH`/`IO_PIN_H_LENGTH`
-   to 6.8 µm (the conventional 2× min width; `TR10_fd_sc` gets the same
-   value because its M2 has no `AREA`).  Result: **69 → 34** at the same
-   placement and `DRT_OPT_ITERS: 16`.
-2. **TAP cells carry a full-height M2 power bar.**  The GDS really is a
-   full-height bar (`x 1.0..4.4` / `6.4..9.8`, `y 1.1..58.3`); the source
-   LEF splits it into short pin stubs plus a middle `OBS`.  Two signal M2
-   wires shorted to VDD at the TAP column.  `TAP_SOURCE_M2` in the
-   generator reproduces the source split (stub pins + middle obstruction);
-   measured, that variant ends at **56 DRC with 14 VDD/GND conflicts**
-   instead of 34 with 2, so it is **off by default**.  The default
-   full-height pin is the electrically accurate abstraction; the remaining
-   two shorts are a DRT limitation (it routed a signal wire onto a power
-   pin), not a missing obstruction.
+   to 6.8 µm (the value `TR10_fd_sc` gets because its M2 has no `AREA`).
+2. **Unidirectional routing (34 → 0 DRT).**  Pinning M1 and M2 to their
+   preferred directions makes TritonRoute assign the **same M1 track to
+   two different nets** and it cannot jog out of the conflict.  The 34
+   violations were 13 unique same-track shorts (plus via pads), all with
+   two nets' M1 wires at the same y and overlapping x.  Deleting
+   `unidirectional_layers.txt` lets both layers jog: **26 start → 0 at
+   iteration 5**.  The DRT report is empty.
+3. **N-well bridges (6 → 0 KLayout DRC).**  The cells draw their N-well
+   with a 6.3 µm halo per side because the library is designed for
+   abutting placement.  A 10.8 µm via gap still merges the wells
+   (2 × 6.3 > 10.8), but the placement lands three cells 16.2/21.6 µm
+   before a fixed TAP.  Those gaps leave separate wells 3.6/9.0 µm apart,
+   failing `WN.S1` (< 4), `WN.S7` (< 12) and `WN.AN` (< 10).  The legal
+   bands are gap ≤ 12.6 µm (merge) or ≥ 24.6 µm (12.0 + 2 × 6.3).
+   `flow/scripts/add_well_bridges.py` inserts a normal N-well rectangle
+   (140/0) in each forbidden gap, merging the wells exactly as abutting
+   placement would.  KLayout DRC went **6 → 0**, LVS stays **PASS**.
+
+The TAP M2 experiment (`TAP_SOURCE_M2`: source-LEF stub pins + middle
+obstruction) was measured at 56 DRC with 14 VDD/GND conflicts versus 34
+with 2, so it remains **off by default**; the GDS really is a full-height
+M2 power bar.
 
 ### Sparse-V1-hole LEF experiment (negative, measured)
 
@@ -183,9 +202,24 @@ python3 ../../flow/scripts/tr1um_route_guide.py \
     --def runs/tag/33-openroad-detailedplacement/tr1um_fifo4_cmp.def \
     --out expanded.guide --openroad $OPENROAD --die 1000x1600
 
-# 3. resume; patched drt.tcl reads expanded.guide via read_guides
+# 3. resume; patched drt.tcl reads expanded.guide via read_guides.
+#    DRT reaches 0; the flow stops at KLayout DRC with the 6 WN errors.
 librelane --pdk-root $PDK_ROOT --pdk TR10 --manual-pdk \
           --run-tag tag --from OpenROAD.DetailedRouting config.json
+
+# 4. merge the N-well islands in the three 16.2/21.6 um TAP gaps.
+#    (KLayout does not forward -- args, so the paths go through env vars.)
+WELLBRIDGE_GDS=runs/tag/46-klayout-streamout/tr1um_fifo4_cmp.gds \
+WELLBRIDGE_DEF=runs/tag/33-openroad-detailedplacement/tr1um_fifo4_cmp.def \
+WELLBRIDGE_OUT=runs/tag/46-klayout-streamout/tr1um_fifo4_cmp.gds \
+    klayout -b -r ../../flow/scripts/add_well_bridges.py
+
+# 5. continue from KLayout DRC: 0 errors, flow completes
+librelane --pdk-root $PDK_ROOT --pdk TR10 --manual-pdk \
+          --run-tag tag --from KLayout.DRC config.json
+
+# 6. KLayout LVS assertion
+bash ../../flow/checks/test_klayout_lvs.sh runs/tag tr1um_fifo4_cmp TR10_cmp_sc
 ```
 
 `inv_cmp` (single inverter, single used row) still passes end to end and
