@@ -54,19 +54,33 @@ foreach inst [$block getInsts] {
     }
 }
 
-# Only N/R0 rows can host our all-R0 placement; skip MX rows entirely.
-set usable_rows {}
+# Row pitch.  ``TR10_PITCH_EVERY`` selects every Nth *N row* (the old
+# behaviour: 2 -> 237.6 um, 1 -> 118.8 um).  ``TR10_ROW_STEP`` selects every
+# Nth *physical* row instead, which also brings in the MX (flipped) rows:
+# 3 -> 178.2 um, a tighter pitch that has not been available before.
+# MX rows are placed with the cell mirrored (setOrient MX) and their pins
+# mirror with them, so the router sees the same geometry rotated 180 about x.
+set all_rows {}
 foreach row [$block getRows] {
     set orient [$row getOrient]
-    if {[string equal $orient "R0"] || [string equal $orient "N"]} {
-        lappend usable_rows [lindex [$row getOrigin] 1]
+    if {[info exists ::env(TR10_ROW_STEP)]} {
+        if {[string equal $orient "R0"] || [string equal $orient "MX"]} {
+            lappend all_rows [list [lindex [$row getOrigin] 1] $orient]
+        }
+    } elseif {[string equal $orient "R0"] || [string equal $orient "N"]} {
+        lappend all_rows [list [lindex [$row getOrigin] 1] "R0"]
     }
 }
-set usable_rows [lsort -integer $usable_rows]
-# Spend two site columns of via-access gap per cell.
-set all_rows $usable_rows
+set all_rows [lsort -integer -index 0 $all_rows]
 set usable_rows {}
-for {set i 0} {$i < [llength $all_rows]} {incr i $PITCH_EVERY} {
+if {[info exists ::env(TR10_ROW_STEP)]} {
+    # physical-row step: 3 -> 178.2 um (N and MX rows), 4 -> 237.6 um
+    set row_step $::env(TR10_ROW_STEP)
+} else {
+    # legacy R0-only list: every PITCH_EVERY-th N row
+    set row_step $PITCH_EVERY
+}
+for {set i 0} {$i < [llength $all_rows]} {incr i $row_step} {
     lappend usable_rows [lindex $all_rows $i]
 }
 set n_rows [llength $usable_rows]
@@ -112,7 +126,7 @@ set per_row [expr {int(ceil(double($total) / $n_rows))}]
 set index 0
 set rows_used 0
 for {set r 0} {$r < $n_rows && $index < $total} {incr r} {
-    set y [lindex $usable_rows $r]
+    lassign [lindex $usable_rows $r] y row_orient
     set x $x_min
     set placed 0
     # Fill this row with up to per_row cells, in GPL (y, x) order.  If the
@@ -130,7 +144,7 @@ for {set r 0} {$r < $n_rows && $index < $total} {incr r} {
         }
         if {[expr {$x + $width}] > $x_max} { break }
         set px [expr {int(ceil(($x - 10800) / 5400.0)) * 5400 + 10800}]
-        $inst setOrient R0
+        $inst setOrient $row_orient
         $inst setLocation $px $y
         $inst setPlacementStatus FIRM
         set x [expr {$px + $width + $GAP}]

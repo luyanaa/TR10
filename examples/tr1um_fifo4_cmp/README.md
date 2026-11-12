@@ -8,17 +8,18 @@ rows inside the 1000×1600 um die).
 
 ## Status: **0 DRC** (DRT + KLayout sign-off), KLayout LVS PASS
 
-Final run `runs/opt920` (96 signal cells, 7 used rows, **920×1570 µm** die):
+Final run `runs/opt700b` (96 signal cells, 7 used rows, **700×1570 µm** die,
+0-gap placement, 3.4 µm I/O pins):
 
 | check | report | result |
 |---|---|---|
 | detailed routing | `34-openroad-detailedrouting/tr1um_fifo4_cmp.drc` | **0** (empty file) |
-| KLayout DRC | `61-klayout-drc/reports/drc.klayout.json` | **0** (`total: 0`) |
+| KLayout DRC | `*-klayout-drc/reports/drc.klayout.json` | **0** |
 | KLayout LVS | `flow/checks/test_klayout_lvs.sh` | **PASS** |
-| cell area | `final/metrics.json` | 221,645 µm² (fd_sc 406,388 → **54.5 %**) |
-| die area | `final/metrics.json` | 1,444,400 µm² (fd_sc 2,880,000 → **50.1 %**) |
-| utilization | `final/metrics.json` | **16.01 %** (fd_sc 14.74 %) |
-| routed wirelength | `final/metrics.json` | 82,854 µm (fd_sc 148,690 → **−44 %**) |
+| instance area | `final/metrics.json` | 212,664 µm² (fd_sc 406,388 → **52.3 %**) |
+| die area | `final/metrics.json` | 1,099,000 µm² (fd_sc 2,880,000 → **38.2 %**) |
+| utilization | `final/metrics.json` | **20.4 %** (fd_sc 14.74 %) |
+| routed wirelength | `final/metrics.json` | 64,818 µm (fd_sc 148,690 → **−56 %**) |
 
 Three independent causes were removed in this order:
 
@@ -55,35 +56,63 @@ M2 power bar.
 
 ### Layout optimization study (measured)
 
-The 237.6 µm signal-row pitch is the **practical minimum**:
+**1. The 10.8 µm via gap is not required with free-direction routing.**
+The limit came from the *unidirectional* router: V1 pads could only land in
+the horizontal cell gaps.  With both layers free, TritonRoute drops V1 in
+the 178.2 µm channels instead.  `TR10_GAP_UM=0` abutts the cells and DRT
+still reaches **0**.  Abutting also merges the cell wells, so most of the
+well-bridge work disappears.
 
-| signal-row pitch | channel | die | DRT start → end | verdict |
-|---|---|---|---|---|
-| 118.8 µm (`TR10_PITCH_EVERY=1`) | 59.4 µm | 1000×850 | 186 → 116+ | fails: a 59.4 µm channel cannot hold the 3.4×3.4 M1 via pads |
-| 237.6 µm (`TR10_PITCH_EVERY=2`) | 178.2 µm | 1000×1600 | 26 → 0 | baseline, works |
-| 356.4 µm (`TR10_PITCH_EVERY=3`) | 297 µm | 1000×1800 | — | worse: fewer rows, more cells per row |
+**2. Row pitch.**  237.6 µm is the practical minimum:
 
-The die still had ~10 % empty margin around the cells.  Shrinking it from
-1000×1600 to **920×1570** keeps DRT **0** and KLayout DRC **0** (the
-placement then needs 4 well bridges instead of 3):
+| pitch | channel | result |
+|---|---|---|
+| 118.8 µm (`TR10_PITCH_EVERY=1`) | 59.4 µm | 186 → 116+ DRT, fails |
+| 178.2 µm (`TR10_ROW_STEP=3`, N/MX rows) | 118.8 µm | 2 DRT + 12 KLayout, fails |
+| 237.6 µm (`PITCH_EVERY=2`) | 178.2 µm | 0 DRT, works |
 
-| metric | 1000×1600 (`final0`) | 920×1570 (`opt920`) | Δ |
+`TR10_ROW_STEP` places cells on every Nth *physical* row, including the
+flipped **MX** rows (cells get the row's R0/MX orientation).  The 178.2 µm
+variant is the tightest pitch the row structure allows, but its 118.8 µm
+channel cannot reliably hold two signal tracks plus the 3.4 µm via pads, so
+it is not used.
+
+**3. Die shrink + I/O pin width.**
+
+* The 0-gap placement compacts the rows: the 96 cells span x 10.8..669.6
+  at the 700 µm width.
+* North I/O pins were 2× M2 width (6.8 µm), leaving 0.3 µm to the adjacent
+  track.  At 1× (3.4 µm) the gap is the normal 2.0 µm
+  (`IO_PIN_V_THICKNESS_MULT: 1` in `config.json`).
+* die 1000×1600 → **700×1570**: DRT **0**, KLayout DRC **0** (4 well
+  bridges), LVS **PASS**.
+
+| metric | 1000×1600 (`final0`) | 700×1570 (`opt700b`) | Δ |
 |---|---|---|---|
-| die area | 1,600,000 µm² | 1,444,400 µm² | **−9.7 %** |
-| utilization | 14.68 % | **16.01 %** | +9.1 % relative |
-| routed wirelength | 79,173 µm | 82,854 µm | +4.6 % |
+| die area | 1,600,000 µm² | 1,099,000 µm² | **−31.3 %** |
+| utilization | 14.68 % | **20.4 %** | +39 % relative |
+| routed wirelength | 79,173 µm | 64,818 µm | **−18.1 %** |
+| instance area | 221,645 µm² | 212,664 µm² | −4 % (fewer TAPs) |
 
-The wirelength moves the other way: the smaller die changes the GPL seed
-and the row assignment, so the placement is not identical.  On the stated
-A/B criteria (cell area, die area, utilization) the 920×1570 variant wins;
-if wirelength is the priority, keep 1000×1600 (`runs/final0`).  The die is
-cell-bound at x 10.8..885.6 and y 0..1544.4, so only ~2 % more can be
-shaved before the PDN core ring meets the last TAP column.
+**4. What is left (cell-library work, quantified).**
 
-Remaining untested idea: a **178.2 µm pitch** using the flipped (FS) rows,
-which would give a 118.8 µm channel — between the failing 59.4 and the
-working 178.2.  It needs orientation-aware placement (all cells are R0
-today) and was not pursued.
+* **EDFF / DFF2.**  DFF 23 + MUX2 20 dominate.  The *existing* `EDFFRB` is
+  97.2 µm = DFF 64.8 + MUX2 32.4, so mapping it saves only the 10.8 µm gap
+  and one M2 net — with 0-gap placement that is ~0 width.  A new
+  **EDFF without reset at 75.6 µm**, or a **DFF2 dual at ~97.2 µm vs
+  2 × 64.8**, would save ~31.6 / ~32.4 µm per instance.  20 EDFF + 11 DFF2
+  ⇒ ~1,000 µm of row width (**~27 %** of the 3,732 µm total cell width).
+  This needs new GDS/LEF/Liberty/SPICE views.
+* **Transmission-gate MUX2.**  10.8–16.2 µm vs 32.4 µm × 20 instances
+  ⇒ 320–420 µm of row width (**~9–11 %**).
+* **PDN relaxation.**  `PDN_VPITCH` 120 → 300 frees 2–3 M2 tracks per
+  strap.  DRC is already 0, so this is margin — but it is the most likely
+  way to make the 178.2 µm pitch route and would then save another ~17 %
+  of height.
+* `RUN_CTS: false` and all post-PnR repair/antenna insertion are already
+  off.  The cmp library has **no X4/X8/X16** cells (only X1/X2), so there
+  is nothing to drop there.  An ABC area-first synthesis pass is the
+  remaining few-percent lever on the combinational area.
 
 ### Sparse-V1-hole LEF experiment (negative, measured)
 
@@ -246,21 +275,24 @@ export PDK_ROOT=/grid/TR-1um_stdcell/flow/pdk_root PDK=TR10
 export PYTHONPATH=<dir containing patched librelane>
 OPENROAD=/nix/store/...-openroad-26Q3/bin/openroad
 
-# 1. run the flow through detailed placement (writes the placed DEF)
-librelane --pdk-root $PDK_ROOT --pdk TR10 --manual-pdk \
+# 1. run the flow through detailed placement (writes the placed DEF).
+#    TR10_GAP_UM=0 is the 0-gap placement; omit it (default 10.8) to trade
+#    area for the older via-gap style.
+TR10_GAP_UM=0 librelane --pdk-root $PDK_ROOT --pdk TR10 --manual-pdk \
           --run-tag tag --to OpenROAD.DetailedPlacement config.json
 
 # 2. build the expanded guide from the M1-pin LEF
 python3 ../../flow/scripts/tr1um_route_guide.py \
     --def runs/tag/33-openroad-detailedplacement/tr1um_fifo4_cmp.def \
-    --out expanded.guide --openroad $OPENROAD --die 920x1570
+    --out expanded.guide --openroad $OPENROAD --die 700x1570
 
 # 3. resume; patched drt.tcl reads expanded.guide via read_guides.
-#    DRT reaches 0; the flow stops at KLayout DRC with the 6 WN errors.
+#    DRT reaches 0; the flow stops at KLayout DRC with the WN gaps.
 librelane --pdk-root $PDK_ROOT --pdk TR10 --manual-pdk \
           --run-tag tag --from OpenROAD.DetailedRouting config.json
 
-# 4. merge the N-well islands in the three 16.2/21.6 um TAP gaps.
+# 4. merge the N-well islands in the forbidden 12.6..24.6 um gaps
+#    (same-row and N row -> MX row below).
 #    (KLayout does not forward -- args, so the paths go through env vars.)
 WELLBRIDGE_GDS=runs/tag/46-klayout-streamout/tr1um_fifo4_cmp.gds \
 WELLBRIDGE_DEF=runs/tag/33-openroad-detailedplacement/tr1um_fifo4_cmp.def \
