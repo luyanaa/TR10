@@ -8,7 +8,7 @@ rows inside the 1000×1600 um die).
 
 ## Status: **0 DRC** (DRT + KLayout sign-off), KLayout LVS PASS
 
-Final run `runs/final0` (96 signal cells, 7 used rows, 1000×1600 µm die):
+Final run `runs/opt920` (96 signal cells, 7 used rows, **920×1570 µm** die):
 
 | check | report | result |
 |---|---|---|
@@ -16,7 +16,9 @@ Final run `runs/final0` (96 signal cells, 7 used rows, 1000×1600 µm die):
 | KLayout DRC | `61-klayout-drc/reports/drc.klayout.json` | **0** (`total: 0`) |
 | KLayout LVS | `flow/checks/test_klayout_lvs.sh` | **PASS** |
 | cell area | `final/metrics.json` | 221,645 µm² (fd_sc 406,388 → **54.5 %**) |
-| utilization | `final/metrics.json` | 14.68 % (fd_sc 14.74 %) |
+| die area | `final/metrics.json` | 1,444,400 µm² (fd_sc 2,880,000 → **50.1 %**) |
+| utilization | `final/metrics.json` | **16.01 %** (fd_sc 14.74 %) |
+| routed wirelength | `final/metrics.json` | 82,854 µm (fd_sc 148,690 → **−44 %**) |
 
 Three independent causes were removed in this order:
 
@@ -50,6 +52,38 @@ The TAP M2 experiment (`TAP_SOURCE_M2`: source-LEF stub pins + middle
 obstruction) was measured at 56 DRC with 14 VDD/GND conflicts versus 34
 with 2, so it remains **off by default**; the GDS really is a full-height
 M2 power bar.
+
+### Layout optimization study (measured)
+
+The 237.6 µm signal-row pitch is the **practical minimum**:
+
+| signal-row pitch | channel | die | DRT start → end | verdict |
+|---|---|---|---|---|
+| 118.8 µm (`TR10_PITCH_EVERY=1`) | 59.4 µm | 1000×850 | 186 → 116+ | fails: a 59.4 µm channel cannot hold the 3.4×3.4 M1 via pads |
+| 237.6 µm (`TR10_PITCH_EVERY=2`) | 178.2 µm | 1000×1600 | 26 → 0 | baseline, works |
+| 356.4 µm (`TR10_PITCH_EVERY=3`) | 297 µm | 1000×1800 | — | worse: fewer rows, more cells per row |
+
+The die still had ~10 % empty margin around the cells.  Shrinking it from
+1000×1600 to **920×1570** keeps DRT **0** and KLayout DRC **0** (the
+placement then needs 4 well bridges instead of 3):
+
+| metric | 1000×1600 (`final0`) | 920×1570 (`opt920`) | Δ |
+|---|---|---|---|
+| die area | 1,600,000 µm² | 1,444,400 µm² | **−9.7 %** |
+| utilization | 14.68 % | **16.01 %** | +9.1 % relative |
+| routed wirelength | 79,173 µm | 82,854 µm | +4.6 % |
+
+The wirelength moves the other way: the smaller die changes the GPL seed
+and the row assignment, so the placement is not identical.  On the stated
+A/B criteria (cell area, die area, utilization) the 920×1570 variant wins;
+if wirelength is the priority, keep 1000×1600 (`runs/final0`).  The die is
+cell-bound at x 10.8..885.6 and y 0..1544.4, so only ~2 % more can be
+shaved before the PDN core ring meets the last TAP column.
+
+Remaining untested idea: a **178.2 µm pitch** using the flipped (FS) rows,
+which would give a 118.8 µm channel — between the failing 59.4 and the
+working 178.2.  It needs orientation-aware placement (all cells are R0
+today) and was not pursued.
 
 ### Sparse-V1-hole LEF experiment (negative, measured)
 
@@ -219,7 +253,7 @@ librelane --pdk-root $PDK_ROOT --pdk TR10 --manual-pdk \
 # 2. build the expanded guide from the M1-pin LEF
 python3 ../../flow/scripts/tr1um_route_guide.py \
     --def runs/tag/33-openroad-detailedplacement/tr1um_fifo4_cmp.def \
-    --out expanded.guide --openroad $OPENROAD --die 1000x1600
+    --out expanded.guide --openroad $OPENROAD --die 920x1570
 
 # 3. resume; patched drt.tcl reads expanded.guide via read_guides.
 #    DRT reaches 0; the flow stops at KLayout DRC with the 6 WN errors.
