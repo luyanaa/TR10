@@ -91,6 +91,15 @@ def build_tie(layout: pya.Layout, name: str, high: bool) -> pya.Cell:
     return cell
 
 
+def build_edff(layout: pya.Layout) -> None:
+    """EDFF = the EDFFRB layout as-is; the netlist ties RSTB high."""
+    source = layout.cell("EDFFRB")
+    if source is None:
+        return
+    target = layout.create_cell("EDFF")
+    target.copy_tree(source)
+
+
 def main() -> int:
     source = os.environ["CMP_GDS_SRC"]
     output = os.environ["CMP_GDS_OUT"]
@@ -123,6 +132,7 @@ def main() -> int:
 
     build_tie(layout, "TIEHI", high=True)
     build_tie(layout, "TIELO", high=False)
+    build_edff(layout)
 
     layout.write(output)
     print(f"wrote {output}: {layout.cells()} cells")

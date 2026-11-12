@@ -114,6 +114,17 @@ module EDFFRB (VDD, GND, CK, D, E, Q, QB, RSTB);
   input RSTB;
 endmodule
 
+module EDFF (VDD, GND, CK, D, E, Q, QB, RSTB);
+  inout VDD;
+  inout GND;
+  input CK;
+  input D;
+  input E;
+  output Q;
+  output QB;
+  input RSTB;
+endmodule
+
 module FILL1 (VDD, GND);
   inout VDD;
   inout GND;

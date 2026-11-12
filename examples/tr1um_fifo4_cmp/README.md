@@ -54,6 +54,34 @@ obstruction) was measured at 56 DRC with 14 VDD/GND conflicts versus 34
 with 2, so it remains **off by default**; the GDS really is a full-height
 M2 power bar.
 
+### EDFF implementation (19 DFF+MUX2 -> 19 EDFF, verified)
+
+The library now ships an `EDFF` macro: it is the existing `EDFFRB` layout
+(97.2 x 59.4) with the active-low `RSTB` input held high by one `TIEHI` in
+the netlist, so no cell-GDS edit is needed.  `flow/scripts/map_edff.py`
+rewrites the synthesised netlist, matching both mux polarities:
+
+* memory write flops: `MUX2 (.A=data, .B=q, .S=en)` + `DFF` -> `EDFF (.D=data, .E=en)`
+* counters/pointers: `MUX2 (.A=q, .B=next, .S=en)` + `DFF` -> `EDFF (.D=next, .E=en)`
+
+Run `runs/edff19b` (760x1570 die, 0-gap):
+
+| check | result |
+|---|---|
+| netlist | 19 EDFF, 4 DFF, 1 MUX2, 1 TIEHI (was 23 DFF + 21 MUX2) |
+| detailed routing | **0** |
+| KLayout DRC | **0** (3 well bridges) |
+| KLayout LVS | **PASS** |
+| die / instance area | 1,193,200 / 213,305 um2 |
+| utilization / routed WL | 18.81 % / 62,235 um |
+
+The EDFF is **area neutral**: the cell is the 97.2 um DFF+MUX2 pair plus a
+shared 641.5 um2 TIEHI.  The 75.6 um / 30 % saving needs a new EDFF layout
+(remove the reset devices and shrink the enable logic), which this cell
+reuse cannot provide.  The same mapping can be applied to any netlist by
+running `map_edff.py` after `Yosys.Synthesis` and resuming from
+`Checker.YosysUnmappedCells`.
+
 ### Layout optimization study (measured)
 
 **1. The 10.8 µm via gap is not required with free-direction routing.**

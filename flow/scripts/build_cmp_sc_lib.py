@@ -466,7 +466,7 @@ def build_spice() -> tuple[str, str]:
         "* Derived from TR-1um_C4004/module/STDCELL/simulation (Apache-2.0).\n"
         "* Supplies renamed vdd/vss -> VDD/GND for the TR10 PDK LVS decks.\n\n"
     )
-    body = header + "\n".join(chunks)
+    body = derive_edff_spice(header + "\n".join(chunks))
     cdl = body.replace("\nMP", "\nM").replace("\nMN", "\nM")
     return body, cdl
 
@@ -511,7 +511,57 @@ def build_verilog() -> str:
             out.append("  assign LO = 1'b0;")
         out.append("endmodule")
         out.append("")
+        if name == "EDFFRB":
+            eports = ["VDD", "GND"] + list(signal)
+            edecl = []
+            for pin in eports:
+                if pin in {"VDD", "GND"}:
+                    edecl.append(f"  inout {pin};")
+                else:
+                    direction = directions.get("EDFFRB", {}).get(pin, "inout")
+                    edecl.append(f"  {direction} {pin};")
+            out.append(f"module EDFF ({', '.join(eports)});")
+            out.extend(edecl)
+            out.append("endmodule")
+            out.append("")
     return "\n".join(out)
+
+
+def derive_edff_lef(text: str) -> str:
+    """Clone the EDFFRB macro as EDFF (same geometry, RSTB pin kept).
+
+    The cell is the existing EDFFRB layout; the netlist ties RSTB high with a
+    TIEHI, so no GDS edit is needed and the reset gate is held inactive.
+    """
+    match = re.search(r"(?ms)^MACRO EDFFRB\n(.*?)^END EDFFRB", text)
+    if not match:
+        return text
+    block = (
+        match.group(0)
+        .replace("MACRO EDFFRB", "MACRO EDFF")
+        .replace("END EDFFRB", "END EDFF")
+        .replace("FOREIGN EDFFRB", "FOREIGN EDFF")
+    )
+    return text.replace("END LIBRARY", block + "\nEND LIBRARY", 1)
+
+
+def derive_edff_liberty(text: str) -> str:
+    """Clone EDFFRB as EDFF (same pins incl. RSTB; the netlist ties it high)."""
+    match = re.search(r"(?i)\bcell\s*\(\s*EDFFRB\s*\)\s*\{", text)
+    if not match:
+        return text
+    block = balanced(text, match)
+    block = re.sub(r"(?i)cell\s*\(\s*EDFFRB\s*\)", "cell (EDFF)", block)
+    return text.rstrip().rstrip("}") + block + "\n}\n"
+
+
+def derive_edff_spice(body: str) -> str:
+    """Clone the EDFFRB subckt as EDFF (RSTB port kept; tied in the netlist)."""
+    match = re.search(r"(?ms)^\.subckt\s+EDFFRB\b.*?^\.ends", body)
+    if not match:
+        return body
+    block = match.group(0).replace(".subckt EDFFRB", ".subckt EDFF", 1)
+    return body + "\n" + block
 
 
 def write_if_changed(path: Path, text: str) -> None:
@@ -521,11 +571,11 @@ def write_if_changed(path: Path, text: str) -> None:
 
 def main() -> int:
     write_if_changed(LIB / "techlef/TR10_tech.tlef", build_techlef())
-    write_if_changed(LIB / "lef/TR10_cmp_sc.lef", build_lef())
+    write_if_changed(LIB / "lef/TR10_cmp_sc.lef", derive_edff_lef(build_lef()))
     # Global-route variant: identical except signal pins live on M1 so
     # global_route spends M1 guides over the cells; detail route still uses
     # the M2-pin LEF above (mirrors the upstream C4004 two-LEF flow).
-    write_if_changed(LIB / "lef/TR10_cmp_sc_grt.lef", build_lef(signal_layer="M1"))
+    write_if_changed(LIB / "lef/TR10_cmp_sc_grt.lef", derive_edff_lef(build_lef(signal_layer="M1")))
     # Sparse-OBS experiment variant: real upstream M1 obstruction polygons +
     # full-cell V1 blockage, so M1 may cross the cell interior on empty
     # columns.  Selected per-design via TR10_CMP_SC_SPARSE_LEF.
@@ -537,7 +587,7 @@ def main() -> int:
     globals()["PIN_HOLES"] = True
     write_if_changed(LIB / "lef/TR10_cmp_sc_v1hole.lef", build_lef())
     globals()["PIN_HOLES"] = False
-    write_if_changed(LIB / "lib/TR10_cmp_sc__typ_5p0V_25C.lib", build_liberty())
+    write_if_changed(LIB / "lib/TR10_cmp_sc__typ_5p0V_25C.lib", derive_edff_liberty(build_liberty()))
     spice, cdl = build_spice()
     write_if_changed(LIB / "spice/TR10_cmp_sc.spice", spice)
     write_if_changed(LIB / "cdl/TR10_cmp_sc.cdl", cdl)
