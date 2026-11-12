@@ -1,0 +1,133 @@
+#!/usr/bin/env python3
+"""Build libs.ref/TR10_cmp_sc/gds/TR10_cmp_sc.gds from the pinned C4004 source.
+
+Run with KLayout's Python (the system Python has no ``klayout.db``)::
+
+    CMP_GDS_SRC=libs.ref/TR10_cmp_sc/src/TR-1um_STDCELL.gds \
+    CMP_GDS_OUT=libs.ref/TR10_cmp_sc/gds/TR10_cmp_sc.gds \
+        klayout -b -r flow/scripts/build_cmp_sc_gds.py
+
+Transformations, all of which are deliberate:
+
+* 48/0 power labels ``vdd``/``vss`` are renamed to ``VDD``/``GND`` so the
+  KLayout LVS extraction and the LibreLane power pins use the PDK names.
+* Internal flip-flop node labels (CKP/CKB/QM/QS) are removed.  KLayout's
+  hierarchical LVS promotes every label inside an instantiated cell to a
+  subcircuit port; leaving them makes the extracted DFF port list disagree
+  with both the LEF and the checked-in SPICE.  They are debug names only.
+* The C4004 ``via_1`` helper cell (used only by its custom router) is dropped.
+* Metal-only TIEHI/TIELO cells are added.  The TR-10 process expresses a
+  constant as an M1 strap from the appropriate rail; the LVS contract builder
+  aliases the tied net to the physical supply, so no device model is needed.
+  They are two sites wide so the strap keeps >= 3.4 um M1 clearance from the
+  neighbouring cell; a one-site tie would violate M1.S1 in a dense row.
+* The n-well (140/0) is *not* shifted.  The source GDS draws it with a
+  6.3 um halo on each side (and 4 um above the row top) so that abutting cells
+  merge into one well and the well still encloses the edge PMOS.  Removing
+  the negative-x halo would make the well edge coincide with the PMOS active
+  edge and fail the enclosure rule.
+"""
+
+from __future__ import annotations
+
+import os
+
+import pya
+
+
+LAYER = {
+    "M1": (13, 0),
+    "V1": (19, 0),
+    "M2": (20, 0),
+    "WN": (140, 0),
+    "PRB": (235, 0),
+    "M1_LBL": (48, 0),
+    "M2_LBL": (49, 0),
+}
+
+ROW_H = 59.4
+SITE_W = 5.4
+TIE_W = 2 * SITE_W
+
+VDD_LO, VDD_HI = 55.7, 58.3
+GND_LO, GND_HI = 1.1, 3.7
+WN_LO, WN_HI = 29.6, 63.4
+WN_HALO = 6.3
+
+
+def box(x0: float, y0: float, x1: float, y1: float) -> pya.Box:
+    return pya.Box(round(x0 * 1000), round(y0 * 1000), round(x1 * 1000), round(y1 * 1000))
+
+
+def add_box(cell: pya.Cell, layer: pya.LayerInfo, coords) -> None:
+    cell.shapes(layer).insert(box(*coords))
+
+
+def add_label(cell: pya.Cell, layer: pya.LayerInfo, text: str, x: float, y: float) -> None:
+    cell.shapes(layer).insert(pya.Text(text, pya.Trans(round(x * 1000), round(y * 1000))))
+
+
+def build_tie(layout: pya.Layout, name: str, high: bool) -> pya.Cell:
+    cell = layout.create_cell(name)
+    m1 = layout.layer(*LAYER["M1"])
+    wn = layout.layer(*LAYER["WN"])
+    prb = layout.layer(*LAYER["PRB"])
+    lbl = layout.layer(*LAYER["M1_LBL"])
+
+    add_box(cell, prb, (0.0, 0.0, TIE_W, ROW_H))
+    # Same well halo as the logic cells so a tie never opens a WN gap.
+    add_box(cell, wn, (-WN_HALO, WN_LO, TIE_W + WN_HALO, WN_HI))
+    add_box(cell, m1, (0.0, VDD_LO, TIE_W, VDD_HI))
+    add_box(cell, m1, (0.0, GND_LO, TIE_W, GND_HI))
+
+    if high:
+        # Strap from the VDD rail down to an M1 pin pad in the middle of the cell.
+        add_box(cell, m1, (3.4, 42.7, 6.4, VDD_LO))
+    else:
+        add_box(cell, m1, (3.4, GND_HI, 6.4, 16.2))
+
+    add_label(cell, lbl, "VDD", TIE_W / 2, (VDD_LO + VDD_HI) / 2)
+    add_label(cell, lbl, "GND", TIE_W / 2, (GND_LO + GND_HI) / 2)
+    return cell
+
+
+def main() -> int:
+    source = os.environ["CMP_GDS_SRC"]
+    output = os.environ["CMP_GDS_OUT"]
+
+    layout = pya.Layout()
+    layout.read(source)
+    layout.dbu = 0.001
+
+    # Drop the router helper cell; it is not a standard cell.
+    via_cell = layout.cell("via_1")
+    if via_cell is not None:
+        layout.delete_cell(via_cell.cell_index())
+
+    # Rename the power labels everywhere and drop the internal-node labels.
+    # Text is copied into each cell, so walk the shapes, not only the top cell.
+    internal = {"CKP", "CKB", "QM", "QS"}
+    for cell in layout.each_cell():
+        for layer_index in layout.layer_indexes():
+            for shape in list(cell.shapes(layer_index).each()):
+                if not shape.is_text():
+                    continue
+                text = shape.text
+                low = text.string.lower()
+                if low in {"vdd", "vcc"}:
+                    shape.text = pya.Text("VDD", text.trans)
+                elif low in {"vss", "gnd"}:
+                    shape.text = pya.Text("GND", text.trans)
+                elif text.string in internal:
+                    cell.shapes(layer_index).erase(shape)
+
+    build_tie(layout, "TIEHI", high=True)
+    build_tie(layout, "TIELO", high=False)
+
+    layout.write(output)
+    print(f"wrote {output}: {layout.cells()} cells")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

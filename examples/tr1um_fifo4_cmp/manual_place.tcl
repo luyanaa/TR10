@@ -1,0 +1,145 @@
+# Connectivity-aware deterministic placement for the TR10_cmp_sc 59.4 um
+# cell row.  RePlAce (global_placement -disable_pin_density_adjust) is run
+# first to get a wirelength-optimized seed: it clusters connected cells,
+# so the rows below pack *logically adjacent* cells next to each other
+# instead of the alphabetical order that left DRT with long crossing
+# wires.  The seed coordinates are only used as a hint — every cell is
+# then snapped onto a legal N row so the all-R0, WN-legal floorplan is
+# preserved.
+#
+# The cmp_sc cells carry a full-cell M1/V1 obstruction, so the only place
+# TritonRoute can drop a V1 landing pad is *outside* the cell footprint —
+# i.e. in the inter-cell gap.  That makes the horizontal gap, not the
+# inter-row channel, the scarce resource: a 1-site (5.4 um) gap has room
+# for barely one via, and pin-access congestion at the M2 pin band is what
+# the residual DRT violations are made of.  Rows therefore use a 237.6 um
+# channel pitch (every other N row, ~7 rows in the 1600 um core) so that
+# fewer cells share a row and every cell can be given a 2-site (10.8 um)
+# via-access gap.
+set GAP  10800
+set PITCH_EVERY 2
+
+set block [ord::get_db_block]
+
+set core [$block getCoreArea]
+set x_min [expr {[$core xMin] > 10800 ? [$core xMin] : 10800}]
+set x_min [expr {int(ceil(($x_min - 10800) / 5400.0)) * 5400 + 10800}]
+set x_max [$core xMax]
+
+# --- stage 1: connectivity-aware seed via RePlAce --------------------------
+# -disable_pin_density_adjust is the TR10 workaround (see flow/patches/
+# librelane/README.md): the pin-density term diverges on these tall cells.
+set seed_ok 0
+if { [catch {
+    global_placement -density 0.3 -disable_pin_density_adjust \
+        -pad_left 1 -pad_right 1
+} _gpl_err] } {
+    puts "\[WARNING\] TR10_cmp_sc seed GPL failed ($_gpl_err); falling back to alphabetical order"
+} else {
+    set seed_ok 1
+}
+
+# Collect fixed TAP2 welltap obstacles as {row_base, xmin, xmax} so the
+# packer can step over them.
+set fixed {}
+foreach inst [$block getInsts] {
+    if {[$inst isFixed]} {
+        set name [[$inst getMaster] getName]
+        if {[string match "TAP*" $name]} {
+            set bb [$inst getBBox]
+            lappend fixed [list [lindex [$inst getLocation] 1] [$bb xMin] [$bb xMax]]
+        }
+    }
+}
+
+# Only N/R0 rows can host our all-R0 placement; skip MX rows entirely.
+set usable_rows {}
+foreach row [$block getRows] {
+    set orient [$row getOrient]
+    if {[string equal $orient "R0"] || [string equal $orient "N"]} {
+        lappend usable_rows [lindex [$row getOrigin] 1]
+    }
+}
+set usable_rows [lsort -integer $usable_rows]
+# Spend two site columns of via-access gap per cell.
+set all_rows $usable_rows
+set usable_rows {}
+for {set i 0} {$i < [llength $all_rows]} {incr i $PITCH_EVERY} {
+    lappend usable_rows [lindex $all_rows $i]
+}
+set n_rows [llength $usable_rows]
+
+# --- stage 2: bin cells into rows by their GPL seed-y, ordered by seed-x ---
+# Seed-y tells us which logical "band" a cell belongs to; we quantize that
+# onto the usable rows and sort each row by seed-x so nets stay local.
+set row_of_inst [dict create]
+set x_of_inst [dict create]
+set movable {}
+foreach inst [$block getInsts] {
+    if {[$inst isFixed]} { continue }
+    set nm [$inst getName]
+    lappend movable $inst
+    if {$seed_ok} {
+        lassign [$inst getLocation] sx sy
+    } else {
+        set sx 0
+        set sy 0
+    }
+    dict set x_of_inst $nm $sx
+    dict set row_of_inst $nm $sy
+}
+
+# Assign each cell to a row: sort by seed-y, split into n_rows buckets so
+# each row ends up with a similar cell count, then order within a row by
+# seed-x.  This preserves GPL's clustering far better than name order.
+# sort insts by seed-y then seed-x so each row keeps GPL's clustering
+proc cmp_inst {a b} {
+    set ay [dict get $::row_of_inst [$a getName]]
+    set by [dict get $::row_of_inst [$b getName]]
+    if {$ay == $by} {
+        set ax [dict get $::x_of_inst [$a getName]]
+        set bx [dict get $::x_of_inst [$b getName]]
+        return [expr {$ax < $bx ? -1 : ($ax > $bx ? 1 : 0)}]
+    }
+    return [expr {$ay < $by ? -1 : 1}]
+}
+set sorted [lsort -command cmp_inst $movable]
+set total [llength $sorted]
+set per_row [expr {int(ceil(double($total) / $n_rows))}]
+
+set index 0
+set rows_used 0
+for {set r 0} {$r < $n_rows && $index < $total} {incr r} {
+    set y [lindex $usable_rows $r]
+    set x $x_min
+    set placed 0
+    # Fill this row with up to per_row cells, in GPL (y, x) order.  If the
+    # next cell in that order no longer fits, it simply moves to the next
+    # row instead of aborting — cell widths vary 2x across the library.
+    while {$placed < $per_row && $index < $total} {
+        set inst [lindex $sorted $index]
+        set width [[$inst getMaster] getWidth]
+        # Step over any tap cell that collides with [x, x+width).
+        foreach obs $fixed {
+            lassign $obs oby oxmin oxmax
+            if {$oby == $y && $x < $oxmax && [expr {$x + $width}] > $oxmin} {
+                set x $oxmax
+            }
+        }
+        if {[expr {$x + $width}] > $x_max} { break }
+        set px [expr {int(ceil(($x - 10800) / 5400.0)) * 5400 + 10800}]
+        $inst setOrient R0
+        $inst setLocation $px $y
+        $inst setPlacementStatus FIRM
+        set x [expr {$px + $width + $GAP}]
+        incr index
+        incr placed
+    }
+    incr rows_used
+}
+
+if {$index < $total} {
+    error "TR10_cmp_sc placement: only $index of $total cells fit in $n_rows used rows; enlarge DIE_AREA"
+}
+
+puts "\[INFO\] TR10_cmp_sc GPL-seeded placement: $total cells across $rows_used rows (seed_ok=$seed_ok)"

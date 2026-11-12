@@ -51,8 +51,13 @@ jobs:
         include:
           - design: inv
             top: inv
+            lib: TR10_fd_sc
           - design: tr1um_fifo4
             top: tr1um_fifo4
+            lib: TR10_fd_sc
+          - design: inv_cmp
+            top: inv_cmp
+            lib: TR10_cmp_sc
     steps:
       - name: Check out TR10 PDK
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -66,11 +71,12 @@ jobs:
           docker run --rm \
             -v "$GITHUB_WORKSPACE:/pdk_root" \
             -v "$GITHUB_WORKSPACE/TR10/flow/patches/librelane/gpl.tcl:/usr/local/lib/python3.12/dist-packages/librelane/scripts/openroad/gpl.tcl:ro" \
+            -v "$GITHUB_WORKSPACE/TR10/flow/patches/librelane/drt.tcl:/usr/local/lib/python3.12/dist-packages/librelane/scripts/openroad/drt.tcl:ro" \
             -w /pdk_root/TR10 \
             -e PDK_ROOT=/pdk_root -e PDK=TR10 \
             -e USER_ID="$(id -u)" -e GROUP_ID="$(id -g)" \
             "$EDA_IMAGE" --skip bash -lc \
-              'bash flow/checks/run_librelane_lvs.sh "'${{ matrix.design }}'" "'${{ matrix.top }}'" ci'
+              'bash flow/checks/run_librelane_lvs.sh "'${{ matrix.design }}'" "'${{ matrix.top }}'" ci "${{ matrix.lib }}"'
 
       - name: Upload run logs
         if: always()

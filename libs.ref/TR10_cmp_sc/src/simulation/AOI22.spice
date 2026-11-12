@@ -1,0 +1,13 @@
+* AOI22 — LVS ソースネットリスト（Y = !((A1*A2)+(B1*B2))）。2026-11-03 Claude 作成（レイアウト抽出から）。
+*   PMOS: (A1 || A2) と (B1 || B2) の直列、NMOS: (A1 と A2 の直列) || (B1 と B2 の直列)。
+*
+.subckt AOI22 A1 A2 B1 B2 Y vdd vss
+MP0 n10 A1 vdd vdd PMOS W=10.2u L=1u
+MP1 vdd A2 n10 vdd PMOS W=10.2u L=1u
+MP2 Y B1 n10 vdd PMOS W=10.2u L=1u
+MP3 n10 B2 Y vdd PMOS W=10.2u L=1u
+MN0 n3 A1 vss vss NMOS W=3.4u L=1u
+MN1 Y A2 n3 vss NMOS W=3.4u L=1u
+MN2 n4 B1 Y vss NMOS W=3.4u L=1u
+MN3 vss B2 n4 vss NMOS W=3.4u L=1u
+.ends AOI22

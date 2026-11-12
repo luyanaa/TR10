@@ -1,0 +1,11 @@
+* AOI21 — LVS ソースネットリスト（Y = !((A1*A2)+B)）。2026-11-03 Claude 作成（レイアウト抽出から）。
+*   PMOS: (A1 || A2) と B の直列、NMOS: (A1 と A2 の直列) || B。check_comb 8/8。
+*
+.subckt AOI21 A1 A2 B Y vdd vss
+MP0 Y B n7 vdd PMOS W=10.2u L=1u
+MP1 n7 A1 vdd vdd PMOS W=10.2u L=1u
+MP2 vdd A2 n7 vdd PMOS W=10.2u L=1u
+MN0 n8 A1 vss vss NMOS W=3.4u L=1u
+MN1 Y A2 n8 vss NMOS W=3.4u L=1u
+MN2 vss B Y vss NMOS W=3.4u L=1u
+.ends AOI21

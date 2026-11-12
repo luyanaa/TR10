@@ -1,0 +1,21 @@
+{
+ "library": "TR10_cmp_sc",
+ "gds": "libs.ref/TR10_cmp_sc/gds/TR10_cmp_sc.gds",
+ "lef": "libs.ref/TR10_cmp_sc/lef/TR10_cmp_sc.lef",
+ "lef_grt": "libs.ref/TR10_cmp_sc/lef/TR10_cmp_sc_grt.lef",
+ "techlef": "libs.ref/TR10_cmp_sc/techlef/TR10_tech.tlef",
+ "cdl": "libs.ref/TR10_cmp_sc/cdl/TR10_cmp_sc.cdl",
+ "lib": "libs.ref/TR10_cmp_sc/lib/TR10_cmp_sc__typ_5p0V_25C.lib",
+ "spice": "libs.ref/TR10_cmp_sc/spice/TR10_cmp_sc.spice",
+ "verilog": "libs.ref/TR10_cmp_sc/verilog/TR10_cmp_sc.v",
+ "sha256": {
+  "TR10_cmp_sc.gds": "5c870aa74d3d8cf82f07b36af621e944f031a67c973df3fd3d8e3b2403a43e4b",
+  "TR10_cmp_sc.lef": "0c3ffe73e8a7de1cc5f4472ef99fb1e55705ffd08fd461e51784e06237f9fa27",
+  "TR10_cmp_sc_grt.lef": "916ddbff5281e0139850695318482b8f375aaf7cafdb39ffa011d849066cf7dc",
+  "TR10_tech.tlef": "37a18bdbedbdbd406d0ee84baed6fc074538b7cf059478407e35855ea3c6e4d4",
+  "TR10_cmp_sc.cdl": "cc9dc631246a0db24abf56bf43d51f19fafb49ce19caf56186947333108c0ab4",
+  "TR10_cmp_sc__typ_5p0V_25C.lib": "16c66a7d4ca46ec311b1f2380ff3eb8ea2859d2adb0fc98cc43d3bd5e323dd7b",
+  "TR10_cmp_sc.spice": "e0326a35aaba07a33cfae79c98eeabd3ee688dee3b56fe3ce151aa540b47e2bc",
+  "TR10_cmp_sc.v": "67e3b18983145bd57194dd5fb40539d26c0e97d7779b7306cd43e0989309c0bd"
+ }
+}

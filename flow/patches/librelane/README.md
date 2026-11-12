@@ -63,3 +63,26 @@ TR-1um flow's override (`flow/librelane_override/librelane/scripts/openroad/
 gpl.tcl`) and is what makes the 75.6 um-cell designs placeable without
 RePlAce spreading cells into the illegal well-spacing band.  See
 `examples/tr1um_fifo4/manual_place.tcl` and that design's README.
+
+The same hook is reused by the 59.4 um compact-cell library
+(`libs.ref/TR10_cmp_sc`): `examples/inv_cmp/manual_place.tcl` places cells
+on every other N row (118.8 um pitch) — the row pitch below which the
+cells' WN halos violate DRC — and is the flow's working smoke test for
+`TR10_cmp_sc` integration.
+
+## TR10_cmp_sc notes (59.4 um cell library)
+
+`libs.tech/librelane/TR10_cmp_sc/` carries the compact library's flow
+config.  Non-obvious constraints discovered while integrating it:
+
+- **PDN is followpins-only** (`pdn_cmp_sc.tcl`).  `add_pdn_stripe
+  -followpins` emits a boundary rail at every row start, which lands on the
+  cells' M1 PG bands.  Any explicit `dbSBox` rail that touches a same-net
+  followpin stripe makes `pdngen` report an empty grid (`PDN-0233`), and a
+  die-margin strap shorts to the edge IO pins — both were removed.
+- **Routing uses the upstream two-LEF + expanded-guide trick** — see
+  `examples/tr1um_fifo4_cmp/README.md`.  `drt.tcl` (this patch directory)
+  additionally calls `read_guides $DESIGN_DIR/expanded.guide` when a design
+  ships that file, so TritonRoute consumes the M1-pin-LEF global guides
+  produced by `flow/scripts/tr1um_route_guide.py` instead of the M2-only
+  guides that an ODB `global_route` leaves.

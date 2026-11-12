@@ -7,8 +7,8 @@
 # PDK_ROOT/PDK default to the parent of this repository and TR10.
 set -euo pipefail
 
-if [[ $# -lt 2 || $# -gt 3 ]]; then
-    echo "usage: $0 <example-name> <top-cell> [run-tag]" >&2
+if [[ $# -lt 2 || $# -gt 4 ]]; then
+    echo "usage: $0 <example-name> <top-cell> [run-tag] [std-cell-lib]" >&2
     exit 2
 fi
 
@@ -16,6 +16,7 @@ PDK_REPO="$(cd "$(dirname "$0")/../.." && pwd)"
 DESIGN="$1"
 TOP="$2"
 TAG="${3:-ci}"
+LIB="${4:-TR10_fd_sc}"
 DESIGN_DIR="$PDK_REPO/examples/$DESIGN"
 
 export PDK_ROOT="${PDK_ROOT:-$(cd "$PDK_REPO/.." && pwd)}"
@@ -47,4 +48,4 @@ done
 echo "DRT: 0 violations ($report)"
 
 echo "== KLayout LVS assertion"
-bash "$PDK_REPO/flow/checks/test_klayout_lvs.sh" "$RUN_DIR" "$TOP"
+bash "$PDK_REPO/flow/checks/test_klayout_lvs.sh" "$RUN_DIR" "$TOP" "$LIB"
