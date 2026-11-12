@@ -6,7 +6,60 @@ to `TR10_cmp_sc` cells and placed on a subset of the N rows
 (`manual_place.tcl`, currently every other N row → 237.6 um pitch, 7 used
 rows inside the 1000×1600 um die).
 
-## Status: routes end-to-end at **69 DRC** (`runs/final`, `DRT_OPT_ITERS: 16`)
+## Status: **34 DRC** after fixing the I/O-pin length; sparse-V1-hole LEF is negative
+
+Two independent PDK-view bugs were found and fixed after the routing recipe
+was stable.  Both are in the generated views, not in the router:
+
+1. **North/south I/O pins were 1,323,529 µm long.**  LibreLane's
+   `io_place.py` derives a pin's length from the routing layer's LEF
+   `AREA`; OpenDB stores that area in dbu² but the script multiplies by
+   `DATABASE MICRONS²` again.  With `AREA 9.0` on M2 every I/O pin became a
+   6.8 × 1,323,529 µm M2 bar, leaving 0.3 µm to the neighbouring tracks
+   *across the whole die*.  All 69 residual violations were on those bars.
+   `TR10_cmp_sc/config.tcl` now sets `IO_PIN_V_LENGTH`/`IO_PIN_H_LENGTH`
+   to 6.8 µm (the conventional 2× min width; `TR10_fd_sc` gets the same
+   value because its M2 has no `AREA`).  Result: **69 → 34** at the same
+   placement and `DRT_OPT_ITERS: 16`.
+2. **TAP cells carry a full-height M2 power bar.**  The GDS really is a
+   full-height bar (`x 1.0..4.4` / `6.4..9.8`, `y 1.1..58.3`); the source
+   LEF splits it into short pin stubs plus a middle `OBS`.  Two signal M2
+   wires shorted to VDD at the TAP column.  `TAP_SOURCE_M2` in the
+   generator reproduces the source split (stub pins + middle obstruction);
+   measured, that variant ends at **56 DRC with 14 VDD/GND conflicts**
+   instead of 34 with 2, so it is **off by default**.  The default
+   full-height pin is the electrically accurate abstraction; the remaining
+   two shorts are a DRT limitation (it routed a signal wire onto a power
+   pin), not a missing obstruction.
+
+### Sparse-V1-hole LEF experiment (negative, measured)
+
+The last remaining hypothesis was that opening V1 landing holes inside the
+cells would relieve pin access.  `build_cmp_sc_lib.py` has a `PIN_HOLES`
+mode that emits `TR10_cmp_sc_v1hole.lef`: the full-cell M1/V1 `OBS` minus a
+pad-sized hole at every signal pin, with the cell's real M1 pad declared as
+a second port on the pin.
+
+GDS facts that make the holes exact: all 126 signal pin rects are fully
+covered by real M1, and every pin centre has a 1.4 × 1.4 V1.
+
+Why it cannot help: M1 is 1.8 wide with 1.4 spacing, so a wire centreline
+must be ≥ 2.3 µm from real M1 and a 3.4 × 3.4 V1 pad ≥ 3.1 µm.  The pin
+band is only 3.4 µm tall, leaving 0.8 µm to the metal above/below — no
+legal M1 track exists inside it.  An eroded-free-space analysis over all
+37 cells finds **0** locations where a 3.4 × 3.4 pad fits.
+
+| LEF | start | iter 5 | iter 12 | final (iter 16) |
+|---|---|---|---|---|
+| `TR10_cmp_sc.lef` (baseline) | 64 | 56 | 34 | **34** |
+| `TR10_cmp_sc_v1hole.lef` | 88 | 66 | 36 | **36** |
+
+Both runs use the same placement, guide and seeds.  Neither run has a
+single M1 marker in the pin band (y 27..32), i.e. the router never used a
+hole.  The residual floor is **not** cell pin access: it is M1 channel
+shorts near the TAP column plus the TAP M2 shorts above.
+
+## Previous status: 69 DRC with the long-I/O-pin bug
 
 Detailed routing on the compact cell set is unblocked by reproducing the
 upstream TR-1um C4004 OpenROAD flow (`jun1okamura/TR-1um_C4004`,

@@ -81,6 +81,7 @@ def lef_macros() -> dict[str, dict]:
         size = re.search(r"SIZE\s+([0-9.]+)\s+BY\s+([0-9.]+)\s*;", body)
         klass = re.search(r"CLASS\s+([^;]+);", body)
         pins: dict[str, list[tuple[float, float, float, float]]] = {}
+        pin_layers: dict[str, dict[str, list[tuple[float, float, float, float]]]] = {}
         for pin_match in re.finditer(r"(?m)^\s*PIN (\S+)\n(.*?)^\s*END \1\s*$", body, re.S):
             pin_name, pin_body = pin_match.group(1), pin_match.group(2)
             rects = [
@@ -91,6 +92,19 @@ def lef_macros() -> dict[str, dict]:
                 )
             ]
             pins[pin_name] = rects
+            # Per-layer pin shapes: the TAP cells need their real (short) M2
+            # rail stubs, not a synthesized full-height bar.
+            layers: dict[str, list[tuple[float, float, float, float]]] = {}
+            parts = re.split(r"(?m)^\s*LAYER\s+(\w+)\s*;\s*$", pin_body)
+            for i in range(1, len(parts), 2):
+                layers.setdefault(parts[i], []).extend(
+                    tuple(float(v) for v in r.groups())
+                    for r in re.finditer(
+                        r"RECT\s+([-0-9.]+)\s+([-0-9.]+)\s+([-0-9.]+)\s+([-0-9.]+)\s*;",
+                        parts[i + 1],
+                    )
+                )
+            pin_layers[pin_name] = layers
         # Carry the real obstruction shapes (sparse polygons that only cover
         # actual metal, never the whole cell) so detail routing can still
         # cross the interior on M1.  Layer names are remapped to the PDK's.
@@ -109,6 +123,7 @@ def lef_macros() -> dict[str, dict]:
             "height": float(size.group(2)),
             "class": klass.group(1).strip() if klass else "CORE",
             "pins": pins,
+            "pin_layers": pin_layers,
             "obs": obs_lines,
         }
     return result
@@ -166,7 +181,23 @@ END LIBRARY
 """
 
 
-def pg_pins(name: str, width: float, klass: str) -> str:
+def pg_pins(name: str, width: float, klass: str, pin_layers: dict | None = None) -> str:
+    pin_layers = pin_layers or {}
+
+    def m2_rects(pin: str, fallback_x0: float, fallback_x1: float) -> list[str]:
+        """Real M2 stubs from the source LEF, or a conservative fallback.
+
+        The TAP cells carry two short M2 stubs at each rail (y 1.1..4.5 and
+        54.9..58.3) plus an M2 obstruction between them.  Synthesizing a
+        full-height bar instead makes the cell look like it owns a whole M2
+        signal track *and* leaves the real obstruction undeclared, so signal
+        wires short to VDD/GND at every TAP instance.
+        """
+        rects = (pin_layers.get(pin) or {}).get("METAL2") or [] if TAP_SOURCE_M2 else []
+        if rects:
+            return [rect(*r) for r in rects]
+        return [rect(fallback_x0, GND_LO, fallback_x1, VDD_HI)]
+
     lines = [
         "  PIN VDD",
         "    DIRECTION INOUT ;",
@@ -176,12 +207,42 @@ def pg_pins(name: str, width: float, klass: str) -> str:
         rect(0, VDD_LO, width, VDD_HI),
     ]
     if klass.endswith("WELLTAP"):
-        lines += ["      LAYER M2 ;", rect(6.4, GND_LO, 9.8, VDD_HI)]
+        lines += ["      LAYER M2 ;"] + m2_rects("vdd", 6.4, 9.8)
     lines += ["    END", "  END VDD", "  PIN GND", "    DIRECTION INOUT ;", "    USE GROUND ;", "    PORT", "      LAYER M1 ;", rect(0, GND_LO, width, GND_HI)]
     if klass.endswith("WELLTAP"):
-        lines += ["      LAYER M2 ;", rect(1.0, GND_LO, 4.4, VDD_HI)]
+        lines += ["      LAYER M2 ;"] + m2_rects("vss", 1.0, 4.4)
     lines += ["    END", "  END GND"]
     return "\n".join(lines)
+
+
+def complement_rects(width: float, height: float, holes: list[tuple[float, float, float, float]]) -> list[tuple[float, float, float, float]]:
+    """Rectangle-decompose ``[0,width] x [0,height]`` minus ``holes``.
+
+    LEF OBS has no concept of holes, so a "sparse hole" in a full-cell
+    blockage has to be expressed as a set of covering rectangles.  A
+    scanline over the hole x-boundaries emits one vertical slab per column
+    and fills the y-gaps inside each slab.
+    """
+    xs = sorted({0.0, width, *[h[0] for h in holes], *[h[2] for h in holes]})
+    out: list[tuple[float, float, float, float]] = []
+    for xa, xb in zip(xs, xs[1:]):
+        if xb - xa <= 1e-9:
+            continue
+        spans = sorted((h[1], h[3]) for h in holes if h[0] < xb - 1e-9 and h[2] > xa + 1e-9)
+        merged: list[list[float]] = []
+        for y0, y1 in spans:
+            if merged and y0 <= merged[-1][1] + 1e-9:
+                merged[-1][1] = max(merged[-1][1], y1)
+            else:
+                merged.append([y0, y1])
+        y = 0.0
+        for y0, y1 in merged:
+            if y0 > y + 1e-9:
+                out.append((xa, y, xb, y0))
+            y = max(y, y1)
+        if y < height - 1e-9:
+            out.append((xa, y, xb, height))
+    return out
 
 
 def build_cell_lef(name: str, info: dict, directions: dict[str, str], signal_layer: str = "M2") -> str:
@@ -195,10 +256,24 @@ def build_cell_lef(name: str, info: dict, directions: dict[str, str], signal_lay
         f"  SIZE {fmt(width)} BY {fmt(info['height'])} ;",
         "  SITE TR1UM ;",
         "  SYMMETRY X Y ;",
-        pg_pins(name, width, klass),
+        pg_pins(name, width, klass, info.get("pin_layers")),
     ]
 
+    # The source LEF's non-M1 obstructions (the TAP cells' M2 bars) are real
+    # metal and must stay declared; otherwise signal M2 routes straight
+    # through a TAP and shorts to VDD/GND.
+    source_m2_obs: list[str] = []
+    current_layer = None
+    for obs_line in (info["obs"] if TAP_SOURCE_M2 else []):
+        layer_match = re.search(r"LAYER\s+(\w+)", obs_line)
+        if layer_match:
+            current_layer = layer_match.group(1)
+            continue
+        if current_layer == "M2" and re.search(r"RECT|POLYGON", obs_line):
+            source_m2_obs.append(obs_line)
+
     internal_obs: list[str] = []
+    signal_rects: list[tuple[float, float, float, float]] = []
     for pin, rects in info["pins"].items():
         low = pin.lower()
         if low in {"vdd", "vss"}:
@@ -209,6 +284,7 @@ def build_cell_lef(name: str, info: dict, directions: dict[str, str], signal_lay
         direction = directions.get(pin, "inout").upper()
         if name in {"TLAT"}:
             direction = "OUTPUT" if pin in {"Q", "QB"} else "INPUT"
+        signal_rects += rects
         lines += [
             f"  PIN {pin}",
             f"    DIRECTION {direction} ;",
@@ -217,12 +293,35 @@ def build_cell_lef(name: str, info: dict, directions: dict[str, str], signal_lay
             f"      LAYER {signal_layer} ;",
         ]
         lines += [rect(*r) for r in rects]
-        lines += ["    END", "  END " + pin]
+        lines += ["    END"]
+        if PIN_HOLES and signal_layer == "M2":
+            # The C4004 cells carry a real M1 landing pad under every signal
+            # pin (verified in the GDS: each pin rect is fully covered by M1)
+            # plus a 1.4x1.4 V1 at the pin centre.  The upstream LEF omits
+            # both, so declare the M1 pad as a second port of the same pin.
+            lines += ["    PORT", "      LAYER M1 ;"]
+            lines += [rect(*r) for r in rects]
+            lines += ["    END"]
+        lines += ["  END " + pin]
 
-    if FULL_OBS:
+    if PIN_HOLES and signal_layer == "M2":
+        # Sparse-hole experiment: keep the cell interior blocked except at
+        # the signal pins, where the source GDS has real M1/V1 pin-access
+        # metal.  M1 gets a pad-sized hole, V1 a 1.4x1.4 hole on the pin
+        # centre so a routing via lands exactly on the cell's own V1.
+        v1_holes = [((r[0] + r[2]) / 2 - 0.7, (r[1] + r[3]) / 2 - 0.7, (r[0] + r[2]) / 2 + 0.7, (r[1] + r[3]) / 2 + 0.7) for r in signal_rects]
+        lines += ["  OBS", "    LAYER M1 ;"]
+        lines += [rect(*r) for r in complement_rects(width, info["height"], signal_rects)]
+        lines += ["    LAYER V1 ;"]
+        lines += [rect(*r) for r in complement_rects(width, info["height"], v1_holes)]
+        if source_m2_obs:
+            lines += ["    LAYER M2 ;"] + source_m2_obs
+    elif FULL_OBS:
         # Full-cell M1/V1 blockages keep detail routing out of the cell
         # interior (pin access then escapes through the inter-cell gaps).
         lines += ["  OBS", "    LAYER M1 ;", rect(0, 0, width, info["height"]), "    LAYER V1 ;", rect(0, 0, width, info["height"])]
+        if source_m2_obs:
+            lines += ["    LAYER M2 ;"] + source_m2_obs
     else:
         # Sparse-OBS variant (pin-access experiment): keep the real upstream
         # METAL1 obstruction polygons plus a full-cell V1 blockage, so M1
@@ -278,6 +377,15 @@ def build_tie_lef(name: str, high: bool) -> str:
 
 
 FULL_OBS = True
+# Sparse-V1-hole experiment: full-cell M1/V1 OBS minus pad-sized holes at the
+# signal pins, with the cells' real M1 pad declared as an extra pin port.
+PIN_HOLES = False
+# TAP-cell M2 experiment: use the source LEF's short M2 rail stubs plus its
+# middle M2 obstruction instead of the full-height power bar.  The physical
+# cell really is a full-height bar (verified in the GDS), so the default
+# full-height pin is the accurate abstraction; the OBS split measured worse
+# (56 DRC with 14 VDD/GND conflicts vs 34 with 2), so it stays off.
+TAP_SOURCE_M2 = False
 
 def build_lef(signal_layer: str = "M2") -> str:
     macros = lef_macros()
@@ -424,6 +532,11 @@ def main() -> int:
     globals()["FULL_OBS"] = False
     write_if_changed(LIB / "lef/TR10_cmp_sc_sparse.lef", build_lef())
     globals()["FULL_OBS"] = True
+    # Sparse-V1-hole experiment: M1 pad + V1 hole at every signal pin, with
+    # the M1 pad declared as an additional port of the pin.
+    globals()["PIN_HOLES"] = True
+    write_if_changed(LIB / "lef/TR10_cmp_sc_v1hole.lef", build_lef())
+    globals()["PIN_HOLES"] = False
     write_if_changed(LIB / "lib/TR10_cmp_sc__typ_5p0V_25C.lib", build_liberty())
     spice, cdl = build_spice()
     write_if_changed(LIB / "spice/TR10_cmp_sc.spice", spice)

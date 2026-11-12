@@ -1,15 +1,14 @@
 # TR10_cmp_sc: 59.4 um compact standard cell library.
 #
 # Geometry facts that drive this configuration:
-#   * cell height 59.4 um, site 5.4 x 59.4; signal pins live on M2 only
-#     (y 28..31.4, on the 5.4 um M2 track grid); M1 OBS carries the source
-#     LEF's sparse polygons (interior metal only), so M1 can legally route
-#     through cell interiors.
+#   * cell height 59.4 um, site 5.4 x 59.4; signal pins live on M2
+#     (y 28..31.4, on the 5.4 um M2 track grid).  The DRT LEF carries a
+#     full-cell M1/V1 OBS (the compact cells' internal M1 fills every
+#     track), so V1 landing happens in the empty channels between rows.
 #   * 59.4 um vertical abutment is NOT DRC-legal (WN.AN < 10, AP.WN < 7,
 #     CO.WD on the tap contacts).  Legal row pitches: >= 75.6 um, or
-#     multiples of 59.4 starting at 118.8 (= 2 rows + 11 M1 tracks of
-#     channel).  This flow uses pitch = 118.8 um with a channel row left
-#     empty between every used row -- see examples/*/manual_place.tcl.
+#     multiples of 59.4 starting at 118.8.  examples/*/manual_place.tcl
+#     uses 237.6 um (every fourth R0 row), which measured best.
 #   * auto-generated rows at 59.4 um pitch would abut WN illegally, so
 #     PLACE_SITE rows are used only as anchors; deterministic placement is
 #     done by manual_place.tcl (GPL hook, same mechanism as TR10_fd_sc).
@@ -37,6 +36,17 @@ set ::env(RT_MIN_LAYER) "M1"
 set ::env(RT_MAX_LAYER) "M2"
 set ::env(IO_PIN_V_LAYER) "M2"
 set ::env(IO_PIN_H_LAYER) "M1"
+# LibreLane derives a north/south pin's length from the routing layer's LEF
+# AREA when no length is given.  Our tech LEF carries AREA 9.0 on M2 (the
+# same way TR10_fd_sc does), but that AREA is stored in dbu^2 by OpenDB while
+# io_place.py multiplies by DATABASE MICRONS^2 again -- the result is a
+# 1,323,529 um long M2 pin bar per I/O.  Those bars leave only 0.3 um to the
+# neighbouring M2 tracks across the whole die and are the source of the
+# residual DRT violations.  Pin length is a PDK-level knob; pin it to the
+# conventional 2x min width (6.8 um), which is what TR10_fd_sc ends up with
+# (its M2 has no AREA, so the buggy term is zero there).
+set ::env(IO_PIN_V_LENGTH) 6.8
+set ::env(IO_PIN_H_LENGTH) 6.8
 set ::env(FP_TRACKS_INFO) "$::env(PDK_ROOT)/$::env(PDK)/libs.tech/librelane/TR10_cmp_sc/tracks.info"
 
 set ::env(SYNTH_DRIVING_CELL) "BUF_X2/A"
