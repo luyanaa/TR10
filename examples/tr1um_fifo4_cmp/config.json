@@ -28,7 +28,7 @@
   "RUN_CTS": false,
   "GRT_OVERFLOW_ITERS": 0,
   "GRT_ALLOW_CONGESTION": true,
-  "DRT_OPT_ITERS": 24,
+  "DRT_OPT_ITERS": 16,
   "DRT_SAVE_SNAPSHOTS": false,
   "DRT_THREADS": 8,
   "IO_PIN_ORDER_CFG": "dir::pin_order.cfg",

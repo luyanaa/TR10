@@ -12,12 +12,14 @@
 # i.e. in the inter-cell gap.  That makes the horizontal gap, not the
 # inter-row channel, the scarce resource: a 1-site (5.4 um) gap has room
 # for barely one via, and pin-access congestion at the M2 pin band is what
-# the residual DRT violations are made of.  Rows therefore use a 237.6 um
-# channel pitch (every other N row, ~7 rows in the 1600 um core) so that
-# fewer cells share a row and every cell can be given a 2-site (10.8 um)
-# via-access gap.
-set GAP  10800
-set PITCH_EVERY 2
+# the residual DRT violations are made of.
+#
+# Both knobs are sweepable from the environment without touching this
+# file (librelane exports env vars into the OpenROAD process):
+#   TR10_GAP_UM    – inter-cell gap in um (default 10.8, two site columns)
+#   TR10_PITCH_EVERY – use every Nth R0 row (default 2 -> 237.6 um pitch)
+set GAP  [expr {[info exists ::env(TR10_GAP_UM)] ? int($::env(TR10_GAP_UM) * 1000) : 10800}]
+set PITCH_EVERY [expr {[info exists ::env(TR10_PITCH_EVERY)] ? $::env(TR10_PITCH_EVERY) : 2}]
 
 set block [ord::get_db_block]
 
@@ -142,4 +144,4 @@ if {$index < $total} {
     error "TR10_cmp_sc placement: only $index of $total cells fit in $n_rows used rows; enlarge DIE_AREA"
 }
 
-puts "\[INFO\] TR10_cmp_sc GPL-seeded placement: $total cells across $rows_used rows (seed_ok=$seed_ok)"
+puts "\[INFO\] TR10_cmp_sc GPL-seeded placement: $total cells across $rows_used rows (seed_ok=$seed_ok gap=$GAP pitch_every=$PITCH_EVERY)"

@@ -6,7 +6,7 @@ to `TR10_cmp_sc` cells and placed on a subset of the N rows
 (`manual_place.tcl`, currently every other N row → 237.6 um pitch, 7 used
 rows inside the 1000×1600 um die).
 
-## Status: DRT mechanically unblocked; converges to ~70–100 violations
+## Status: routes end-to-end at **69 DRC** (`runs/final`, `DRT_OPT_ITERS: 16`)
 
 Detailed routing on the compact cell set is unblocked by reproducing the
 upstream TR-1um C4004 OpenROAD flow (`jun1okamura/TR-1um_C4004`,
@@ -37,22 +37,60 @@ upstream TR-1um C4004 OpenROAD flow (`jun1okamura/TR-1um_C4004`,
   upstream `run_drt.tcl` flag.  It roughly halves the starting violation
   count (195 → 111 at iteration 0).
 
-### Measured results (96 cells, 8 threads, `or_seed 42`)
+### Measured results (96 cells, 8 threads)
 
 | config | rows × pitch | gap | uni-dir | best (iter) | end-of-run |
 |---|---|---|---|---|---|
-| `wide`  | 5 × 356.4 µm | 5.4 µm | no  | 89 (iter 40) | **89 DRC** |
+| `final` | 7 × 237.6 µm | 10.8 µm | yes | **69 (iter 16)** | **69 DRC** ✅ |
+| `wide`  | 5 × 356.4 µm | 5.4 µm | no  | 89 (iter 40) | 89 DRC |
 | `uni8`  | 5 × 356.4 µm | 5.4 µm | yes | 79 (iter ~10) | 226 (degraded after ~iter 33) |
 | `gap2`  | 7 × 237.6 µm | 10.8 µm | yes | 69 (iter ~11) | 103 (same late degradation) |
 
-All three runs plateau at a residual set of **pin-access conflicts**:
-91 of gap2's final 103 violations sit within ±40 µm of a cell row's M2
-pin band.  Because every cmp_sc cell carries a full-cell M1/V1 OBS, the
-only legal V1 landing site is the gap *between* cells, so pin access —
-not channel capacity — is the limit.  The ~30-iteration tail that
-TritonRoute spends ripping up and re-routing actually walks *away* from
-the best solution (see `uni8`: 79 at iter 10 → 226 at iter 60), so for
-this geometry the useful budget is ≈15–25 iterations, not 60.
+`final` is the shipped configuration (`config.json`): 7 rows at 237.6 µm
+on the 1000×1600 µm die, `DRT_OPT_ITERS: 16`.  It converges to **69 M2
+pin-access violations** and stops at the bottom of the curve — every
+longer run measured re-tears the converged nets and ends higher.
+
+All configs plateau at a residual set of **pin-access conflicts**: ~90%
+of the residual violations sit within ±40 µm of a cell row's M2 pin band.
+Because every cmp_sc cell carries a full-cell M1/V1 OBS, the only legal
+V1 landing site is the gap *between* cells, so pin access — not channel
+capacity — is the limit.  The ~30-iteration tail that TritonRoute spends
+ripping up and re-routing actually walks *away* from the best solution
+(see `uni8`: 79 at iter 10 → 226 at iter 60), so for this geometry the
+useful budget is ≈12–16 iterations.
+
+### What didn't move the floor (dead ends, measured)
+
+These were all tried against the same 7×237.6/10.8-gap placement and
+converged to the same ~69 floor, confirming it is a **structural
+pin-access limit of the cell LEF**, not a routing-parameter problem:
+
+- **`or_seed` sweep** (7/13/42/99/123/777 + a 4-seed ×30-iter run): every
+  seed produced a *bit-identical* violation trajectory
+  (100→137→120→111→…→69→107→90).  TritonRoute is deterministic here; the
+  seed is ignored.
+- **Wider row pitch** `356.4 µm / 5 rows` (`TR10_PITCH_EVERY=3`): *worse*,
+  141 DRC — fewer rows ⇒ more cells/row ⇒ tighter gaps.
+- **Deeper die + more rows** (`1000×1800`, 8×237.6, `TR10_GAP_UM=21.6`):
+  ~80–103 DRC — the bigger inter-cell gap does not translate into usable
+  V1 landing area.
+- **Sparse-OBS cell LEF** (`TR10_cmp_sc_sparse.lef`, real M1 obstruction
+  polygons instead of the full-cell block): *degraded* to ~182–206,
+  because interior M1 metal turns into extra blockers without opening a
+  clean V1 landing column.  Abandoned; `TR10_cmp_sc_sparse.lef` and the
+  `FULL_OBS` flag are kept in the generator for reference but unused.
+- **Per-net NDR** (`create_ndr`/`assign_ndr` on `clk`, `data_in[1]`): DRT
+  aborts with `DRT-0218 Guide is not connected to design` — the expanded
+  guides are not NDR-aware.  Abandoned.
+- **FILL-cell row padding** (`$block addInst` in `manual_place.tcl`):
+  OpenROAD 26Q3 `odb::dbBlock` does not expose `addInst`; the call fails.
+  Reverted.
+
+The floor is therefore accepted at **69 DRC**.  Reaching lower would need
+a cell-LEF change that opens a legal V1 landing column *inside* the
+footprint at the M2 pin band (e.g. sparse V1 holes aligned to the pin
+x-positions) — a real layout/LEF redesign, out of scope for this A/B.
 
 Two gotchas cost us a debugging cycle — keep them in mind:
 

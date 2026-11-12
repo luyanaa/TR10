@@ -219,11 +219,24 @@ def build_cell_lef(name: str, info: dict, directions: dict[str, str], signal_lay
         lines += [rect(*r) for r in rects]
         lines += ["    END", "  END " + pin]
 
-    # Full-cell M1/V1 blockages keep detail routing out of the cell interior:
-    # the compact cells' sparse internal metal cannot host clean tracks, so
-    # signal M1 belongs in the channels between rows (the same conclusion the
-    # upstream author reached -- see the C4004 OpenROAD flow).
-    lines += ["  OBS", "    LAYER M1 ;", rect(0, 0, width, info["height"]), "    LAYER V1 ;", rect(0, 0, width, info["height"])]
+    if FULL_OBS:
+        # Full-cell M1/V1 blockages keep detail routing out of the cell
+        # interior (pin access then escapes through the inter-cell gaps).
+        lines += ["  OBS", "    LAYER M1 ;", rect(0, 0, width, info["height"]), "    LAYER V1 ;", rect(0, 0, width, info["height"])]
+    else:
+        # Sparse-OBS variant (pin-access experiment): keep the real upstream
+        # METAL1 obstruction polygons plus a full-cell V1 blockage, so M1
+        # routing may cross the cell interior on the empty columns while V1
+        # still cannot land inside the footprint.  This is what the upstream
+        # .lef actually encodes.
+        lines += ["  OBS", "    LAYER M1 ;"]
+        for ol in info["obs"]:
+            if re.search(r"LAYER\s+M1", ol):
+                continue
+            for sh in ol.splitlines():
+                if re.search(r"RECT|POLYGON", sh):
+                    lines.append(sh)
+        lines += ["    LAYER V1 ;", rect(0, 0, width, info["height"])]
     if internal_obs:
         lines.append("    LAYER M2 ;")
         lines += [rect(*r) for r in internal_obs]
@@ -263,6 +276,8 @@ def build_tie_lef(name: str, high: bool) -> str:
         ]
     )
 
+
+FULL_OBS = True
 
 def build_lef(signal_layer: str = "M2") -> str:
     macros = lef_macros()
@@ -403,6 +418,12 @@ def main() -> int:
     # global_route spends M1 guides over the cells; detail route still uses
     # the M2-pin LEF above (mirrors the upstream C4004 two-LEF flow).
     write_if_changed(LIB / "lef/TR10_cmp_sc_grt.lef", build_lef(signal_layer="M1"))
+    # Sparse-OBS experiment variant: real upstream M1 obstruction polygons +
+    # full-cell V1 blockage, so M1 may cross the cell interior on empty
+    # columns.  Selected per-design via TR10_CMP_SC_SPARSE_LEF.
+    globals()["FULL_OBS"] = False
+    write_if_changed(LIB / "lef/TR10_cmp_sc_sparse.lef", build_lef())
+    globals()["FULL_OBS"] = True
     write_if_changed(LIB / "lib/TR10_cmp_sc__typ_5p0V_25C.lib", build_liberty())
     spice, cdl = build_spice()
     write_if_changed(LIB / "spice/TR10_cmp_sc.spice", spice)
