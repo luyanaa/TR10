@@ -2481,7 +2481,7 @@ MACRO MUXTG2
     USE SIGNAL ;
     PORT
       LAYER M2 ;
-        RECT 38.2 27.9 41.6 31.3 ;
+        RECT 40.2 27.9 43.6 31.3 ;
     END
   END S
   OBS
@@ -2490,8 +2490,6 @@ MACRO MUXTG2
     LAYER V1 ;
         RECT 0 0 54 59.4 ;
     LAYER M2 ;
-        RECT 9.8 33 13.4 49.2 ;
-        RECT 34.8 33 40.2 54 ;
   END
 END MUXTG2
 END LIBRARY

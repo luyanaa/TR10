@@ -88,20 +88,21 @@ top.shapes(WN).insert(b(-6.3,29.4,60.3,63.4)); top.shapes(BD).insert(b(0,0,54,59
 top.shapes(M1).insert(b(15.1,17,16.9,39)); top.shapes(M1).insert(b(19.1,17,20.9,39))
 top.shapes(M1).insert(b(28.1,17,29.9,39)); top.shapes(M1).insert(b(32.1,17,33.9,39))
 top.shapes(M1).insert(b(13.5,27.9,16.9,31.3)); top.shapes(M1).insert(b(19.0,27.9,30.1,31.3))
-top.shapes(M1).insert(b(32.1,27.9,35.5,31.3)); top.shapes(M1).insert(b(38.2,27.9,41.6,31.3))
+top.shapes(M1).insert(b(32.1,27.9,35.5,31.3)); top.shapes(M1).insert(b(40.2,27.9,43.6,31.3))
 top.shapes(M1).insert(b(6.7,9.9,10.9,15.9)); top.shapes(M1).insert(b(6.7,38.3,10.9,46.9))
+top.shapes(M1).insert(b(6.7,9.9,10.9,46.9))
+top.shapes(M1).insert(b(6.7,10.7,15.9,12.7))
+top.shapes(M1).insert(b(6.7,43.0,29.9,45.0))
+top.shapes(M1).insert(b(28.3,43.0,30.3,47.5))
 top.shapes(M1).insert(b(1.9,10.7,5.3,12.5)); top.shapes(M1).insert(b(0.1,3.7,1.9,12.5)); top.shapes(M1).insert(b(0.1,10.7,2.7,13.3))
 top.shapes(M1).insert(b(1.9,39.7,5.3,41.5)); top.shapes(M1).insert(b(0.1,39.7,1.9,55.7)); top.shapes(M1).insert(b(0.1,39.7,2.7,44.3))
 # V1 pin/drain
 for box in [(14.5,28.9,15.9,30.3),(23.0,28.9,24.4,30.3),(33.1,28.9,34.5,30.3),
-            (39.2,28.9,40.6,30.3),(8.1,13.5,9.5,14.9),(8.1,44.5,9.5,45.9)]:
+            (41.2,28.9,42.6,30.3)]:
     top.shapes(V1).insert(b(*box))
 # M2 S/n4
-top.shapes(M2).insert(b(9.8,4.3,41.6,7.3)); top.shapes(M2).insert(b(9.8,53.2,41.6,56.2))
-top.shapes(M2).insert(b(38.2,4.3,41.6,56.2))
-top.shapes(M2).insert(b(6.5,12.0,22.8,15.0)); top.shapes(M2).insert(b(6.5,40.8,36.2,45.0))
-top.shapes(M2).insert(b(6.5,12.5,11.2,46.9))
-top.shapes(M2).insert(b(19.8,9.3,23.8,14.5)); top.shapes(M2).insert(b(32.8,45.0,36.2,50.9))
+top.shapes(M2).insert(b(9.8,4.3,43.6,7.3)); top.shapes(M2).insert(b(9.8,53.2,43.6,56.2))
+top.shapes(M2).insert(b(40.2,4.3,43.6,56.2))
 top.shapes(M2).insert(b(7.8,4.3,11.8,8.5)); top.shapes(M2).insert(b(32.8,7.1,36.2,12.7))
 top.shapes(M2).insert(b(7.8,50.0,11.8,56.0)); top.shapes(M2).insert(b(19.8,47.0,23.8,53.4))
 # M2 pins A/Y/B (S is the vertical)
@@ -110,8 +111,10 @@ top.shapes(M2).insert(b(32.1,27.9,35.5,31.3))
 # labels
 for t,x,y in [("VDD",2.7,57.1),("GND",2.7,2.4)]:
     top.shapes(L1).insert(pya.Text(t,pya.Trans(pya.Vector(round(x*1000),round(y*1000)))))
-for t,x,y in [("A",15.2,29.6),("Y",23.7,29.6),("B",32.4,29.6),("S",39.9,29.6)]:
+for t,x,y in [("A",15.2,29.6),("Y",23.7,29.6),("B",32.4,29.6),("S",41.9,29.6)]:
     top.shapes(L2).insert(pya.Text(t,pya.Trans(pya.Vector(round(x*1000),round(y*1000)))))
 top.flatten(1)
+erase_box(top, V1, 20.0, 9.8, 23.0, 12.2)
+erase_box(top, V1, 33.0, 47.5, 36.0, 50.0)
 out = os.environ.get("TGMUX_PCELL_OUT", "tgmux_pcell.gds")
 ly.write(out); print("wrote", out)

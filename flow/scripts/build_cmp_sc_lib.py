@@ -766,7 +766,7 @@ def build_tgmux_lef(signal_layer: str = "M2") -> str:
         "  SITE TR1UM ;",
         "  SYMMETRY X Y ;",
     ]
-    s_rect = (38.2, 27.9, 41.6, 31.3)
+    s_rect = (40.2, 27.9, 43.6, 31.3)
     a_rect = (13.5, 27.9, 16.9, 31.3)
     pins = [
         ("VDD", "INOUT", "POWER", 0.0, 55.7, 54.0, 58.3),
@@ -779,10 +779,12 @@ def build_tgmux_lef(signal_layer: str = "M2") -> str:
     # Local M2 keep-outs for the two internal straps.  Detail routing may
     # still cross the cell at the pin band (y27.9..31.3), but must not run
     # parallel at the 0.6/1.4 um spacing seen in the first flow run.
-    obs_m2 = [
-        (9.8, 33.0, 13.4, 49.2),
-        (34.8, 33.0, 40.2, 54.0),
-    ]
+    # n4 is routed entirely on M1.  The S strap is still a full-height M2
+    # wall; put the keep-out only in the global-route LEF so global_route
+    # pulls the B wire left, while the detail-route LEF stays OBS-free (an
+    # OBS at the wire's landing track makes DRT report a wire-to-instance
+    # spacing violation).
+    obs_m2 = []
 
     for name, direction, use, x0, y0, x1, y1 in pins:
         layer = "M1" if name in {"VDD", "GND"} else signal_layer

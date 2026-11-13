@@ -11,9 +11,9 @@
  "license": "libs.ref/TR10_cmp_sc/LICENSE",
  "notice": "libs.ref/TR10_cmp_sc/NOTICE",
  "sha256": {
-  "TR10_cmp_sc.gds": "f566d4447448b6e9bc930f7717728176e06c6e000c8843f31eaf6673b3332b23",
-  "TR10_cmp_sc.lef": "6428a298abccb1bd8f8c6175bc3da97b72d90777afde6ff50ca21d8ac42f8d43",
-  "TR10_cmp_sc_grt.lef": "14bced87c758c252dd3a68833ed5a5685a122ff174aaecbd93b2d2d311b05f5c",
+  "TR10_cmp_sc.gds": "c58fa6870501ae10f464640d5e4993d877deb87a3ac9f5f8fe64ab0d162f9044",
+  "TR10_cmp_sc.lef": "0fc2dc0486cfa3a1289724b539f4731a13102f63e8f69cb1c8b941c9425c49aa",
+  "TR10_cmp_sc_grt.lef": "717478ed5ad4f982bcb9acaed2e4656bb0aa633d2d3a1943c6bcbb1c84aee4d0",
   "TR10_tech.tlef": "37a18bdbedbdbd406d0ee84baed6fc074538b7cf059478407e35855ea3c6e4d4",
   "TR10_cmp_sc.cdl": "0d551d2efcf5c75ed4026a315368f2d69dc2af26c5fc6709fa7bbf7aa5e90382",
   "TR10_cmp_sc__typ_5p0V_25C.lib": "eef4b4349712505abff8a09bd647e296df0165f84e7ff7e920645e305a91b393",
