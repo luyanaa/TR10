@@ -1,0 +1,191 @@
+{
+  "DESIGN_NAME": "c4004_core",
+  "VERILOG_FILES": [
+    "dir::src/c4004_core_syn.v",
+    "dir::src/SRAM128_bb.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 35.088,
+  "PNR_SDC_FILE": "dir::constraints.sdc",
+  "SIGNOFF_SDC_FILE": "dir::constraints.sdc",
+  "STD_CELL_LIBRARY": "TR10_cmp_sc",
+  "SYNTH_ELABORATE_ONLY": true,
+  "SYNTH_HIERARCHY_MODE": "keep",
+  "RUN_LINTER": false,
+  "FP_SIZING": "absolute",
+  "DIE_AREA": "0 0 1840 1840",
+  "TOP_MARGIN_MULT": 0,
+  "BOTTOM_MARGIN_MULT": 0,
+  "LEFT_MARGIN_MULT": 0,
+  "RIGHT_MARGIN_MULT": 0,
+  "FP_DEF_TEMPLATE": "dir::src/c4004_pins.def",
+  "FP_TEMPLATE_MATCH_MODE": "strict",
+  "MACROS": {
+    "SRAM128": {
+      "gds": [
+        "pdk_dir::libs.ref/TR10_SRAM128/gds/SRAM128.gds"
+      ],
+      "lef": [
+        "pdk_dir::libs.ref/TR10_SRAM128/lef/SRAM128.lef"
+      ],
+      "lib": {
+        "*": [
+          "pdk_dir::libs.ref/TR10_SRAM128/lib/TR10_SRAM128__typ_5p0V_25C.lib"
+        ]
+      },
+      "spice": [
+        "pdk_dir::libs.ref/TR10_SRAM128/spice/SRAM128.spice"
+      ],
+      "instances": {
+        "u_sram": {
+          "location": [
+            340.2,
+            1614.6
+          ],
+          "orientation": "N"
+        }
+      }
+    }
+  },
+  "EXTRA_LEFS": [
+    "pdk_dir::libs.ref/TR10_SRAM128/lef/SRAM128.lef"
+  ],
+  "PDN_CFG": "dir::pdn_c4004.tcl",
+  "PDN_MACRO_CONNECTIONS": [
+    "u_sram VDD GND VDD GND"
+  ],
+  "ROUTING_OBSTRUCTIONS": [
+    [
+      "M1",
+      0,
+      0,
+      31.4,
+      1840
+    ],
+    [
+      "M2",
+      0,
+      0,
+      31.4,
+      1840
+    ],
+    [
+      "M1",
+      1810,
+      0,
+      1840,
+      1840
+    ],
+    [
+      "M2",
+      1810,
+      0,
+      1840,
+      1840
+    ],
+    [
+      "M1",
+      0,
+      0,
+      1840,
+      9
+    ],
+    [
+      "M2",
+      0,
+      0,
+      1840,
+      9
+    ],
+    [
+      "M1",
+      0,
+      1816,
+      1840,
+      1840
+    ],
+    [
+      "M2",
+      0,
+      1816,
+      1840,
+      1840
+    ],
+    [
+      "M2",
+      616.6,
+      0,
+      625.4,
+      1546
+    ],
+    [
+      "M2",
+      1216,
+      0,
+      1224.8,
+      1546
+    ],
+    [
+      "M1",
+      21.6,
+      1614.6,
+      349,
+      1623.4
+    ],
+    [
+      "M1",
+      21.6,
+      1791.4,
+      349,
+      1800.2
+    ],
+    [
+      "M1",
+      1508.3,
+      1614.6,
+      1819.8,
+      1623.4
+    ],
+    [
+      "M1",
+      1508.3,
+      1791.4,
+      1819.8,
+      1800.2
+    ]
+  ],
+  "RUN_CTS": false,
+  "RUN_TAP_ENDCAP_INSERTION": false,
+  "RUN_FILL_INSERTION": false,
+  "RUN_POST_GPL_DESIGN_REPAIR": false,
+  "RUN_POST_GRT_DESIGN_REPAIR": false,
+  "RUN_POST_CTS_RESIZER_TIMING": false,
+  "RUN_POST_GRT_RESIZER_TIMING": false,
+  "RUN_ANTENNA_REPAIR": false,
+  "RUN_MAGIC_DRC": false,
+  "RUN_LVS": false,
+  "RUN_MAGIC_STREAMOUT": false,
+  "RUN_KLAYOUT_XOR": false,
+  "PL_TARGET_DENSITY_PCT": 10,
+  "PL_OPTIMIZE_MIRRORING": false,
+  "GPL_CELL_PADDING": 0,
+  "DPL_CELL_PADDING": 0,
+  "GRT_OVERFLOW_ITERS": 0,
+  "GRT_ALLOW_CONGESTION": true,
+  "DRT_OPT_ITERS": 40,
+  "DRT_SAVE_SNAPSHOTS": false,
+  "DRT_THREADS": 8,
+  "ERROR_ON_PDN_VIOLATIONS": false,
+  "ERROR_ON_XOR_ERROR": false,
+  "ERROR_ON_KLAYOUT_DRC": false,
+  "ERROR_ON_LVS_ERROR": false,
+  "KLAYOUT_CONFLICT_RESOLUTION": "OverwriteCell",
+  "KLAYOUT_RENDER_RESOLUTION": 100,
+  "IGNORE_DISCONNECTED_MODULES": [
+    "c4004_core"
+  ],
+  "VSRC_LOC_FILES": {
+    "VDD": "dir::vsrc_vdd.loc",
+    "GND": "dir::vsrc_gnd.loc"
+  }
+}

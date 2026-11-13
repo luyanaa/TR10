@@ -1,0 +1,291 @@
+** sch_path: ../schematic/SRAM128.sch
+.subckt SRAM128 CE DIN[0] DIN[1] DIN[2] DIN[3] VSS VDD A1 A4 A0 A2 A3 WR DO[0] DO[1] DO[2] DO[3]
+*.PININFO CE:I DIN[0:3]:I VSS:B VDD:B A1:I A4:I A0:I A2:I A3:I WR:I DO[0:3]:O
+xPDEC VDD PR1 CE VSS A4n A4p PR0 PDEC
+xADB[0] VDD A0n A0 A0p VSS ADB
+xADB[1] VDD A1n A1 A1p VSS ADB
+xADB[2] VDD A2n A2 A2p VSS ADB
+xADB[3] VDD A3n A3 A3p VSS ADB
+xADB[4] VDD A4n A4 A4p VSS ADB
+xSRAM PR0 PR1 A0p A1p A2p A3p A0n A1n A2n A3n BLp[0] BLp[1] BLp[2] BLp[3] BLn[0] BLn[1] BLn[2] BLn[3] VDD VSS SRAM_32x4
+xSA4 CE WR BLp[0] BLp[1] BLp[2] BLp[3] BLn[0] BLn[1] BLn[2] BLn[3] VDD VSS DO[0] DO[1] DO[2] DO[3] CEp SRAM_SA4
+xWD4 DIN[0] DIN[1] DIN[2] DIN[3] CEp WR BLp[0] BLp[1] BLp[2] BLp[3] BLn[0] BLn[1] BLn[2] BLn[3] VDD VSS SRAM_WD4
+.ends
+
+* expanding   symbol:  PDEC.sym # of pins=7
+** sym_path: ../schematic/PDEC.sym
+** sch_path: ../schematic/PDEC.sch
+.subckt PDEC VDD PR1 CE VSS A4n A4p PR0
+*.PININFO PR0:O CE:I VDD:B VSS:B A4n:I PR1:O A4p:I
+MXM3 net1 net2 VDD VDD PMOS w=3.4u l=1u
+MXM7 net5 net2 VSS VSS NMOS w=3.4u l=1u
+MXM1 PR0 net1 VDD VDD PMOS w=6.8u l=1u
+MXM2 PR0 net1 VSS VSS NMOS w=3.4u l=1u
+MXM4 net1 A4n net5 VSS NMOS w=3.4u l=1u
+MXM5 net2 net3 VDD VDD PMOS w=3.4u l=1u
+MXM6 net2 net3 VSS VSS NMOS w=3.4u l=1u
+MXM8 net3 CE VDD VDD PMOS w=3.4u l=1u
+MXM9 net3 CE VSS VSS NMOS w=3.4u l=1u
+MXM10 net4 net2 VDD VDD PMOS w=3.4u l=1u
+MXM11 net6 net2 VSS VSS NMOS w=3.4u l=1u
+MXM12 PR1 net4 VDD VDD PMOS w=6.8u l=1u
+MXM13 PR1 net4 VSS VSS NMOS w=3.4u l=1u
+MXM14 net4 A4p net6 VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  ADB.sym # of pins=5
+** sym_path: ../schematic/ADB.sym
+** sch_path: ../schematic/ADB.sch
+.subckt ADB VDD An Ax Ap VSS
+*.PININFO Ap:O Ax:I VDD:B VSS:B An:O
+MXM3 An Ax VDD VDD PMOS w=5.4u l=1u
+MXM7 An Ax VSS VSS NMOS w=3.4u l=1u
+MXM1 Ap An VDD VDD PMOS w=5.4u l=1u
+MXM2 Ap An VSS VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  SRAM_32x4.sym # of pins=7
+** sym_path: ../schematic/SRAM_32x4.sym
+** sch_path: ../schematic/SRAM_32x4.sch
+.subckt SRAM_32x4 PR0 PR1 A0p A1p A2p A3p A0n A1n A2n A3n BLp[0] BLp[1] BLp[2] BLp[3] BLn[0] BLn[1] BLn[2] BLn[3] VDD VSS
+*.PININFO PR0,PR1:I BLn[0:3]:B BLp[0:3]:B A0n,A1n,A2n,A3n:I A0p,A1p,A2p,A3p:I VSS:B VDD:B
+xCELL[0] WL[0] WL[1] WL[2] WL[3] WL[4] WL[5] WL[6] WL[7] WL[8] WL[9] WL[10] WL[11] WL[12] WL[13] WL[14] WL[15] WL[16] WL[17]
++ WL[18] WL[19] WL[20] WL[21] WL[22] WL[23] WL[24] WL[25] WL[26] WL[27] WL[28] WL[29] WL[30] WL[31] BLp[0] BLn[0] VDD VSS BIT_CELL32
+xCELL[1] WL[0] WL[1] WL[2] WL[3] WL[4] WL[5] WL[6] WL[7] WL[8] WL[9] WL[10] WL[11] WL[12] WL[13] WL[14] WL[15] WL[16] WL[17]
++ WL[18] WL[19] WL[20] WL[21] WL[22] WL[23] WL[24] WL[25] WL[26] WL[27] WL[28] WL[29] WL[30] WL[31] BLp[1] BLn[1] VDD VSS BIT_CELL32
+xCELL[2] WL[0] WL[1] WL[2] WL[3] WL[4] WL[5] WL[6] WL[7] WL[8] WL[9] WL[10] WL[11] WL[12] WL[13] WL[14] WL[15] WL[16] WL[17]
++ WL[18] WL[19] WL[20] WL[21] WL[22] WL[23] WL[24] WL[25] WL[26] WL[27] WL[28] WL[29] WL[30] WL[31] BLp[2] BLn[2] VDD VSS BIT_CELL32
+xCELL[3] WL[0] WL[1] WL[2] WL[3] WL[4] WL[5] WL[6] WL[7] WL[8] WL[9] WL[10] WL[11] WL[12] WL[13] WL[14] WL[15] WL[16] WL[17]
++ WL[18] WL[19] WL[20] WL[21] WL[22] WL[23] WL[24] WL[25] WL[26] WL[27] WL[28] WL[29] WL[30] WL[31] BLp[3] BLn[3] VDD VSS BIT_CELL32
+xDEC[0] VDD PR0 WL[0] A2n A1n A0n VSS A3n DEC
+xDEC[1] VDD PR0 WL[1] A2n A1n A0p VSS A3n DEC
+xDEC[2] VDD PR0 WL[2] A2n A1p A0n VSS A3n DEC
+xDEC[3] VDD PR0 WL[3] A2n A1p A0p VSS A3n DEC
+xDEC[4] VDD PR0 WL[4] A2p A1n A0n VSS A3n DEC
+xDEC[5] VDD PR0 WL[5] A2p A1n A0p VSS A3n DEC
+xDEC[6] VDD PR0 WL[6] A2p A1p A0n VSS A3n DEC
+xDEC[7] VDD PR0 WL[7] A2p A1p A0p VSS A3n DEC
+xDEC[8] VDD PR0 WL[8] A2n A1n A0n VSS A3p DEC
+xDEC[9] VDD PR0 WL[9] A2n A1n A0p VSS A3p DEC
+xDEC[10] VDD PR0 WL[10] A2n A1p A0n VSS A3p DEC
+xDEC[11] VDD PR0 WL[11] A2n A1p A0p VSS A3p DEC
+xDEC[12] VDD PR0 WL[12] A2p A1n A0n VSS A3p DEC
+xDEC[13] VDD PR0 WL[13] A2p A1n A0p VSS A3p DEC
+xDEC[14] VDD PR0 WL[14] A2p A1p A0n VSS A3p DEC
+xDEC[15] VDD PR0 WL[15] A2p A1p A0p VSS A3p DEC
+xDEC[16] VDD PR1 WL[16] A2n A1n A0n VSS A3n DEC
+xDEC[17] VDD PR1 WL[17] A2n A1n A0p VSS A3n DEC
+xDEC[18] VDD PR1 WL[18] A2n A1p A0n VSS A3n DEC
+xDEC[19] VDD PR1 WL[19] A2n A1p A0p VSS A3n DEC
+xDEC[20] VDD PR1 WL[20] A2p A1n A0n VSS A3n DEC
+xDEC[21] VDD PR1 WL[21] A2p A1n A0p VSS A3n DEC
+xDEC[22] VDD PR1 WL[22] A2p A1p A0n VSS A3n DEC
+xDEC[23] VDD PR1 WL[23] A2p A1p A0p VSS A3n DEC
+xDEC[24] VDD PR1 WL[24] A2n A1n A0n VSS A3p DEC
+xDEC[25] VDD PR1 WL[25] A2n A1n A0p VSS A3p DEC
+xDEC[26] VDD PR1 WL[26] A2n A1p A0n VSS A3p DEC
+xDEC[27] VDD PR1 WL[27] A2n A1p A0p VSS A3p DEC
+xDEC[28] VDD PR1 WL[28] A2p A1n A0n VSS A3p DEC
+xDEC[29] VDD PR1 WL[29] A2p A1n A0p VSS A3p DEC
+xDEC[30] VDD PR1 WL[30] A2p A1p A0n VSS A3p DEC
+xDEC[31] VDD PR1 WL[31] A2p A1p A0p VSS A3p DEC
+.ends
+
+
+* expanding   symbol:  SRAM_SA4.sym # of pins=8
+** sym_path: ../schematic/SRAM_SA4.sym
+** sch_path: ../schematic/SRAM_SA4.sch
+.subckt SRAM_SA4 CE WR BLp[0] BLp[1] BLp[2] BLp[3] BLn[0] BLn[1] BLn[2] BLn[3] VDD VSS DO[0] DO[1] DO[2] DO[3] CEp
+*.PININFO CE:I VSS:B VDD:B WR:I DO[0:3]:O BLn[0:3]:B BLp[0:3]:B CEp:O
+xSA[0] VDD PRn DO[0] BLp[0] BLn[0] LATp VSS SA
+xSA[1] VDD PRn DO[1] BLp[1] BLn[1] LATp VSS SA
+xSA[2] VDD PRn DO[2] BLp[2] BLn[2] LATp VSS SA
+xSA[3] VDD PRn DO[3] BLp[3] BLn[3] LATp VSS SA
+xCTL PRn CE WR VDD VSS LATp CEp SACTR
+.ends
+
+
+* expanding   symbol:  SRAM_WD4.sym # of pins=7
+** sym_path: ../schematic/SRAM_WD4.sym
+** sch_path: ../schematic/SRAM_WD4.sch
+.subckt SRAM_WD4 DIN[0] DIN[1] DIN[2] DIN[3] CE WR BLp[0] BLp[1] BLp[2] BLp[3] BLn[0] BLn[1] BLn[2] BLn[3] VDD VSS
+*.PININFO CE:I DIN[0:3]:I VSS:B VDD:B WR:I BLn[0:3]:B BLp[0:3]:B
+xWDRV[0] VDD WRn BLp[0] BLn[0] WRp VSS DIN[0] WDRV
+xWDRV[1] VDD WRn BLp[1] BLn[1] WRp VSS DIN[1] WDRV
+xWDRV[2] VDD WRn BLp[2] BLn[2] WRp VSS DIN[2] WDRV
+xWDRV[3] VDD WRn BLp[3] BLn[3] WRp VSS DIN[3] WDRV
+xWRC VDD VSS WRn CE WR WRp WRCTR
+.ends
+
+
+* expanding   symbol:  BIT_CELL32.sym # of pins=5
+** sym_path: ../schematic/BIT_CELL32.sym
+** sch_path: ../schematic/BIT_CELL32.sch
+.subckt BIT_CELL32 WL[0] WL[1] WL[2] WL[3] WL[4] WL[5] WL[6] WL[7] WL[8] WL[9] WL[10] WL[11] WL[12] WL[13] WL[14] WL[15] WL[16]
++ WL[17] WL[18] WL[19] WL[20] WL[21] WL[22] WL[23] WL[24] WL[25] WL[26] WL[27] WL[28] WL[29] WL[30] WL[31] BLp BLn VDD VSS
+*.PININFO WL[0:31]:I VSS:B VDD:B BLn:B BLp:B
+xCELL[0] VDD WL[0] BLn BLp VSS BIT_CELL
+xCELL[1] VDD WL[1] BLn BLp VSS BIT_CELL
+xCELL[2] VDD WL[2] BLn BLp VSS BIT_CELL
+xCELL[3] VDD WL[3] BLn BLp VSS BIT_CELL
+xCELL[4] VDD WL[4] BLn BLp VSS BIT_CELL
+xCELL[5] VDD WL[5] BLn BLp VSS BIT_CELL
+xCELL[6] VDD WL[6] BLn BLp VSS BIT_CELL
+xCELL[7] VDD WL[7] BLn BLp VSS BIT_CELL
+xCELL[8] VDD WL[8] BLn BLp VSS BIT_CELL
+xCELL[9] VDD WL[9] BLn BLp VSS BIT_CELL
+xCELL[10] VDD WL[10] BLn BLp VSS BIT_CELL
+xCELL[11] VDD WL[11] BLn BLp VSS BIT_CELL
+xCELL[12] VDD WL[12] BLn BLp VSS BIT_CELL
+xCELL[13] VDD WL[13] BLn BLp VSS BIT_CELL
+xCELL[14] VDD WL[14] BLn BLp VSS BIT_CELL
+xCELL[15] VDD WL[15] BLn BLp VSS BIT_CELL
+xCELL[16] VDD WL[16] BLn BLp VSS BIT_CELL
+xCELL[17] VDD WL[17] BLn BLp VSS BIT_CELL
+xCELL[18] VDD WL[18] BLn BLp VSS BIT_CELL
+xCELL[19] VDD WL[19] BLn BLp VSS BIT_CELL
+xCELL[20] VDD WL[20] BLn BLp VSS BIT_CELL
+xCELL[21] VDD WL[21] BLn BLp VSS BIT_CELL
+xCELL[22] VDD WL[22] BLn BLp VSS BIT_CELL
+xCELL[23] VDD WL[23] BLn BLp VSS BIT_CELL
+xCELL[24] VDD WL[24] BLn BLp VSS BIT_CELL
+xCELL[25] VDD WL[25] BLn BLp VSS BIT_CELL
+xCELL[26] VDD WL[26] BLn BLp VSS BIT_CELL
+xCELL[27] VDD WL[27] BLn BLp VSS BIT_CELL
+xCELL[28] VDD WL[28] BLn BLp VSS BIT_CELL
+xCELL[29] VDD WL[29] BLn BLp VSS BIT_CELL
+xCELL[30] VDD WL[30] BLn BLp VSS BIT_CELL
+xCELL[31] VDD WL[31] BLn BLp VSS BIT_CELL
+.ends
+
+
+* expanding   symbol:  DEC.sym # of pins=8
+** sym_path: ../schematic/DEC.sym
+** sch_path: ../schematic/DEC.sch
+.subckt DEC VDD PRx WL A2x A1x A0x VSS A3x
+*.PININFO WL:O PRx:I A2x:I A1x:I A0x:I VDD:B VSS:B A3x:I
+MXM1 WL net1 VDD VDD PMOS w=13.6u l=1u
+MXM2 net2 A2x net3 VSS NMOS w=3.4u l=1u
+MXM3 net1 PRx VDD VDD PMOS w=3.4u l=1u
+MXM4 WL net1 VSS VSS NMOS w=13.6u l=1u
+MXM5 net3 A1x net4 VSS NMOS w=3.4u l=1u
+MXM6 net4 A0x net5 VSS NMOS w=3.4u l=1u
+MXM7 net5 PRx VSS VSS NMOS w=3.4u l=1u
+MXM9 net1 A3x net2 VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  SA.sym # of pins=7
+** sym_path: ../schematic/SA.sym
+** sch_path: ../schematic/SA.sch
+.subckt SA VDD PRn DO BLp BLn LATp VSS
+*.PININFO BLp:B BLn:B LATp:I VDD:B VSS:B DO:B PRn:I
+MXM1 SENp BLn net3 VSS NMOS w=5.4u l=1u
+MXM2 net1 SENp net2 VSS NMOS w=5.4u l=1u
+MXM3 SENn LATp VDD VDD PMOS w=6.8u l=1u
+MXM4 DO SENn VDD VDD PMOS w=10.8u l=1u
+MXM5 SENn SENp VDD VDD PMOS w=3.4u l=1u
+MXM6 net2 LATp VSS VSS NMOS w=10.8u l=1u
+MXM7 SENn BLp net1 VSS NMOS w=5.4u l=1u
+MXM8 net3 SENn net2 VSS NMOS w=5.4u l=1u
+MXM9 SENp LATp VDD VDD PMOS w=6.8u l=1u
+MXM11 SENp SENn VDD VDD PMOS w=3.4u l=1u
+MXM12 DO SENn VSS VSS NMOS w=6.8u l=1u
+MXM10 net4 SENp VDD VDD PMOS w=10.8u l=1u
+MXM13 net4 SENp VSS VSS NMOS w=6.8u l=1u
+MXM14 BLn PRn VDD VDD PMOS w=3.4u l=1.6u
+MXM15 BLp PRn VDD VDD PMOS w=3.4u l=1.6u
+MXM16 SENn SENp net2 VSS NMOS w=3.4u l=1u
+MXM17 SENp SENn net2 VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  SACTR.sym # of pins=7
+** sym_path: ../schematic/SACTR.sym
+** sch_path: ../schematic/SACTR.sch
+.subckt SACTR PRn CE WR VDD VSS LATp CEp
+*.PININFO PRn:O CE:I VDD:B VSS:B LATp:O WR:I CEp:O
+MXM3 net1 CE VDD VDD PMOS w=3.4u l=1u
+MXM7 net1 CE VSS VSS NMOS w=3.4u l=1u
+MXM6 PRn net3 net2 VSS NMOS w=6.8u l=1u
+MXM8 PRn net1 VDD VDD PMOS w=6.8u l=1u
+MXM10 net2 net1 VSS VSS NMOS w=6.8u l=1u
+MXM11 PRn net3 VDD VDD PMOS w=6.8u l=1u
+MXM9 net3 PR_DLY VDD VDD PMOS w=3.4u l=2u
+MXM12 net3 PR_DLY VSS VSS NMOS w=3.4u l=2u
+MXM13 PR_DLY net1 VDD VDD PMOS w=3.4u l=1u
+MXM14 PR_DLY net1 VSS VSS NMOS w=3.4u l=10u
+MXM15 VDD PR_DLY VDD VDD PMOS w=3.4u l=6u
+MXM1 LATp net5 net6 VSS NMOS w=6.8u l=1u
+MXM4 LATp PRn VDD VDD PMOS w=6.8u l=1u
+MXM16 net6 PRn VSS VSS NMOS w=6.8u l=1u
+MXM21 net4 LAT_DLY VDD VDD PMOS w=3.4u l=2u
+MXM22 net4 LAT_DLY VSS VSS NMOS w=3.4u l=2u
+MXM23 LAT_DLY PRn VDD VDD PMOS w=3.4u l=1u
+MXM24 LAT_DLY PRn VSS VSS NMOS w=3.4u l=10u
+MXM25 VDD LAT_DLY VDD VDD PMOS w=3.4u l=4.2u
+MXM27 net5 WR net7 VDD PMOS w=3.4u l=1u
+MXM28 net5 net4 VSS VSS NMOS w=3.4u l=1u
+MXM17 net7 net4 VDD VDD PMOS w=3.4u l=1u
+MXM18 net5 WR VSS VSS NMOS w=3.4u l=1u
+MXM5 LATp net5 VDD VDD PMOS w=6.8u l=1u
+MXM2 CEp net1 VDD VDD PMOS w=3.4u l=1u
+MXM19 CEp net1 VSS VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  WDRV.sym # of pins=7
+** sym_path: ../schematic/WDRV.sym
+** sch_path: ../schematic/WDRV.sch
+.subckt WDRV VDD WRn BLp BLn WRp VSS DIN
+*.PININFO BLn:B BLp:B DIN:I WRn:I WRp:I VDD:B VSS:B
+MXM1 BLn WRp net2 VSS NMOS w=5.4u l=1u
+MXM2 net2 Dp VSS VSS NMOS w=5.4u l=1u
+MXM3 net1 Dp VDD VDD PMOS w=9.4u l=1u
+MXM4 BLn WRn net1 VDD PMOS w=9.4u l=1u
+MXM5 Dp Dn VDD VDD PMOS w=6.8u l=1u
+MXM6 Dp Dn VSS VSS NMOS w=3.4u l=1u
+MXM7 BLp WRp net4 VSS NMOS w=5.4u l=1u
+MXM8 net4 Dn VSS VSS NMOS w=5.4u l=1u
+MXM9 net3 Dn VDD VDD PMOS w=9.4u l=1u
+MXM10 BLp WRn net3 VDD PMOS w=9.4u l=1u
+MXM11 Dn DIN VDD VDD PMOS w=6.8u l=1u
+MXM12 Dn DIN VSS VSS NMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  WRCTR.sym # of pins=6
+** sym_path: ../schematic/WRCTR.sym
+** sch_path: ../schematic/WRCTR.sch
+.subckt WRCTR VDD VSS WRn CE WR WRp
+*.PININFO WRn:O CE:I VDD:B VSS:B WR:I WRp:O
+MXM1 WRp net1 VSS VSS NMOS w=6.8u l=1u
+MXM4 WRp net1 VDD VDD PMOS w=6.8u l=1u
+MXM2 net1 net2 net3 VSS NMOS w=3.4u l=1u
+MXM17 net1 net2 VDD VDD PMOS w=3.4u l=1u
+MXM18 net3 WR VSS VSS NMOS w=3.4u l=1u
+MXM19 net1 WR VDD VDD PMOS w=3.4u l=1u
+MXM5 WRn WRp VSS VSS NMOS w=6.8u l=1u
+MXM6 WRn WRp VDD VDD PMOS w=6.8u l=1u
+MXM3 net2 net4 VSS VSS NMOS w=3.4u l=1u
+MXM7 net2 net4 VDD VDD PMOS w=3.4u l=1u
+MXM8 net4 CE VSS VSS NMOS w=3.4u l=1u
+MXM9 net4 CE VDD VDD PMOS w=3.4u l=1u
+.ends
+
+
+* expanding   symbol:  BIT_CELL.sym # of pins=5
+** sym_path: ../schematic/BIT_CELL.sym
+** sch_path: ../schematic/BIT_CELL.sch
+.subckt BIT_CELL VDD WL BLn BLp VSS
+*.PININFO VDD:B VSS:B WL:I BLp:B BLn:B
+MXM1 net2 net1 VSS VSS NMOS w=3.4u l=1u
+MXM2 net1 net2 VSS VSS NMOS w=3.4u l=1u
+MXM3 net2 net1 VDD VDD PMOS w=3.4u l=1u
+MXM4 net1 net2 VDD VDD PMOS w=3.4u l=1u
+MXM5 BLp WL net2 VSS NMOS w=3.4u l=1u
+MXM6 BLn WL net1 VSS NMOS w=3.4u l=1u
+.ends
+

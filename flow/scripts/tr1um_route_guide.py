@@ -44,7 +44,7 @@ DRT_LEF = CMP / "lef/TR10_cmp_sc.lef"
 GRT_TCL = """\
 read_lef {techlef}
 read_lef {grt_lef}
-read_def {def_path}
+{extra_lefs}read_def {def_path}
 set_routing_layers -signal M1-M2
 global_route -guide_file {guide} -congestion_iterations 50 -allow_congestion -verbose
 puts "TR1UM_GRT_DONE"
@@ -78,6 +78,8 @@ def main() -> int:
     ap.add_argument("--pad-um", type=float, default=81.0,
                     help="guide expansion per side, um (upstream uses 81)")
     ap.add_argument("--openroad", default="openroad", help="openroad binary")
+    ap.add_argument("--extra-lef", dest="extra_lefs", action="append", default=[],
+                    type=Path, help="additional LEF (macro views), repeatable")
     ap.add_argument("--die", default=None,
                     help="die WxH in um for clamping, e.g. 1000x1200 (default: read from DEF)")
     args = ap.parse_args()
@@ -101,7 +103,9 @@ def main() -> int:
         guide = td / "route.guide"
         tcl = td / "grt.tcl"
         tcl.write_text(GRT_TCL.format(
-            techlef=TECHLEF, grt_lef=GRT_LEF, def_path=def_path, guide=guide))
+            techlef=TECHLEF, grt_lef=GRT_LEF,
+            extra_lefs="".join(f"read_lef {p.resolve()}\n" for p in args.extra_lefs),
+            def_path=def_path, guide=guide))
         proc = subprocess.run(
             [args.openroad, "-exit", "-no_splash", str(tcl)],
             capture_output=True, text=True)

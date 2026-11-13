@@ -1,0 +1,14 @@
+TR10_SRAM128 -- 32x4-bit 6T SRAM hard macro for the C4004 core.
+
+Derived from jun1okamura/TR-1um_C4004 (Apache-2.0):
+  module/SRAM128/SRAM128.lef
+  module/SRAM128/SRAM128.lib
+  module/SRAM128/SRAM128.gds
+  module/SRAM128/simulation/SRAM128.spice
+
+Copyright 2025 OpenSUSI ( https://www.opensusi.org/ )
+Copyright 2025 ISHI-KAI ( https://ishi-kai.org/ )
+Copyright 2025 TOKAI RIKA CO., LTD
+
+Changes: layer names METAL1/METAL2/VIA1 -> M1/M2/V1; ground VSS -> GND;
+Liberty library renamed and pg_pin records added.  See LICENSE.

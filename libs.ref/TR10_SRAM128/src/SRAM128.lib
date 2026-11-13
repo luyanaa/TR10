@@ -1,0 +1,275 @@
+/* SRAM128 — 32 word x 4 bit 6T SRAM マクロ（C4004）— Liberty
+ *
+ * scripts/char_sram128.py が自動生成。手で編集しないこと。
+ * 元データ: lef/SRAM128.extracted（KLayout 抽出）を ngspice (BSIM3 level49) で特性化。
+ * ★ 配線の R/C は入っていない（素子のみ（AS/AD/PS/PD は実測、配線 R/C なし））。
+ *   遅延・制約・最小幅はいずれも実物より楽観側に外れる。余裕は使う側で積むこと。
+ *
+ * コーナー: typical / 5.0V / 25degC （PDK に ss/ff のモデルが無いので 1 本のみ）
+ * 遅延の測定点: 入力 50% -> 出力 50% / 遷移: 20% -> 80%
+ * 制約と最小幅: CE・入力とも遷移 1.5ns、掃引刻み 0.5ns の合否境界
+ * 単位: 時間 ns / 容量 fF / 面積 um^2
+ *
+ * 動作: CE↑ でアクセス開始（WR=0 リード / WR=1 ライト）。CE↓ でプリチャージ。
+ *   A / WR / DIN は CE↑ の前（setup_rising）から CE↓ の後（hold_falling）まで保持。
+ *   ★ DO はリードのたびに一度 0 に戻る（SA のリセット）。
+ *     cell_fall = CE↑ から DO が 0 に落ちる時刻、cell_rise = 1 が出る時刻。
+ *     前サイクルも 1 のビットも一度落ちて戻る（STA はこのグリッチを見ない）。
+ *     DO が有効なのは CE↑+cell_rise から次の CE↑+cell_fall まで。
+ *   ライトサイクルでは DO は直前のリード値を保持する。
+ *   setup_rising / hold_falling の負の実測値は 0 に丸めてある（H 幅 50ns でしか
+ *   成り立たない値が混じるため）。実測値は各ピンのコメントにある。--raw で丸めない。
+ */
+
+library (sram128_typ_5v0_25c) {
+  technology (cmos);
+  delay_model : table_lookup;
+  bus_naming_style : "%s[%d]";
+  time_unit : "1ns";
+  voltage_unit : "1V";
+  current_unit : "1mA";
+  pulling_resistance_unit : "1kohm";
+  leakage_power_unit : "1nW";
+  capacitive_load_unit (1, ff);
+
+  nom_process : 1.0;
+  nom_temperature : 25;
+  nom_voltage : 5.0;
+  default_max_transition : 16;
+  slew_lower_threshold_pct_rise : 20;
+  slew_upper_threshold_pct_rise : 80;
+  input_threshold_pct_rise : 50;
+  output_threshold_pct_rise : 50;
+  slew_lower_threshold_pct_fall : 20;
+  slew_upper_threshold_pct_fall : 80;
+  input_threshold_pct_fall : 50;
+  output_threshold_pct_fall : 50;
+  slew_derate_from_library : 1.0;
+
+  operating_conditions (typ) {
+    process : 1.0;
+    temperature : 25;
+    voltage : 5.0;
+    tree_type : balanced_tree;
+  }
+  default_operating_conditions : typ;
+
+  lu_table_template (mem_template_7x7) {
+    variable_1 : input_net_transition;
+    variable_2 : total_output_net_capacitance;
+    index_1 ("0.1, 0.25, 0.6, 1.5, 4, 8, 16");
+    index_2 ("10, 20, 50, 100, 200, 400, 800");
+  }
+  type (bus4) {
+    base_type : array;
+    data_type : bit;
+    bit_width : 4;
+    bit_from : 3;
+    bit_to : 0;
+    downto : true;
+  }
+
+  cell (SRAM128) {
+    area : 216428.2;   /* lef/SRAM128.lef */
+    dont_use : true;   /* 座標指定で置くマクロ。合成が挿してはいけない */
+    dont_touch : true;
+    is_macro_cell : true;
+    pin (CE) {
+      direction : input;
+      clock : true;
+      capacitance : 70.347;
+      max_transition : 16;
+      min_pulse_width_high : 6.0000;   /* pw_high_r / pw_high_w の厳しい方。刻み 0.5ns */
+      min_pulse_width_low : 18.5000;   /* pw_low_r / pw_low_w の厳しい方。刻み 0.5ns */
+    }
+    pin (A0) {
+      direction : input;
+      capacitance : 49.661;
+      max_transition : 16;
+      /* 全ビット同時に変えて測った（0x00 <-> 0x1F）。リード版とライト版の厳しい方 */
+      /* 実測 setup_A_r_rise -2.00, setup_A_w_rise -9.50, setup_A_r_fall -1.50, setup_A_w_fall -7.50 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : setup_rising;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+      /* 実測 hold_A_r_rise -5.00, hold_A_w_rise -5.00, hold_A_r_fall -4.50, hold_A_w_fall -4.50 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : hold_falling;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+    }
+    pin (A1) {
+      direction : input;
+      capacitance : 49.662;
+      max_transition : 16;
+      /* 全ビット同時に変えて測った（0x00 <-> 0x1F）。リード版とライト版の厳しい方 */
+      /* 実測 setup_A_r_rise -2.00, setup_A_w_rise -9.50, setup_A_r_fall -1.50, setup_A_w_fall -7.50 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : setup_rising;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+      /* 実測 hold_A_r_rise -5.00, hold_A_w_rise -5.00, hold_A_r_fall -4.50, hold_A_w_fall -4.50 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : hold_falling;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+    }
+    pin (A2) {
+      direction : input;
+      capacitance : 49.663;
+      max_transition : 16;
+      /* 全ビット同時に変えて測った（0x00 <-> 0x1F）。リード版とライト版の厳しい方 */
+      /* 実測 setup_A_r_rise -2.00, setup_A_w_rise -9.50, setup_A_r_fall -1.50, setup_A_w_fall -7.50 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : setup_rising;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+      /* 実測 hold_A_r_rise -5.00, hold_A_w_rise -5.00, hold_A_r_fall -4.50, hold_A_w_fall -4.50 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : hold_falling;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+    }
+    pin (A3) {
+      direction : input;
+      capacitance : 49.665;
+      max_transition : 16;
+      /* 全ビット同時に変えて測った（0x00 <-> 0x1F）。リード版とライト版の厳しい方 */
+      /* 実測 setup_A_r_rise -2.00, setup_A_w_rise -9.50, setup_A_r_fall -1.50, setup_A_w_fall -7.50 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : setup_rising;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+      /* 実測 hold_A_r_rise -5.00, hold_A_w_rise -5.00, hold_A_r_fall -4.50, hold_A_w_fall -4.50 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : hold_falling;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+    }
+    pin (A4) {
+      direction : input;
+      capacitance : 49.651;
+      max_transition : 16;
+      /* 全ビット同時に変えて測った（0x00 <-> 0x1F）。リード版とライト版の厳しい方 */
+      /* 実測 setup_A_r_rise -2.00, setup_A_w_rise -9.50, setup_A_r_fall -1.50, setup_A_w_fall -7.50 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : setup_rising;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+      /* 実測 hold_A_r_rise -5.00, hold_A_w_rise -5.00, hold_A_r_fall -4.50, hold_A_w_fall -4.50 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : hold_falling;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+    }
+    pin (WR) {
+      direction : input;
+      capacitance : 66.579;
+      max_transition : 16;
+      /* rise = ライトサイクルに入る向き / fall = リードサイクルに戻る向き */
+      /* 実測 setup_WR_rise -30.00 (範囲の下端), setup_WR_fall -7.50 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : setup_rising;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+      /* 実測 hold_WR_rise +1.00, hold_WR_fall -42.00 ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : hold_falling;
+        rise_constraint (scalar) { values("1.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+    }
+    bus (DIN) {
+      bus_type : bus4;
+      direction : input;
+      capacitance : 59.791;
+      max_transition : 16;
+      /* 実測 setup_DIN_rise -30.00 (範囲の下端), setup_DIN_fall -30.00 (範囲の下端) ns -> 負の値は 0 に丸めた（H 幅に依らない形にするため） */
+      timing () {
+        related_pin : "CE";
+        timing_type : setup_rising;
+        rise_constraint (scalar) { values("0.0000"); }
+        fall_constraint (scalar) { values("0.0000"); }
+      }
+      /* 実測 hold_DIN_rise +2.50, hold_DIN_fall +3.00 ns */
+      timing () {
+        related_pin : "CE";
+        timing_type : hold_falling;
+        rise_constraint (scalar) { values("2.5000"); }
+        fall_constraint (scalar) { values("3.0000"); }
+      }
+    }
+    bus (DO) {
+      bus_type : bus4;
+      direction : output;
+      max_capacitance : 800;
+      timing () {
+        related_pin : "CE";
+        timing_type : rising_edge;
+        cell_rise (mem_template_7x7) {
+          values(\
+            "16.29030, 16.33190, 16.44610, 16.61720, 16.92650, 17.48390, 18.52240",\
+            "16.33080, 16.37240, 16.48660, 16.65770, 16.96700, 17.52440, 18.56300",\
+            "16.42670, 16.46830, 16.58250, 16.75360, 17.06290, 17.62030, 18.65880",\
+            "16.67030, 16.71180, 16.82600, 16.99700, 17.30630, 17.86370, 18.90230",\
+            "17.20060, 17.24200, 17.35580, 17.52670, 17.83560, 18.39280, 19.43130",\
+            "17.56380, 17.60520, 17.71890, 17.88960, 18.19830, 18.75510, 19.79340",\
+            "17.56640, 17.60780, 17.72150, 17.89210, 18.20080, 18.75750, 19.79560");
+        }
+        rise_transition (mem_template_7x7) {
+          values(\
+            "0.49427, 0.53113, 0.63944, 0.81585, 1.15864, 1.83428, 3.22092",\
+            "0.49430, 0.53115, 0.63932, 0.81587, 1.15859, 1.83428, 3.22092",\
+            "0.49428, 0.53104, 0.63916, 0.81572, 1.15843, 1.83419, 3.22087",\
+            "0.49281, 0.52967, 0.63809, 0.81467, 1.15759, 1.83349, 3.22043",\
+            "0.48975, 0.52658, 0.63506, 0.81200, 1.15518, 1.83165, 3.21932",\
+            "0.48929, 0.52615, 0.63459, 0.81125, 1.15442, 1.83081, 3.21866",\
+            "0.48926, 0.52617, 0.63455, 0.81125, 1.15427, 1.83062, 3.21842");
+        }
+        cell_fall (mem_template_7x7) {
+          values(\
+            "9.04601, 9.08876, 9.20397, 9.36816, 9.64171, 10.08340, 10.82000",\
+            "9.08669, 9.12948, 9.24466, 9.40888, 9.68241, 10.12410, 10.86070",\
+            "9.18352, 9.22634, 9.34147, 9.50572, 9.77922, 10.22090, 10.95750",\
+            "9.43616, 9.47898, 9.59409, 9.75834, 10.03180, 10.47350, 11.21020",\
+            "9.98808, 10.03080, 10.14600, 10.31020, 10.58380, 11.02550, 11.76220",\
+            "10.36550, 10.40830, 10.52350, 10.68770, 10.96120, 11.40300, 12.14010",\
+            "10.39460, 10.43740, 10.55270, 10.71710, 10.99080, 11.43240, 12.16960");
+        }
+        fall_transition (mem_template_7x7) {
+          values(\
+            "0.55095, 0.58213, 0.66483, 0.78215, 0.98647, 1.36434, 2.12449",\
+            "0.55108, 0.58202, 0.66476, 0.78202, 0.98641, 1.36436, 2.12452",\
+            "0.55105, 0.58222, 0.66468, 0.78208, 0.98642, 1.36434, 2.12452",\
+            "0.55102, 0.58227, 0.66468, 0.78214, 0.98641, 1.36431, 2.12461",\
+            "0.55094, 0.58209, 0.66481, 0.78212, 0.98646, 1.36436, 2.12535",\
+            "0.55103, 0.58196, 0.66472, 0.78198, 0.98642, 1.36465, 2.12685",\
+            "0.55121, 0.58253, 0.66523, 0.78286, 0.98686, 1.36458, 2.12719");
+        }
+      }
+    }
+  }
+}

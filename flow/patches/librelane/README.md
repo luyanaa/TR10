@@ -116,3 +116,73 @@ config.  Non-obvious constraints discovered while integrating it:
   ships that file, so TritonRoute consumes the M1-pin-LEF global guides
   produced by `flow/scripts/tr1um_route_guide.py` instead of the M2-only
   guides that an ODB `global_route` leaves.
+  The upstream C4004 run needs `-droute_end_iter 40`
+  (`DRT_OPT_ITERS`): at the LibreLane default of 16 the tail is still
+  descending (331 -> 96 -> 35 -> 19 -> **17** violations) and only the
+  longer annealing pass reaches 0.
+
+## `librelane/dpl.tcl` — post-DPL hook
+
+**Need.** `scripts/openroad/common/dpl.tcl` starts with `remove_fillers`, so
+any filler a design placed itself is deleted before legalisation.  That is
+normally correct (fillers are not logic), but `examples/c4004_cmp` replays
+the upstream C4004 layout, where 129 `FILL3`/`FILL2` cells are part of the
+physical intent: consecutive logic cells sit 16.2 um apart in places and the
+filler is what merges the two N-well islands (without it the gap is 3.6 um
+and fails `WN.S1` < 4.0 and `WN.S7` < 12.0).
+
+**Workaround.** The patched `dpl.tcl` sources `$DESIGN_DIR/post_dpl.tcl`
+after `detailed_placement` and *before* the final `check_placement`, so the
+re-inserted cells are validated and written into the views.  The hook in
+`examples/c4004_cmp` replays the filler instances from the same generated
+`placements.tcl` the GPL hook uses, marks them `FIRM`, and re-runs
+`set_global_connections` so they join the VDD/GND nets.  A design without
+`post_dpl.tcl` is unaffected.
+
+**Version pinning.** Copy of the script shipped with LibreLane 3.1.0.dev3 in
+the pinned IIC-OSIC tools image; only the marked `TR10:` block before
+`check_placement` is added.
+
+## `librelane/pdn.tcl` — post-PDN geometry hook
+
+**Need.** `examples/c4004_cmp` reproduces the upstream C4004 power grid,
+which cannot be expressed with `pdngen` alone: the row rails must extend to
+x = 1818.8 um (past the row-grid core area, which `initialize_floorplan`
+snaps to 1836 um), the M2 straps must stop at the SRAM and at the north bus,
+and eight additional M1 rails must connect SRAM128.  Faking it with extra
+`add_pdn_stripe` calls collides with the generated straps.
+
+**Workaround.** The patched `pdn.tcl` sources `$DESIGN_DIR/post_pdn.tcl`
+right after `pdngen` succeeds and *before* `write_views` and
+`check_power_grid`, so the custom geometry is written into the views and is
+part of the PSM grid check.  A design without `post_pdn.tcl` is unaffected.
+
+`examples/c4004_cmp/post_pdn.tcl` uses the hook to delete every pdngen shape
+(straps **and** vias), rebuild 22 row rails, 8 M2 straps, 8 SRAM M1 rails
+and the north VDD M1 bus, add 100 V1 vias and rebuild the VDD/GND block
+terminals as `FIRM` b-pins.  The vias are regenerated because pdngen's
+`add_pdn_connect` arrays violate the TR10 V1 rules (1.4 um vias on a 2.6 um
+pitch: `V1.S1` needs 1.5 um spacing) and, at the TAP2 columns, land on the
+tap's substrate contacts (`V1.CO`); see the design README.  Two OpenROAD
+binding details matter:
+
+- `dbInst`/`dbBPin` `setPlacementStatus` accepts
+  `NONE/UNPLACED/PLACED/FIRM/COVER/LOCKED` but **not** `FIXED`
+  (`ValueError Unknown placement status`).
+- `check_power_grid` only counts `dbBPin` terminals whose placement status
+  is `FIRM`; otherwise PSM aborts with `PSM-0025 ... does not contain any
+  terminals`.
+
+**Version pinning.** Like the other files here, `pdn.tcl` is a copy of the
+script in the pinned IIC-OSIC tools image; only the marked
+`TR10:` block after the `pdngen` error handler is added.  `drt.tcl` was
+refreshed against the same image: the current upstream script has no
+`set_thread_count` call (`OPENROAD_THREADS`/`-threads` is handled by the
+step) and still has the `DRT_DISABLE_AUTO_TAPER` block, so a patch copied
+from an older LibreLane must not reintroduce either difference.
+
+**IR-drop voltage-source files are parsed strictly.** `-vsrc` files are
+read as raw CSV lines (`x, y, size, voltage`); the parser does not skip
+comments, so a leading `#` header aborts the step with the terse OpenROAD
+error `irdrop.tcl, 51 stod`.  Keep `.loc` files comment-free and document
+their meaning in the design README instead.

@@ -1,0 +1,88 @@
+VERSION 5.8 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN c4004_core ;
+UNITS DISTANCE MICRONS 1000 ;
+
+DIEAREA ( 0 0 ) ( 1840000 1840000 ) ;
+
+PINS 19 ;
+  - clk + NET clk + DIRECTION INPUT + USE SIGNAL
+    + PORT
+      + LAYER M2 ( -1700 -6500 ) ( 1700 6500 )
+      + FIXED ( 283500 1801500 ) N ;
+  - sync + NET sync + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M2 ( -1700 -10000 ) ( 1700 10000 )
+      + FIXED ( 299700 1805000 ) N ;
+  - cm_rom + NET cm_rom + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M2 ( -1700 -10000 ) ( 1700 10000 )
+      + FIXED ( 1541700 1805000 ) N ;
+  - rst + NET rst + DIRECTION INPUT + USE SIGNAL
+    + PORT
+      + LAYER M2 ( -1700 -7500 ) ( 1700 7500 )
+      + FIXED ( 391500 17500 ) N ;
+  - d_oe + NET d_oe + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M2 ( -1700 -7500 ) ( 1700 7500 )
+      + FIXED ( 1098900 17500 ) N ;
+  - test + NET test + DIRECTION INPUT + USE SIGNAL
+    + PORT
+      + LAYER M2 ( -1700 -7500 ) ( 1700 7500 )
+      + FIXED ( 1449900 17500 ) N ;
+  - d_out[0] + NET d_out[0] + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 40000 305100 ) N ;
+  - d_hiz + NET d_hiz + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 40000 288900 ) N ;
+  - d_in[0] + NET d_in[0] + DIRECTION INPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 40000 423900 ) N ;
+  - d_in[1] + NET d_in[1] + DIRECTION INPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 40000 699300 ) N ;
+  - d_out[1] + NET d_out[1] + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 40000 731700 ) N ;
+  - d_out[2] + NET d_out[2] + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 40000 1125900 ) N ;
+  - d_in[2] + NET d_in[2] + DIRECTION INPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 40000 1163700 ) N ;
+  - d_in[3] + NET d_in[3] + DIRECTION INPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 40000 1422900 ) N ;
+  - d_out[3] + NET d_out[3] + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 40000 1568700 ) N ;
+  - cm_ram[0] + NET cm_ram[0] + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 1800000 305100 ) N ;
+  - cm_ram[1] + NET cm_ram[1] + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 1800000 731700 ) N ;
+  - cm_ram[2] + NET cm_ram[2] + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 1800000 1125900 ) N ;
+  - cm_ram[3] + NET cm_ram[3] + DIRECTION OUTPUT + USE SIGNAL
+    + PORT
+      + LAYER M1 ( -5000 -1000 ) ( 5000 1000 )
+      + FIXED ( 1800000 1568700 ) N ;
+END PINS
+
+END DESIGN

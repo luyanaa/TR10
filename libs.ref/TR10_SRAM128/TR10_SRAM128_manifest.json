@@ -1,0 +1,19 @@
+{
+ "library": "TR10_SRAM128",
+ "gds": "libs.ref/TR10_SRAM128/gds/SRAM128.gds",
+ "lef": "libs.ref/TR10_SRAM128/lef/SRAM128.lef",
+ "lib": "libs.ref/TR10_SRAM128/lib/TR10_SRAM128__typ_5p0V_25C.lib",
+ "cdl": "libs.ref/TR10_SRAM128/cdl/SRAM128.cdl",
+ "spice": "libs.ref/TR10_SRAM128/spice/SRAM128.spice",
+ "license": "libs.ref/TR10_SRAM128/LICENSE",
+ "notice": "libs.ref/TR10_SRAM128/NOTICE",
+ "sha256": {
+  "SRAM128.gds": "19daac3028ae64ab07d5765ab21fb2a3acbfec127a497a0e17d6c893cbbdf7c6",
+  "SRAM128.lef": "ee2eefb5c1ee3d5511970eefeb644e2c6681203a4f19132234fec42402a1bc7f",
+  "TR10_SRAM128__typ_5p0V_25C.lib": "55af90b09cff745c7033b3afc0929c043593481d2612074601c6434f1bc5d2c0",
+  "SRAM128.cdl": "72deb96f07296468828c09ba4f4709a1a5f010a71d5790f2525c01e45a39c03b",
+  "SRAM128.spice": "72deb96f07296468828c09ba4f4709a1a5f010a71d5790f2525c01e45a39c03b",
+  "LICENSE": "6863509ccf02291e916f566f36f0e0ed5d218d55a0c08d8abadad6f55aa9540d",
+  "NOTICE": "0cd87e224096dd44c05e57b49c16562b645258672a539e0832deb87d79178598"
+ }
+}

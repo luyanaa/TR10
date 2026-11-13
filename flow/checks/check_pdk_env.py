@@ -84,7 +84,7 @@ def main() -> int:
         fail("could not parse RCX_RULESETS from librelane config")
 
     # ---- manifests ----------------------------------------------------------
-    for lib in ("TR10_fd_sc", "TR10_gen_sc"):
+    for lib in ("TR10_fd_sc", "TR10_gen_sc", "TR10_cmp_sc", "TR10_SRAM128"):
         man_path = pdk_dir / f"libs.ref/{lib}/{lib}_manifest.json"
         if not man_path.is_file():
             fail(f"manifest missing: {man_path}")
