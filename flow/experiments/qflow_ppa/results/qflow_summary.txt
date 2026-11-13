@@ -1,0 +1,27 @@
+qflow 1.4.104 / GrayWolf 2.2 / qrouter 1.4.90.T
+TR10_cmp_sc, same 87-cell mapped FIFO netlist as the LibreLane/OpenROAD run.
+
+qflow native placement (tr10cmp.par rowSep 0):
+  components: 93 (87 mapped cells + 5 FILL1 + 1 TIEHI)
+  rows: 7, row pitch 59.4 um, no routing channel
+  die: 507.6 x 432.0 um = 219283.2 um^2 (DEF die; 496.8 um row span + 10.8 margin)
+  mapped-cell area: 196626 um^2 (sum 87 widths * 59.4)
+  density: ~89.7 % (196626 / 219283; placement only)
+  qrouter: 43/118 failed (first run), 51/118 failed (rerun); no reliable route DEF
+
+qflow placement with 237.6 um row pitch (post-shifted components):
+  qrouter: 56/118 failed
+  qflow .par rowSep attempts produced 3369.6 x 1830.6 or 3369.6 x 5362.2 um dies
+  and were not usable (power/tap alignment, row/tile warnings).
+
+qrouter on the OpenROAD 237.6 um-pitch placement (SPECIALNETS stripped):
+  109/118 nets routed; 9 failed (TIEHI HI / clk tap points)
+  partial route only; no timing/power signoff.
+
+OpenROAD/librelane (same netlist, DRT 0):
+  die: 760 x 1570 um = 1193200 um^2
+  stdcell area incl. 42 TAP2: 224211 um^2
+  utilization: 19.77 %
+  DRT 0, KLayout DRC 0, LVS PASS
+  power (typ, default activity): 194.1 uW
+  setup WNS 0, TNS 0, slack 4751.78 (5 us clock); hold WNS 0

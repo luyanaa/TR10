@@ -1,0 +1,18 @@
+{
+  "design__instance__area": 224211,
+  "design__die__area": 1193200,
+  "design__core__area": 1134210,
+  "design__instance__utilization": 0.197681,
+  "design__instance__count__stdcell": 129,
+  "power__total": 0.00019411709217820317,
+  "power__switching__total": 0.00019411709217820317,
+  "power__leakage__total": 0,
+  "timing__setup__wns": 0,
+  "timing__setup__tns": 0,
+  "timing__setup__ws": 4751.777985586862,
+  "timing__hold__wns": 0,
+  "timing__hold__tns": 0,
+  "timing__hold__ws": 2.1895683663700556,
+  "timing__setup_vio__count": 0,
+  "timing__hold_vio__count": 0
+}

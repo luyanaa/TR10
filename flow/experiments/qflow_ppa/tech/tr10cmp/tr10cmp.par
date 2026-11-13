@@ -1,0 +1,35 @@
+RULES
+    layer metal1 0.050 0.000035 horizontal
+    layer metal2 0.030 0.0000175 vertical
+    via via12 metal1 metal2
+    width metal1 180
+    width metal2 340
+    width via12 140
+    spacing metal1 metal1 140
+    spacing metal2 metal2 200
+    spacing via12 via12 150
+    overhang via12 metal1 170
+    overhang via12 metal2 170
+ENDRULES
+
+*vertical_wire_weight : 1.0
+*vertical_path_weight : 1.0
+*padspacing           : variable
+*rowSep               : 0.0   0
+*track.pitch          : 540
+*minimum_pad_space    : 540
+*gridX                : 540
+*gridY                : 540
+*gridOffsetX          : 270
+*gridOffsetY          : 270
+*graphics.wait        : off
+*last_chance.wait     : off
+*random.seed          : 12345
+TWMC*chip.aspect.ratio : 1.0
+TWSC*feedThruWidth    : 540 layer 1
+TWSC*do.global.route  : on
+TWSC*ignore_feeds     : true
+TWSC*call_row_evener  : true
+TWSC*even_rows_maximally : true
+GENR*row_to_tile_spacing: 1
+GENR*flip_alternate_rows : 0

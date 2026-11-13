@@ -1,0 +1,410 @@
+VERSION 5.8 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN tr1um_fifo4_cmp ;
+UNITS DISTANCE MICRONS 1000 ;
+DIEAREA ( 0 0 ) ( 760000 1570000 ) ;
+ROW ROW_0 TR1UM 10800 0 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_1 TR1UM 10800 59400 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_2 TR1UM 10800 118800 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_3 TR1UM 10800 178200 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_4 TR1UM 10800 237600 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_5 TR1UM 10800 297000 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_6 TR1UM 10800 356400 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_7 TR1UM 10800 415800 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_8 TR1UM 10800 475200 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_9 TR1UM 10800 534600 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_10 TR1UM 10800 594000 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_11 TR1UM 10800 653400 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_12 TR1UM 10800 712800 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_13 TR1UM 10800 772200 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_14 TR1UM 10800 831600 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_15 TR1UM 10800 891000 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_16 TR1UM 10800 950400 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_17 TR1UM 10800 1009800 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_18 TR1UM 10800 1069200 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_19 TR1UM 10800 1128600 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_20 TR1UM 10800 1188000 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_21 TR1UM 10800 1247400 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_22 TR1UM 10800 1306800 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_23 TR1UM 10800 1366200 FS DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_24 TR1UM 10800 1425600 N DO 136 BY 1 STEP 5400 0 ;
+ROW ROW_25 TR1UM 10800 1485000 FS DO 136 BY 1 STEP 5400 0 ;
+TRACKS X 2700 DO 141 STEP 5400 LAYER M1 ;
+TRACKS Y 2700 DO 291 STEP 5400 LAYER M1 ;
+TRACKS X 2700 DO 140 STEP 5400 LAYER M2 ;
+TRACKS Y 2700 DO 290 STEP 5400 LAYER M2 ;
+COMPONENTS 129 ;
+    - TAP_TAPCELL_ROW_0_0 TAP2 + SOURCE DIST + FIXED ( 226800 0 ) N ;
+    - TAP_TAPCELL_ROW_0_1 TAP2 + SOURCE DIST + FIXED ( 442800 0 ) N ;
+    - TAP_TAPCELL_ROW_0_2 TAP2 + SOURCE DIST + FIXED ( 658800 0 ) N ;
+    - TAP_TAPCELL_ROW_10_16 TAP2 + SOURCE DIST + FIXED ( 226800 594000 ) N ;
+    - TAP_TAPCELL_ROW_10_17 TAP2 + SOURCE DIST + FIXED ( 658800 594000 ) N ;
+    - TAP_TAPCELL_ROW_11_18 TAP2 + SOURCE DIST + FIXED ( 442800 653400 ) FS ;
+    - TAP_TAPCELL_ROW_12_19 TAP2 + SOURCE DIST + FIXED ( 226800 712800 ) N ;
+    - TAP_TAPCELL_ROW_12_20 TAP2 + SOURCE DIST + FIXED ( 658800 712800 ) N ;
+    - TAP_TAPCELL_ROW_13_21 TAP2 + SOURCE DIST + FIXED ( 442800 772200 ) FS ;
+    - TAP_TAPCELL_ROW_14_22 TAP2 + SOURCE DIST + FIXED ( 226800 831600 ) N ;
+    - TAP_TAPCELL_ROW_14_23 TAP2 + SOURCE DIST + FIXED ( 658800 831600 ) N ;
+    - TAP_TAPCELL_ROW_15_24 TAP2 + SOURCE DIST + FIXED ( 442800 891000 ) FS ;
+    - TAP_TAPCELL_ROW_16_25 TAP2 + SOURCE DIST + FIXED ( 226800 950400 ) N ;
+    - TAP_TAPCELL_ROW_16_26 TAP2 + SOURCE DIST + FIXED ( 658800 950400 ) N ;
+    - TAP_TAPCELL_ROW_17_27 TAP2 + SOURCE DIST + FIXED ( 442800 1009800 ) FS ;
+    - TAP_TAPCELL_ROW_18_28 TAP2 + SOURCE DIST + FIXED ( 226800 1069200 ) N ;
+    - TAP_TAPCELL_ROW_18_29 TAP2 + SOURCE DIST + FIXED ( 658800 1069200 ) N ;
+    - TAP_TAPCELL_ROW_19_30 TAP2 + SOURCE DIST + FIXED ( 442800 1128600 ) FS ;
+    - TAP_TAPCELL_ROW_1_3 TAP2 + SOURCE DIST + FIXED ( 442800 59400 ) FS ;
+    - TAP_TAPCELL_ROW_20_31 TAP2 + SOURCE DIST + FIXED ( 226800 1188000 ) N ;
+    - TAP_TAPCELL_ROW_20_32 TAP2 + SOURCE DIST + FIXED ( 658800 1188000 ) N ;
+    - TAP_TAPCELL_ROW_21_33 TAP2 + SOURCE DIST + FIXED ( 442800 1247400 ) FS ;
+    - TAP_TAPCELL_ROW_22_34 TAP2 + SOURCE DIST + FIXED ( 226800 1306800 ) N ;
+    - TAP_TAPCELL_ROW_22_35 TAP2 + SOURCE DIST + FIXED ( 658800 1306800 ) N ;
+    - TAP_TAPCELL_ROW_23_36 TAP2 + SOURCE DIST + FIXED ( 442800 1366200 ) FS ;
+    - TAP_TAPCELL_ROW_24_37 TAP2 + SOURCE DIST + FIXED ( 226800 1425600 ) N ;
+    - TAP_TAPCELL_ROW_24_38 TAP2 + SOURCE DIST + FIXED ( 658800 1425600 ) N ;
+    - TAP_TAPCELL_ROW_25_39 TAP2 + SOURCE DIST + FIXED ( 226800 1485000 ) FS ;
+    - TAP_TAPCELL_ROW_25_40 TAP2 + SOURCE DIST + FIXED ( 442800 1485000 ) FS ;
+    - TAP_TAPCELL_ROW_25_41 TAP2 + SOURCE DIST + FIXED ( 658800 1485000 ) FS ;
+    - TAP_TAPCELL_ROW_2_4 TAP2 + SOURCE DIST + FIXED ( 226800 118800 ) N ;
+    - TAP_TAPCELL_ROW_2_5 TAP2 + SOURCE DIST + FIXED ( 658800 118800 ) N ;
+    - TAP_TAPCELL_ROW_3_6 TAP2 + SOURCE DIST + FIXED ( 442800 178200 ) FS ;
+    - TAP_TAPCELL_ROW_4_7 TAP2 + SOURCE DIST + FIXED ( 226800 237600 ) N ;
+    - TAP_TAPCELL_ROW_4_8 TAP2 + SOURCE DIST + FIXED ( 658800 237600 ) N ;
+    - TAP_TAPCELL_ROW_5_9 TAP2 + SOURCE DIST + FIXED ( 442800 297000 ) FS ;
+    - TAP_TAPCELL_ROW_6_10 TAP2 + SOURCE DIST + FIXED ( 226800 356400 ) N ;
+    - TAP_TAPCELL_ROW_6_11 TAP2 + SOURCE DIST + FIXED ( 658800 356400 ) N ;
+    - TAP_TAPCELL_ROW_7_12 TAP2 + SOURCE DIST + FIXED ( 442800 415800 ) FS ;
+    - TAP_TAPCELL_ROW_8_13 TAP2 + SOURCE DIST + FIXED ( 226800 475200 ) N ;
+    - TAP_TAPCELL_ROW_8_14 TAP2 + SOURCE DIST + FIXED ( 658800 475200 ) N ;
+    - TAP_TAPCELL_ROW_9_15 TAP2 + SOURCE DIST + FIXED ( 442800 534600 ) FS ;
+    - _101_ INV_X1 + FIXED ( 151200 237600 ) N ;
+    - _102_ INV_X1 + FIXED ( 577800 0 ) N ;
+    - _103_ NOR2 + FIXED ( 135000 237600 ) N ;
+    - _104_ NAND2 + FIXED ( 178200 237600 ) N ;
+    - _105_ NOR2 + FIXED ( 394200 237600 ) N ;
+    - _107_ NOR3 + FIXED ( 351000 237600 ) N ;
+    - _111_ NOR2 + FIXED ( 410400 237600 ) N ;
+    - _113_ NOR2 + FIXED ( 545400 0 ) N ;
+    - _115_ NOR3 + FIXED ( 604800 0 ) N ;
+    - _123_ INV_X1 + FIXED ( 280800 475200 ) N ;
+    - _124_ NAND2 + FIXED ( 588600 0 ) N ;
+    - _125_ NAND2 + FIXED ( 324000 475200 ) N ;
+    - _126_ INV_X1 + FIXED ( 340200 475200 ) N ;
+    - _127_ NAND2 + FIXED ( 307800 475200 ) N ;
+    - _128_ NAND2 + FIXED ( 291600 475200 ) N ;
+    - _129_ INV_X1 + FIXED ( 437400 237600 ) N ;
+    - _130_ NOR2 + FIXED ( 448200 237600 ) N ;
+    - _135_ NAND2 + FIXED ( 162000 237600 ) N ;
+    - _136_ INV_X1 + FIXED ( 43200 0 ) N ;
+    - _137_ NAND2 + FIXED ( 334800 237600 ) N ;
+    - _138_ NOR2 + FIXED ( 367200 0 ) N ;
+    - _139_ NAND2 + FIXED ( 518400 0 ) N ;
+    - _140_ OAI21 + FIXED ( 669600 0 ) N ;
+    - _141_ NAND2 + FIXED ( 642600 0 ) N ;
+    - _142_ NOR2 + FIXED ( 129600 0 ) N ;
+    - _143_ NOR2 + FIXED ( 10800 0 ) N ;
+    - _144_ NOR2 + FIXED ( 145800 0 ) N ;
+    - _145_ NOR3 + FIXED ( 178200 0 ) N ;
+    - _146_ NOR3 + FIXED ( 372600 237600 ) N ;
+    - _147_ NOR2 + FIXED ( 27000 0 ) N ;
+    - _148_ NAND3 + FIXED ( 199800 0 ) N ;
+    - _149_ NAND2 + FIXED ( 162000 0 ) N ;
+    - _150_ MUXTG2 + FIXED ( 59400 0 ) N ;
+    - _151_ NAND2 + FIXED ( 113400 0 ) N ;
+    - _152_ NAND2 + FIXED ( 561600 0 ) N ;
+    - _154_ XOR2 + FIXED ( 108000 237600 ) N ;
+    - _156_ NAND3 + FIXED ( 475200 950400 ) N ;
+    - _158_ INV_X1 + FIXED ( 108000 475200 ) N ;
+    - _159_ AOI21 + FIXED ( 237600 475200 ) N ;
+    - _160_ AOI21 + FIXED ( 259200 475200 ) N ;
+    - _161_ NAND2 + FIXED ( 637200 712800 ) N ;
+    - _162_ NOR2 + FIXED ( 631800 950400 ) N ;
+    - _163_ AOI21 + FIXED ( 577800 950400 ) N ;
+    - _164_ NAND3 + FIXED ( 205200 950400 ) N ;
+    - _165_ OAI21 + FIXED ( 550800 712800 ) N ;
+    - _166_ NAND3 + FIXED ( 129600 712800 ) N ;
+    - _167_ AND2_X1 + FIXED ( 615600 712800 ) N ;
+    - _168_ INV_X1 + FIXED ( 194400 237600 ) N ;
+    - _169_ NOR2 + FIXED ( 561600 950400 ) N ;
+    - _170_ AOI21 + FIXED ( 496800 950400 ) N ;
+    - _171_ NAND3 + FIXED ( 356400 950400 ) N ;
+    - _172_ OAI21 + FIXED ( 529200 712800 ) N ;
+    - _173_ NAND3 + FIXED ( 108000 712800 ) N ;
+    - _174_ AND2_X1 + FIXED ( 594000 712800 ) N ;
+    - _175_ NOR2 + FIXED ( 615600 950400 ) N ;
+    - _176_ AOI21 + FIXED ( 540000 950400 ) N ;
+    - _177_ NAND3 + FIXED ( 334800 950400 ) N ;
+    - _178_ OAI21 + FIXED ( 567000 475200 ) N ;
+    - _179_ INV_X2 + FIXED ( 534600 0 ) N ;
+    - _180_ NAND3 + FIXED ( 448200 475200 ) N ;
+    - _181_ AND2_X1 + FIXED ( 572400 712800 ) N ;
+    - _182_ NOR2 + FIXED ( 599400 950400 ) N ;
+    - _183_ AOI21 + FIXED ( 518400 950400 ) N ;
+    - _184_ NOR2 + FIXED ( 626400 0 ) N ;
+    - _185_ EDFF + FIXED ( 237600 1188000 ) N ;
+    - _186_ EDFF + FIXED ( 10800 1188000 ) N ;
+    - _187_ EDFF + FIXED ( 334800 1188000 ) N ;
+    - _188_ EDFF + FIXED ( 108000 1188000 ) N ;
+    - _189_ EDFF + FIXED ( 10800 475200 ) N ;
+    - _190_ EDFF + FIXED ( 432000 712800 ) N ;
+    - _191_ EDFF + FIXED ( 334800 712800 ) N ;
+    - _192_ EDFF + FIXED ( 469800 475200 ) N ;
+    - _193_ EDFF + FIXED ( 118800 475200 ) N ;
+    - _194_ EDFF + FIXED ( 237600 712800 ) N ;
+    - _195_ EDFF + FIXED ( 10800 712800 ) N ;
+    - _196_ EDFF + FIXED ( 351000 475200 ) N ;
+    - _197_ EDFF + FIXED ( 378000 950400 ) N ;
+    - _198_ EDFF + FIXED ( 108000 950400 ) N ;
+    - _199_ EDFF + FIXED ( 237600 950400 ) N ;
+    - _200_ EDFF + FIXED ( 10800 950400 ) N ;
+    - _201_ EDFF + FIXED ( 464400 237600 ) N ;
+    - _202_ EDFF + FIXED ( 561600 237600 ) N ;
+    - _203_ EDFF + FIXED ( 237600 237600 ) N ;
+    - _205_ EDFF + FIXED ( 10800 237600 ) N ;
+    - _207_ DFF + FIXED ( 453600 0 ) N ;
+    - dff2_0 DFF2 + FIXED ( 237600 0 ) N ;
+    - edff_tie TIEHI + FIXED ( 426600 237600 ) N ;
+END COMPONENTS
+PINS 13 ;
+    - clk + NET clk + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 51300 1566600 ) N ;
+    - data_in[0] + NET data_in[0] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 213300 1566600 ) N ;
+    - data_in[1] + NET data_in[1] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 267300 1566600 ) N ;
+    - data_in[2] + NET data_in[2] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 321300 1566600 ) N ;
+    - data_in[3] + NET data_in[3] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 375300 1566600 ) N ;
+    - data_out[0] + NET data_out[0] + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 429300 1566600 ) N ;
+    - data_out[1] + NET data_out[1] + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 483300 1566600 ) N ;
+    - data_out[2] + NET data_out[2] + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 537300 1566600 ) N ;
+    - data_out[3] + NET data_out[3] + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 591300 1566600 ) N ;
+    - empty + NET empty + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 645300 1566600 ) N ;
+    - full + NET full + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 699300 1566600 ) N ;
+    - pop + NET pop + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 159300 1566600 ) N ;
+    - push + NET push + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 105300 1566600 ) N ;
+END PINS
+NETS 118 ;
+    - _000_ ( _207_ QB ) ( _184_ A ) ( _102_ A ) + USE SIGNAL ;
+    - _001_ ( _201_ QB ) ( _201_ D ) + USE SIGNAL ;
+    - _002_ ( _205_ QB ) ( _205_ D ) + USE SIGNAL ;
+    - _003_ ( _203_ QB ) ( _203_ D ) + USE SIGNAL ;
+    - _005_ ( dff2_0 D0 ) ( _154_ Y ) + USE SIGNAL ;
+    - _007_ ( dff2_0 D1 ) ( _151_ Y ) + USE SIGNAL ;
+    - _008_ ( _207_ D ) ( _147_ Y ) + USE SIGNAL ;
+    - _027_ ( _144_ A ) ( _136_ Y ) + USE SIGNAL ;
+    - _028_ ( _152_ A ) ( _150_ B ) ( _148_ B ) ( _138_ B ) ( _137_ Y ) + USE SIGNAL ;
+    - _029_ ( _145_ B ) ( _143_ A ) ( _138_ Y ) + USE SIGNAL ;
+    - _030_ ( _149_ A ) ( _142_ A ) ( _139_ Y ) + USE SIGNAL ;
+    - _031_ ( _141_ B ) ( _140_ Y ) + USE SIGNAL ;
+    - _032_ ( _152_ B ) ( _150_ A ) ( _148_ C ) ( _142_ B ) ( _141_ Y ) + USE SIGNAL ;
+    - _033_ ( _145_ C ) ( _143_ B ) ( _142_ Y ) + USE SIGNAL ;
+    - _034_ ( _144_ B ) ( _143_ Y ) + USE SIGNAL ;
+    - _035_ ( _147_ A ) ( _144_ Y ) + USE SIGNAL ;
+    - _036_ ( _147_ B ) ( _145_ Y ) + USE SIGNAL ;
+    - _037_ ( _151_ A ) ( _148_ Y ) + USE SIGNAL ;
+    - _038_ ( _150_ S ) ( _149_ Y ) + USE SIGNAL ;
+    - _039_ ( _151_ B ) ( _150_ Y ) + USE SIGNAL ;
+    - _040_ ( _205_ E ) ( _152_ Y ) + USE SIGNAL ;
+    - _041_ ( _163_ A1 ) ( _156_ Y ) + USE SIGNAL ;
+    - _042_ ( _159_ A2 ) ( _158_ Y ) + USE SIGNAL ;
+    - _043_ ( _160_ B ) ( _159_ Y ) + USE SIGNAL ;
+    - _044_ ( _163_ A2 ) ( _160_ Y ) + USE SIGNAL ;
+    - _045_ ( _182_ B ) ( _175_ B ) ( _169_ B ) ( _162_ B ) ( _161_ Y ) + USE SIGNAL ;
+    - _046_ ( _163_ B ) ( _162_ Y ) + USE SIGNAL ;
+    - _047_ ( _170_ A1 ) ( _164_ Y ) + USE SIGNAL ;
+    - _048_ ( _167_ A ) ( _165_ Y ) + USE SIGNAL ;
+    - _049_ ( _167_ B ) ( _166_ Y ) + USE SIGNAL ;
+    - _050_ ( _170_ A2 ) ( _167_ Y ) + USE SIGNAL ;
+    - _051_ ( _170_ B ) ( _169_ Y ) + USE SIGNAL ;
+    - _052_ ( _176_ A1 ) ( _171_ Y ) + USE SIGNAL ;
+    - _053_ ( _174_ A ) ( _172_ Y ) + USE SIGNAL ;
+    - _054_ ( _174_ B ) ( _173_ Y ) + USE SIGNAL ;
+    - _055_ ( _176_ A2 ) ( _174_ Y ) + USE SIGNAL ;
+    - _056_ ( _176_ B ) ( _175_ Y ) + USE SIGNAL ;
+    - _057_ ( _183_ A1 ) ( _177_ Y ) + USE SIGNAL ;
+    - _058_ ( _181_ A ) ( _178_ Y ) + USE SIGNAL ;
+    - _059_ ( _181_ B ) ( _180_ Y ) + USE SIGNAL ;
+    - _060_ ( _183_ A2 ) ( _181_ Y ) + USE SIGNAL ;
+    - _061_ ( _183_ B ) ( _182_ Y ) + USE SIGNAL ;
+    - _062_ ( _154_ A ) ( _146_ B ) ( _105_ A ) ( _101_ Y ) + USE SIGNAL ;
+    - _063_ ( _124_ A ) ( _102_ Y ) + USE SIGNAL ;
+    - _064_ ( _179_ A ) ( _124_ B ) ( _113_ Y ) + USE SIGNAL ;
+    - _065_ ( _135_ B ) ( _124_ Y ) + USE SIGNAL ;
+    - _066_ ( _203_ E ) ( _146_ C ) ( _137_ A ) ( _135_ Y ) ( _107_ C ) + USE SIGNAL ;
+    - _067_ ( _196_ E ) ( _195_ E ) ( _194_ E ) ( _193_ E ) ( _146_ Y ) + USE SIGNAL ;
+    - _068_ ( _168_ Y ) ( _103_ A ) + USE SIGNAL ;
+    - _069_ ( _184_ B ) ( _179_ Y ) ( _149_ B ) ( _140_ A2 ) ( _138_ A ) + USE SIGNAL ;
+    - _070_ ( _141_ A ) ( _104_ B ) ( _103_ Y ) + USE SIGNAL ;
+    - _071_ ( _154_ B ) ( _111_ B ) ( _105_ B ) ( _104_ Y ) + USE SIGNAL ;
+    - _072_ ( _200_ E ) ( _199_ E ) ( _198_ E ) ( _197_ E ) ( _105_ Y ) + USE SIGNAL ;
+    - _073_ ( _188_ E ) ( _187_ E ) ( _186_ E ) ( _185_ E ) ( _107_ Y ) + USE SIGNAL ;
+    - _074_ ( _192_ E ) ( _191_ E ) ( _190_ E ) ( _189_ E ) ( _111_ Y ) + USE SIGNAL ;
+    - _075_ ( _180_ C ) ( _178_ A2 ) ( _173_ C ) ( _172_ A2 ) ( _166_ C ) ( _165_ A2 ) ( _161_ A )
+      ( _160_ A2 ) ( _125_ B ) ( _123_ Y ) + USE SIGNAL 
+;
+    - _076_ ( _177_ B ) ( _171_ B ) ( _164_ B ) ( _156_ B ) ( _128_ A ) ( _125_ Y ) + USE SIGNAL 
+;
+    - _077_ ( _178_ B ) ( _172_ B ) ( _165_ B ) ( _161_ B ) ( _127_ B ) ( _126_ Y ) + USE SIGNAL 
+;
+    - _078_ ( _177_ C ) ( _171_ C ) ( _164_ C ) ( _156_ C ) ( _128_ B ) ( _127_ Y ) + USE SIGNAL 
+;
+    - _079_ ( _202_ D ) ( _128_ Y ) + USE SIGNAL 
+;
+    - _080_ ( _130_ A ) ( _129_ Y ) + USE SIGNAL 
+;
+    - _081_ ( _202_ E ) ( _201_ E ) ( _137_ B ) ( _130_ Y ) + USE SIGNAL 
+;
+    - _082_ ( _196_ QB ) + USE SIGNAL 
+;
+    - _083_ ( _198_ QB ) + USE SIGNAL 
+;
+    - _084_ ( _187_ QB ) + USE SIGNAL 
+;
+    - _085_ ( _199_ QB ) + USE SIGNAL 
+;
+    - _086_ ( _200_ QB ) + USE SIGNAL 
+;
+    - _087_ ( _191_ QB ) + USE SIGNAL 
+;
+    - _088_ ( _185_ QB ) + USE SIGNAL 
+;
+    - _089_ ( _195_ QB ) + USE SIGNAL 
+;
+    - _090_ ( _197_ QB ) + USE SIGNAL 
+;
+    - _091_ ( _188_ QB ) + USE SIGNAL 
+;
+    - _092_ ( _192_ QB ) + USE SIGNAL 
+;
+    - _093_ ( _193_ QB ) + USE SIGNAL 
+;
+    - _094_ ( _186_ QB ) + USE SIGNAL 
+;
+    - _095_ ( _190_ QB ) + USE SIGNAL 
+;
+    - _096_ ( _202_ QB ) + USE SIGNAL 
+;
+    - _097_ ( _194_ QB ) + USE SIGNAL 
+;
+    - _098_ ( _189_ QB ) + USE SIGNAL 
+;
+    - _099_ ( dff2_0 QB1 ) + USE SIGNAL 
+;
+    - _100_ ( dff2_0 QB0 ) + USE SIGNAL 
+;
+    - clk ( PIN clk ) ( dff2_0 CK ) ( _207_ CK ) ( _205_ CK ) ( _203_ CK ) ( _202_ CK ) ( _201_ CK )
+      ( _200_ CK ) ( _199_ CK ) ( _198_ CK ) ( _197_ CK ) ( _196_ CK ) ( _195_ CK ) ( _194_ CK ) ( _193_ CK )
+      ( _192_ CK ) ( _191_ CK ) ( _190_ CK ) ( _189_ CK ) ( _188_ CK ) ( _187_ CK ) ( _186_ CK ) ( _185_ CK ) + USE SIGNAL 
+;
+    - count\[0\] ( _205_ Q ) ( _139_ A ) ( _115_ B ) ( _113_ A ) + USE SIGNAL 
+;
+    - count\[1\] ( dff2_0 Q1 ) ( _148_ A ) ( _139_ B ) ( _115_ C ) ( _113_ B ) + USE SIGNAL 
+;
+    - count\[2\] ( _207_ Q ) ( _145_ A ) ( _140_ A1 ) ( _136_ A ) ( _115_ A ) + USE SIGNAL 
+;
+    - data_in[0] ( PIN data_in[0] ) ( _197_ D ) ( _193_ D ) ( _189_ D ) ( _185_ D ) + USE SIGNAL 
+;
+    - data_in[1] ( PIN data_in[1] ) ( _198_ D ) ( _194_ D ) ( _190_ D ) ( _186_ D ) + USE SIGNAL 
+;
+    - data_in[2] ( PIN data_in[2] ) ( _199_ D ) ( _195_ D ) ( _191_ D ) ( _187_ D ) + USE SIGNAL 
+;
+    - data_in[3] ( PIN data_in[3] ) ( _200_ D ) ( _196_ D ) ( _192_ D ) ( _188_ D ) + USE SIGNAL 
+;
+    - data_out[0] ( PIN data_out[0] ) ( _163_ Y ) + USE SIGNAL 
+;
+    - data_out[1] ( PIN data_out[1] ) ( _170_ Y ) + USE SIGNAL 
+;
+    - data_out[2] ( PIN data_out[2] ) ( _176_ Y ) + USE SIGNAL 
+;
+    - data_out[3] ( PIN data_out[3] ) ( _183_ Y ) + USE SIGNAL 
+;
+    - edff_rstb_tie ( edff_tie HI ) ( _205_ RSTB ) ( _203_ RSTB ) ( _202_ RSTB ) ( _201_ RSTB ) ( _200_ RSTB ) ( _199_ RSTB )
+      ( _198_ RSTB ) ( _197_ RSTB ) ( _196_ RSTB ) ( _195_ RSTB ) ( _194_ RSTB ) ( _193_ RSTB ) ( _192_ RSTB ) ( _191_ RSTB )
+      ( _190_ RSTB ) ( _189_ RSTB ) ( _188_ RSTB ) ( _187_ RSTB ) ( _186_ RSTB ) ( _185_ RSTB ) + USE SIGNAL 
+;
+    - empty ( PIN empty ) ( _130_ B ) ( _115_ Y ) + USE SIGNAL 
+;
+    - full ( PIN full ) ( _184_ Y ) ( _103_ B ) + USE SIGNAL 
+;
+    - mem0\[0\] ( _185_ Q ) ( _162_ A ) + USE SIGNAL 
+;
+    - mem0\[1\] ( _186_ Q ) ( _169_ A ) + USE SIGNAL 
+;
+    - mem0\[2\] ( _187_ Q ) ( _175_ A ) + USE SIGNAL 
+;
+    - mem0\[3\] ( _188_ Q ) ( _182_ A ) + USE SIGNAL 
+;
+    - mem1\[0\] ( _189_ Q ) ( _158_ A ) + USE SIGNAL 
+;
+    - mem1\[1\] ( _190_ Q ) ( _165_ A1 ) + USE SIGNAL 
+;
+    - mem1\[2\] ( _191_ Q ) ( _172_ A1 ) + USE SIGNAL 
+;
+    - mem1\[3\] ( _192_ Q ) ( _178_ A1 ) + USE SIGNAL 
+;
+    - mem2\[0\] ( _193_ Q ) ( _160_ A1 ) + USE SIGNAL 
+;
+    - mem2\[1\] ( _194_ Q ) ( _166_ A ) + USE SIGNAL 
+;
+    - mem2\[2\] ( _195_ Q ) ( _173_ B ) + USE SIGNAL 
+;
+    - mem2\[3\] ( _196_ Q ) ( _180_ A ) + USE SIGNAL 
+;
+    - mem3\[0\] ( _197_ Q ) ( _156_ A ) + USE SIGNAL 
+;
+    - mem3\[1\] ( _198_ Q ) ( _164_ A ) + USE SIGNAL 
+;
+    - mem3\[2\] ( _199_ Q ) ( _171_ A ) + USE SIGNAL 
+;
+    - mem3\[3\] ( _200_ Q ) ( _177_ A ) + USE SIGNAL 
+;
+    - pop ( PIN pop ) ( _140_ B ) ( _129_ A ) + USE SIGNAL 
+;
+    - push ( PIN push ) ( _168_ A ) ( _135_ A ) + USE SIGNAL 
+;
+    - rd_ptr\[0\] ( _201_ Q ) ( _159_ A1 ) ( _127_ A ) ( _123_ A ) + USE SIGNAL 
+;
+    - rd_ptr\[1\] ( _202_ Q ) ( _180_ B ) ( _173_ A ) ( _166_ B ) ( _159_ B ) ( _126_ A ) ( _125_ A ) + USE SIGNAL 
+;
+    - wr_ptr\[0\] ( _203_ Q ) ( _146_ A ) ( _107_ A ) ( _104_ A ) + USE SIGNAL 
+;
+    - wr_ptr\[1\] ( dff2_0 Q0 ) ( _111_ A ) ( _107_ B ) ( _101_ A ) + USE SIGNAL 
+;
+END NETS
+END DESIGN
