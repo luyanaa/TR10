@@ -137,30 +137,21 @@ Flow run `runs/tgmux` (FIFO mapped to 20 EDFF + 1 DFF2 + 1 DFF + 1 MUXTG2
 
 | check | result |
 |---|---|
-| DRT | **0** (`runs/tgmux/1113-openroad-detailedrouting`) |
-| KLayout DRC | **1 M2.S1 + 2 WN** (`1113-klayout-drc`; bridges not yet re-run) |
-| KLayout LVS | **FAIL** |
+| DRT | **0** (`runs/tgmux/1141-openroad-detailedrouting`) |
+| KLayout DRC | **0** (`1160-klayout-drc`, after 3 well bridges) |
+| KLayout LVS | **PASS** |
 
-The n4-on-M1 change removed the promoted `$3` port: the extracted cell is
-now six-pin `S A Y B VDD GND`.  The top-level instance is still shorted:
+Both internal distribution nets are now on M1:
 
-```
-X$18 $5 $5 $5 $5 VDD GND|VSS MUXTG2
-```
+* n4: INV-output M1 pads -> M1 vertical/horizontal straps -> lower/upper TG
+  gate pads; no n4 M2 metal.
+* S: S pin pad -> M1 right-side vertical -> lower TG gate pad -> lower INV
+  gate pad -> upper INV gate pad -> upper TG gate pad; no S M2 strap/rails.
 
-The last M2 wall is the full-height **S strap** at x=40.2..43.6.  Detail
-routing places a vertical wire at x=44.2, 0.6 um from the strap, and that
-is the remaining `M2.S1` violation.  Moving the S strap right only moves
-the same wire to its new right edge; adding an OBS at the landing track
-makes DRT report a wire-to-instance violation instead, and a full-height
-OBS blocks B-pin access.
-
-The **next required change is to move the S distribution to M1 as well**
-(the S pin pad can stay on M2), or to shorten the S strap so it only spans
-the gate rows and leave the rest of the cell height free.  The n4 net is
-already fully on M1 and cell-level DRC/LVS are clean.  The 21.6 um
-surgical cell and the 54.0 um PCell are both preserved; `map_tgmux.py`
-maps `MUX2` to `MUXTG2`.
+Only the A/B/S/Y M2 pin pads remain.  The expanded-guide detail router can
+therefore cross the cell footprint without touching an internal net.  The
+flow result is the TG MUX2 evidence: **DRT 0, KLayout DRC 0, LVS PASS**.
+`flow/scripts/map_tgmux.py` maps `MUX2` to `MUXTG2`.
 
 ### FEEDTHRU (one-site physical cell)
 
