@@ -1,0 +1,28 @@
++ analyze_power_grid -net VDD -voltage_file /grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/tr1um_fifo4_cmp/runs/pdncts8/52-openroad-irdropreport/net-VDD.csv -vsrc /grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/tr1um_fifo4_cmp/vsrc_vdd.loc
+[INFO PSM-0040] All shapes on net VDD are connected.
+[INFO PSM-0015] Reading location of sources from: /grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/tr1um_fifo4_cmp/vsrc_vdd.loc.
+########## IR report #################
+Net              : VDD
+Corner           : nom_typ_5p0V_25C
+Total power      : 5.62e-04 W
+Supply voltage   : 5.00e+00 V
+Worstcase voltage: 5.00e+00 V
+Average voltage  : 5.00e+00 V
+Average IR drop  : 2.24e-04 V
+Worstcase IR drop: 3.81e-04 V
+Percentage drop  : 0.01 %
+######################################
++ analyze_power_grid -net GND -voltage_file /grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/tr1um_fifo4_cmp/runs/pdncts8/52-openroad-irdropreport/net-GND.csv -vsrc /grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/tr1um_fifo4_cmp/vsrc_gnd.loc
+[INFO PSM-0040] All shapes on net GND are connected.
+[INFO PSM-0015] Reading location of sources from: /grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/tr1um_fifo4_cmp/vsrc_gnd.loc.
+########## IR report #################
+Net              : GND
+Corner           : nom_typ_5p0V_25C
+Total power      : 5.62e-04 W
+Supply voltage   : 0.00e+00 V
+Worstcase voltage: 3.83e-04 V
+Average voltage  : 2.24e-04 V
+Average IR drop  : 2.24e-04 V
+Worstcase IR drop: 3.83e-04 V
+Percentage drop  : 0.01 %
+######################################

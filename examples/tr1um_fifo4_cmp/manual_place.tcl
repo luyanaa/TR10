@@ -23,6 +23,69 @@ set PITCH_EVERY [expr {[info exists ::env(TR10_PITCH_EVERY)] ? $::env(TR10_PITCH
 
 set block [ord::get_db_block]
 
+# --- N-only placement rows ---------------------------------------------
+# The 59.4 um cells mirror their M1 PG bands and their TAP2 M2 straps in
+# FS rows.  The TAP2 VDD/GND M2 straps therefore swap columns between N
+# and FS rows, so a straight M2 PDN strap cannot stay on the same net
+# across an N/FS boundary.  Keep only the N rows: every placed cell
+# (standard cell, TAP2, CTS buffer, hold buffer) is then R0, the TAP2 M2
+# straps stay at fixed columns, and the PDN M2 stripes can run the full
+# core height without shorting VDD to GND in an FS row.  DPL can still
+# use every remaining N row for CTS/hold buffers.
+set fs_rows {}
+foreach row [$block getRows] {
+    set orient [$row getOrient]
+    if {![string equal $orient "R0"] && ![string equal $orient "N"]} {
+        lappend fs_rows $row
+    }
+}
+foreach row $fs_rows {
+    odb::dbRow_destroy $row
+}
+puts "\[INFO\] TR10_cmp_sc N-only rows: destroyed [llength $fs_rows] FS rows, [llength [$block getRows]] N rows remain"
+
+# --- fixed TAP2 columns ------------------------------------------------
+# Tap insertion is disabled (RUN_TAP_ENDCAP_INSERTION=false) because
+# OpenROAD's tapcell staggers the taps by row (R0 rows get x=226.8/658.8,
+# FS rows get x=442.8).  The PDN adds M2 straps at all three TAP2 columns,
+# so every row needs a TAP2 at x=226.8, 442.8 and 658.8; the TAP2 M2 PG
+# straps then run continuously and the PDN straps never cross signal M2.
+# Adding the taps here, before the deterministic packer, also makes the
+# packer step over the same three columns in every row.
+set existing_taps 0
+foreach inst [$block getInsts] {
+    if {[string match "TAP*" [[$inst getMaster] getName]]} {
+        incr existing_taps
+    }
+}
+if {$existing_taps == 0} {
+    set tap_master [[ord::get_db] findMaster TAP2]
+    if {$tap_master == "NULL"} {
+        error "TR10_cmp_sc placement: TAP2 master not found"
+    }
+    set tap_xs {226800 442800 658800}
+    set row_idx 0
+    foreach row [$block getRows] {
+        set orient [$row getOrient]
+        set y [lindex [$row getOrigin] 1]
+        set xi 0
+        foreach x $tap_xs {
+            set name [format "TAP_FIXED_ROW_%d_%d" $row_idx $xi]
+            if {[$block findInst $name] == "NULL"} {
+                set inst [odb::dbInst_create $block $tap_master $name]
+                $inst setOrient $orient
+                $inst setLocation $x $y
+                $inst setPlacementStatus FIRM
+            }
+            incr xi
+        }
+        incr row_idx
+    }
+    # Give the freshly created TAP2 instances their VDD/GND connections.
+    source $::env(SCRIPTS_DIR)/openroad/common/set_power_nets.tcl
+    set_global_connections
+}
+
 set core [$block getCoreArea]
 set x_min [expr {[$core xMin] > 10800 ? [$core xMin] : 10800}]
 set x_min [expr {int(ceil(($x_min - 10800) / 5400.0)) * 5400 + 10800}]

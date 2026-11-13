@@ -70,16 +70,46 @@ on every other N row (118.8 um pitch) — the row pitch below which the
 cells' WN halos violate DRC — and is the flow's working smoke test for
 `TR10_cmp_sc` integration.
 
+## `librelane/cts.tcl` and `rsz_timing_postcts.tcl` — post-CTS PG reconnect
+
+**Symptom.**  CTS and the post-CTS resizer create new clock/hold buffers
+after `Odb.SetPowerConnections` has run.  The pre-PDN per-instance
+`global_connect` rules do not match those new instance names, so their
+VDD/GND pins stay floating.  PSM then reports unconnected CTS buffers and
+IR-drop/check_power_grid connectivity fails.
+
+**Workaround.**  Both scripts now source
+`openroad/common/set_power_nets.tcl` and call `set_global_connections`
+after the new cells are created (after CTS legalization in `cts.tcl`, and
+after post-CTS hold repair/legalization in `rsz_timing_postcts.tcl`).
+This adds generic `.*`/VDD/GND global connections, so the new cells are on
+the power grid before the views are written.  The exact added blocks are
+marked with a `TR10:` comment in the two files.
+
+These are copies of the LibreLane 3.1.0.dev3 scripts, like `gpl.tcl`; bind
+them over the installed copies when running the flow.
+
 ## TR10_cmp_sc notes (59.4 um cell library)
 
 `libs.tech/librelane/TR10_cmp_sc/` carries the compact library's flow
 config.  Non-obvious constraints discovered while integrating it:
 
-- **PDN is followpins-only** (`pdn_cmp_sc.tcl`).  `add_pdn_stripe
-  -followpins` emits a boundary rail at every row start, which lands on the
-  cells' M1 PG bands.  Any explicit `dbSBox` rail that touches a same-net
-  followpin stripe makes `pdngen` report an empty grid (`PDN-0233`), and a
-  die-margin strap shorts to the edge IO pins — both were removed.
+- **PDN: M1 followpins + M2 straps at the TAP2 columns**
+  (`pdn_cmp_sc.tcl`).  `add_pdn_stripe -followpins` emits a boundary rail
+  at every row start, which lands on the cells' M1 PG bands.  Six
+  full-height M2 stripes are added at the TAP2 columns
+  (GND 229.5/445.5/661.5 um, VDD 234.9/450.9/666.9 um), and
+  `add_pdn_connect` adds the M1M2 vias.  `-pins M2` turns the M2 straps
+  into VDD/GND block terminals; without them PSM fails with `PSM-0025` and
+  IR-drop aborts with `PSM-0069`.  A die-margin M1 ring still shorts to
+  the edge IO pins; no ring is used.
+- **N-only rows for PDN continuity.**  FS rows mirror the TAP2 M2 PG
+  straps, so the VDD and GND strap columns swap between N and FS rows and
+  a straight M2 strap cannot stay on one net.  `manual_place.tcl` deletes
+  the FS rows and inserts fixed TAP2 at x = 226.8/442.8/658.8 um on every
+  remaining N row; all placed cells (including CTS/hold buffers) are then
+  R0 and the M2 straps stay inside TAP2 or empty rows.  See
+  `flow/experiments/pdn_cts/README.md`.
 - **Routing uses the upstream two-LEF + expanded-guide trick** — see
   `examples/tr1um_fifo4_cmp/README.md`.  `drt.tcl` (this patch directory)
   additionally calls `read_guides $DESIGN_DIR/expanded.guide` when a design

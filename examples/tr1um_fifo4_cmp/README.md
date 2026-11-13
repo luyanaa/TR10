@@ -21,6 +21,19 @@ Final run `runs/opt700b` (96 signal cells, 7 used rows, **700×1570 µm** die,
 | utilization | `final/metrics.json` | **20.4 %** (fd_sc 14.74 %) |
 | routed wirelength | `final/metrics.json` | 64,818 µm (fd_sc 148,690 → **−56 %**) |
 
+## PDN + CTS experiment (run tag `pdncts8`)
+
+A separate PDN/CTS pass adds six M2 straps at fixed TAP2 columns,
+VDD/GND block pins, post-CTS/post-GRT hold repair, and an IR-drop source
+model.  It also deletes the FS rows so every placed cell is R0: the FS
+TAP2 M2 straps swap the VDD/GND columns, which breaks vertical PDN
+continuity in an N/FS row mix.  Results: power-grid violations **0**,
+DRT **0**, IR drop VDD avg/worst **0.224/0.381 mV**, GND
+**0.224/0.383 mV**, setup **4562 ps**, hold **-8.72 ps** (14 I/O paths).
+The full report and evidence are in `flow/experiments/pdn_cts/README.md`.
+This experiment changes `manual_place.tcl` and the PDN config; the A/B
+signoff run above remains the DRC/LVS baseline.
+
 Three independent causes were removed in this order:
 
 1. **I/O pin length (69 → 34).**  LibreLane's `io_place.py` derives a pin's

@@ -1,0 +1,67 @@
+PINS 15 ;
+    - GND + NET GND + SPECIAL + DIRECTION INOUT + USE GROUND
+      + PORT
+        + LAYER M2 ( -1700 -773900 ) ( 1700 773900 )
+        + LAYER M2 ( -217700 -773900 ) ( -214300 773900 )
+        + LAYER M2 ( -433700 -773900 ) ( -430300 773900 )
+        + FIXED ( 661500 772200 ) N ;
+    - VDD + NET VDD + SPECIAL + DIRECTION INOUT + USE POWER
+      + PORT
+        + LAYER M2 ( -1700 -773900 ) ( 1700 773900 )
+        + LAYER M2 ( -217700 -773900 ) ( -214300 773900 )
+        + LAYER M2 ( -433700 -773900 ) ( -430300 773900 )
+        + FIXED ( 666900 772200 ) N ;
+    - clk + NET clk + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 51300 1566600 ) N ;
+    - data_in[0] + NET data_in[0] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 213300 1566600 ) N ;
+    - data_in[1] + NET data_in[1] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 267300 1566600 ) N ;
+    - data_in[2] + NET data_in[2] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 321300 1566600 ) N ;
+    - data_in[3] + NET data_in[3] + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 375300 1566600 ) N ;
+    - data_out[0] + NET data_out[0] + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 429300 1566600 ) N ;
+    - data_out[1] + NET data_out[1] + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 483300 1566600 ) N ;
+    - data_out[2] + NET data_out[2] + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 537300 1566600 ) N ;
+    - data_out[3] + NET data_out[3] + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 591300 1566600 ) N ;
+    - empty + NET empty + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 645300 1566600 ) N ;
+    - full + NET full + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 699300 1566600 ) N ;
+    - pop + NET pop + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 159300 1566600 ) N ;
+    - push + NET push + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER M2 ( -1700 -3400 ) ( 1700 3400 )
+        + PLACED ( 105300 1566600 ) N ;
+
+END PINS
