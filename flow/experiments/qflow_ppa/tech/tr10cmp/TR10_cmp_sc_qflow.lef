@@ -1,0 +1,2487 @@
+VERSION 5.8 ;
+BUSBITCHARS "[]" ;
+DIVIDERCHAR "/" ;
+
+MACRO AND2_X1
+  CLASS CORE ;
+  FOREIGN AND2_X1 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 21.6 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 21.6 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 21.6 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 21.6 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 21.6 59.4 ;
+  END
+END AND2_X1
+
+MACRO AND3_X1
+  CLASS CORE ;
+  FOREIGN AND3_X1 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 27 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 27 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 27 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END C
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22.6 28 26 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 27 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 27 59.4 ;
+  END
+END AND3_X1
+
+MACRO AND4_X1
+  CLASS CORE ;
+  FOREIGN AND4_X1 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 32.4 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 32.4 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 32.4 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END C
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END D
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 28 28 31.4 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 32.4 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 32.4 59.4 ;
+  END
+END AND4_X1
+
+MACRO AOI21
+  CLASS CORE ;
+  FOREIGN AOI21 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 21.6 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 21.6 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 21.6 3.7 ;
+    END
+  END GND
+  PIN A1
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A1
+  PIN A2
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END A2
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 21.6 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 21.6 59.4 ;
+  END
+END AOI21
+
+MACRO AOI22
+  CLASS CORE ;
+  FOREIGN AOI22 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 27 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 27 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 27 3.7 ;
+    END
+  END GND
+  PIN A1
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A1
+  PIN A2
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END A2
+  PIN B1
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END B1
+  PIN B2
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END B2
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22.6 28 26 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 27 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 27 59.4 ;
+  END
+END AOI22
+
+MACRO BUFTH
+  CLASS CORE ;
+  FOREIGN BUFTH 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 32.4 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 32.4 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 32.4 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 28 28 31.4 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 32.4 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 32.4 59.4 ;
+  END
+END BUFTH
+
+MACRO BUF_X1
+  CLASS CORE ;
+  FOREIGN BUF_X1 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 16.2 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 16.2 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 16.2 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 16.2 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 16.2 59.4 ;
+  END
+END BUF_X1
+
+MACRO BUF_X2
+  CLASS CORE ;
+  FOREIGN BUF_X2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 16.2 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 16.2 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 16.2 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 16.2 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 16.2 59.4 ;
+  END
+END BUF_X2
+
+MACRO DEL1
+  CLASS CORE ;
+  FOREIGN DEL1 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 32.4 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 32.4 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 32.4 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 28 28 31.4 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 32.4 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 32.4 59.4 ;
+  END
+END DEL1
+
+MACRO DFF
+  CLASS CORE ;
+  FOREIGN DFF 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 64.8 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 64.8 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 64.8 3.7 ;
+    END
+  END GND
+  PIN CK
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 50.9 9.8 54.3 ;
+    END
+  END CK
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 27.9 15.2 31.3 ;
+    END
+  END D
+  PIN Q
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 60.4 27.9 63.8 31.3 ;
+    END
+  END Q
+  PIN QB
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 55 27.9 58.4 31.3 ;
+    END
+  END QB
+  OBS
+    LAYER M1 ;
+        RECT 0 0 64.8 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 64.8 59.4 ;
+  END
+END DFF
+
+MACRO DFFRB
+  CLASS CORE ;
+  FOREIGN DFFRB 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 64.8 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 64.8 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 64.8 3.7 ;
+    END
+  END GND
+  PIN CK
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 50.9 9.8 54.3 ;
+    END
+  END CK
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 27.9 15.2 31.3 ;
+    END
+  END D
+  PIN Q
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 60.4 27.9 63.8 31.3 ;
+    END
+  END Q
+  PIN QB
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 49.6 27.9 53 31.3 ;
+        RECT 49.6 27.9 53 31.3 ;
+    END
+  END QB
+  PIN RSTB
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 55 27.9 58.4 31.3 ;
+    END
+  END RSTB
+  OBS
+    LAYER M1 ;
+        RECT 0 0 64.8 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 64.8 59.4 ;
+  END
+END DFFRB
+
+MACRO DFFS
+  CLASS CORE ;
+  FOREIGN DFFS 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 64.8 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 64.8 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 64.8 3.7 ;
+    END
+  END GND
+  PIN CK
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 50.9 9.8 54.3 ;
+    END
+  END CK
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 27.9 15.2 31.3 ;
+    END
+  END D
+  PIN Q
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 60.4 27.9 63.8 31.3 ;
+    END
+  END Q
+  PIN QB
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 49.6 27.9 53 31.3 ;
+        RECT 49.6 27.9 53 31.3 ;
+    END
+  END QB
+  PIN SET
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 55 27.9 58.4 31.3 ;
+    END
+  END SET
+  OBS
+    LAYER M1 ;
+        RECT 0 0 64.8 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 64.8 59.4 ;
+  END
+END DFFS
+
+MACRO EDFFRB
+  CLASS CORE ;
+  FOREIGN EDFFRB 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 97.2 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 97.2 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 97.2 3.7 ;
+    END
+  END GND
+  PIN CK
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 33.4 27.9 36.8 31.3 ;
+    END
+  END CK
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 27.9 9.8 31.3 ;
+    END
+  END D
+  PIN E
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 6.3 15.2 9.7 ;
+    END
+  END E
+  PIN Q
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 92.8 27.9 96.2 31.3 ;
+    END
+  END Q
+  PIN QB
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 82 27.9 85.4 31.3 ;
+        RECT 82 27.9 85.4 31.3 ;
+    END
+  END QB
+  PIN RSTB
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 87.4 27.9 90.8 31.3 ;
+    END
+  END RSTB
+  OBS
+    LAYER M1 ;
+        RECT 0 0 97.2 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 97.2 59.4 ;
+  END
+END EDFFRB
+
+MACRO FILL1
+  CLASS CORE SPACER ;
+  FOREIGN FILL1 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 5.4 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 5.4 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 5.4 3.7 ;
+    END
+  END GND
+  OBS
+    LAYER M1 ;
+        RECT 0 0 5.4 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 5.4 59.4 ;
+  END
+END FILL1
+
+MACRO FILL2
+  CLASS CORE SPACER ;
+  FOREIGN FILL2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 10.8 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 10.8 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 10.8 3.7 ;
+    END
+  END GND
+  OBS
+    LAYER M1 ;
+        RECT 0 0 10.8 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 10.8 59.4 ;
+  END
+END FILL2
+
+MACRO FILL3
+  CLASS CORE SPACER ;
+  FOREIGN FILL3 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 16.2 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 16.2 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 16.2 3.7 ;
+    END
+  END GND
+  OBS
+    LAYER M1 ;
+        RECT 0 0 16.2 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 16.2 59.4 ;
+  END
+END FILL3
+
+MACRO INV_X1
+  CLASS CORE ;
+  FOREIGN INV_X1 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 10.8 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 10.8 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 10.8 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 10.8 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 10.8 59.4 ;
+  END
+END INV_X1
+
+MACRO INV_X2
+  CLASS CORE ;
+  FOREIGN INV_X2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 10.8 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 10.8 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 10.8 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 10.8 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 10.8 59.4 ;
+  END
+END INV_X2
+
+MACRO MUX2
+  CLASS CORE ;
+  FOREIGN MUX2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 32.4 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 32.4 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 32.4 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 27.9 4.4 31.3 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22.6 27.9 26 31.3 ;
+    END
+  END B
+  PIN S
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 6.3 20.6 9.7 ;
+    END
+  END S
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 28 27.9 31.4 31.3 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 32.4 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 32.4 59.4 ;
+  END
+END MUX2
+
+MACRO MUXDFFRB
+  CLASS CORE ;
+  FOREIGN MUXDFFRB 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 97.2 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 97.2 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 97.2 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 27.9 4.4 31.3 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22.6 27.9 26 31.3 ;
+    END
+  END B
+  PIN CK
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 33.4 27.7 36.8 31.1 ;
+    END
+  END CK
+  PIN Q
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 92.8 27.9 96.2 31.3 ;
+    END
+  END Q
+  PIN QB
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 82 27.9 85.4 31.3 ;
+        RECT 82 27.9 85.4 31.3 ;
+    END
+  END QB
+  PIN RSTB
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 87.4 27.9 90.8 31.3 ;
+    END
+  END RSTB
+  PIN S
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 6.3 20.6 9.7 ;
+    END
+  END S
+  OBS
+    LAYER M1 ;
+        RECT 0 0 97.2 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 97.2 59.4 ;
+  END
+END MUXDFFRB
+
+MACRO NAND2
+  CLASS CORE ;
+  FOREIGN NAND2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 16.2 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 16.2 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 16.2 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 16.2 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 16.2 59.4 ;
+  END
+END NAND2
+
+MACRO NAND3
+  CLASS CORE ;
+  FOREIGN NAND3 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 21.6 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 21.6 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 21.6 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END C
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 21.6 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 21.6 59.4 ;
+  END
+END NAND3
+
+MACRO NAND4
+  CLASS CORE ;
+  FOREIGN NAND4 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 27 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 27 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 27 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END C
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END D
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22.6 28 26 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 27 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 27 59.4 ;
+  END
+END NAND4
+
+MACRO NOR2
+  CLASS CORE ;
+  FOREIGN NOR2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 16.2 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 16.2 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 16.2 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 16.2 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 16.2 59.4 ;
+  END
+END NOR2
+
+MACRO NOR3
+  CLASS CORE ;
+  FOREIGN NOR3 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 21.6 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 21.6 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 21.6 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END C
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 21.6 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 21.6 59.4 ;
+  END
+END NOR3
+
+MACRO NOR4
+  CLASS CORE ;
+  FOREIGN NOR4 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 27 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 27 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 27 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END C
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END D
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22.6 28 26 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 27 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 27 59.4 ;
+  END
+END NOR4
+
+MACRO OAI21
+  CLASS CORE ;
+  FOREIGN OAI21 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 21.6 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 21.6 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 21.6 3.7 ;
+    END
+  END GND
+  PIN A1
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A1
+  PIN A2
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END A2
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 21.6 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 21.6 59.4 ;
+  END
+END OAI21
+
+MACRO OAI22
+  CLASS CORE ;
+  FOREIGN OAI22 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 27 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 27 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 27 3.7 ;
+    END
+  END GND
+  PIN A1
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A1
+  PIN A2
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END A2
+  PIN B1
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END B1
+  PIN B2
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END B2
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22.6 28 26 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 27 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 27 59.4 ;
+  END
+END OAI22
+
+MACRO OR2
+  CLASS CORE ;
+  FOREIGN OR2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 21.6 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 21.6 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 21.6 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 21.6 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 21.6 59.4 ;
+  END
+END OR2
+
+MACRO OR3
+  CLASS CORE ;
+  FOREIGN OR3 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 27 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 27 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 27 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END C
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22.6 28 26 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 27 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 27 59.4 ;
+  END
+END OR3
+
+MACRO OR4
+  CLASS CORE ;
+  FOREIGN OR4 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 32.4 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 32.4 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 32.4 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END B
+  PIN C
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 28 15.2 31.4 ;
+    END
+  END C
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END D
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 28 28 31.4 31.4 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 32.4 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 32.4 59.4 ;
+  END
+END OR4
+
+MACRO RSLATCH
+  CLASS CORE ;
+  FOREIGN RSLATCH 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 27 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 27 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 27 3.7 ;
+    END
+  END GND
+  PIN Q
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28 4.4 31.4 ;
+    END
+  END Q
+  PIN QB
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22.6 28 26 31.4 ;
+    END
+  END QB
+  PIN R
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 28 9.8 31.4 ;
+    END
+  END R
+  PIN S
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 17.2 28 20.6 31.4 ;
+    END
+  END S
+  OBS
+    LAYER M1 ;
+        RECT 0 0 27 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 27 59.4 ;
+  END
+END RSLATCH
+
+MACRO TAP2
+  CLASS CORE WELLTAP ;
+  FOREIGN TAP2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 10.8 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 10.8 58.3 ;
+      LAYER M2 ;
+        RECT 6.4 1.1 9.8 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 10.8 3.7 ;
+      LAYER M2 ;
+        RECT 1 1.1 4.4 58.3 ;
+    END
+  END GND
+  OBS
+    LAYER M1 ;
+        RECT 0 0 10.8 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 10.8 59.4 ;
+  END
+END TAP2
+
+MACRO TAP3
+  CLASS CORE WELLTAP ;
+  FOREIGN TAP3 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 16.2 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 16.2 58.3 ;
+      LAYER M2 ;
+        RECT 6.4 1.1 9.8 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 16.2 3.7 ;
+      LAYER M2 ;
+        RECT 1 1.1 4.4 58.3 ;
+    END
+  END GND
+  OBS
+    LAYER M1 ;
+        RECT 0 0 16.2 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 16.2 59.4 ;
+  END
+END TAP3
+
+MACRO TLAT
+  CLASS BLOCK ;
+  FOREIGN TLAT 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 37.8 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 37.8 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 37.8 3.7 ;
+    END
+  END GND
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 28.1 4.4 31.5 ;
+    END
+  END D
+  PIN Q
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 33.4 28.1 36.8 31.5 ;
+    END
+  END Q
+  PIN RD
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+    END
+  END RD
+  PIN RDB
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+    END
+  END RDB
+  PIN WR
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+    END
+  END WR
+  PIN WRB
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+    END
+  END WRB
+  OBS
+    LAYER M1 ;
+        RECT 0 0 37.8 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 37.8 59.4 ;
+  END
+END TLAT
+
+MACRO XNOR2
+  CLASS CORE ;
+  FOREIGN XNOR2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 27 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 27 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 27 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 27.9 9.8 31.3 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 27.9 15.2 31.3 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22.6 27.9 26 31.3 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 27 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 27 59.4 ;
+  END
+END XNOR2
+
+MACRO XOR2
+  CLASS CORE ;
+  FOREIGN XOR2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 27 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 27 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 27 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 27.9 9.8 31.3 ;
+    END
+  END A
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 27.9 15.2 31.3 ;
+    END
+  END B
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22.6 27.9 26 31.3 ;
+    END
+  END Y
+  OBS
+    LAYER M1 ;
+        RECT 0 0 27 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 27 59.4 ;
+  END
+END XOR2
+
+MACRO TIEHI
+  CLASS CORE ;
+  FOREIGN TIEHI 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 10.8 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 10.8 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 10.8 3.7 ;
+    END
+  END GND
+  PIN HI
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M1 ;
+        RECT 3.4 42.7 6.4 55.7 ;
+    END
+  END HI
+END TIEHI
+
+MACRO TIELO
+  CLASS CORE ;
+  FOREIGN TIELO 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 10.8 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 10.8 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 10.8 3.7 ;
+    END
+  END GND
+  PIN LO
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M1 ;
+        RECT 3.4 3.7 6.4 16.2 ;
+    END
+  END LO
+END TIELO
+
+MACRO EDFF
+  CLASS CORE ;
+  FOREIGN EDFF 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 97.2 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 97.2 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 97.2 3.7 ;
+    END
+  END GND
+  PIN CK
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 33.4 27.9 36.8 31.3 ;
+    END
+  END CK
+  PIN D
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 27.9 9.8 31.3 ;
+    END
+  END D
+  PIN E
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 6.3 15.2 9.7 ;
+    END
+  END E
+  PIN Q
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 92.8 27.9 96.2 31.3 ;
+    END
+  END Q
+  PIN QB
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 82 27.9 85.4 31.3 ;
+        RECT 82 27.9 85.4 31.3 ;
+    END
+  END QB
+  PIN RSTB
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 87.4 27.9 90.8 31.3 ;
+    END
+  END RSTB
+  OBS
+    LAYER M1 ;
+        RECT 0 0 97.2 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 97.2 59.4 ;
+  END
+END EDFF
+MACRO DFF2
+  CLASS CORE ;
+  FOREIGN DFF2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 129.6 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 129.6 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 129.6 3.7 ;
+    END
+  END GND
+  PIN CK
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 6.4 50.9 74.6 54.3 ;
+    END
+  END CK
+  PIN D0
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 11.8 27.9 15.2 31.3 ;
+    END
+  END D0
+  PIN D1
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 76.6 27.9 80 31.3 ;
+    END
+  END D1
+  PIN Q0
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 60.4 27.9 63.8 31.3 ;
+    END
+  END Q0
+  PIN Q1
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 125.2 27.9 128.6 31.3 ;
+    END
+  END Q1
+  PIN QB0
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 55 27.9 58.4 31.3 ;
+    END
+  END QB0
+  PIN QB1
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 119.8 27.9 123.2 31.3 ;
+    END
+  END QB1
+  OBS
+    LAYER M1 ;
+        RECT 0 0 129.6 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 129.6 59.4 ;
+  END
+END DFF2
+MACRO FEEDTHRU
+  CLASS CORE ;
+  FOREIGN FEEDTHRU 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 5.4 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 5.4 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 5.4 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 1 0 4.4 59.4 ;
+    END
+  END A
+END FEEDTHRU
+MACRO MUXTG2
+  CLASS CORE ;
+  FOREIGN MUXTG2 0 0 ;
+  ORIGIN 0 0 ;
+  SIZE 54.0 BY 59.4 ;
+  SITE TR1UM ;
+  SYMMETRY X Y ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER M1 ;
+        RECT 0 55.7 54 58.3 ;
+    END
+  END VDD
+  PIN GND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER M1 ;
+        RECT 0 1.1 54 3.7 ;
+    END
+  END GND
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 13.5 27.9 16.9 31.3 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 22 27.9 25.4 31.3 ;
+    END
+  END Y
+  PIN B
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 32.1 27.9 35.5 31.3 ;
+    END
+  END B
+  PIN S
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER M2 ;
+        RECT 40.2 27.9 43.6 31.3 ;
+    END
+  END S
+  OBS
+    LAYER M1 ;
+        RECT 0 0 54 59.4 ;
+    LAYER V1 ;
+        RECT 0 0 54 59.4 ;
+    LAYER M2 ;
+  END
+END MUXTG2
+END LIBRARY

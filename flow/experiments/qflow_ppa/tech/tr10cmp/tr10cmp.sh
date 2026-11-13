@@ -1,7 +1,7 @@
 #!/bin/tcsh
 # TR10_cmp_sc / qflow technology setup
-set leffile=/grid/TR-1um_stdcell/flow/pdk_root/TR10/libs.ref/TR10_cmp_sc/lef/TR10_cmp_sc.lef
-set techleffile=/grid/TR-1um_stdcell/flow/pdk_root/TR10/libs.ref/TR10_cmp_sc/techlef/TR10_tech.tlef
+set leffile=TR10_cmp_sc_qflow.lef
+set techleffile=TR10_tech_qflow.tlef
 set libertyfile=/grid/TR-1um_stdcell/flow/pdk_root/TR10/libs.ref/TR10_cmp_sc/lib/TR10_cmp_sc__typ_5p0V_25C.lib
 set spicefile=/grid/TR-1um_stdcell/flow/pdk_root/TR10/libs.ref/TR10_cmp_sc/cdl/TR10_cmp_sc.cdl
 set gdsfile=/grid/TR-1um_stdcell/flow/pdk_root/TR10/libs.ref/TR10_cmp_sc/gds/TR10_cmp_sc.gds

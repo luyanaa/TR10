@@ -39,11 +39,15 @@ routing** comparison, which is the question here.
 qflow finds a project-local technology directory `tech/tr10cmp`:
 
 ```
-tech/tr10cmp/tr10cmp.sh    # LEF/TLEF/Liberty/GDS/SPICE + cell roles
-tech/tr10cmp/tr10cmp.par   # GrayWolf layer/via rules and row parameters
+tech/tr10cmp/tr10cmp.sh             # LEF/TLEF/Liberty/GDS/SPICE + cell roles
+tech/tr10cmp/tr10cmp.par            # GrayWolf layer/via rules and row parameters
+tech/tr10cmp/TR10_cmp_sc_qflow.lef  # qflow cell LEF (TIEHI/TIELO duplicate OBS removed)
+tech/tr10cmp/TR10_tech_qflow.tlef   # qflow tech LEF, 5.4 um routing grid
+tech/tr10cmp/TR10_tech_qflow_2um.tlef  # 2.0 um grid experiment
 ```
 
-`tr10cmp.sh` uses absolute paths into this PDK.  The key technology values are
+`tr10cmp.sh` uses absolute paths into this PDK for Liberty/GDS/SPICE and the
+qflow-specific LEF/TLEF in this directory.  The key technology values are
 from `TR10_tech.tlef`:
 
 | layer | direction | width | space | pitch |
@@ -54,6 +58,28 @@ from `TR10_tech.tlef`:
 
 The TR10 cells are 59.4 um tall and use a 5.4 um site.  Signal pins are M2;
 the signoff LEF has a full-cell M1/V1 obstruction.
+
+### qflow-specific LEF / routing-grid port
+
+The first qflow attempt used the signoff LEF and the 5.4 um routing grid.  The
+TIEHI/TIELO macros contain an `OBS` shape identical to their M1 signal pin;
+qrouter therefore reports `edff_tie/HI ... has no tap points`.  The port adds a
+qflow cell LEF with those duplicate OBS shapes removed, plus qflow-specific
+tech LEFs for grid experiments.
+
+Measured router results on the same 87-cell netlist / OpenROAD placement:
+
+| qflow router configuration | failed nets |
+|---|---|
+| 5.4 um grid, signoff LEF | 9 / 118 |
+| 5.4 um grid, qflow LEF (TIEHI OBS removed) | 9 / 118 |
+| 2.0 / 1.0 / 0.1 um grid | qrouter did not finish in 20 min (grid explosion) |
+
+The remaining failures include `edff_rstb_tie` (TIEHI HI is an M1 pin that
+touches the VDD rail), `clk` (multi-row clock collisions), and several
+`rd_ptr`/`wr_ptr`/`_*` nets.  A complete port still needs a TIEHI cell with a
+separate M2 signal pad + V1, a clock-tree/NDR step, and a native GrayWolf
+row/channel model.  `results/qflow_port_status.txt` records the exact state.
 
 The qflow project was created with:
 
@@ -178,8 +204,11 @@ the OpenROAD metrics are in `results/`.
 ## Recommendation
 
 * Use the LibreLane/OpenROAD result as the TR10_cmp_sc PPA baseline.
-* A qflow PPA requires a real qflow technology port, not only a `.par` tweak:
-  row pitch/channel model, M2 pin/tap handling for TIEHI and clock, and a
-  Yosys/Liberty fix (or a supported mapped-netlist input).  Until then,
-  qflow's smaller area/density numbers are not PPA evidence because the
-  design is not routed.
+* This port provides the qflow tech script, `.par`, qflow LEF and
+  routing-grid experiments, but it is **not a complete route**: qflow still
+  fails 9/118 nets at the best 5.4 um configuration.  The remaining work is
+  a TIEHI cell with a separate M2 signal pad, clock-tree/NDR support, and a
+  native GrayWolf row/channel model.
+* Until that is done, qflow's smaller area/density numbers are not PPA
+  evidence because the design is not routed; OpenROAD remains the only
+  complete PPA point.

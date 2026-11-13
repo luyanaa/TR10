@@ -1,0 +1,39 @@
+TR10_cmp_sc qflow port status (attempt)
+
+Available:
+  tech/tr10cmp/tr10cmp.sh          # qflow technology script
+  tech/tr10cmp/tr10cmp.par         # GrayWolf rules (M1/M2, 5.4 pitch)
+  tech/tr10cmp/TR10_cmp_sc_qflow.lef  # TIEHI/TIELO duplicate OBS removed
+  tech/tr10cmp/TR10_tech_qflow.tlef   # 5.4 um routing grid
+  tech/tr10cmp/TR10_tech_qflow_2um.tlef # 2.0 um grid experiment
+
+Results:
+  qflow native GrayWolf placement:
+    7 rows, 59.4 um pitch, no channel
+    die 507.6 x 432.0 um, 89.7 % density
+    qrouter: 43/118 failed (first), 51/118 (rerun)
+  qflow GrayWolf-shaped row spacing / qrouter on OpenROAD placement:
+    56/118 and 9/118 failed respectively
+  5.4 um qrouter with TR10_cmp_sc_qflow.lef (TIEHI/TIELO OBS removed):
+    9/118 failed; edff_tie/HI still has no tap points
+  2.0 / 1.0 / 0.1 um qrouter grids:
+    qrouter did not finish within 20 minutes (grid-size explosion)
+
+Blocking items for a complete port:
+  1. TIEHI HI is an M1 pin that touches the VDD rail at y=55.7;
+     qrouter treats it as power / no signal tap.  A qflow-specific
+     TIEHI cell (separate M2 signal pad + V1) or a different tie
+     strategy is required.
+  2. clk is a multi-row net with 22 sequential pins; qrouter's maze
+     route collides and abandons it.  A clock tree/NDR or a
+     clock-aware routing step is required.
+  3. GrayWolf rowSep/row_to_tile_spacing does not generate the
+     TR10 237.6 um row pitch/channel; the current port uses a
+     post-shifted placement for experiments, not a native qflow row
+     model.
+  4. qflow Yosys cannot parse the TR10 Liberty (segfault); the
+     experiments use the LibreLane-mapped netlist.
+
+Conclusion: the port is partial.  qflow can read the library, place
+(compactly) and route most nets, but it cannot produce a complete
+routed TR10_cmp_sc design; no valid qflow PPA yet.
