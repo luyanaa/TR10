@@ -166,8 +166,26 @@ be used to carry a net through a row or to keep the well continuous.
 | flow-level LVS | **PASS** via `FEEDTHRU_TEST` (INV_X1 + FEEDTHRU) |
 | footprint | 5.4 x 59.4 um (one site) |
 
+**Routed flow evidence (`examples/feedthru_route`).**  A behavioral
+inverter drives the FEEDTHRU A strap through a `(* keep *) FEEDTHRU u1
+(.A(n))` instance; both cells are placed in one row and the PDN connects
+the FEEDTHRU VDD/GND rails.  The routed design provides the independent
+DRT evidence that the cell-level harness cannot:
+
+| check | result | evidence |
+|---|---|---|
+| DRT | **0** | `examples/feedthru_route/runs/fe/43-openroad-detailedrouting` |
+| KLayout DRC | **0** | `runs/fe/62-klayout-drc` |
+| KLayout LVS | **PASS** | `feedthru_route` with `TR10_cmp_sc` |
+
+```bash
+cd examples/feedthru_route
+librelane --pdk-root $PDK_ROOT --pdk TR10 --manual-pdk           --run-tag fe config.json
+bash ../../flow/checks/test_klayout_lvs.sh runs/fe feedthru_route TR10_cmp_sc
+```
+
 The device-less cell alone produces no top cell in the KLayout extractor, so
-the flow-level check uses a small harness: one `INV_X1` drives the
+the cell-level LVS harness is also kept: one `INV_X1` drives the
 feedthrough A strap, with top pins A/Y/VDD/GND/VSS.  Reproduce with:
 
 ```bash

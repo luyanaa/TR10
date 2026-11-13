@@ -1,0 +1,30 @@
+{
+  "DESIGN_NAME": "feedthru_route",
+  "VERILOG_FILES": "dir::src/feedthru_route.v",
+  "CLOCK_PORT": null,
+  "CLOCK_PERIOD": 10,
+  "PNR_SDC_FILE": "dir::feedthru_route.sdc",
+  "SIGNOFF_SDC_FILE": "dir::feedthru_route.sdc",
+  "STD_CELL_LIBRARY": "TR10_cmp_sc",
+  "FP_SIZING": "absolute",
+  "DIE_AREA": "0 0 300 310",
+  "TOP_MARGIN_MULT": 0,
+  "BOTTOM_MARGIN_MULT": 0,
+  "LEFT_MARGIN_MULT": 2,
+  "RIGHT_MARGIN_MULT": 2,
+  "PDN_CFG": "pdk_dir::libs.tech/librelane/TR10_cmp_sc/pdn_cmp_sc.tcl",
+  "RUN_FILL_INSERTION": false,
+  "RUN_IRDROP_REPORT": false,
+  "IGNORE_DISCONNECTED_MODULES": [
+    "feedthru_route"
+  ],
+  "ERROR_ON_PDN_VIOLATIONS": false,
+  "ERROR_ON_XOR_ERROR": false,
+  "KLAYOUT_CONFLICT_RESOLUTION": "OverwriteCell",
+  "RUN_MAGIC_DRC": false,
+  "RUN_LVS": false,
+  "RUN_ANTENNA_REPAIR": false,
+  "RUN_POST_GPL_DESIGN_REPAIR": false,
+  "RUN_POST_GRT_RESIZER_TIMING": false,
+  "ERROR_ON_LVS_ERROR": false
+}
