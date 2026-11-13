@@ -1,0 +1,7 @@
+#!/bin/sh
+# qflow 1.4 vlogFanout workaround for TR10: cell sizing maps NOR3->NOR2
+# and breaks LEF pin names.  Keep the Yosys mapped netlist unchanged.
+for last; do :; done
+prev=""
+for a in "$@"; do [ "$a" = "$last" ] && break; prev="$a"; done
+cp "$prev" "$last"

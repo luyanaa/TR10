@@ -1,0 +1,23 @@
+{
+  "design": "tr1um_fifo4_cmp",
+  "qflow_mapped_components": 110,
+  "qflow_placed_components": 115,
+  "qflow_cell_area_um2": 199833.48,
+  "qflow_placed_area_um2": 202078.8,
+  "qflow_die_um2": 753902.64,
+  "qflow_utilization_pct": 26.804362961243903,
+  "qflow_route_nets": 140,
+  "qflow_failed_nets": 0,
+  "qflow_timing_slack_ps": 4974.67,
+  "qflow_power_w": 2.61e-05,
+  "openroad": {
+    "design__die__area": 1193200,
+    "design__instance__area": 224211,
+    "design__instance__utilization": 0.197681,
+    "power__total": 0.00019411709217820317,
+    "timing__setup__wns": 0,
+    "timing__setup__ws": 4751.777985586862
+  },
+  "qflow_route_status": "140/140, No failed routes",
+  "qflow_drc_lvs": "not run"
+}

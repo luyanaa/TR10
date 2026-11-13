@@ -2,7 +2,7 @@
 # TR10_cmp_sc / qflow technology setup
 set leffile=TR10_cmp_sc_qflow.lef
 set techleffile=TR10_tech_qflow.tlef
-set libertyfile=/grid/TR-1um_stdcell/flow/pdk_root/TR10/libs.ref/TR10_cmp_sc/lib/TR10_cmp_sc__typ_5p0V_25C.lib
+set libertyfile=/grid/TR-1um_stdcell/flow/pdk_root/TR10/flow/experiments/qflow_ppa/tech/tr10cmp/TR10_cmp_sc_qflow.lib
 set spicefile=/grid/TR-1um_stdcell/flow/pdk_root/TR10/libs.ref/TR10_cmp_sc/cdl/TR10_cmp_sc.cdl
 set gdsfile=/grid/TR-1um_stdcell/flow/pdk_root/TR10/libs.ref/TR10_cmp_sc/gds/TR10_cmp_sc.gds
 set verilogfile=/grid/TR-1um_stdcell/flow/pdk_root/TR10/libs.ref/TR10_cmp_sc/verilog/TR10_cmp_sc.v
@@ -52,7 +52,7 @@ set separator=""
 set gndnet=GND
 set vddnet=VDD
 
-set postproc_options="-anchors"
+set postproc_options=""
 set route_layers=2
 set fill_ratios="0,70,10,20"
 set fanout_options="-l 200 -c 20"
