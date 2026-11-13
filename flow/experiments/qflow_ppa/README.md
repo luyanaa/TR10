@@ -23,16 +23,11 @@ It contains 87 cells (20 EDFF, 1 DFF2, 1 DFF, 1 MUXTG2, 1 TIEHI, 63
 combinational cells), with all power pins stripped.  Both flows use exactly
 these cells and this connectivity.
 
-qflow's own synthesis could not be used: the locally installed Yosys 0.52
-segfaults on the TR10 Liberty:
-
-```
-read_liberty -lib libs.ref/TR10_cmp_sc/lib/TR10_cmp_sc__typ_5p0V_25C.lib
-Segmentation fault
-```
-
-Feeding the LibreLane mapped netlist to qflow isolates the **placement and
-routing** comparison, which is the question here.
+qflow's system Yosys 0.52 segfaults on the TR10 Liberty.  Yosys 0.70 from the
+LibreLane Nix store reads it and synthesizes the FIFO (23 DFF, 22 MUX2, ...);
+qflow's legacy `vlog2Verilog` antenna-cleanup step then segfaults, so the
+qflow-mapped netlist (`results/qflow_synth_mapped.v`) is used for placement.
+The LibreLane-mapped netlist is also kept for the router comparison.
 
 ## qflow setup
 
@@ -80,6 +75,18 @@ touches the VDD rail), `clk` (multi-row clock collisions), and several
 `rd_ptr`/`wr_ptr`/`_*` nets.  A complete port still needs a TIEHI cell with a
 separate M2 signal pad + V1, a clock-tree/NDR step, and a native GrayWolf
 row/channel model.  `results/qflow_port_status.txt` records the exact state.
+
+### Full-port attempt: synthesis, rows, pin mapping
+
+A second pass with Yosys 0.70 mapped the FIFO for qflow.  The placement of
+the qflow-mapped netlist still uses 7 abutting rows; `GENR*numrows=7` plus
+`rowSep=178.2` produced a 577.8 x 138380 um die (cell y up to 79.8 mm), so
+qflow 1.4's row parameters cannot express the TR10 237.6 um row pitch.  A
+post-shifted 237.6 um placement was used for the router; qrouter then failed
+77/118 nets, many with `no tap points` for mapped DFF/MUX2 pins.  The
+LibreLane-mapped netlist still gives the best qrouter result (9/118 failed,
+TIEHI/clk).  `results/qflow_port_status.txt` records the exact commands and
+blockers.
 
 The qflow project was created with:
 
