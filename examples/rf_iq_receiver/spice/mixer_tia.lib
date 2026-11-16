@@ -1,0 +1,32 @@
+* TR10 RX_MIXER / RX_TIA -- 4-phase passive mixer and I/Q transimpedance amp.
+*
+* RX_MIXER: four NMOS switches, 25 % duty LO, 0/5 V gate drive.
+*   rf_p/rf_n are the differential RF ports (2.5 V common mode),
+*   out_i/out_q are the TIA virtual grounds.
+*   Bulk is vss.  With the source at 2.5 V the body effect raises Vth, but a
+*   5 V gate still gives ~1.6 V overdrive and Ron ~30 ohm.
+*
+* RX_TIA: shunt-feedback NMOS stage with Rf/Cf.  The input bias is the
+*   device Vgs (~1.35 V at 2 mA), so the mixer/balun common mode must be
+*   1.35 V.  A two-stage op-amp TIA was tried first but its input offset
+*   (~170 mV) drove ~7 mA through a 25 ohm switch; the shunt-feedback stage
+*   has no differential-pair offset and needs no compensation.
+*   Default AM setting Rf=10k, Cf=3.5n -> 9.67 kohm, 4.57 kHz.
+*   Other settings: SSB 22k/3.0n (2.4 kHz), FM wide 4.7k/375p (90 kHz),
+*   FM narrow 22k/1.16n (6.25 kHz).
+*
+* No op-amp dependency.
+.subckt RX_MIXER rf_p rf_n lo0 lo90 lo180 lo270 out_i out_q vdd vss
+X0 out_i lo0 rf_p vss NMOS_nf w=200u l=1u nf=10 rgval=1
+X1 out_i lo180 rf_n vss NMOS_nf w=200u l=1u nf=10 rgval=1
+X2 out_q lo90 rf_p vss NMOS_nf w=200u l=1u nf=10 rgval=1
+X3 out_q lo270 rf_n vss NMOS_nf w=200u l=1u nf=10 rgval=1
+.ends RX_MIXER
+
+.subckt RX_TIA in out vdd vss
+.param rf=10k cf=3.5n ibias=2m
+X1 out in vss vss NMOS_nf w=200u l=1u nf=10 rgval=1
+Iload vdd out dc {ibias}
+Rf out in {rf}
+Cf out in {cf}
+.ends RX_TIA

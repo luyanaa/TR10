@@ -1,0 +1,94 @@
+* TR10 RX_FM_DEMOD -- RC differentiator + two Gilbert multipliers.
+*
+* The direct-conversion FM baseband is I = A cos(phi), Q = A sin(phi) with
+* phi' = 2*pi*f_dev(t).  Differentiating both channels and taking the cross
+* product removes the unknown phase:
+*
+*   Q*dI/dt - I*dQ/dt = -A^2 * phi'(t)
+*
+* so the output is linear in the instantaneous frequency and independent of
+* the phase (i.e. of the carrier phase and of the I/Q amplitude, to first
+* order).  Two Gilbert cores compute the two products; the second core's
+* output drains are cross-connected so its current is subtracted.
+*
+*   core 1:  lower pair dI/dt, upper quad Q   -> +dI/dt * Q
+*   core 2:  lower pair dQ/dt, upper quad I   -> -dQ/dt * I
+*
+* Differentiator: Rd/Cd = 10k/50p -> 0.5 us, i.e. wRC = 0.24 at the 75 kHz
+* peak deviation, so the derivative error is ~3 % at full deviation.
+* Upper-quad bias is 2.5 V; lower-pair bias is 1.55 V (the TIA DC level).
+*
+* Ports: i_in q_in out_p out_n vdd vss
+*   i_in/q_in  TIA outputs, DC ~1.55 V, I/Q FM baseband
+*   out_p/out_n differential demodulated audio, DC ~2.6 V
+*
+* Expects ~100 mV I/Q; a production receiver puts a limiter/AGC in front.
+* The output is not low-pass filtered here -- add the audio filter after the
+* buffer.  Signal path is PDK MOS; tail currents are ideal sources for
+* clarity.  rgval=1 on every analog MOS (rgval=0 gives a singular OP).
+.subckt RX_FM_DEMOD i_in q_in out_p out_n vdd vss
+.param rd=10k cd=50p rbias=100k cc=1u itail=250u rload=4.7k
+
+* ---- 1.55 V and 2.5 V references, both bypassed ------------------------
+Rref1 vdd vref 6.9k
+Rref2 vref vss 3.1k
+Cref vref vss 1u
+Rref3 vdd vref2 6.9k
+Rref4 vref2 vss 6.9k
+Cref2 vref2 vss 1u
+
+* ---- differentiators, 0.5 us ------------------------------------------
+Cd_i i_in di {cd}
+Rd_i di vref {rd}
+Cd_q q_in dq {cd}
+Rd_q dq vref {rd}
+
+* ---- AC-couple the undifferentiated I/Q to the upper quad at 2.5 V ----
+Cc_i i_in ip {cc}
+Rb_i ip vref2 {rbias}
+Cc_q q_in qp {cc}
+Rb_q qp vref2 {rbias}
+
+* ---- core 1: dI/dt * Q ------------------------------------------------
+X1 t1 di tail1 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X2 t2 vref tail1 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+Itail1 tail1 vss dc {itail}
+X3 out_p qp   t1 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X4 out_n vref2 t1 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X5 out_n qp   t2 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X6 out_p vref2 t2 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+
+* ---- core 2: dQ/dt * I, drains swapped to subtract ---------------------
+X7 t3 dq tail2 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X8 t4 vref tail2 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+Itail2 tail2 vss dc {itail}
+X9  out_n ip    t3 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X10 out_p vref2 t3 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X11 out_p ip    t4 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X12 out_n vref2 t4 vss NMOS_nf w=100u l=1u nf=4 rgval=1
+
+R1 out_p vdd {rload}
+R2 out_n vdd {rload}
+.ends RX_FM_DEMOD
+
+* TR10 RX_FM_LPF -- two-pole baseband anti-alias filter for the FM path.
+*
+* A single-ended 4-phase passive mixer leaves the upconverted image at
+* 2*f_lo on each TIA output.  At a 1 MHz LO that image is ~20 mV, larger
+* than the FM baseband signal, and the Gilbert product of the image with
+* itself would bury the audio.  Two poles at ~300 kHz reject the image by
+* ~35 dB while passing the 75 kHz deviation with <1 dB loss.
+*
+* Ports: i_in q_in i_out q_out vss.  DC coupled; the input and output sit
+* at the TIA output DC level.
+.subckt RX_FM_LPF i_in q_in i_out q_out vss
+.param r=1k c=530p
+Rf1_i i_in n1_i {r}
+Cf1_i n1_i vss {c}
+Rf2_i n1_i i_out {r}
+Cf2_i i_out vss {c}
+Rf1_q q_in n1_q {r}
+Cf1_q n1_q vss {c}
+Rf2_q n1_q q_out {r}
+Cf2_q q_out vss {c}
+.ends RX_FM_LPF

@@ -1,0 +1,59 @@
+* TR10 RX_VCO -- cross-coupled NMOS LC oscillator at 2*f_lo.
+*
+* The LO chain runs the VCO at 2*f_lo and divides by two, so the tank is at
+* 2 MHz for a 1 MHz LO.  External LC: the tank is split into two halves from
+* each drain to the AC-grounded centre node; the differential tank is
+* L1+L2 = 15.9u*1e6/fc and C1 in series with C2.
+*
+*   Lh = Ltot/2, Ch = 1/(wc^2*Lh), Rh = Q*wc*Lh
+*
+* Cross-coupled pair: negative resistance -2/gm.  With a 1 mA tail the
+* pair gives gm ~ 1.2 mS, i.e. -1.7 kohm against a 2 kohm differential tank,
+* so start-up is comfortable.  Amplitude settles near I_tail*Rp = 2 V
+* differential.
+*
+* vtune drives two NMOS varactors from each drain to the control node;
+* the control node is bypassed, so the varactors appear in series across
+* the tank.  The NMOS C-V saturates once Vgs > ~1 V, so the useful control
+* range is 0..1 V around 0.5 V; the 0.97 factor on ch centres the free
+* running frequency at 2 MHz there.
+*
+* Ports: out_p out_n vtune vdd vss
+*   out_p/out_n  differential 2*f_lo, DC ~4 V, ~0.8 Vpp differential
+*   vtune        0..5 V, centre ~2.5 V; see test_vco_tune.sp for the curve
+*
+* Symbolic values are for fc=2 MHz, Q=20.  rgval=1 on every analog MOS.
+.subckt RX_VCO out_p out_n vtune vdd vss
+.param fc=2e6 q=5 itail=1m
+.param wc=2*3.141592653589793*fc
+* Large L / small C keeps the tank capacitance comparable to the varactor:
+* 15.9 uH per half at 2 MHz needs 398 pF per half, so the ~14 pF varactor
+* gives a few percent of tuning range.
+.param lh=15.9u
+.param ch=0.972/(wc*wc*lh)
+.param rh=q*wc*lh
+
+* ---- tank, split around the AC-grounded centre node --------------------
+L1 out_p vct {lh}
+L2 out_n vct {lh}
+C1 out_p vss {ch}
+C2 out_n vss {ch}
+R1 out_p vct {rh}
+R2 out_n vct {rh}
+* centre node bias: drop ~1 V so the drains have upward swing room
+* Bias the tank centre at 2.5 V: the source node then sits near 1 V and the
+* body effect stays moderate.  Q=5 keeps Rp = 2 kohm differential so a 1 mA
+* tail settles near 1 V per side instead of clipping.
+Rfeed vdd vct 2.5k
+Cct vct vss 10n
+
+* ---- tuning varactors: gate = vtune, D/S/B = drain --------------------
+XV1 vtune out_p NMOS_var w=2400u l=1u nf=16
+XV2 vtune out_n NMOS_var w=2400u l=1u nf=16
+Cv vtune vss 10n
+
+* ---- cross-coupled pair -----------------------------------------------
+X1 out_p out_n tail vss NMOS_nf w=200u l=1u nf=4 rgval=1
+X2 out_n out_p tail vss NMOS_nf w=200u l=1u nf=4 rgval=1
+Itail tail vss dc {itail}
+.ends RX_VCO

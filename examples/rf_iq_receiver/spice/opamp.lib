@@ -1,0 +1,36 @@
+* TR10 RX_OPAMP -- two-stage Miller CMOS op-amp for the I/Q receiver example.
+*
+* Engineering example, not a sign-off cell.  The signal path is PDK MOS; the
+* tail and second-stage load are ideal current sources so the bias point is
+* explicit.  Replace them with mirrors before layout.
+*
+* Terminals: inp inn out vdd vss
+* Supply 5 V, input common mode 2.5 V, output bias 2.5 V.
+* Simulated with the TIA feedback Rf=10k/Cf=3.5nF:
+*   DC transimpedance 9.67 kohm, -3 dB at 4.57 kHz, no peaking.
+*
+* NOTE: use rgval=1, never rgval=0.  ngspice clamps a 0-ohm Rgate to 1e-12
+* and the DC operating point then fails with a singular matrix at the
+* first-stage output.
+.subckt RX_OPAMP inp inn out vdd vss
+.param ibias=200u iload=500u
+Itail tail vss dc {ibias}
+Iload vdd out dc {iload}
+
+* first stage: NMOS differential pair + PMOS current-mirror load
+X1 d1 inn tail vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X2 d2 inp tail vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X3 d1 d1 vdd vdd PMOS_nf w=50u l=2u nf=4 rgval=1
+X4 d2 d1 vdd vdd PMOS_nf w=50u l=2u nf=4 rgval=1
+
+* second stage: NMOS common source, ideal PMOS load current
+X6 out d2 vss vss NMOS_nf w=200u l=1u nf=8 rgval=1
+
+* first-stage output DC path (10 Mohm loads the gain by ~1 %)
+Rbias d2 vss 10meg
+
+* Miller compensation with nulling resistor
+Cc d2 out 2p
+Rz d2 nz 1k
+Cz nz out 1p
+.ends RX_OPAMP

@@ -1,0 +1,53 @@
+* TR10 RX_SSB_DEMOD -- RC polyphase network + transistor-level summing amp.
+*
+* A direct-conversion SSB receiver already has the audio in I/Q form:
+*   USB: I = A cos(wt), Q = +A sin(wt)
+*   LSB: I = A cos(wt), Q = -A sin(wt)
+* The polyphase network gives I a -45 deg low-pass shift and Q a +45 deg
+* high-pass shift, so at the design frequency fc
+*   I' - Q' = 0            (USB, nulled)
+*   I' - Q' = 1.41 A cos   (LSB, passed)
+* and the two swap when Q is inverted.  The differential pair below computes
+* I' - Q' at its output, so it selects one sideband; the receiver's mode
+* control inverts the Q channel (swap the Q TIA output polarity or the
+* mixer's Q LO phase) to select the other one.
+*
+* Ports: i_in q_in out_p out_n vdd vss
+*   i_in/q_in  TIA outputs, DC ~1.55 V, audio on top
+*   out_p/out_n differential audio, DC ~2.5 V, AC couple to the next stage
+*
+* Default fc = 3 kHz (R=10k, C=5.3n), audio band ~300 Hz..3 kHz.
+* The 1 uF / 100 kohm input coupling is a 1.6 Hz high-pass; it is common to
+* both channels, so its phase shift cancels in the difference.
+* Signal path is PDK MOS; the tail current is an ideal source for clarity.
+* rgval=1 on every analog MOS (rgval=0 gives a singular OP).
+.subckt RX_SSB_DEMOD i_in q_in out_p out_n vdd vss
+.param fc=3k r=10k c=5.3n rbias=100k cc=1u itail=500u rload=10k
+
+* ---- 1.55 V reference, matches the TIA output DC ------------------------
+Rref1 vdd vref 6.9k
+Rref2 vref vss 3.1k
+* Bypass so vref is an AC ground; otherwise the 2.1 kohm divider
+* impedance adds to Rhp and pulls the high-pass corner down.
+Cref vref vss 1u
+
+* ---- input AC coupling, 16 Hz -----------------------------------------
+Cin_i i_in i_ac {cc}
+Rb_i i_ac vref {rbias}
+Cin_q q_in q_ac {cc}
+Rb_q q_ac vref {rbias}
+
+* ---- polyphase: I low-pass, Q high-pass, both at fc -------------------
+* Both outputs sit at vref in DC so they can drive the pair directly.
+Rlp i_ac i_lp {r}
+Clp i_lp vss {c}
+Chp q_ac q_hp {c}
+Rhp q_hp vref {r}
+
+* ---- differential summing pair: out_p - out_n ~ I' - Q' ---------------
+X1 out_p i_lp tail vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X2 out_n q_hp tail vss NMOS_nf w=100u l=1u nf=4 rgval=1
+Itail tail vss dc {itail}
+R1 out_p vdd {rload}
+R2 out_n vdd {rload}
+.ends RX_SSB_DEMOD

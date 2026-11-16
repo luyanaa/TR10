@@ -1,0 +1,20 @@
+* TR10 RX_LO_GEN -- behavioral 25 % duty four-phase LO.
+*
+* The transistor-level VCO is locked to 2*f_lo by the PLL, so the LO phases
+* are derived from the same time base at f_lo.  Each phase is a 25 % duty
+* pulse centred on 0/90/180/270 deg: high while sin(theta - phase) > 1/sqrt(2),
+* which is 90 deg of the period.  The logistic edge is a soft comparator so
+* the transient solver does not have to resolve an ideal step.
+*
+* This block is behavioral on purpose.  The transistor-level divide-by-2 is
+* documented as open work in DESIGN.md; the mixer/TIA/demodulator chain is
+* verified with this LO and with ideal PULSE sources.
+*
+* Ports: vdd vss lo0 lo90 lo180 lo270.  flo is a parameter (default 1 MHz).
+.subckt RX_LO_GEN vdd vss lo0 lo90 lo180 lo270
+.param flo=1e6 k=80 th=0.70710678
+B0 lo0 0 V = 5/(1+exp(-{k}*(sin(2*pi*{flo}*time)-{th})))
+B1 lo90 0 V = 5/(1+exp(-{k}*(sin(2*pi*{flo}*time-pi/2)-{th})))
+B2 lo180 0 V = 5/(1+exp(-{k}*(sin(2*pi*{flo}*time-pi)-{th})))
+B3 lo270 0 V = 5/(1+exp(-{k}*(sin(2*pi*{flo}*time-3*pi/2)-{th})))
+.ends RX_LO_GEN

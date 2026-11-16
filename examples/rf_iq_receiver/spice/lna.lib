@@ -1,0 +1,48 @@
+* TR10 RX_LNA -- narrowband common-source LNA with continuous AGC.
+*
+* Engineering example.  Signal path is PDK MOS; the tank is ideal L/C with a
+* configurable Q and the AGC bias is an ideal voltage source.
+*
+* Ports: in out vdd vss agc
+*   in   50 ohm RF input, AC coupled to the gate
+*   out  source-follower output, DC ~2.66 V, AC couple before the balun
+*   agc  0..5 V -> gate bias 0.77..1.35 V -> drain current 60 uA..2 mA
+*        -> voltage gain ~1..20 dB
+*
+* The source is grounded.  A single-ended common-source stage cannot put its
+* source on an ideal current sink: the source node then floats at AC, the
+* gate-source voltage stays ~0 and gm collapses.  AGC therefore varies the
+* gate bias, not a tail current.
+*
+* Default tank is 1 MHz: L=15.9 uH, C=1.59 nF, Rp=2.0 kohm (Q=20).
+* L scales as 1/fc and C is recomputed so the tank stays at fc.
+*
+* NOTE: rgval=1 on every analog MOS.  rgval=0 is clamped to 1e-12 ohm by
+* ngspice and the DC operating point goes singular.
+.subckt RX_LNA in out vdd vss agc
+.param fc=1e6 q=20
+.param wc = 2*3.141592653589793*fc
+.param Lval = 15.9u*1e6/fc
+.param Cval = 1/(wc*wc*Lval)
+.param Rp = q*wc*Lval
+
+* 50 ohm input termination and AC coupling
+Rterm in vss 50
+Cin in g 100n
+
+* AGC: gate bias 0.77 V (60 uA) .. 1.35 V (2 mA), bypassed to AC ground
+Bv vg vss V = {0.77 + 0.116*v(agc)}
+Rg vg g 100k
+
+* common-source gain stage, grounded source
+X1 d g vss vss NMOS_nf w=200u l=1u nf=10 rgval=1
+
+* ideal parallel tank at fc
+Lt d vdd {Lval}
+Ct d vdd {Cval}
+Rp d vdd {Rp}
+
+* source-follower buffer, 4 mA
+X2 vdd d out vss NMOS_nf w=200u l=1u nf=10 rgval=1
+Ibuf out vss dc 4m
+.ends RX_LNA

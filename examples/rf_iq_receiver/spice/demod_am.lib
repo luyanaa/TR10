@@ -1,0 +1,69 @@
+* TR10 RX_AM_DEMOD -- transistor-level I/Q rectifier and summer for AM.
+*
+* The mixer + TIA already downconvert the AM carrier to baseband, so the
+* TIA outputs are the audio envelope riding on a DC bias (~1.55 V).  This
+* block recovers the audio:
+*
+*   1. Compare each channel with a stiff 1.55 V reference that matches
+*      the TIA output DC bias.
+*   2. Apply the channel and the reference to an NMOS differential pair.
+*   3. A PMOS mirror subtracts the reference-branch current, leaving a net
+*      current that is positive only when the channel is above its bias.
+*      A diode-connected NMOS clamps the negative half and an NMOS mirror
+*      copies the rectified current to the shared output node.
+*   4. The I and Q rectified currents sum into Rload/Cload.  With the LO
+*      phase-locked to the carrier the Q channel is near zero, so the sum
+*      is the I audio.  Without a PLL the sum is |I|+|Q|, which tracks the
+*      envelope to within 3 dB over all LO phases.
+*
+* Ports: i_in q_in out vdd vss
+*   i_in/q_in  TIA outputs, DC ~1.55 V, audio on top
+*   out        audio, DC ~5 V - Irect*Rload, AC coupled by the next stage
+*
+* Default: itail=1 mA, rload=10k, cload=3.5 nF -> 4.5 kHz audio low-pass.
+* The 1 kohm / 10 nF input filters are 16 kHz anti-alias filters that keep
+* the 1 MHz LO ripple out of the rectifier.
+*
+* Bias current sources are ideal for clarity; replace them with mirrors
+* before layout.  rgval=1 on every analog MOS (rgval=0 gives a singular OP).
+.subckt RX_AM_DEMOD i_in q_in out vdd vss
+.param itail=500u rload=10k cload=3.5n
+
+* ---- 1.55 V reference (matches the TIA output DC bias) -----------------
+* A divider, not an RC average: the 1 ms verification transient is far
+* shorter than the 10 ms time constant of a 16 Hz RC average.
+Rref1 vdd bi 6.9k
+Rref2 bi vss 3.1k
+Rrefq1 vdd bq 6.9k
+Rrefq2 bq vss 3.1k
+
+* ---- 16 kHz anti-alias filters ----------------------------------------
+Rfi i_in ii 1k
+Cfi ii vss 10n
+Rfq q_in qq 1k
+Cfq qq vss 10n
+
+* ---- I-channel half-wave rectifier ------------------------------------
+X1 d1 ii tail vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X2 d2 bi tail vss NMOS_nf w=100u l=1u nf=4 rgval=1
+Itail tail vss dc {itail}
+* PMOS mirror: copy the input-branch current into the reference branch
+X3 d1 d1 vdd vdd PMOS_nf w=50u l=2u nf=4 rgval=1
+X4 d2 d1 vdd vdd PMOS_nf w=50u l=2u nf=4 rgval=1
+* clamp the negative half, mirror the positive half to the output
+X5 d2 d2 vss vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X6 out d2 vss vss NMOS_nf w=100u l=1u nf=4 rgval=1
+
+* ---- Q-channel half-wave rectifier, summed at out ---------------------
+X7 d3 qq tailq vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X8 d4 bq tailq vss NMOS_nf w=100u l=1u nf=4 rgval=1
+Itailq tailq vss dc {itail}
+X9 d3 d3 vdd vdd PMOS_nf w=50u l=2u nf=4 rgval=1
+X10 d4 d3 vdd vdd PMOS_nf w=50u l=2u nf=4 rgval=1
+X11 d4 d4 vss vss NMOS_nf w=100u l=1u nf=4 rgval=1
+X12 out d4 vss vss NMOS_nf w=100u l=1u nf=4 rgval=1
+
+* ---- shared output load / audio low-pass ------------------------------
+Rload out vdd {rload}
+Cload out vss {cload}
+.ends RX_AM_DEMOD
