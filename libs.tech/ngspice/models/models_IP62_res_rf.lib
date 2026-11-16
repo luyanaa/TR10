@@ -1,0 +1,82 @@
+* TR-1um IP62 RF resistor overlay -- F_RS with parasitic capacitance and
+* distributed RC.
+*
+* The baseline models_IP62_res_os00_calibrated.lib is NOT modified.  F_RS_rf
+* keeps the calibrated R(V)/R(T) law and the OS00 temperature overlay, but:
+*   1. splits the resistor into a 3-resistor / 2-capacitor RC ladder
+*      (distributed effect),
+*   2. adds the poly-to-substrate parasitic capacitance from geometry.
+*
+*   plus --[R/3]-- n1 --[R/3]-- n2 --[R/3]-- minus
+*                   |             |
+*                  C/2           C/2
+*                   |             |
+*                  sub           sub
+*
+* The series expression is the baseline F_RS law divided by 3, so DC total
+* resistance is preserved.  Each section sees its own local voltage for the
+* R(V) term, which is slightly more physical than applying the total voltage.
+* Verified DC error vs F_RS: <= 0.32 % over w = 4/6/12/20 um and V = 1/5 V.
+*
+* PARASITIC CAPACITANCE (default)
+*   Magic TR10.tech: areacap poly 39 aF/um^2, perimc poly 80 aF/um.
+*   csub = (0.039 fF/um^2 * w*l + 0.08 fF/um * 2*(w+l)) * 1e-15 F
+*   These are engineering defaults, not qualified field-oxide data.
+*
+* DISTRIBUTED EFFECT
+*   Time constant tau ~ R*C/2 for a uniform line; the ladder is adequate up
+*   to f ~ 1/(2*pi*tau).  For 50x4 um, R~1.3 kOhm, C~16 fF, tau~10 ps, so the
+*   ladder matters above ~10 GHz.  For 100x20 um, R~0.5 kOhm, C~97 fF,
+*   tau~24 ps, so it matters above ~5 GHz.
+*
+*   Terminal capacitance, measured (flow/checks/test_rf_models.sh):
+*     far end open     -> C_total exactly (every section charges)
+*     far end grounded -> 0.28 * C_total, vs 1/3 for a continuous line
+*   The 17 % gap is the lumping error of a 2-capacitor ladder; it errs on the
+*   low side, i.e. the model is optimistic about how much the parasitic
+*   capacitance loads a driven resistor.  Add sections if that matters.
+*
+* HIGH FREQUENCY
+*   Poly skin depth is far larger than the 0.3 um film at any usable frequency,
+*   so skin effect is not modelled.  Contact/head resistance is inside the
+*   baseline `2.79 + ...` term and is not frequency dependent.
+*
+* DIFFUSION / METAL
+*   This file does NOT add a diffusion resistor.  The `res_diff` PCell draws
+*   the AR layer, which LVS extracts as F_RR (well resistor), not as N+/P+
+*   diffusion; a diffusion strip without a gate extracts as a diode.  Metal
+*   is interconnect (M1 0.05 ohm/sq, M2 0.03 ohm/sq), not a device.
+*
+* Usage:
+*   XR1 plus minus sub F_RS_rf w=4u l=50u
+*   XR2 plus minus sub F_RS_rf w=20u l=100u csub=0
+
+* ////////////////////////////////////////////////////////////////////////
+* One ladder section: baseline F_RS law * scale.
+* ////////////////////////////////////////////////////////////////////////
+.subckt F_RS_SEG plus minus
+.param w=4u l=50u
+.param k_os00='1.0519396292 - 1.657041662e-4*(temper-27) + 2.868216534e-7*(temper-27)**2'
+.if (w == 4u)
+r plus minus r='(k_os00/3)*((95.0*magRS)*(l*10**6)/4+(2.79+(705.9*4**(-1.298))))*(1+(-0.0112)*abs(v(plus,minus))/(l*10**6)-0.229*(abs(v(plus,minus))/(l*10**6))**2+(1.99)*(abs(v(plus,minus))/(l*10**6))**3)'
+.elseif (w == 6u)
+r plus minus r='(k_os00/3)*((95.0*magRS)*(l*10**6)/6+(2.79+(707.5*6**(-1.35))))*(1+(-0.148)*abs(v(plus,minus))/(l*10**6)+1.41*(abs(v(plus,minus))/(l*10**6))**2+(-0.56)*(abs(v(plus,minus))/(l*10**6))**3)'
+.elseif (w == 12u)
+r plus minus r='(k_os00/3)*((95.0*magRS)*(l*10**6)/12+(2.79+(707.5*12**(-2))+(361/(l*10**6))))*(1+(-0.156)*abs(v(plus,minus))/(l*10**6)+1.96*(abs(v(plus,minus))/(l*10**6))**2+(-0.68)*(abs(v(plus,minus))/(l*10**6))**3)'
+.elseif (w == 20u)
+r plus minus r='(k_os00/3)*((95.0*magRS)*(l*10**6)/20+(2.79+(701.9*20**(-1.224))))*(1+(-0.26)*abs(v(plus,minus))/(l*10**6)+2.05*(abs(v(plus,minus))/(l*10**6))**2+(-0.5)*(abs(v(plus,minus))/(l*10**6))**3)'
+.endif
+.ends F_RS_SEG
+
+* ////////////////////////////////////////////////////////////////////////
+* RF resistor: 3-section ladder + parasitic capacitance to substrate.
+* ////////////////////////////////////////////////////////////////////////
+.subckt F_RS_rf plus minus sub
+.param w=4u l=50u
+.param csub='(0.039*(w*1e6)*(l*1e6) + 0.08*2*((w+l)*1e6))*1e-15'
+X1 plus n1 F_RS_SEG w=w l=l
+X2 n1   n2 F_RS_SEG w=w l=l
+X3 n2 minus F_RS_SEG w=w l=l
+C1 n1 sub c='csub/2'
+C2 n2 sub c='csub/2'
+.ends F_RS_rf

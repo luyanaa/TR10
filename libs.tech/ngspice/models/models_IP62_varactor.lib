@@ -1,0 +1,88 @@
+* TR-1um IP62 RF varactor overlay -- MOS and junction varactors.
+*
+* The baseline model files are NOT modified.  This file provides four
+* two/three-terminal varactor wrappers built on the existing devices.
+*
+* =====================================================================
+* 1. MOS varactors (recommended; uses the existing BSIM3 C-V, capmod=2)
+* =====================================================================
+*   NMOS_var  : VSS-referenced.  D/S/B are tied to `minus`; the gate is
+*               `plus`.  The body is the p-substrate, so no isolation is
+*               needed and LVS is clean.
+*   PMOS_var  : VDD-referenced.  D/S are tied to `minus`; the gate is `plus`;
+*               the n-well body is the separate `bw` terminal (tie to VDD).
+*               `bw` is exposed because connect_global(WN,"VDD") fixes the
+*               well potential in layout.
+*
+*   Both are multi-finger (nf) to reduce the gate resistance.  The C-V curve
+*   is the BSIM3 capmod=2 result; no new fitting is claimed.  Expect a
+*   practical Cmax/Cmin of 2-3, not the ideal 7-9, and Q limited by Rg and
+*   the well/channel resistance.
+*
+*   Bias range: keep |Vgs| <= 5 V.  NMOS_var tunes for Vg > Vth; PMOS_var
+*   tunes for Vg < VDD - |Vth|.
+*
+* =====================================================================
+* 2. Junction varactors (engineering abrupt-junction first pass)
+* =====================================================================
+*   DP_var : p+ / n-well, anode=`plus`, cathode=`minus`.
+*   DN_var : n+ / p-sub,  anode=`minus`, cathode=`plus` (see note below).
+*
+*   The baseline DP/DN models carry only is/rs/cj/cjsw/bv and NO grading
+*   coefficient or built-in potential, so their C(V) shape is undefined.
+*   These wrappers add the missing terms with an ENGINEERING ABRUPT-JUNCTION
+*   assumption:
+*       mj = 0.5   (abrupt junction)
+*       pb = 0.9 V (built-in potential)
+*       cj = 1.02 fF/um^2 (DP, p+/n-well) / 0.744 fF/um^2 (DN, n+/p-sub)
+*            taken from the baseline MOS junction values
+*       cjsw = 0.2 fF/um
+*   The area is given in um^2 via `a`; the perimeter is the equivalent square.
+*   This is a first-order model: replace mj/pb/cj with measured C-V data
+*   before using it for a tuned tank.
+*
+*   DN_var is drawn as n+ in p-sub.  In this PDK the substrate is the global
+*   VSS, so DN_var's cathode (`plus`) is the p-substrate: it is a VSS-referenced
+*   device and cannot float.
+*
+* Usage:
+*   XV1 gate 0       NMOS_var w=40u l=1u nf=8
+*   XV2 gate 0 vdd   PMOS_var w=40u l=1u nf=8
+*   XD1 anode 0      DP_var a=100
+*   XD2 0 cathode    DN_var a=100
+
+* ////////////////////////////////////////////////////////////////////////
+* MOS varactors
+* ////////////////////////////////////////////////////////////////////////
+.subckt NMOS_var plus minus
+.param w=10u l=1u nf=1 rshg=95
+Xcore minus plus minus minus NMOS_nf w=w l=l nf=nf rshg=rshg
+.ends NMOS_var
+
+.subckt PMOS_var plus minus bw
+.param w=20u l=1u nf=1 rshg=95
+Xcore minus plus minus bw PMOS_nf w=w l=l nf=nf rshg=rshg
+.ends PMOS_var
+
+* ////////////////////////////////////////////////////////////////////////
+* Junction varactors -- engineering abrupt-junction models
+* ////////////////////////////////////////////////////////////////////////
+.model DP_var_mst D tnom=27
++ is=2.457e-18 rs=0 cj=1.02e-3 mj=0.5 pb=0.9 cjsw=2.0e-10
++ bv=10.35 ibv=1.0e-6
+
+.model DN_var_mst D tnom=27
++ is=1.0e-17 rs=0 cj=0.744e-3 mj=0.5 pb=0.9 cjsw=2.0e-10
++ bv=14.45 ibv=1.0e-6
+
+.subckt DP_var plus minus
+.param a=100 rs=33.71
+D1 plus ni DP_var_mst area='a*1e-12' pj='4*sqrt(a)*1e-6'
+Rser ni minus r='rs'
+.ends DP_var
+
+.subckt DN_var plus minus
+.param a=100 rs=47.59
+D1 minus ni DN_var_mst area='a*1e-12' pj='4*sqrt(a)*1e-6'
+Rser ni plus r='rs'
+.ends DN_var

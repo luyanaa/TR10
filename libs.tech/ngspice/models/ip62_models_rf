@@ -1,0 +1,31 @@
+* TR-1um IP62 RF engineering model manifest.
+*
+* Select this file instead of ip62_models_calibrated to get the RF overlays.
+* The OS00-calibrated baseline is included unchanged -- none of its files are
+* modified.  Every overlay here is additive: it defines new subcircuits or
+* models with distinct names and leaves the baseline devices alone.
+*
+* Contents
+*   models_IP62_mos_rf.lib       NMOS_nf / PMOS_nf  multi-finger MOS
+*   models_IP62_cap_rf.lib       F_CSIO_rf          plate ESR + substrate loss
+*   models_IP62_res_rf.lib       F_RS_rf            parasitic C + RC ladder
+*   models_IP62_varactor.lib     NMOS_var / PMOS_var / DP_var / DN_var
+*   models_IP62_inductor.lib     IND_PI             pi-model template
+*
+* Engineering status: all of these are first-pass models built from geometry
+* and existing calibrated laws.  The placeholders are called out in each file
+* header (gate-poly sheet resistance, plate ESR, substrate conductivity,
+* abrupt-junction grading).  Do not quote Q, ft or fmax from them as silicon
+* data.
+*
+* The spiral inductor subckts themselves are produced per geometry by
+*   python3 flow/scripts/gen_inductor_model.py --turns 4 --d-out 250 \
+*           --width 8 --spacing 3 --name IND_4T_250U
+* which writes a subckt that instantiates IND_PI.
+*
+.include ip62_models_calibrated
+.include models_IP62_mos_rf.lib
+.include models_IP62_cap_rf.lib
+.include models_IP62_res_rf.lib
+.include models_IP62_varactor.lib
+.include models_IP62_inductor.lib

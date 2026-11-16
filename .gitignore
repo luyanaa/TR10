@@ -233,3 +233,6 @@ examples/inv/core.*
 examples/*/runs/
 examples/*/ll.log
 examples/*/fifo_run.log
+
+# Deepwork orchestrator state (local only)
+.slim/deepwork/

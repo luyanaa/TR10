@@ -139,6 +139,37 @@ def main() -> int:
                 fail(f"mos model lib missing '{need}'")
         ok("ngspice mos manifest contains PMOS/NMOS subckts")
 
+    # ---- RF overlay manifest -------------------------------------------------
+    # The RF models are opt-in overlays.  A missing include or a renamed
+    # subckt would only surface as an ngspice error in a user netlist, so
+    # check the manifest wiring and the expected device names here.
+    rf_manifest = pdk_dir / "libs.tech/ngspice/models/ip62_models_rf"
+    rf_expected = {
+        "models_IP62_mos_rf.lib": ("NMOS_nf", "PMOS_nf"),
+        "models_IP62_cap_rf.lib": ("F_CSIO_rf",),
+        "models_IP62_res_rf.lib": ("F_RS_rf",),
+        "models_IP62_varactor.lib": ("NMOS_var", "PMOS_var", "DP_var", "DN_var"),
+        "models_IP62_inductor.lib": ("IND_PI",),
+    }
+    if not rf_manifest.is_file():
+        fail(f"RF manifest missing: {rf_manifest}")
+    else:
+        man = rf_manifest.read_text(errors="replace")
+        if ".include ip62_models_calibrated" not in man:
+            fail("ip62_models_rf does not include the calibrated baseline")
+        for name, subckts in rf_expected.items():
+            if name not in man:
+                fail(f"ip62_models_rf does not include {name}")
+            path = rf_manifest.parent / name
+            if not path.is_file():
+                fail(f"RF overlay missing: {path}")
+                continue
+            t = path.read_text(errors="replace")
+            for sc in subckts:
+                if f".subckt {sc}" not in t:
+                    fail(f"{name} does not define .subckt {sc}")
+        ok("RF manifest includes all 5 overlays with their expected subckts")
+
     # ---- voltage-marker layer sanity -----------------------------------------
     layers_drc = (pdk_dir / "libs.tech/klayout/tech/drc/00_Layers.drc").read_text()
     if re.search(r"V15_MARKER\s*=\s*input\(150", layers_drc):

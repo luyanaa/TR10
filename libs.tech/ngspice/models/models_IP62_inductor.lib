@@ -1,0 +1,41 @@
+* TR-1um IP62 RF inductor overlay -- generic pi model.
+*
+* There is no spiral inductor device in the baseline PDK.  This file provides
+* a two-port pi model that the geometry generator fills in:
+*
+*   flow/scripts/gen_inductor_model.py --turns 4 --d-out 250 --width 8
+*
+* The generator computes L (Wheeler), Rdc (M2 sheet resistance), Cox (M2 to
+* substrate through the stackup) and emits a ready-to-use subckt with numeric
+* values.  IND_PI is the template.
+*
+* Topology:
+*
+*   p --+--[L]--[Rdc]--+-- n
+*       |              |
+*     [Cox1]         [Cox2]
+*       |              |
+*     [Rsub1]        [Rsub2]
+*       |              |
+*      sub            sub
+*
+* WARNING -- ENGINEERING ONLY
+*   The stackup (libs.tech/parasitics/TR10_stackup.xml) is a placeholder:
+*   dielectric thickness, substrate conductivity and via resistance are not
+*   foundry-qualified.  Rsub/Csub are engineering defaults.  L is a Wheeler
+*   estimate, not FastHenry/measured.  Do not quote Q as silicon data.
+*
+* Usage:
+*   XL1 p n sub IND_PI l_nh=6.1 r_dc=12.4 c_ox=0.12p r_sub=500 c_sub=0.05p
+
+.subckt IND_PI p n sub
+.param l_nh=5 r_dc=10 c_ox=0.1p r_sub=500 c_sub=0.05p
+L1 p nmid 'l_nh*1e-9'
+Rdc nmid n 'r_dc'
+Cox1 p ns1 'c_ox'
+Rsub1 ns1 sub 'r_sub'
+Cox2 n ns2 'c_ox'
+Rsub2 ns2 sub 'r_sub'
+Csub1 p sub 'c_sub'
+Csub2 n sub 'c_sub'
+.ends IND_PI

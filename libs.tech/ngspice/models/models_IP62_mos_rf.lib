@@ -1,0 +1,57 @@
+* TR-1um IP62 RF MOS overlay -- finger-aware wrapper over the OS00 baseline.
+*
+* The baseline models_IP62_mos_os00_calibrated.lib is NOT modified.  This file
+* adds NMOS_nf / PMOS_nf, which keep the same BSIM3 core but:
+*   1. split the drawn width W into nf fingers of W/nf each (m=nf),
+*   2. compute AS/AD/PS/PD from the real shared-diffusion geometry instead of
+*      the fixed sdwidth=2.8u used by the single-finger wrapper,
+*   3. add a series gate resistance Rg between the external gate node and the
+*      internal BSIM gate (BSIM3 has no rgate / rgatemod).
+*
+* ENGINEERING PLACEHOLDER
+*   rshg defaults to 95 ohm/sq, the F_RS poly sheet resistance.  It is NOT a
+*   measured gate-poly sheet resistance.  Override rshg= with measured data
+*   before quoting Rg, ft or fmax.  Set rg= explicitly to bypass the formula.
+*
+* Junction sidewall capacitance: BSIM3 only carries cj (area) in this deck and
+*   no cjsw, so narrow fingers under-report sidewall cap.  cjsw_ext (fF/um of
+*   total finger perimeter) adds it explicitly; default 0 keeps the baseline
+*   behaviour.  Use cjsw_ext=0.2 for a first-order engineering estimate.
+*
+* Usage:
+*   X1 d g s b NMOS_nf w=10u l=1u nf=4
+*   X2 d g s b PMOS_nf w=20u l=1u nf=4 rshg=12
+*
+* nf=1 reproduces the baseline DC current exactly (Rg carries no DC current).
+
+* ////////////////////////////////////////////////////////////////////////
+* NMOS multi-finger
+* ////////////////////////////////////////////////////////////////////////
+.subckt NMOS_nf d g s b
+.param w=10u l=1u nf=1 sd=2.8u rshg=95 rgval=-1 cjsw_ext=0
+.param wf='w/nf'
+* Shared diffusion: (nf+1) half-slabs of length sd, width wf.
+.param asd='wf*sd*(nf+1)/2'
+.param psd='(2*(sd/2+wf))*(nf+1)/2'
+* Both gate ends contacted by default; one-sided contact -> use rshg*3.
+.param rg_eff='rgval>=0 ? rgval : rshg*(wf/l)/(12*nf)'
+Rgate g gi r='rg_eff'
+M1 d gi s b NMOS_mst w=wf l=l as=asd ad=asd ps=psd pd=psd nrd=0 nrs=0 m=nf
+Cjs s b c='cjsw_ext*psd*1e-15'
+Cjd d b c='cjsw_ext*psd*1e-15'
+.ends NMOS_nf
+
+* ////////////////////////////////////////////////////////////////////////
+* PMOS multi-finger
+* ////////////////////////////////////////////////////////////////////////
+.subckt PMOS_nf d g s b
+.param w=20u l=1u nf=1 sd=2.8u rshg=95 rgval=-1 cjsw_ext=0
+.param wf='w/nf'
+.param asd='wf*sd*(nf+1)/2'
+.param psd='(2*(sd/2+wf))*(nf+1)/2'
+.param rg_eff='rgval>=0 ? rgval : rshg*(wf/l)/(12*nf)'
+Rgate g gi r='rg_eff'
+M1 d gi s b PMOS_mst w=wf l=l as=asd ad=asd ps=psd pd=psd nrd=0 nrs=0 m=nf
+Cjs s b c='cjsw_ext*psd*1e-15'
+Cjd d b c='cjsw_ext*psd*1e-15'
+.ends PMOS_nf

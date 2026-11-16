@@ -1,0 +1,60 @@
+* TR-1um IP62 RF capacitor overlay -- F_CSIO with plate ESR and substrate loss.
+*
+* The baseline models_IP62_cap_os00_calibrated.lib is NOT modified.  F_CSIO_rf
+* keeps the calibrated C(V)/C(T) top-plate law and the calibrated bottom-plate
+* law, but adds:
+*   1. a series plate resistance (ESR) between the bottom plate and `minus`,
+*   2. a lossy bottom-plate path to the substrate (Rsub),
+*   3. an optional explicit substrate capacitance.
+*
+*   plus ---||------[esr]--- minus
+*            C1               |
+*                          [Cbp]---[Rsub]--- sub
+*
+* Q(f) = 1 / (2*pi*f*C*esr).  This is the series-R limited Q; dielectric loss
+* (tan-delta) is NOT modelled because the PDK has no measured value.
+*
+* PLATE RESISTANCE (the `esr` default)
+*   A plate contacted on one edge has R = Rsh*L/(3*W); for a square that is
+*   Rsh/3, independent of size.  Default 47 ohm =
+*       32 ohm top plate (poly, 95 ohm/sq / 3)
+*     + 15 ohm bottom plate (n-well/diffusion, 45 ohm/sq / 3).
+*   These are geometry estimates, not measured ESR.  Override per instance.
+*   Because a square plate has a size-independent ESR, Q scales as 1/C:
+*   small capacitors are the high-Q ones, large bypass capacitors are not.
+*   Example, verified in flow/checks/test_rf_models.sh: 0.826 pF with
+*   esr = 47 ohm gives Re(Z) = 47 ohm at 100 GHz and Q(1 GHz) = 4.0
+*   (1/(w*C*esr) = 4.10, the substrate network pulls it a few percent down).
+*   A 6 pF bypass capacitor would land near Q = 0.55 at the same frequency.
+*
+*   The 3-section lumped RC ladder was evaluated and rejected as the primary
+*   model: a 3-section ladder gives 14/9*esr at low frequency and esr at high
+*   frequency, so it cannot represent a single physical plate resistance.  Use
+*   this series model up to the distributed roll-off f ~ 1/(2*pi*R*C); above
+*   that it is conservative (it over-estimates Q).
+*
+* ENGINEERING PLACEHOLDERS
+*   rsub=1 kOhm; the stackup substrate conductivity is not qualified
+*   (libs.tech/parasitics/README.md).
+*
+* LVS note: the well plate is tied to VDD by connect_global(WN,"VDD"), so the
+*   `sub` terminal is VDD in layout.  Do not use F_CSIO_rf as a floating
+*   signal capacitor without relaxing that global.
+*
+* Usage:
+*   XC1 plus minus sub F_CSIO_rf c=0.6p x=37.1u y=37.1u
+*   XC2 plus minus sub F_CSIO_rf c=6p x=100u y=100u esr=20
+
+.subckt F_CSIO_rf plus minus sub
+.param c=0 x=0 y=0 m=1 magCSIO=1
+.param esr=47 rsub=1k csub=0
+* Calibrated top-plate law (C(V), C(T), multiplier).
+C1 plus n1 c='c*magCSIO*1.0300*(1+0.00129*v(plus,minus))*(1+0.000022*(temper-27))*m'
+Resr n1 minus r='esr'
+* Calibrated bottom-plate law (x,y enter the inner law scaled by 1e6, exactly
+* as the baseline F_CSIO wrapper does), then a lossy path to the substrate.
+.param xs='x*1e6' ys='y*1e6'
+Cbp minus nsub c='0.56*(((xs+18.8+sqrt(2.03e-8*(0.61+v(minus,sub)))*1e4)*(ys+18.8+sqrt(2.03e-8*(0.61+v(minus,sub)))*1e4)*1.053e-20/sqrt(2.03e-8*(0.61+v(minus,sub))))+(2.0*(xs+18.8+sqrt(1.03e-8*(0.71+v(minus,sub)))*1e4)*(10+0.5*sqrt(1.03e-8*(0.71+v(minus,sub)))*1e4)+2.0*(ys+18.8+sqrt(1.03e-8*(0.71+v(minus,sub)))*1e4)*(10+0.5*sqrt(1.03e-8*(0.71+v(minus,sub)))*1e4))*1.053e-20/sqrt(1.03e-8*(0.71+v(minus,sub))))*m'
+Rsub nsub sub r='rsub'
+Csub minus sub c='csub'
+.ends F_CSIO_rf

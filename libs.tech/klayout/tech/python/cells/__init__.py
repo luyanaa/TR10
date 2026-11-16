@@ -12,6 +12,7 @@ from .resistor  import *
 from .capacitor import *
 from .cont      import *
 from .via       import *
+from .inductor  import *
 
 # It's a Python class that inherits from the pya.Library class
 class tr_1um(pya.Library):
@@ -45,6 +46,9 @@ class tr_1um(pya.Library):
         #
         #　Via
         self.layout().register_pcell("via_1",   via_1())
+        #
+        # RF passives
+        self.layout().register_pcell("inductor_spiral", inductor_spiral())
         #
         # Register us with the name "TR10".
         self.register("TR10")

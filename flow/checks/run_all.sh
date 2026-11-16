@@ -17,6 +17,8 @@ checks=(
   "test_mdp_parity.sh|MDP Drawing<->Mask device parity|bash"
   "test_bulk_tie.sh|bulk/well-tie LVS regression|bash"
   "test_liberty_spice.sh|Liberty<->SPICE INV_X1|bash"
+  "test_rf_models.sh|RF overlays: multi-finger MOS, CSIO ESR, F_RS parasitics, varactors, inductor|bash"
+  "test_rf_metrics.py|RF figures of merit: fT, fMAX, inductor Q sign|python3"
   "test_pex_crosscheck.sh|Magic<->OpenRCX PEX|bash"
   "test_tr1um_fixtures_lvs.sh|TR-1um use-case KLayout LVS fixtures|bash"
   "test_gpl_stability.sh|global-placement stability (pin-density workaround)|bash"
