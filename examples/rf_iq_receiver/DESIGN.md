@@ -163,11 +163,22 @@ charge pump:
   reset is `(UP AND DN) OR ~POR`.  The power-on reset is required: without
   it the latches power up set and the PFD settles into the false DN-wide
   state.  A four-inverter reset chain sets a few-ns reset pulse.
-* `CP` is a resistor-based charge pump (10 k / 13.8 k, about 200 uA at
-  2.9 V).  An ideal current source in series with the switch leaves a
-  floating source node whose ~50 fF must swing between vdd and vout on
-  every pulse; that swallows the PFD's few-ns pulses and creates a dead
-  zone (measured as a 1 V limit cycle).  Resistors have no such node.
+* `CP` is a resistor charge pump (10 k source / 7 k sink, about 300 uA at
+  the 2.05 V lock point).  An ideal current source in series with the
+  switch leaves a floating source node whose ~50 fF must swing between vdd
+  and vout on every pulse; that swallows the PFD's few-ns pulses and
+  creates a dead zone.  The pump output is also buffered, because the
+  asymmetric switch gate capacitance delays the PMOS turn-on and biases the
+  effective UP/DN widths.
+
+Loop filter: type-II, C1 = 1 nF, R1 = 50 k, C2 = 100 pF, with
+`wn = sqrt(Kphi*Kv/(N*C1)) ~ 7.7 kHz`, `zeta = wn*R1*C1/2 ~ 1.2` and the
+zero at 3.2 kHz.  The VCO reaches 2.000 MHz at vtune = 2.05 V (measured
+ramp) and the pump is balanced at the same point (rp = 10 k, rn = 7 k);
+that alignment is what lets the loop settle instead of hunting against a
+clamp.  The tuning node is clamped to 1.7..4.2 V because outside that
+window the varactor is in accumulation (Kv -> 0) or the pump runs out of
+headroom.
 
 Measured PFD characteristic (`test_pfd.sp`): +90 deg gives UP = 1.283 of
 5 V (ideal 1.25), -90 deg gives DN = 1.283, 0 deg gives 0.035 on both
@@ -175,27 +186,35 @@ Measured PFD characteristic (`test_pfd.sp`): +90 deg gives UP = 1.283 of
 expected.  Frequency steering (`test_pfd_freq.sp`): a 0.995 MHz FB gives
 UP = 1.40 / DN = 0.03, a 1.005 MHz FB gives UP = 0.03 / DN = 1.41.
 
-The closed loop (`tb_pll.sp`) closes the 2 MHz VCO through the divide-by-2
-onto the 1 MHz reference.  The VCO tuning was widened 4x (9600u varactors,
-Kv = -23 kHz/V measured over 2.0-4.5 V), the tank trimmed with ch = 0.8767
-and the charge pump balanced at 2.65 V (10k/11.3k).  The filter is a type-I
-integrator (C1 = 2.2 nF, C2 = 22 pF, wn ~ 5 kHz); the tuning node is
-clamped to 2.0..4.2 V because outside that window the varactor is in
-accumulation (Kv -> 0) or the pump runs out of headroom.
+Closed-loop lock (`tb_pll.sp`, 2 ms): the VCO runs at 2*f_ref and the
+divide-by-2 output holds phase with the reference.
 
-Measured acquisition from an arbitrary starting phase: the frequency error
-falls from 8.5 kHz (0.85 %) to 0.75 kHz (0.075 %) in 250 us; the tuning
-voltage then sits on the 2.0 V clamp with a 1 mV ripple at the 0.75 kHz
-residual.  Pulling the last 0.75 kHz in needs several beat periods
-(1.3 ms each), i.e. several ms of transient, which is beyond the
-affordable simulation time.  Every block is verified on its own, and the
-remaining work is the VCO tuning range (a varactor with a wider, more
-linear C-V would raise Kv and shorten the pull-in in proportion).
-* The NMOS varactor C-V saturates above Vgs ~1 V and moves only ~0.15 % of
-  the tank capacitance over the useful 0..1 V range.  The tank trim
-  (ch factor 0.9529) centres the free-running VCO near 2.0015 MHz at
-  vtune = 2.5 V, which leaves only a few kHz of correction range; a larger
-  varactor is needed for a real capture range.
+```
+window 50..600 us       fb 550, ref 550   (difference 0 -> no cycle slip)
+window 1100..1999 us    fb 899, ref 899   (difference 0 -> no cycle slip)
+phase (ref -> fb)       mean 0.50 us, std 0.40 us
+vtune                   2.09 V mean, 0.31 V pp ripple
+```
+
+The edge counts are the lock evidence: the divider output and the reference
+advance by the same number of cycles in each window, so the VCO stays at
+exactly 2*f_ref instead of slipping.  The `-1` seen when counting the whole
+2 ms window is the window-edge artefact of the first partial period.
+
+The pump balance, the type-II zero and the aligned 2.05 V operating point
+are each necessary: removing the zero or moving the pump balance to
+2.65 V leaves a +0.7..1.3 kHz residual at a clamp.  The 0.31 V ripple (and
+the resulting 0.4 us phase jitter) comes from the 200..300 uA pump pulses
+into a 100 pF smoothing cap; a lower pump current or an extra smoothing
+pole would reduce it at the cost of a slower pull-in.
+
+* The NMOS varactor C-V saturates above Vgs ~1 V, so the VCO gain is only
+  ~23 kHz/V even with 9600u varactors.  The tank trim (ch = 0.8767) puts
+  2.000 MHz at vtune = 2.05 V and the clamp keeps the varactor out of the
+  accumulation region.  A wider, more linear C-V would raise Kv and shorten
+  the pull-in.
+* The 0.31 V pump ripple gives a 0.4 us rms phase jitter at lock; a lower
+  pump current or an extra smoothing pole would reduce it.
 * The divider's 25 % duty is 26-27 % because the clock buffer duty is 44 %
   and the latch delays differ by phase.  A duty-cycle trim or a faster
   latch would tighten it.

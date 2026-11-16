@@ -19,38 +19,39 @@ XPFD ref fb por up dn dnb vdd 0 PFD
 * charge pump into the loop filter (200 uA, UP sinks / DN sources)
 XCP up dnb vtune vdd 0 CP
 
-* Loop filter.  The VCO gain is small (~10 kHz/V), so a type-II zero would
-* sit at a very low frequency and the loop was only marginally stable.
-* This is a type-I loop: the charge pump drives the integrator C1 directly
-* (R1 is a 1 ohm placeholder), with C2 smoothing the pump pulses.
-* wn = sqrt(Kphi*Kv/(N*C1)) ~ 4.5 kHz for Kv ~ 10 kHz/V.
-R1 vtune n1 1
-C1 n1 0 2.2n
-C2 vtune 0 22p
+* Loop filter: type-II with the zero below wn.
+* C1 = Kphi*Kv/(N*wn^2), R1 = 2*zeta/(wn*C1), C2 = C1/10.
+* Kv ~ 23 kHz/V and C1 = 1 nF give wn ~ 7.7 kHz; R1 = 50 k gives
+* zeta ~ 1.2 and the zero at 3.2 kHz, which removes the slow limit cycle
+* seen with the pure integrator.
+R1 vtune n1 50k
+C1 n1 0 1n
+C2 vtune 0 100p
 
-* bias tee: the VCO's tuning range is 0..5 V and the lock point is near
-* 3 V, so the filter is biased there; 1 Mohm is transparent to the loop
-Vb vb 0 dc 2.65
+* bias tee: the VCO reaches 2.000 MHz near vtune = 2.05 V (measured ramp)
+* and the charge pump is balanced there (rp=10k, rn=7k), so the filter is
+* biased at that point; 10 Mohm is transparent to the loop
+Vb vb 0 dc 2.05
 Rb vtune vb 10meg
 * clamp the filter to the VCO's sensitive tuning window.  Below 2.5 V the
 * NMOS varactor is in accumulation and Kv collapses to zero, so the loop
 * would integrate a phase error without a frequency response and limit
 * cycle.  Above 4.2 V the charge pump's source side runs out of headroom.
 Dc1 vcl1 vtune DCL
-Vc1 vcl1 0 dc 2.0
+Vc1 vcl1 0 dc 1.7
 Dc2 vtune vcl2 DCL
 Vc2 vcl2 0 dc 4.2
 Dcg 0 vtune DCL
 .model DCL D(is=1e-12 n=0.02)
 
 .options reltol=1e-3 abstol=1e-9 vntol=1e-5 method=gear
-.tran 5n 1000u 0 5n
+.tran 5n 2000u 0 5n
 .control
 run
-meas tran vt_avg avg v(vtune) from=700u to=1000u
-meas tran vt_ripple pp v(vtune) from=700u to=1000u
+meas tran vt_avg avg v(vtune) from=1700u to=2000u
+meas tran vt_ripple pp v(vtune) from=1700u to=2000u
 set wr_singlescale
 set wr_vecnames
-wrdata tb_pll.dat v(vco_p) v(vtune) v(fb) v(ref) v(up) v(dn)
+wrdata pll_lock.dat v(vco_p) v(vtune) v(fb) v(ref) v(up) v(dn)
 .endc
 .end

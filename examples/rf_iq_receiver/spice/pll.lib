@@ -58,14 +58,20 @@ Xr6 d3 rst vdd vss BUF
 .ends PFD
 
 .subckt CP up dnb vout vdd vss
-.param rp=10k rn=11.3k
-* Resistor-based charge pump.  An ideal current source in series with the
-* switch leaves the source node floating: its ~50 fF must swing between
-* vdd and vout on every pulse, which swallows the few-ns PFD pulses and
-* creates a dead zone.  Resistors have no such node.  rp/rn are chosen for
-* ~200 uA at vout = 3 V; the loop feedback absorbs the voltage dependence.
+.param rp=10k rn=7k
+* Buffer the PFD outputs before the pump.  The NMOS (20u) and PMOS (40u)
+* switch gates are 40 fF and 80 fF; loading the PFD outputs directly makes
+* the PMOS turn on later than the NMOS, which shortens the effective DN
+* pulse and biases a locked loop toward the UP (sink) side.
+Xb1 up  n1 vdd vss INV
+Xb2 n1  up_b vdd vss BUF
+Xb3 dnb n2 vdd vss INV
+Xb4 n2  dnb_b vdd vss BUF
+* Resistor pump: an ideal current source in series with the switch leaves
+* a floating node whose ~50 fF must swing between vdd and vout on every
+* pulse, swallowing the few-ns PFD pulses (measured as a 1 V limit cycle).
 Rp vdd np {rp}
-Xsp vout dnb np vdd PMOS_nf w=40u l=1u nf=2 rgval=-1
-Xsn vout up nn vss NMOS_nf w=20u l=1u nf=2 rgval=-1
+Xsp vout dnb_b np vdd PMOS_nf w=40u l=1u nf=2 rgval=-1
+Xsn vout up_b nn vss NMOS_nf w=20u l=1u nf=2 rgval=-1
 Rn nn vss {rn}
 .ends CP
