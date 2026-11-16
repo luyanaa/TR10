@@ -1,0 +1,71 @@
+* TR10 PLL blocks -- phase-frequency detector and charge pump.
+*
+* Classic two-DFF PFD:
+*   DFF1: D=1, clock = REF -> UP
+*   DFF2: D=1, clock = FB  -> DN
+*   reset = UP AND DN, so a pulse on the leading input is reproduced on the
+*   matching output and both are cleared once the other edge arrives.  The
+*   average (UP-DN) is a linear function of the phase error over +-2*pi and
+*   also steers the frequency, so the loop acquires from any starting
+*   frequency inside the VCO range.
+*
+* The DFF is edge triggered (master transparent on the low clock phase,
+* slave on the high phase) with an asynchronous reset that pulls both latch
+* states low; clearing only the slave would let the still-high master
+* re-set it.
+*
+* Charge pump: resistors (10k / 13.8k) switched into the loop-filter node,
+* about 200 uA at vout = 2.9 V.  A current source in series with the switch
+* leaves a floating source node whose capacitance swallows the few-ns PFD
+* pulses; the resistor has no such node.  The switches are small (20u/40u)
+* so the PFD outputs can drive their gates.
+*   UP high -> NMOS sinks current (Vtune down, VCO faster)
+*   DN high -> PMOS sources current (Vtune up,   VCO slower)
+* The polarity matches RX_VCO, whose frequency falls as vtune rises.
+*
+* Ports:
+*   PFD ref fb por up dn dnb vdd vss
+*   CP  up dnb vout vdd vss
+*
+* rgval=-1 (computed ~40 ohm gate R) on the digital devices; rgval=0 is
+* clamped to 1e-12 and breaks the DC operating point.
+.subckt DFF_R clk rst q qb vdd vss
+XI0 clk clkb vdd vss INV
+* master: transparent while clk is low, D = 1
+XL1 vdd m mb clkb vdd vss LATCH_D
+* slave: transparent while clk is high
+XL2 m q qb clk vdd vss LATCH_D
+* asynchronous reset clears both latches
+Xrm m rst vss vss NMOS_nf w=60u l=1u nf=2 rgval=-1
+Xrs q rst vss vss NMOS_nf w=60u l=1u nf=2 rgval=-1
+.ends DFF_R
+
+.subckt PFD ref fb por up dn dnb vdd vss
+XFF1 ref rst up upb vdd vss DFF_R
+XFF2 fb  rst dn dnb vdd vss DFF_R
+* reset = (UP AND DN) OR ~POR.  por is active low and holds both DFFs
+* cleared at power-up; without it the latches power up set and the PFD
+* settles into the false DN-wide state.
+Xr1 up dn rstb vdd vss NAND2
+Xr2 rstb por rst_and vdd vss NAND2
+* four inversions keep the polarity and set a reset width of a few ns:
+* long enough for the 60u pulldowns to clear both latches, short enough
+* not to span the phase difference at 1 MHz
+Xr3 rst_and d1 vdd vss INV
+Xr4 d1 d2 vdd vss INV
+Xr5 d2 d3 vdd vss INV
+Xr6 d3 rst vdd vss BUF
+.ends PFD
+
+.subckt CP up dnb vout vdd vss
+.param rp=10k rn=13.8k
+* Resistor-based charge pump.  An ideal current source in series with the
+* switch leaves the source node floating: its ~50 fF must swing between
+* vdd and vout on every pulse, which swallows the few-ns PFD pulses and
+* creates a dead zone.  Resistors have no such node.  rp/rn are chosen for
+* ~200 uA at vout = 3 V; the loop feedback absorbs the voltage dependence.
+Rp vdd np {rp}
+Xsp vout dnb np vdd PMOS_nf w=40u l=1u nf=2 rgval=-1
+Xsn vout up nn vss NMOS_nf w=20u l=1u nf=2 rgval=-1
+Rn nn vss {rn}
+.ends CP

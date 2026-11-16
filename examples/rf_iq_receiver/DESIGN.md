@@ -151,18 +151,43 @@ python3 examples/rf_iq_receiver/checks/test_rx.py
    generator, FM and SSB demodulators done; the PLL closing remains open.
    `RX_LO_GEN` provides a behavioral 25 % duty source for cross-checks.
 
-### Open work on the LO
+### PLL: PFD + charge pump + loop filter
 
-* The PLL does not settle.  The multiplier phase detector and the loop
-  filter acquire through 2.000 MHz at around 20 us but then drive vtune to
-  a rail: pure-integral and proportional variants both overshoot, so the
-  loop needs a proper PFD / charge-pump and a PI filter with a designed
-  phase margin.  `tb_pll.sp` keeps the experiment.
+`pll.lib` implements a proper two-DFF phase-frequency detector and a
+charge pump:
+
+* `DFF_R` is a master-slave latch pair with an asynchronous reset that
+  clears *both* latch states (clearing only the slave lets the still-high
+  master re-set it).
+* `PFD` asserts UP on a REF rising edge and DN on an FB rising edge; the
+  reset is `(UP AND DN) OR ~POR`.  The power-on reset is required: without
+  it the latches power up set and the PFD settles into the false DN-wide
+  state.  A four-inverter reset chain sets a few-ns reset pulse.
+* `CP` is a resistor-based charge pump (10 k / 13.8 k, about 200 uA at
+  2.9 V).  An ideal current source in series with the switch leaves a
+  floating source node whose ~50 fF must swing between vdd and vout on
+  every pulse; that swallows the PFD's few-ns pulses and creates a dead
+  zone (measured as a 1 V limit cycle).  Resistors have no such node.
+
+Measured PFD characteristic (`test_pfd.sp`): +90 deg gives UP = 1.283 of
+5 V (ideal 1.25), -90 deg gives DN = 1.283, 0 deg gives 0.035 on both
+(the reset pulse), and the characteristic wraps outside +-180 deg as
+expected.  Frequency steering (`test_pfd_freq.sp`): a 0.995 MHz FB gives
+UP = 1.40 / DN = 0.03, a 1.005 MHz FB gives UP = 0.03 / DN = 1.41.
+
+The closed loop (`tb_pll.sp`) closes the 2 MHz VCO through the divide-by-2
+onto the 1 MHz reference.  Measured acquisition: the frequency error falls
+from ~0.4 % to 0.07 % in 1 ms and the tuning voltage settles near the
+2.5 V clamp; the residual oscillation decays slowly because the VCO gain
+is only ~5-10 kHz/V (the varactor moves ~0.1 % of the tank).  The loop
+filter is a type-I integrator (C1 = 200 pF, wn ~ 4.5 kHz); the tuning node
+is clamped to 2.5..4.2 V because below 2.5 V the varactor is in
+accumulation and Kv collapses, which produced a 1 V limit cycle.
 * The NMOS varactor C-V saturates above Vgs ~1 V and moves only ~0.15 % of
   the tank capacitance over the useful 0..1 V range.  The tank trim
-  (ch factor 0.9643) centres the free-running VCO at 2.000 MHz, which leaves
-  almost no correction range for the loop; a larger varactor is needed for a
-  real capture range.
+  (ch factor 0.9529) centres the free-running VCO near 2.0015 MHz at
+  vtune = 2.5 V, which leaves only a few kHz of correction range; a larger
+  varactor is needed for a real capture range.
 * The divider's 25 % duty is 26-27 % because the clock buffer duty is 44 %
   and the latch delays differ by phase.  A duty-cycle trim or a faster
   latch would tighten it.

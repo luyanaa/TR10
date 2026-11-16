@@ -8,7 +8,7 @@ Bclk clk 0 V = 2.5 + 0.6*sin(2*pi*2meg*time)
 * startup kick to break the latch symmetry
 Ist m 0 PULSE(0 1m 50n 5n 5n 20n 1s)
 
-XDIV clk vdd 0 lo0 lo90 lo180 lo270 RX_LO_DIV
+XDIV clk vdd 0 lo0 lo90 lo180 lo270 fb RX_LO_DIV
 
 .options reltol=1e-3 abstol=1e-9 vntol=1e-5 method=gear
 .tran 2n 12u 0 2n

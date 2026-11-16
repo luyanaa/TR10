@@ -13,6 +13,8 @@ the block- and system-level metrics against the values in DESIGN.md:
   FM demod     100 mV I/Q, 75 kHz deviation -> >30 mV audio at 3 kHz
   LO gen       4 phases, 25 % duty, non-overlapping (behavioral)
   LO divider   VCO/2 clock -> 4 phases at f_lo, 22-29 % duty
+  PFD          UP/DN vs phase: +/-90 deg -> 1.25 of 5 V, 0 deg -> reset only
+  PFD freq     UP for a slow FB, DN for a fast FB (frequency steering)
   full AM      LNA -> ... -> audio, >100 mV audio at 3 kHz (--full)
 
 Usage:
@@ -246,6 +248,47 @@ def case_lo_div(ck: Checker, work: str) -> None:
              f"period = {per*1e6:.3f} us, target 1.000 us (2 MHz clock / 2)")
 
 
+def case_pfd(ck: Checker, work: str) -> None:
+    out = run_ngspice("test_pfd.sp", work)
+    rows = {}
+    for line in out.splitlines():
+        if line.startswith("ph="):
+            parts = dict(p.split("=") for p in line.split())
+            rows[float(parts["ph"])] = (float(parts["up"]), float(parts["dn"]))
+    ok_shape = 90.0 in rows and -90.0 in rows and 0.0 in rows
+    ck.check("PFD phase characteristic present", ok_shape,
+             f"{len(rows)} phase points")
+    if not ok_shape:
+        return
+    up90, dn90 = rows[90.0]
+    upm90, dnm90 = rows[-90.0]
+    ck.check("PFD +90 deg drives UP", 1.05 <= up90 <= 1.55,
+             f"UP = {up90:.3f}, target 1.25 (90 deg of 5 V)")
+    ck.check("PFD -90 deg drives DN", 1.05 <= dnm90 <= 1.55,
+             f"DN = {dnm90:.3f}, target 1.25")
+    up0, dn0 = rows[0.0]
+    ck.check("PFD zero phase is balanced", up0 <= 0.20 and dn0 <= 0.20,
+             f"UP = {up0:.3f}, DN = {dn0:.3f}, target < 0.20 each")
+
+
+def case_pfd_freq(ck: Checker, work: str) -> None:
+    out = run_ngspice("test_pfd_freq.sp", work)
+    rows = {}
+    for line in out.splitlines():
+        if line.startswith("ffb="):
+            parts = dict(p.split("=") for p in line.split())
+            rows[parts["ffb"]] = (float(parts["up"]), float(parts["dn"]))
+    ck.check("PFD frequency sweep present", len(rows) >= 3, f"{len(rows)} points")
+    if len(rows) < 3:
+        return
+    slow = rows.get("0.995meg")
+    fast = rows.get("1.005meg")
+    ck.check("PFD steers a slow feedback up", slow is not None and slow[0] > slow[1],
+             f"0.995 MHz: UP = {slow[0]:.3f}, DN = {slow[1]:.3f}" if slow else "missing")
+    ck.check("PFD steers a fast feedback down", fast is not None and fast[1] > fast[0],
+             f"1.005 MHz: UP = {fast[0]:.3f}, DN = {fast[1]:.3f}" if fast else "missing")
+
+
 def case_full_am(ck: Checker, work: str) -> None:
     run_ngspice("tb_am_1m.sp", work)
     d = load_wrdata(os.path.join(work, "tb_am_1m.dat"))
@@ -289,6 +332,10 @@ def main() -> int:
         case_lo_gen(ck, work)
         print("\n== LO divider ==")
         case_lo_div(ck, work)
+        print("\n== PFD ==")
+        case_pfd(ck, work)
+        print("\n== PFD frequency steering ==")
+        case_pfd_freq(ck, work)
         if args.full:
             print("\n== full AM chain at 1 MHz ==")
             case_full_am(ck, work)

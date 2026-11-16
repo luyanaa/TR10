@@ -30,7 +30,7 @@
 * 15.9 uH per half at 2 MHz needs 398 pF per half, so the ~14 pF varactor
 * gives a few percent of tuning range.
 .param lh=15.9u
-.param ch=0.9643/(wc*wc*lh)
+.param ch=0.9529/(wc*wc*lh)
 .param rh=q*wc*lh
 
 * ---- tank, split around the AC-grounded centre node --------------------

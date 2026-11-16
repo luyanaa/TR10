@@ -19,6 +19,11 @@ Xp out in vdd vdd PMOS_nf w=20u l=1u nf=2 rgval=-1
 Xn out in vss vss NMOS_nf w=10u l=1u nf=2 rgval=-1
 .ends INV
 
+.subckt BUF in out vdd vss
+Xp out in vdd vdd PMOS_nf w=60u l=1u nf=4 rgval=-1
+Xn out in vss vss NMOS_nf w=30u l=1u nf=2 rgval=-1
+.ends BUF
+
 .subckt NAND2 a b out vdd vss
 Xpa out a vdd vdd PMOS_nf w=20u l=1u nf=2 rgval=-1
 Xpb out b vdd vdd PMOS_nf w=20u l=1u nf=2 rgval=-1
@@ -41,7 +46,7 @@ Xq  ns qb q  vdd vss NAND2
 Xqb nr q  qb vdd vss NAND2
 .ends LATCH_D
 
-.subckt RX_LO_DIV clk vdd vss lo0 lo90 lo180 lo270
+.subckt RX_LO_DIV clk vdd vss lo0 lo90 lo180 lo270 fb
 * ---- slice the VCO sine into a CMOS clock ------------------------------
 Cac clk ck 10n
 Rb1 ck vdd 100k
@@ -59,4 +64,7 @@ Xa0 m  s  lo0   vdd vss AND2
 Xa1 s  mb lo90  vdd vss AND2
 Xa2 mb sb lo180 vdd vss AND2
 Xa3 sb m  lo270 vdd vss AND2
+
+* divided output for a PLL phase detector
+Xfbb m fb vdd vss INV
 .ends RX_LO_DIV
