@@ -25,30 +25,30 @@ XCP up dnb vtune vdd 0 CP
 * (R1 is a 1 ohm placeholder), with C2 smoothing the pump pulses.
 * wn = sqrt(Kphi*Kv/(N*C1)) ~ 4.5 kHz for Kv ~ 10 kHz/V.
 R1 vtune n1 1
-C1 n1 0 200p
-C2 vtune 0 10p
+C1 n1 0 2.2n
+C2 vtune 0 22p
 
 * bias tee: the VCO's tuning range is 0..5 V and the lock point is near
 * 3 V, so the filter is biased there; 1 Mohm is transparent to the loop
-Vb vb 0 dc 3.03
+Vb vb 0 dc 2.65
 Rb vtune vb 10meg
 * clamp the filter to the VCO's sensitive tuning window.  Below 2.5 V the
 * NMOS varactor is in accumulation and Kv collapses to zero, so the loop
 * would integrate a phase error without a frequency response and limit
 * cycle.  Above 4.2 V the charge pump's source side runs out of headroom.
 Dc1 vcl1 vtune DCL
-Vc1 vcl1 0 dc 2.5
+Vc1 vcl1 0 dc 2.0
 Dc2 vtune vcl2 DCL
 Vc2 vcl2 0 dc 4.2
 Dcg 0 vtune DCL
 .model DCL D(is=1e-12 n=0.02)
 
 .options reltol=1e-3 abstol=1e-9 vntol=1e-5 method=gear
-.tran 5n 3000u 0 5n
+.tran 5n 1000u 0 5n
 .control
 run
-meas tran vt_avg avg v(vtune) from=2800u to=3000u
-meas tran vt_ripple pp v(vtune) from=2800u to=3000u
+meas tran vt_avg avg v(vtune) from=700u to=1000u
+meas tran vt_ripple pp v(vtune) from=700u to=1000u
 set wr_singlescale
 set wr_vecnames
 wrdata tb_pll.dat v(vco_p) v(vtune) v(fb) v(ref) v(up) v(dn)

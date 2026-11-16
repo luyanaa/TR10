@@ -58,7 +58,7 @@ Xr6 d3 rst vdd vss BUF
 .ends PFD
 
 .subckt CP up dnb vout vdd vss
-.param rp=10k rn=13.8k
+.param rp=10k rn=11.3k
 * Resistor-based charge pump.  An ideal current source in series with the
 * switch leaves the source node floating: its ~50 fF must swing between
 * vdd and vout on every pulse, which swallows the few-ns PFD pulses and

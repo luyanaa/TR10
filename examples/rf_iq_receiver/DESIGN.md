@@ -176,13 +176,21 @@ expected.  Frequency steering (`test_pfd_freq.sp`): a 0.995 MHz FB gives
 UP = 1.40 / DN = 0.03, a 1.005 MHz FB gives UP = 0.03 / DN = 1.41.
 
 The closed loop (`tb_pll.sp`) closes the 2 MHz VCO through the divide-by-2
-onto the 1 MHz reference.  Measured acquisition: the frequency error falls
-from ~0.4 % to 0.07 % in 1 ms and the tuning voltage settles near the
-2.5 V clamp; the residual oscillation decays slowly because the VCO gain
-is only ~5-10 kHz/V (the varactor moves ~0.1 % of the tank).  The loop
-filter is a type-I integrator (C1 = 200 pF, wn ~ 4.5 kHz); the tuning node
-is clamped to 2.5..4.2 V because below 2.5 V the varactor is in
-accumulation and Kv collapses, which produced a 1 V limit cycle.
+onto the 1 MHz reference.  The VCO tuning was widened 4x (9600u varactors,
+Kv = -23 kHz/V measured over 2.0-4.5 V), the tank trimmed with ch = 0.8767
+and the charge pump balanced at 2.65 V (10k/11.3k).  The filter is a type-I
+integrator (C1 = 2.2 nF, C2 = 22 pF, wn ~ 5 kHz); the tuning node is
+clamped to 2.0..4.2 V because outside that window the varactor is in
+accumulation (Kv -> 0) or the pump runs out of headroom.
+
+Measured acquisition from an arbitrary starting phase: the frequency error
+falls from 8.5 kHz (0.85 %) to 0.75 kHz (0.075 %) in 250 us; the tuning
+voltage then sits on the 2.0 V clamp with a 1 mV ripple at the 0.75 kHz
+residual.  Pulling the last 0.75 kHz in needs several beat periods
+(1.3 ms each), i.e. several ms of transient, which is beyond the
+affordable simulation time.  Every block is verified on its own, and the
+remaining work is the VCO tuning range (a varactor with a wider, more
+linear C-V would raise Kv and shorten the pull-in in proportion).
 * The NMOS varactor C-V saturates above Vgs ~1 V and moves only ~0.15 % of
   the tank capacitance over the useful 0..1 V range.  The tank trim
   (ch factor 0.9529) centres the free-running VCO near 2.0015 MHz at

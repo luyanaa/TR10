@@ -30,7 +30,7 @@
 * 15.9 uH per half at 2 MHz needs 398 pF per half, so the ~14 pF varactor
 * gives a few percent of tuning range.
 .param lh=15.9u
-.param ch=0.9529/(wc*wc*lh)
+.param ch=0.8767/(wc*wc*lh)
 .param rh=q*wc*lh
 
 * ---- tank, split around the AC-grounded centre node --------------------
@@ -48,8 +48,8 @@ Rfeed vdd vct 2.5k
 Cct vct vss 10n
 
 * ---- tuning varactors: gate = vtune, D/S/B = drain --------------------
-XV1 vtune out_p NMOS_var w=2400u l=1u nf=16
-XV2 vtune out_n NMOS_var w=2400u l=1u nf=16
+XV1 vtune out_p NMOS_var w=9600u l=1u nf=16
+XV2 vtune out_n NMOS_var w=9600u l=1u nf=16
 Cv vtune vss 10n
 
 * ---- cross-coupled pair -----------------------------------------------
