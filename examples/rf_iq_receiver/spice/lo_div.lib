@@ -2,9 +2,10 @@
 *
 * The VCO runs at 2*f_lo.  This block:
 *   1. AC-couples and slices the VCO sine into a rail-to-rail clock;
-*   2. a dynamic master-slave divider (clocked inverters, no feedback
-*      fight) divides by two; the master and slave outputs are 90 deg
-*      apart at f_lo, so they are the I/Q square waves;
+*   2. a master-slave divider of gated NAND latches divides by two.  The
+*      master output m and the slave output s are 90 deg apart at f_lo, so
+*      they are the I/Q square waves; the toggle feedback is D = s_bar
+*      (sampling s would hold instead of toggle);
 *   3. four AND gates combine adjacent quadrature phases into the four
 *      25 % duty pulses the passive mixer needs.
 *
@@ -12,25 +13,17 @@
 *   clk   single-ended VCO output, ~1.2 Vpp around 2.5 V (AC coupled here)
 *   lo*   0/5 V, 25 % duty, 0/90/180/270 deg
 *
-* All gates are PDK MOS.  rgval=1 on every analog MOS.
+* All gates are PDK MOS.  rgval=-1 on every analog MOS.
 .subckt INV in out vdd vss
-Xp out in vdd vdd PMOS_nf w=20u l=1u nf=2 rgval=1
-Xn out in vss vss NMOS_nf w=10u l=1u nf=2 rgval=1
+Xp out in vdd vdd PMOS_nf w=20u l=1u nf=2 rgval=-1
+Xn out in vss vss NMOS_nf w=10u l=1u nf=2 rgval=-1
 .ends INV
 
-* Clocked inverter: evaluates when c=1, floats when c=0.
-.subckt CINV in out c cn vdd vss
-Xp1 n1 cn vdd vdd PMOS_nf w=20u l=1u nf=2 rgval=1
-Xp2 out in n1 vdd PMOS_nf w=20u l=1u nf=2 rgval=1
-Xn1 out in n2 vss NMOS_nf w=10u l=1u nf=2 rgval=1
-Xn2 n2 c vss vss NMOS_nf w=10u l=1u nf=2 rgval=1
-.ends CINV
-
 .subckt NAND2 a b out vdd vss
-Xpa out a vdd vdd PMOS_nf w=20u l=1u nf=2 rgval=1
-Xpb out b vdd vdd PMOS_nf w=20u l=1u nf=2 rgval=1
-Xna out a n1 vss NMOS_nf w=20u l=1u nf=2 rgval=1
-Xnb n1 b vss vss NMOS_nf w=20u l=1u nf=2 rgval=1
+Xpa out a vdd vdd PMOS_nf w=20u l=1u nf=2 rgval=-1
+Xpb out b vdd vdd PMOS_nf w=20u l=1u nf=2 rgval=-1
+Xna out a n1 vss NMOS_nf w=20u l=1u nf=2 rgval=-1
+Xnb n1 b vss vss NMOS_nf w=20u l=1u nf=2 rgval=-1
 .ends NAND2
 
 .subckt AND2 a b out vdd vss
@@ -38,26 +31,30 @@ Xn a b nb vdd vss NAND2
 Xi nb out vdd vss INV
 .ends AND2
 
+* Gated D latch from NANDs: transparent while en is high.
+*   S = NAND(d,en), R = NAND(S,en), q = NAND(S,qb), qb = NAND(R,q)
+* NAND2 pin order is (a b out) -- keep the output last.
+.subckt LATCH_D d q qb en vdd vss
+Xs  d  en ns vdd vss NAND2
+Xr  ns en nr vdd vss NAND2
+Xq  ns qb q  vdd vss NAND2
+Xqb nr q  qb vdd vss NAND2
+.ends LATCH_D
+
 .subckt RX_LO_DIV clk vdd vss lo0 lo90 lo180 lo270
 * ---- slice the VCO sine into a CMOS clock ------------------------------
 Cac clk ck 10n
 Rb1 ck vdd 100k
-Rb2 ck vss 100k
+Rb2 ck vss 93k
 XI0 ck ckb vdd vss INV
 XI1 ckb clk_b vdd vss INV
 
-* ---- dynamic master-slave divider, D = Qbar ---------------------------
-* master evaluates while clk_b is high
-XC1 qb m  clk_b ckb vdd vss CINV
-XIm m mb vdd vss INV
-* slave evaluates while clk_b is low
-XC2 mb s  ckb clk_b vdd vss CINV
-XIs s q vdd vss INV
-XI3 q qb vdd vss INV
+* ---- master-slave toggle: D = s_bar -----------------------------------
+XL1 sb m mb clk_b vdd vss LATCH_D
+XL2 m  s sb ckb   vdd vss LATCH_D
 
 * ---- 25 % duty combiner ------------------------------------------------
 * phases: I+ = m, I- = mb, Q+ = s, Q- = sb
-XI4 s sb vdd vss INV
 Xa0 m  s  lo0   vdd vss AND2
 Xa1 s  mb lo90  vdd vss AND2
 Xa2 mb sb lo180 vdd vss AND2

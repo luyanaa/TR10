@@ -36,7 +36,7 @@ transistor-level VCO (divide-by-2 and PLL are the remaining work).
 | VCO | topology | cross-coupled NMOS 200u/1u nf=4, tail 1 mA |
 | | tank | 2*f_lo, Q=5, L=15.9 uH per half (31.8 uH diff), C=386 pF per half |
 | | tuning | two NMOS_var 2400u/1u nf=16, 0..1 V control (C-V saturates above 1 V) |
-| | measured | 1.993 MHz free running at vtune=0.5 V, 1.25 Vpp differential |
+| | measured | 2.000 MHz free running at vtune=0.5 V, 1.25 Vpp differential |
 | Mixer | topology | 4-phase passive NMOS 200u/1u, Ron ~ 25 ohm |
 | TIA | topology | shunt-feedback NMOS 200u/1u nf=10, Iload=2 mA |
 | | settings | AM 10k/3.5nF (4.5k); SSB 22k/3.0nF (2.4k); FM wide 22k/80pF (90k); FM narrow 22k/1.16nF (6.25k) |
@@ -108,7 +108,8 @@ All blocks use `vdd=5`, `vss=0`, analog common mode `vcm=2.5 V`.
 | SSB sweep | rejection 6 dB at 1 kHz, 14 dB at 2 kHz (single-pole polyphase) |
 | FM demod | 48 mV at 3 kHz for 100 mV I/Q at 75 kHz deviation, THD 3.9 % |
 | full FM chain | ~1 mV at 10 kHz; limited by the mixer I/Q gain mismatch |
-| VCO | 1.993 MHz at vtune=0.5 V, 1.25 Vpp differential |
+| VCO | 2.000 MHz at vtune=0.5 V, 1.25 Vpp differential |
+| LO divider | divide-by-2 confirmed, 4 phases 26.0/26.4/27.0/26.9 % |
 
 The FM chain's small audio and 2f residue come from the mixer I/Q gain
 mismatch (I=8.0 mV vs Q=11.1 mV in the AM test). The Gilbert cross product
@@ -137,7 +138,7 @@ I/Q gain/phase calibration (or a polyphase filter) ahead of the FM demod.
 ## Results and regression
 
 ```bash
-python3 examples/rf_iq_receiver/scripts/run_cases.py          # 14 checks, ~10 s
+python3 examples/rf_iq_receiver/scripts/run_cases.py          # 18 checks
 python3 examples/rf_iq_receiver/scripts/run_cases.py --full   # + full AM chain
 python3 examples/rf_iq_receiver/checks/test_rx.py
 ```
@@ -146,19 +147,24 @@ python3 examples/rf_iq_receiver/checks/test_rx.py
 
 1. **Sketch** (done) - 1 MHz AM end to end with an ideal LO: LNA, passive
    mixer, TIA (AM setting), AM demodulator, transient + FFT.
-2. **Structure** (in progress) - transistor VCO done; FM and SSB
-   demodulators done; the transistor-level divide-by-2 and the PLL closing
-   remain open.  `RX_LO_GEN` provides the verified 25 % duty phases
-   behaviorally so the chain can be measured.
+2. **Structure** (in progress) - transistor VCO, divide-by-2 / 25 % duty
+   generator, FM and SSB demodulators done; the PLL closing remains open.
+   `RX_LO_GEN` provides a behavioral 25 % duty source for cross-checks.
 
 ### Open work on the LO
 
-* The CMOS divider (transmission-gate and dynamic-latch versions) did not
-  divide: the outputs stayed at 2*f_lo.  A CML divider or a larger static
-  CMOS DFF is the next attempt.
-* The NMOS varactor C-V saturates above Vgs ~1 V and moves only ~0.1 % of
-  the tank capacitance over the useful 0..1 V range.  The free-running VCO
-  is 0.37 % below 2 MHz, so the PLL cannot capture; the varactor needs about
-  4x more area, or the tank needs a trim capacitor to centre it first.
+* The PLL does not settle.  The multiplier phase detector and the loop
+  filter acquire through 2.000 MHz at around 20 us but then drive vtune to
+  a rail: pure-integral and proportional variants both overshoot, so the
+  loop needs a proper PFD / charge-pump and a PI filter with a designed
+  phase margin.  `tb_pll.sp` keeps the experiment.
+* The NMOS varactor C-V saturates above Vgs ~1 V and moves only ~0.15 % of
+  the tank capacitance over the useful 0..1 V range.  The tank trim
+  (ch factor 0.9643) centres the free-running VCO at 2.000 MHz, which leaves
+  almost no correction range for the loop; a larger varactor is needed for a
+  real capture range.
+* The divider's 25 % duty is 26-27 % because the clock buffer duty is 44 %
+  and the latch delays differ by phase.  A duty-cycle trim or a faster
+  latch would tighten it.
 3. **Detail** - 0.1 / 1 / 10 / 100 MHz x AM/FM/SSB, AGC sweep, programmable
    TIA bank, optional 500 MHz, docs and regression test.

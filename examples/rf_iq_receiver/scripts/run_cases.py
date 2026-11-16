@@ -12,6 +12,7 @@ the block- and system-level metrics against the values in DESIGN.md:
   SSB demod    10 mV I/Q at 3 kHz -> >150 mV selected, >30 dB rejection
   FM demod     100 mV I/Q, 75 kHz deviation -> >30 mV audio at 3 kHz
   LO gen       4 phases, 25 % duty, non-overlapping (behavioral)
+  LO divider   VCO/2 clock -> 4 phases at f_lo, 22-29 % duty
   full AM      LNA -> ... -> audio, >100 mV audio at 3 kHz (--full)
 
 Usage:
@@ -42,12 +43,17 @@ SPICE = os.path.join(PKG, "spice")
 def run_ngspice(netlist: str, workdir: str, timeout: int = 900) -> str:
     """Run a netlist in workdir; return stdout.  Raises on ngspice failure."""
     path = os.path.join(SPICE, netlist)
+    # ngspice links libgomp; its default spin-wait threads thrash on a loaded
+    # machine (a 10 us transient went from 23 s to 0.3 s with PASSIVE).
+    env = dict(os.environ)
+    env.setdefault("OMP_WAIT_POLICY", "PASSIVE")
     proc = subprocess.run(
         ["ngspice", "-b", path],
         cwd=workdir,
         capture_output=True,
         text=True,
         timeout=timeout,
+        env=env,
     )
     out = proc.stdout + proc.stderr
     with open(os.path.join(workdir, netlist + ".log"), "w") as fh:
@@ -222,6 +228,24 @@ def case_lo_gen(ck: Checker, work: str) -> None:
              f"max simultaneous high phases = {int(overlap.max())}, target 1")
 
 
+def case_lo_div(ck: Checker, work: str) -> None:
+    run_ngspice("test_lo_div.sp", work)
+    d = load_wrdata(os.path.join(work, "lo_div.dat"))
+    t = d[:, 0]
+    m = t >= 6e-6
+    duties = [(d[m, k + 1] > 2.5).mean() for k in range(4)]
+    ck.check("divider 4 phases at f_lo",
+             all(0.22 <= x <= 0.29 for x in duties),
+             ", ".join(f"{x*100:.1f} %" for x in duties) + ", target 25 % +/- 4 %")
+    # each phase must toggle at half the 2 MHz clock -> 1 us period
+    x = d[:, 1]
+    hi = x > 2.5
+    idx = np.where((~hi[:-1]) & hi[1:])[0]
+    per = (t[idx[-1]] - t[idx[0]]) / (len(idx) - 1) if len(idx) > 2 else 0.0
+    ck.check("divider is divide-by-2", abs(per - 1e-6) <= 0.05e-6,
+             f"period = {per*1e6:.3f} us, target 1.000 us (2 MHz clock / 2)")
+
+
 def case_full_am(ck: Checker, work: str) -> None:
     run_ngspice("tb_am_1m.sp", work)
     d = load_wrdata(os.path.join(work, "tb_am_1m.dat"))
@@ -263,6 +287,8 @@ def main() -> int:
         case_demod_fm(ck, work)
         print("\n== LO generator ==")
         case_lo_gen(ck, work)
+        print("\n== LO divider ==")
+        case_lo_div(ck, work)
         if args.full:
             print("\n== full AM chain at 1 MHz ==")
             case_full_am(ck, work)
