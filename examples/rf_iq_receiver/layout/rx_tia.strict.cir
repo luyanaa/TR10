@@ -1,0 +1,4 @@
+* Strict LVS contract for the RX_TIA layout (one NMOS, W=200u L=1u).
+.SUBCKT rx_tia_layout IN OUT VSS
+M1 OUT IN VSS VSS NMOS w=200u l=1u
+.ENDS

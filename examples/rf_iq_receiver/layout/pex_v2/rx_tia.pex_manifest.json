@@ -1,0 +1,67 @@
+{
+  "design": "rx_tia_layout",
+  "fast_henry": {
+    "does_not_provide": [
+      "device_models",
+      "junction_capacitance",
+      "interconnect_capacitance"
+    ],
+    "input": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/pex_v2/rx_tia.fasthenry.inp",
+    "provides": [
+      "frequency_dependent_resistance",
+      "inductance",
+      "mutual_inductance"
+    ],
+    "run_log": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/pex_v2/rx_tia.fasthenry.log",
+    "solver": null,
+    "status": "deck_generated_solver_unavailable"
+  },
+  "magic": {
+    "ext": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/pex_v2/rx_tia.ext",
+    "mode": "extract_all_ext2spice",
+    "spice": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/pex_v2/rx_tia.spice",
+    "technology": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/libs.tech/magic/TR10.tech"
+  },
+  "parasitics": {
+    "capacitor_total_f": 1.6059930000000002e-13,
+    "capacitors": 13,
+    "devices": 10,
+    "inductors": 0,
+    "models": {
+      "nfet": 10
+    },
+    "node_count": 15,
+    "nodes": [
+      "0",
+      "Gnd",
+      "IN",
+      "OUT",
+      "VSS",
+      "a_0_0#",
+      "a_120_0#",
+      "a_160_0#",
+      "a_200_0#",
+      "a_240_0#",
+      "a_280_0#",
+      "a_320_0#",
+      "a_360_0#",
+      "a_400_0#",
+      "a_80_0#"
+    ],
+    "resistor_total_ohm": 0.0,
+    "resistors": 0
+  },
+  "qualification": "engineering_estimate_not_foundry_qualified",
+  "schema": 1,
+  "source": {
+    "gds": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/rx_tia.gds",
+    "layout_json": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/pex_v2/rx_tia.layout.json",
+    "top": "rx_tia_layout"
+  },
+  "warnings": [
+    "gds_bbox_approximation",
+    "magic_default_path_extracts_devices_and_capacitance_only",
+    "magic_output_is_engineering_pex_not_foundry_qualified",
+    "unlabeled_metal_shape_created_synthetic_net"
+  ]
+}

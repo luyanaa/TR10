@@ -1,0 +1,86 @@
+* TR-1um FastHenry2 deck (generated from rx_tia_layout)
+* conductor R/L/M only; Magic supplies device/capacitance PEX
+* nets: __unlabeled_M1, __unlabeled_M1_1, __unlabeled_M1_10, __unlabeled_M1_11, __unlabeled_M1_12, __unlabeled_M1_13, __unlabeled_M1_14, __unlabeled_M1_15, __unlabeled_M1_16, __unlabeled_M1_17, __unlabeled_M1_18, __unlabeled_M1_19, __unlabeled_M1_2, __unlabeled_M1_20, __unlabeled_M1_21, __unlabeled_M1_22, __unlabeled_M1_3, __unlabeled_M1_4, __unlabeled_M1_5, __unlabeled_M1_6, __unlabeled_M1_7, __unlabeled_M1_8, __unlabeled_M1_9
+.units uM
+
+* lossy silicon substrate (sigma in 1/(um*ohm))
+g1 x1=-57.5000 y1=-57.5000 z1=0
++  x2=57.5000 y2=-57.5000 z2=0
++  x3=57.5000 y3=57.5000 z3=0
++  thick=100.0000 sigma=1e-05
++  file=NONE
+
+n1 x=1.5000 y=0.2000 z=0.3724
+n2 x=1.5000 y=24.0000 z=0.3724
+n3 x=5.5000 y=-4.0000 z=0.3724
+n4 x=5.5000 y=19.8000 z=0.3724
+n5 x=41.5000 y=0.2000 z=0.3724
+n6 x=41.5000 y=24.0000 z=0.3724
+n7 x=0.0000 y=24.9000 z=0.3724
+n8 x=43.0000 y=24.9000 z=0.3724
+n9 x=0.0000 y=-4.9000 z=0.3724
+n10 x=43.0000 y=-4.9000 z=0.3724
+n11 x=54.0000 y=23.3000 z=0.3724
+n12 x=57.0000 y=23.3000 z=0.3724
+n13 x=13.3000 y=25.8000 z=0.3724
+n14 x=13.3000 y=38.0000 z=0.3724
+n15 x=0.0000 y=44.0000 z=0.3724
+n16 x=16.0000 y=44.0000 z=0.3724
+n17 x=43.0000 y=-4.9000 z=0.3724
+n18 x=52.0000 y=-4.9000 z=0.3724
+n19 x=50.0000 y=-18.0000 z=0.3724
+n20 x=50.0000 y=-3.8000 z=0.3724
+n21 x=50.0000 y=-10.0000 z=0.3724
+n22 x=66.0000 y=-10.0000 z=0.3724
+n23 x=56.0000 y=23.5000 z=0.3724
+n24 x=56.0000 y=28.0000 z=0.3724
+n25 x=9.5000 y=0.2000 z=0.3724
+n26 x=9.5000 y=24.0000 z=0.3724
+n27 x=54.7000 y=26.7000 z=0.3724
+n28 x=61.6000 y=26.7000 z=0.3724
+n29 x=59.0000 y=33.4000 z=0.3724
+n30 x=75.0000 y=33.4000 z=0.3724
+n31 x=15.0000 y=37.7500 z=0.3724
+n32 x=35.0000 y=37.7500 z=0.3724
+n33 x=13.5000 y=-4.0000 z=0.3724
+n34 x=13.5000 y=19.8000 z=0.3724
+n35 x=17.5000 y=0.2000 z=0.3724
+n36 x=17.5000 y=24.0000 z=0.3724
+n37 x=21.5000 y=-4.0000 z=0.3724
+n38 x=21.5000 y=19.8000 z=0.3724
+n39 x=25.5000 y=0.2000 z=0.3724
+n40 x=25.5000 y=24.0000 z=0.3724
+n41 x=29.5000 y=-4.0000 z=0.3724
+n42 x=29.5000 y=19.8000 z=0.3724
+n43 x=33.5000 y=0.2000 z=0.3724
+n44 x=33.5000 y=24.0000 z=0.3724
+n45 x=37.5000 y=-4.0000 z=0.3724
+n46 x=37.5000 y=19.8000 z=0.3724
+
+e1 n1 n2 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e2 n3 n4 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e3 n5 n6 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e4 n7 n8 w=1.8000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e5 n9 n10 w=1.8000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e6 n11 n12 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e7 n13 n14 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e8 n15 n16 w=16.0000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e9 n17 n18 w=1.8000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e10 n19 n20 w=5.2000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e11 n21 n22 w=16.0000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e12 n23 n24 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e13 n25 n26 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e14 n27 n28 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e15 n29 n30 w=16.0000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e16 n31 n32 w=3.5000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e17 n33 n34 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e18 n35 n36 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e19 n37 n38 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e20 n39 n40 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e21 n41 n42 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e22 n43 n44 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+e23 n45 n46 w=2.6000 h=0.3448 sigma=58 nwinc=4 nhinc=2
+
+
+.freq fmin=1e+08 fmax=1e+10 ndec=20
+.end

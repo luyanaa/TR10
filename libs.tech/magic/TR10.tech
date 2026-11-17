@@ -181,7 +181,7 @@ style TR10
         and ANd
     layer pfet GCp
         and APd
-    layer m1 CMF
+    layer metal1 CMF
  labels CMF
     layer m2c CV1
         and CMF

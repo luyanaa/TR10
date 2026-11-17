@@ -1,0 +1,35 @@
+* SPICE3 file created from rx_tia_layout.ext - technology: TR10
+
+M1000 a_280_0# IN a_240_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1001 a_120_0# IN a_80_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1002 a_80_0# IN OUT Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1003 a_400_0# IN a_360_0# Gnd nfet w=20u l=1u
++  ad=60p pd=46u as=30p ps=23u
+M1004 a_240_0# IN a_200_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1005 OUT IN a_0_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=60p ps=46u
+M1006 a_360_0# IN a_320_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1007 a_320_0# IN a_280_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1008 a_200_0# IN a_160_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1009 a_160_0# IN a_120_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+C0 a_400_0# 0 2.84f **FLOATING
+C1 a_360_0# 0 2.04f **FLOATING
+C2 a_320_0# 0 2.04f **FLOATING
+C3 a_280_0# 0 2.04f **FLOATING
+C4 a_240_0# 0 2.04f **FLOATING
+C5 a_200_0# 0 2.04f **FLOATING
+C6 a_160_0# 0 2.04f **FLOATING
+C7 a_120_0# 0 2.04f **FLOATING
+C8 a_80_0# 0 2.04f **FLOATING
+C9 OUT 0 46.2074f **FLOATING
+C10 a_0_0# 0 2.84f **FLOATING
+C11 IN 0 39.1024f **FLOATING
+C12 VSS 0 53.2895f **FLOATING
