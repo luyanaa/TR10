@@ -236,3 +236,10 @@ examples/*/fifo_run.log
 
 # Deepwork orchestrator state (local only)
 .slim/deepwork/
+
+# receiver example run artifacts
+examples/rf_iq_receiver/spice/*.dat
+examples/rf_iq_receiver/spice/*.log
+*.extracted
+examples/rf_iq_receiver/layout/pex/*.ext
+examples/rf_iq_receiver/layout/pex/*.magic.log

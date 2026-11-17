@@ -1,0 +1,15 @@
+* Strict LVS contract for rx_fm (generated with the layout)
+.SUBCKT rx_fm t1 t2 t3 t4 di dq qp ip vref vref2 out_p out_n tail1 tail2 vss
+M1 t1 di tail1 vss NMOS w=100.0u l=1.0u
+M2 t2 vref tail1 vss NMOS w=100.0u l=1.0u
+M3 out_p qp t1 vss NMOS w=100.0u l=1.0u
+M4 out_n vref2 t1 vss NMOS w=100.0u l=1.0u
+M5 out_n qp t2 vss NMOS w=100.0u l=1.0u
+M6 out_p vref2 t2 vss NMOS w=100.0u l=1.0u
+M7 t3 dq tail2 vss NMOS w=100.0u l=1.0u
+M8 t4 vref tail2 vss NMOS w=100.0u l=1.0u
+M9 out_n ip t3 vss NMOS w=100.0u l=1.0u
+M10 out_p vref2 t3 vss NMOS w=100.0u l=1.0u
+M11 out_p ip t4 vss NMOS w=100.0u l=1.0u
+M12 out_n vref2 t4 vss NMOS w=100.0u l=1.0u
+.ENDS

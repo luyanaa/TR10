@@ -419,7 +419,7 @@
   "schema": 1,
   "source": {
     "dbu_to_um": 0.001,
-    "gds_sha256": "b08f43134704d51c31c8164570d304faf305abc9c1944888ac17b23ddf55d865",
+    "gds_sha256": "ea007b0dd5c6644e2543d4a656e7182780fb996cf739915ff86fc65ad5b2d638",
     "kind": "gds",
     "path": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/rx_tia.gds",
     "top": "rx_tia_layout"

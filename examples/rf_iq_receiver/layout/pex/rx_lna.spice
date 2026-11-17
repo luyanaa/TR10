@@ -1,0 +1,72 @@
+* SPICE3 file created from rx_lna.ext - technology: TR10
+
+M1000 a_270_390# d a_230_390# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1001 a_230_390# d a_190_390# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1002 a_270_0# g a_230_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1003 a_110_0# g a_70_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1004 a_70_0# g a_30_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=60p ps=46u
+M1005 a_390_0# g a_350_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1006 a_350_390# d a_310_390# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1007 a_390_390# d a_350_390# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1008 a_230_0# g a_190_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1009 a_310_390# d a_270_390# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1010 a_350_0# g a_310_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1011 a_430_390# d a_390_390# Gnd nfet w=20u l=1u
++  ad=60p pd=46u as=30p ps=23u
+M1012 a_310_0# g a_270_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1013 a_430_0# g a_390_0# Gnd nfet w=20u l=1u
++  ad=60p pd=46u as=30p ps=23u
+M1014 a_150_390# d a_110_390# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1015 a_190_390# d a_150_390# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1016 a_110_390# d vdd Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1017 a_190_0# g a_150_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+M1018 vdd d out Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=60p ps=46u
+M1019 a_150_0# g a_110_0# Gnd nfet w=20u l=1u
++  ad=30p pd=23u as=30p ps=23u
+C0 d g 0.2736f
+C1 vss out 0.2736f
+C2 d vdd 0.2736f
+C3 vss d 0.2736f
+C4 vss vdd 0.2736f
+C5 a_430_0# 0 2.84f **FLOATING
+C6 a_390_0# 0 2.04f **FLOATING
+C7 a_350_0# 0 2.04f **FLOATING
+C8 a_310_0# 0 2.04f **FLOATING
+C9 a_270_0# 0 2.04f **FLOATING
+C10 a_230_0# 0 2.04f **FLOATING
+C11 a_190_0# 0 2.04f **FLOATING
+C12 a_150_0# 0 2.04f **FLOATING
+C13 a_110_0# 0 2.04f **FLOATING
+C14 a_70_0# 0 2.04f **FLOATING
+C15 a_30_0# 0 2.84f **FLOATING
+C16 g 0 29.5426f **FLOATING
+C17 a_430_390# 0 2.84f **FLOATING
+C18 a_390_390# 0 2.04f **FLOATING
+C19 a_350_390# 0 2.04f **FLOATING
+C20 a_310_390# 0 2.04f **FLOATING
+C21 a_270_390# 0 2.04f **FLOATING
+C22 a_230_390# 0 2.04f **FLOATING
+C23 a_190_390# 0 2.04f **FLOATING
+C24 a_150_390# 0 2.04f **FLOATING
+C25 a_110_390# 0 2.04f **FLOATING
+C26 vdd 0 42.1541f **FLOATING
+C27 out 0 54.5095f **FLOATING
+C28 d 0 73.62211f **FLOATING
+C29 vss 0 62.5193f

@@ -1,0 +1,215 @@
+* SPICE3 file created from rx_fm.ext - technology: TR10
+
+M1000 a_150_2640# dq a_110_2640# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1001 a_190_440# vref a_150_440# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1002 out_p ip a_30_4400# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1003 a_110_3520# ip a_70_3520# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1004 a_110_440# vref a_70_440# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1005 a_150_440# vref a_110_440# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1006 a_190_4840# vref2 a_150_4840# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1007 a_150_1760# qp a_110_1760# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1008 a_110_0# di a_70_0# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1009 a_70_0# di a_30_0# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1010 a_70_3520# ip a_30_3520# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1011 a_110_2640# dq a_70_2640# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1012 a_70_440# vref tail1 Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1013 a_190_3960# vref2 a_150_3960# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1014 a_190_2200# vref2 a_150_2200# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1015 a_150_4840# vref2 a_110_4840# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1016 a_70_2640# dq a_30_2640# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1017 a_110_1760# qp a_70_1760# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1018 a_190_3080# vref a_150_3080# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1019 a_190_1320# vref2 a_150_1320# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1020 a_150_3960# vref2 a_110_3960# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1021 a_70_1760# qp a_30_1760# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1022 a_150_2200# vref2 a_110_2200# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1023 a_110_4840# vref2 out_n Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1024 a_190_4400# ip a_150_4400# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1025 a_150_3080# vref a_110_3080# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1026 a_150_1320# vref2 a_110_1320# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1027 a_190_880# qp a_150_880# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1028 out_n vref2 t4 Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1029 a_150_880# qp a_110_880# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1030 a_110_3960# vref2 a_70_3960# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1031 a_110_880# qp a_70_880# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1032 a_110_2200# vref2 a_70_2200# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1033 a_190_3520# ip a_150_3520# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1034 a_70_3960# vref2 t3 Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1035 a_150_4400# ip a_110_4400# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1036 a_70_2200# vref2 t2 Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1037 a_110_1320# vref2 a_70_1320# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1038 a_70_880# qp a_30_880# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1039 a_110_3080# vref a_70_3080# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1040 a_190_2640# dq a_150_2640# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1041 a_190_0# di a_150_0# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1042 a_150_3520# ip a_110_3520# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1043 a_70_3080# vref tail2 Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1044 a_70_1320# vref2 t1 Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1045 a_190_1760# qp a_150_1760# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1046 a_110_4400# ip out_p Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1047 a_150_0# di a_110_0# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+C0 vref2 qp 0.2736f
+C1 out_p qp 0.5472f
+C2 t3 vref 0.2736f
+C3 out_n tail2 0.5472f
+C4 t2 tail1 0.2736f
+C5 vref2 vref 0.5472f
+C6 out_n dq 0.2736f
+C7 out_p vref 0.5472f
+C8 out_n ip 0.5472f
+C9 vref2 t1 0.2736f
+C10 out_p t1 0.2736f
+C11 t4 t3 0.2736f
+C12 vref2 t4 0.5472f
+C13 vref tail1 0.2736f
+C14 t4 out_p 0.2736f
+C15 out_n t2 0.5472f
+C16 t1 tail1 0.5472f
+C17 vref tail2 0.2736f
+C18 out_n qp 0.5472f
+C19 t1 di 0.2736f
+C20 vref dq 0.2736f
+C21 t2 qp 0.5472f
+C22 t4 tail2 0.2736f
+C23 out_n vref 0.5472f
+C24 out_n t1 0.2736f
+C25 t4 ip 0.5472f
+C26 vref t2 0.2736f
+C27 vref2 t3 0.8208f
+C28 t4 out_n 0.5472f
+C29 t2 t1 0.2736f
+C30 vref qp 0.5472f
+C31 out_p t3 0.8208f
+C32 vref2 out_p 0.8208f
+C33 qp t1 0.2736f
+C34 vref t1 0.2736f
+C35 t3 tail2 0.5472f
+C36 vref2 tail2 0.5472f
+C37 t4 vref 0.2736f
+C38 t3 dq 0.2736f
+C39 out_p tail2 0.5472f
+C40 ip t3 0.2736f
+C41 vref2 dq 0.2736f
+C42 out_p dq 0.2736f
+C43 vref2 ip 0.5472f
+C44 out_n t3 0.8208f
+C45 ip out_p 0.2736f
+C46 vref2 out_n 0.8208f
+C47 out_n out_p 0.8208f
+C48 vref2 t2 0.5472f
+C49 out_p t2 0.5472f
+C50 a_190_0# 0 3.49f **FLOATING
+C51 a_150_0# 0 2.49f **FLOATING
+C52 a_110_0# 0 2.49f **FLOATING
+C53 a_70_0# 0 2.49f **FLOATING
+C54 a_30_0# 0 3.49f **FLOATING
+C55 di 0 18.6946f **FLOATING
+C56 a_190_440# 0 3.49f **FLOATING
+C57 a_150_440# 0 2.49f **FLOATING
+C58 a_110_440# 0 2.49f **FLOATING
+C59 a_70_440# 0 2.49f **FLOATING
+C60 tail1 0 70.9562f **FLOATING
+C61 a_190_880# 0 3.49f **FLOATING
+C62 a_150_880# 0 2.49f **FLOATING
+C63 a_110_880# 0 2.49f **FLOATING
+C64 a_70_880# 0 2.49f **FLOATING
+C65 a_30_880# 0 3.49f **FLOATING
+C66 a_190_1320# 0 3.49f **FLOATING
+C67 a_150_1320# 0 2.49f **FLOATING
+C68 a_110_1320# 0 2.49f **FLOATING
+C69 a_70_1320# 0 2.49f **FLOATING
+C70 t1 0 0.10397p **FLOATING
+C71 a_190_1760# 0 3.49f **FLOATING
+C72 a_150_1760# 0 2.49f **FLOATING
+C73 a_110_1760# 0 2.49f **FLOATING
+C74 a_70_1760# 0 2.49f **FLOATING
+C75 a_30_1760# 0 3.49f **FLOATING
+C76 qp 0 63.976f **FLOATING
+C77 a_190_2200# 0 3.49f **FLOATING
+C78 a_150_2200# 0 2.49f **FLOATING
+C79 a_110_2200# 0 2.49f **FLOATING
+C80 a_70_2200# 0 2.49f **FLOATING
+C81 t2 0 0.12359p **FLOATING
+C82 a_190_2640# 0 3.49f **FLOATING
+C83 a_150_2640# 0 2.49f **FLOATING
+C84 a_110_2640# 0 2.49f **FLOATING
+C85 a_70_2640# 0 2.49f **FLOATING
+C86 a_30_2640# 0 3.49f **FLOATING
+C87 dq 0 30.8986f **FLOATING
+C88 a_190_3080# 0 3.49f **FLOATING
+C89 a_150_3080# 0 2.49f **FLOATING
+C90 a_110_3080# 0 2.49f **FLOATING
+C91 a_70_3080# 0 2.49f **FLOATING
+C92 tail2 0 95.6105f **FLOATING
+C93 vref 0 85.97421f **FLOATING
+C94 a_190_3520# 0 3.49f **FLOATING
+C95 a_150_3520# 0 2.49f **FLOATING
+C96 a_110_3520# 0 2.49f **FLOATING
+C97 a_70_3520# 0 2.49f **FLOATING
+C98 a_30_3520# 0 3.49f **FLOATING
+C99 a_190_3960# 0 3.49f **FLOATING
+C100 a_150_3960# 0 2.49f **FLOATING
+C101 a_110_3960# 0 2.49f **FLOATING
+C102 a_70_3960# 0 2.49f **FLOATING
+C103 t3 0 0.14157p **FLOATING
+C104 a_190_4400# 0 3.49f **FLOATING
+C105 a_150_4400# 0 2.49f **FLOATING
+C106 a_110_4400# 0 2.49f **FLOATING
+C107 out_p 0 0.16152p **FLOATING
+C108 a_30_4400# 0 3.49f **FLOATING
+C109 ip 0 83.6987f **FLOATING
+C110 a_190_4840# 0 3.49f **FLOATING
+C111 a_150_4840# 0 2.49f **FLOATING
+C112 a_110_4840# 0 2.49f **FLOATING
+C113 out_n 0 0.17311p **FLOATING
+C114 t4 0 0.16192p **FLOATING
+C115 vref2 0 0.1664p **FLOATING
+C116 vss 0 22.6232f **FLOATING

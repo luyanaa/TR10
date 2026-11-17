@@ -1,0 +1,5 @@
+* Strict LVS contract for rx_ssb (generated with the layout)
+.SUBCKT rx_ssb out_p out_n i_lp q_hp tail vss
+M1 out_p i_lp tail vss NMOS w=100.0u l=1.0u
+M2 out_n q_hp tail vss NMOS w=100.0u l=1.0u
+.ENDS

@@ -1,0 +1,68 @@
+{
+  "design": "rx_ssb",
+  "fast_henry": {
+    "does_not_provide": [
+      "device_models",
+      "junction_capacitance",
+      "interconnect_capacitance"
+    ],
+    "input": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/pex/rx_ssb.fasthenry.inp",
+    "provides": [
+      "frequency_dependent_resistance",
+      "inductance",
+      "mutual_inductance"
+    ],
+    "run_log": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/pex/rx_ssb.fasthenry.log",
+    "solver": null,
+    "status": "deck_generated_solver_unavailable"
+  },
+  "magic": {
+    "ext": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/pex/rx_ssb.ext",
+    "mode": "extract_all_ext2spice",
+    "spice": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/pex/rx_ssb.spice",
+    "technology": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/libs.tech/magic/TR10.tech"
+  },
+  "parasitics": {
+    "capacitor_total_f": 1.9272520000000003e-13,
+    "capacitors": 15,
+    "devices": 8,
+    "inductors": 0,
+    "models": {
+      "nfet": 8
+    },
+    "node_count": 15,
+    "nodes": [
+      "0",
+      "Gnd",
+      "a_110_0#",
+      "a_110_440#",
+      "a_150_0#",
+      "a_150_440#",
+      "a_190_0#",
+      "a_190_440#",
+      "a_30_0#",
+      "i_lp",
+      "out_n",
+      "out_p",
+      "q_hp",
+      "tail",
+      "vss"
+    ],
+    "resistor_total_ohm": 0.0,
+    "resistors": 0
+  },
+  "qualification": "engineering_estimate_not_foundry_qualified",
+  "schema": 1,
+  "source": {
+    "gds": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/rx_ssb.gds",
+    "layout_json": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/pex/rx_ssb.layout.json",
+    "top": "rx_ssb"
+  },
+  "warnings": [
+    "gds_bbox_approximation",
+    "magic_default_path_extracts_devices_and_capacitance_only",
+    "magic_output_is_engineering_pex_not_foundry_qualified",
+    "unlabeled_metal_shape_created_synthetic_net",
+    "via_connects_distinct_labeled_nets"
+  ]
+}

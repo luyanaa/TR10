@@ -1,0 +1,15 @@
+* Strict LVS contract for rx_amdemod (generated with the layout)
+.SUBCKT rx_amdemod ii qq bi bq d1 d2 d3 d4 tail tailq out vdd vss
+M1 d1 ii tail vss NMOS w=100.0u l=1.0u
+M2 d2 bi tail vss NMOS w=100.0u l=1.0u
+M3 d1 d1 vdd vdd PMOS w=50.0u l=2.0u
+M4 d2 d1 vdd vdd PMOS w=50.0u l=2.0u
+M5 d2 d2 vss vss NMOS w=100.0u l=1.0u
+M6 out d2 vss vss NMOS w=100.0u l=1.0u
+M7 d3 qq tailq vss NMOS w=100.0u l=1.0u
+M8 d4 bq tailq vss NMOS w=100.0u l=1.0u
+M9 d3 d3 vdd vdd PMOS w=50.0u l=2.0u
+M10 d4 d3 vdd vdd PMOS w=50.0u l=2.0u
+M11 d4 d4 vss vss NMOS w=100.0u l=1.0u
+M12 out d4 vss vss NMOS w=100.0u l=1.0u
+.ENDS

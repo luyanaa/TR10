@@ -1,0 +1,997 @@
+* SPICE3 file created from rx_vco.ext - technology: TR10
+
+M1000 a_1590_2170# vtune a_1550_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1001 a_5110_2170# vtune a_5070_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1002 a_630_2170# vtune a_590_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1003 a_1030_2170# vtune a_990_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1004 a_4150_1380# vtune a_4110_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1005 a_3550_2170# vtune a_3510_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1006 a_1710_1380# vtune a_1670_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1007 a_2590_1380# vtune a_2550_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1008 a_1990_2170# vtune a_1950_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1009 a_5510_2170# vtune a_5470_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1010 a_6110_1380# vtune a_6070_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1011 a_6390_2170# vtune a_6350_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1012 a_2030_1380# vtune a_1990_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1013 a_4550_1380# vtune a_4510_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1014 a_1430_2170# vtune a_1390_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1015 a_3950_2170# vtune a_3910_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1016 a_70_1380# vtune out_p Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=0.18n ps=0.126m
+M1017 a_2990_1380# vtune a_2950_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1018 a_4270_2170# vtune a_4230_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1019 a_5910_2170# vtune a_5870_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1020 a_390_1380# vtune a_350_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1021 a_2430_1380# vtune a_2390_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1022 a_1830_2170# vtune a_1790_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1023 a_70_690# out_p tail Gnd nfet w=50u l=1u
++  ad=75p pd=53u as=0.15n ps=0.106m
+M1024 a_4950_1380# vtune a_4910_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1025 a_6230_2170# vtune a_6190_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1026 a_5270_1380# vtune a_5230_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1027 a_2150_2170# vtune a_2110_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1028 a_4670_2170# vtune a_4630_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1029 a_790_1380# vtune a_750_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1030 a_1190_1380# vtune a_1150_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1031 a_2830_1380# vtune a_2790_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1032 a_4110_2170# vtune a_4070_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1033 a_230_1380# vtune a_190_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1034 a_3150_1380# vtune a_3110_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1035 a_2550_2170# vtune a_2510_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1036 a_5670_1380# vtune a_5630_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1037 a_1590_1380# vtune a_1550_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1038 a_5110_1380# vtune a_5070_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1039 a_4510_2170# vtune a_4470_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1040 a_5390_2170# vtune a_5350_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1041 a_630_1380# vtune a_590_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1042 a_1030_1380# vtune a_990_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1043 a_3550_1380# vtune a_3510_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1044 a_2950_2170# vtune a_2910_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1045 a_350_2170# vtune a_310_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1046 a_3270_2170# vtune a_3230_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1047 a_1990_1380# vtune a_1950_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1048 a_110_0# out_n a_70_0# Gnd nfet w=50u l=1u
++  ad=75p pd=53u as=75p ps=53u
+M1049 a_6390_1380# vtune a_6350_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1050 a_5510_1380# vtune a_5470_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1051 a_4910_2170# vtune a_4870_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1052 a_5790_2170# vtune a_5750_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1053 a_1430_1380# vtune a_1390_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1054 a_3950_1380# vtune a_3910_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1055 a_5230_2170# vtune a_5190_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1056 a_750_2170# vtune a_710_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1057 a_1150_2170# vtune a_1110_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1058 a_5910_1380# vtune a_5870_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1059 a_4270_1380# vtune a_4230_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1060 a_3670_2170# vtune a_3630_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1061 a_1830_1380# vtune a_1790_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1062 a_3110_2170# vtune a_3070_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1063 a_70_0# out_n a_30_0# Gnd nfet w=50u l=1u
++  ad=75p pd=53u as=0.15n ps=0.106m
+M1064 a_6230_1380# vtune a_6190_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1065 a_5630_2170# vtune a_5590_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1066 a_2150_1380# vtune a_2110_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1067 a_4670_1380# vtune a_4630_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1068 a_1550_2170# vtune a_1510_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1069 a_4110_1380# vtune a_4070_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1070 a_3510_2170# vtune a_3470_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1071 a_4390_2170# vtune a_4350_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1072 a_2550_1380# vtune a_2510_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1073 a_1950_2170# vtune a_1910_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1074 a_6350_2170# vtune a_6310_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1075 a_4510_1380# vtune a_4470_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1076 a_2270_2170# vtune a_2230_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1077 a_3910_2170# vtune a_3870_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1078 a_5390_1380# vtune a_5350_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1079 a_4790_2170# vtune a_4750_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1080 a_2950_1380# vtune a_2910_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1081 a_4230_2170# vtune a_4190_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1082 a_350_1380# vtune a_310_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1083 a_2670_2170# vtune a_2630_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1084 a_5790_1380# vtune a_5750_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1085 a_4910_1380# vtune a_4870_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1086 a_3270_1380# vtune a_3230_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1087 a_5230_1380# vtune a_5190_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1088 a_2110_2170# vtune a_2070_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1089 a_4630_2170# vtune a_4590_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1090 a_750_1380# vtune a_710_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1091 a_1150_1380# vtune a_1110_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1092 a_3670_1380# vtune a_3630_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1093 a_3110_1380# vtune a_3070_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1094 a_470_2170# vtune a_430_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1095 a_2510_2170# vtune a_2470_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1096 a_5630_1380# vtune a_5590_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1097 a_3390_2170# vtune a_3350_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1098 a_1550_1380# vtune a_1510_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1099 a_5350_2170# vtune a_5310_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1100 a_870_2170# vtune a_830_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1101 a_4390_1380# vtune a_4350_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1102 a_3510_1380# vtune a_3470_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1103 a_1270_2170# vtune a_1230_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1104 a_2910_2170# vtune a_2870_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1105 a_3790_2170# vtune a_3750_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1106 a_310_2170# vtune a_270_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1107 a_3230_2170# vtune a_3190_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1108 a_1950_1380# vtune a_1910_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1109 a_6350_1380# vtune a_6310_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1110 a_5750_2170# vtune a_5710_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1111 a_2270_1380# vtune a_2230_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1112 a_1670_2170# vtune a_1630_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1113 a_4790_1380# vtune a_4750_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1114 a_3910_1380# vtune a_3870_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1115 a_710_2170# vtune a_670_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1116 a_1110_2170# vtune a_1070_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1117 a_6070_2170# vtune a_6030_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1118 a_4230_1380# vtune a_4190_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1119 a_3630_2170# vtune a_3590_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1120 a_2670_1380# vtune a_2630_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1121 a_2110_1380# vtune a_2070_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1122 a_1510_2170# vtune a_1470_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1123 a_2390_2170# vtune a_2350_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1124 a_4630_1380# vtune a_4590_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1125 a_4350_2170# vtune a_4310_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1126 a_470_1380# vtune a_430_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1127 a_2510_1380# vtune a_2470_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1128 a_3390_1380# vtune a_3350_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1129 a_1910_2170# vtune a_1870_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1130 a_2790_2170# vtune a_2750_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1131 a_6310_2170# vtune a_6270_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1132 a_190_2170# vtune a_150_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1133 a_2230_2170# vtune a_2190_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1134 a_5350_1380# vtune a_5310_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1135 a_4750_2170# vtune a_4710_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1136 a_870_1380# vtune a_830_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1137 a_1270_1380# vtune a_1230_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1138 a_2910_1380# vtune a_2870_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1139 a_3790_1380# vtune a_3750_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1140 a_5070_2170# vtune a_5030_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1141 a_310_1380# vtune a_270_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1142 a_590_2170# vtune a_550_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1143 a_5750_1380# vtune a_5710_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1144 a_3230_1380# vtune a_3190_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1145 a_2630_2170# vtune a_2590_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1146 a_1670_1380# vtune a_1630_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1147 a_6070_1380# vtune a_6030_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1148 a_5470_2170# vtune a_5430_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1149 a_710_1380# vtune a_670_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1150 a_1110_1380# vtune a_1070_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1151 a_3630_1380# vtune a_3590_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1152 a_990_2170# vtune a_950_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1153 a_1390_2170# vtune a_1350_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1154 a_430_2170# vtune a_390_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1155 a_3350_2170# vtune a_3310_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1156 a_5870_2170# vtune a_5830_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1157 a_1510_1380# vtune a_1470_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1158 a_2390_1380# vtune a_2350_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1159 a_1790_2170# vtune a_1750_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1160 a_5310_2170# vtune a_5270_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1161 a_6190_2170# vtune a_6150_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1162 a_4350_1380# vtune a_4310_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1163 a_830_2170# vtune a_790_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1164 a_1230_2170# vtune a_1190_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1165 a_3750_2170# vtune a_3710_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1166 a_1910_1380# vtune a_1870_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1167 a_2790_1380# vtune a_2750_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1168 a_6310_1380# vtune a_6270_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1169 a_4070_2170# vtune a_4030_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1170 a_5710_2170# vtune a_5670_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1171 a_190_1380# vtune a_150_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1172 a_2230_1380# vtune a_2190_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1173 a_1630_2170# vtune a_1590_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1174 a_4750_1380# vtune a_4710_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1175 a_6030_2170# vtune a_5990_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1176 a_5070_1380# vtune a_5030_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1177 a_4470_2170# vtune a_4430_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1178 a_590_1380# vtune a_550_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1179 a_2630_1380# vtune a_2590_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1180 a_6430_2170# vtune a_6390_2170# Gnd nfet w=60u l=1u
++  ad=0.18n pd=0.126m as=90p ps=63u
+M1181 a_2350_2170# vtune a_2310_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1182 a_5470_1380# vtune a_5430_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1183 a_4870_2170# vtune a_4830_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1184 a_990_1380# vtune a_950_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1185 a_1390_1380# vtune a_1350_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1186 a_4310_2170# vtune a_4270_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1187 a_5190_2170# vtune a_5150_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1188 a_430_1380# vtune a_390_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1189 a_3350_1380# vtune a_3310_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1190 a_2750_2170# vtune a_2710_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1191 a_5870_1380# vtune a_5830_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1192 a_150_2170# vtune a_110_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1193 a_3070_2170# vtune a_3030_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1194 a_1790_1380# vtune a_1750_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1195 a_6190_1380# vtune a_6150_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1196 a_5310_1380# vtune a_5270_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1197 a_4710_2170# vtune a_4670_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1198 a_5590_2170# vtune a_5550_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1199 a_830_1380# vtune a_790_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1200 a_1230_1380# vtune a_1190_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1201 a_5030_2170# vtune a_4990_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1202 a_3750_1380# vtune a_3710_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1203 a_550_2170# vtune a_510_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1204 a_4070_1380# vtune a_4030_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1205 a_3470_2170# vtune a_3430_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1206 a_5710_1380# vtune a_5670_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1207 a_5990_2170# vtune a_5950_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1208 a_1630_1380# vtune a_1590_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1209 a_6030_1380# vtune a_5990_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1210 a_5430_2170# vtune a_5390_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1211 a_950_2170# vtune a_910_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1212 a_1350_2170# vtune a_1310_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1213 a_4470_1380# vtune a_4430_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1214 a_3870_2170# vtune a_3830_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1215 a_3310_2170# vtune a_3270_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1216 a_4190_2170# vtune a_4150_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1217 a_6430_1380# vtune a_6390_1380# Gnd nfet w=60u l=1u
++  ad=0.18n pd=0.126m as=90p ps=63u
+M1218 a_5830_2170# vtune a_5790_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1219 a_2350_1380# vtune a_2310_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1220 a_4870_1380# vtune a_4830_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1221 a_1750_2170# vtune a_1710_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1222 a_6150_2170# vtune a_6110_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1223 a_2070_2170# vtune a_2030_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1224 a_5190_1380# vtune a_5150_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1225 a_4310_1380# vtune a_4270_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1226 a_3710_2170# vtune a_3670_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1227 a_4590_2170# vtune a_4550_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1228 a_2750_1380# vtune a_2710_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1229 a_4030_2170# vtune a_3990_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1230 a_150_1380# vtune a_110_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1231 a_5590_1380# vtune a_5550_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1232 a_4710_1380# vtune a_4670_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1233 a_3070_1380# vtune a_3030_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1234 a_2470_2170# vtune a_2430_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1235 a_4990_2170# vtune a_4950_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1236 a_5030_1380# vtune a_4990_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1237 a_4430_2170# vtune a_4390_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1238 a_550_1380# vtune a_510_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1239 a_3470_1380# vtune a_3430_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1240 a_2870_2170# vtune a_2830_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1241 a_5990_1380# vtune a_5950_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1242 a_270_2170# vtune a_230_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1243 a_5430_1380# vtune a_5390_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1244 a_2310_2170# vtune a_2270_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1245 a_3190_2170# vtune a_3150_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1246 a_4830_2170# vtune a_4790_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1247 a_950_1380# vtune a_910_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1248 a_1350_1380# vtune a_1310_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1249 a_3870_1380# vtune a_3830_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1250 a_5150_2170# vtune a_5110_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1251 a_4190_1380# vtune a_4150_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1252 a_3310_1380# vtune a_3270_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1253 a_670_2170# vtune a_630_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1254 a_1070_2170# vtune a_1030_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1255 a_2710_2170# vtune a_2670_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1256 a_3590_2170# vtune a_3550_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1257 a_5830_1380# vtune a_5790_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1258 a_110_2170# vtune a_70_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1259 a_1750_1380# vtune a_1710_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1260 a_6150_1380# vtune a_6110_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1261 a_3030_2170# vtune a_2990_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1262 a_5550_2170# vtune a_5510_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1263 a_2070_1380# vtune a_2030_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1264 a_1470_2170# vtune a_1430_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1265 a_4590_1380# vtune a_4550_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1266 a_3710_1380# vtune a_3670_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1267 a_3990_2170# vtune a_3950_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1268 a_4030_1380# vtune a_3990_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1269 a_510_2170# vtune a_470_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1270 a_3430_2170# vtune a_3390_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1271 a_190_0# out_n a_150_0# Gnd nfet w=50u l=1u
++  ad=0.15n pd=0.106m as=75p ps=53u
+M1272 a_5950_2170# vtune a_5910_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1273 a_2470_1380# vtune a_2430_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1274 a_1870_2170# vtune a_1830_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1275 a_6270_2170# vtune a_6230_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1276 a_4990_1380# vtune a_4950_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1277 a_910_2170# vtune a_870_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1278 a_1310_2170# vtune a_1270_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1279 a_2190_2170# vtune a_2150_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1280 a_4430_1380# vtune a_4390_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1281 a_3830_2170# vtune a_3790_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1282 a_4150_2170# vtune a_4110_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1283 a_270_1380# vtune a_230_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1284 a_2870_1380# vtune a_2830_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1285 a_190_690# out_p a_150_690# Gnd nfet w=50u l=1u
++  ad=0.15n pd=0.106m as=75p ps=53u
+M1286 a_2310_1380# vtune a_2270_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1287 a_4830_1380# vtune a_4790_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1288 a_3190_1380# vtune a_3150_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1289 a_1710_2170# vtune a_1670_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1290 a_2590_2170# vtune a_2550_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1291 a_6110_2170# vtune a_6070_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1292 a_2030_2170# vtune a_1990_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1293 a_150_690# out_p a_110_690# Gnd nfet w=50u l=1u
++  ad=75p pd=53u as=75p ps=53u
+M1294 a_5150_1380# vtune a_5110_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1295 a_4550_2170# vtune a_4510_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1296 a_670_1380# vtune a_630_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1297 a_1070_1380# vtune a_1030_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1298 a_2710_1380# vtune a_2670_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1299 a_70_2170# vtune out_n Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=0.18n ps=0.126m
+M1300 a_110_1380# vtune a_70_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1301 a_3590_1380# vtune a_3550_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1302 a_390_2170# vtune a_350_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1303 a_2990_2170# vtune a_2950_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1304 a_110_690# out_p a_70_690# Gnd nfet w=50u l=1u
++  ad=75p pd=53u as=75p ps=53u
+M1305 a_3030_1380# vtune a_2990_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1306 a_2430_2170# vtune a_2390_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1307 a_4950_2170# vtune a_4910_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1308 a_5550_1380# vtune a_5510_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1309 a_1470_1380# vtune a_1430_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1310 a_3990_1380# vtune a_3950_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1311 a_5270_2170# vtune a_5230_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1312 a_510_1380# vtune a_470_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1313 a_790_2170# vtune a_750_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1314 a_1190_2170# vtune a_1150_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1315 a_2830_2170# vtune a_2790_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1316 a_5950_1380# vtune a_5910_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1317 a_3430_1380# vtune a_3390_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1318 a_230_2170# vtune a_190_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1319 a_1870_1380# vtune a_1830_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1320 a_3150_2170# vtune a_3110_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1321 a_910_1380# vtune a_870_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1322 a_6270_1380# vtune a_6230_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1323 a_5670_2170# vtune a_5630_2170# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1324 a_1310_1380# vtune a_1270_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1325 a_2190_1380# vtune a_2150_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+M1326 a_150_0# out_n a_110_0# Gnd nfet w=50u l=1u
++  ad=75p pd=53u as=75p ps=53u
+M1327 a_3830_1380# vtune a_3790_1380# Gnd nfet w=60u l=1u
++  ad=90p pd=63u as=90p ps=63u
+C0 out_n out_p 0.5472f
+C1 vtune out_n 0.5472f
+C2 vtune out_p 0.2736f
+C3 out_n tail 0.5472f
+C4 out_p tail 0.5472f
+C5 a_190_0# 0 6.74f **FLOATING
+C6 a_150_0# 0 4.74f **FLOATING
+C7 a_110_0# 0 4.74f **FLOATING
+C8 a_70_0# 0 4.74f **FLOATING
+C9 a_30_0# 0 6.74f **FLOATING
+C10 a_190_690# 0 6.74f **FLOATING
+C11 a_150_690# 0 4.74f **FLOATING
+C12 a_110_690# 0 4.74f **FLOATING
+C13 a_70_690# 0 4.74f **FLOATING
+C14 tail 0 0.38961p **FLOATING
+C15 a_6430_1380# 0 8.04f **FLOATING
+C16 a_6390_1380# 0 5.64f **FLOATING
+C17 a_6350_1380# 0 5.64f **FLOATING
+C18 a_6310_1380# 0 5.64f **FLOATING
+C19 a_6270_1380# 0 5.64f **FLOATING
+C20 a_6230_1380# 0 5.64f **FLOATING
+C21 a_6190_1380# 0 5.64f **FLOATING
+C22 a_6150_1380# 0 5.64f **FLOATING
+C23 a_6110_1380# 0 5.64f **FLOATING
+C24 a_6070_1380# 0 5.64f **FLOATING
+C25 a_6030_1380# 0 5.64f **FLOATING
+C26 a_5990_1380# 0 5.64f **FLOATING
+C27 a_5950_1380# 0 5.64f **FLOATING
+C28 a_5910_1380# 0 5.64f **FLOATING
+C29 a_5870_1380# 0 5.64f **FLOATING
+C30 a_5830_1380# 0 5.64f **FLOATING
+C31 a_5790_1380# 0 5.64f **FLOATING
+C32 a_5750_1380# 0 5.64f **FLOATING
+C33 a_5710_1380# 0 5.64f **FLOATING
+C34 a_5670_1380# 0 5.64f **FLOATING
+C35 a_5630_1380# 0 5.64f **FLOATING
+C36 a_5590_1380# 0 5.64f **FLOATING
+C37 a_5550_1380# 0 5.64f **FLOATING
+C38 a_5510_1380# 0 5.64f **FLOATING
+C39 a_5470_1380# 0 5.64f **FLOATING
+C40 a_5430_1380# 0 5.64f **FLOATING
+C41 a_5390_1380# 0 5.64f **FLOATING
+C42 a_5350_1380# 0 5.64f **FLOATING
+C43 a_5310_1380# 0 5.64f **FLOATING
+C44 a_5270_1380# 0 5.64f **FLOATING
+C45 a_5230_1380# 0 5.64f **FLOATING
+C46 a_5190_1380# 0 5.64f **FLOATING
+C47 a_5150_1380# 0 5.64f **FLOATING
+C48 a_5110_1380# 0 5.64f **FLOATING
+C49 a_5070_1380# 0 5.64f **FLOATING
+C50 a_5030_1380# 0 5.64f **FLOATING
+C51 a_4990_1380# 0 5.64f **FLOATING
+C52 a_4950_1380# 0 5.64f **FLOATING
+C53 a_4910_1380# 0 5.64f **FLOATING
+C54 a_4870_1380# 0 5.64f **FLOATING
+C55 a_4830_1380# 0 5.64f **FLOATING
+C56 a_4790_1380# 0 5.64f **FLOATING
+C57 a_4750_1380# 0 5.64f **FLOATING
+C58 a_4710_1380# 0 5.64f **FLOATING
+C59 a_4670_1380# 0 5.64f **FLOATING
+C60 a_4630_1380# 0 5.64f **FLOATING
+C61 a_4590_1380# 0 5.64f **FLOATING
+C62 a_4550_1380# 0 5.64f **FLOATING
+C63 a_4510_1380# 0 5.64f **FLOATING
+C64 a_4470_1380# 0 5.64f **FLOATING
+C65 a_4430_1380# 0 5.64f **FLOATING
+C66 a_4390_1380# 0 5.64f **FLOATING
+C67 a_4350_1380# 0 5.64f **FLOATING
+C68 a_4310_1380# 0 5.64f **FLOATING
+C69 a_4270_1380# 0 5.64f **FLOATING
+C70 a_4230_1380# 0 5.64f **FLOATING
+C71 a_4190_1380# 0 5.64f **FLOATING
+C72 a_4150_1380# 0 5.64f **FLOATING
+C73 a_4110_1380# 0 5.64f **FLOATING
+C74 a_4070_1380# 0 5.64f **FLOATING
+C75 a_4030_1380# 0 5.64f **FLOATING
+C76 a_3990_1380# 0 5.64f **FLOATING
+C77 a_3950_1380# 0 5.64f **FLOATING
+C78 a_3910_1380# 0 5.64f **FLOATING
+C79 a_3870_1380# 0 5.64f **FLOATING
+C80 a_3830_1380# 0 5.64f **FLOATING
+C81 a_3790_1380# 0 5.64f **FLOATING
+C82 a_3750_1380# 0 5.64f **FLOATING
+C83 a_3710_1380# 0 5.64f **FLOATING
+C84 a_3670_1380# 0 5.64f **FLOATING
+C85 a_3630_1380# 0 5.64f **FLOATING
+C86 a_3590_1380# 0 5.64f **FLOATING
+C87 a_3550_1380# 0 5.64f **FLOATING
+C88 a_3510_1380# 0 5.64f **FLOATING
+C89 a_3470_1380# 0 5.64f **FLOATING
+C90 a_3430_1380# 0 5.64f **FLOATING
+C91 a_3390_1380# 0 5.64f **FLOATING
+C92 a_3350_1380# 0 5.64f **FLOATING
+C93 a_3310_1380# 0 5.64f **FLOATING
+C94 a_3270_1380# 0 5.64f **FLOATING
+C95 a_3230_1380# 0 5.64f **FLOATING
+C96 a_3190_1380# 0 5.64f **FLOATING
+C97 a_3150_1380# 0 5.64f **FLOATING
+C98 a_3110_1380# 0 5.64f **FLOATING
+C99 a_3070_1380# 0 5.64f **FLOATING
+C100 a_3030_1380# 0 5.64f **FLOATING
+C101 a_2990_1380# 0 5.64f **FLOATING
+C102 a_2950_1380# 0 5.64f **FLOATING
+C103 a_2910_1380# 0 5.64f **FLOATING
+C104 a_2870_1380# 0 5.64f **FLOATING
+C105 a_2830_1380# 0 5.64f **FLOATING
+C106 a_2790_1380# 0 5.64f **FLOATING
+C107 a_2750_1380# 0 5.64f **FLOATING
+C108 a_2710_1380# 0 5.64f **FLOATING
+C109 a_2670_1380# 0 5.64f **FLOATING
+C110 a_2630_1380# 0 5.64f **FLOATING
+C111 a_2590_1380# 0 5.64f **FLOATING
+C112 a_2550_1380# 0 5.64f **FLOATING
+C113 a_2510_1380# 0 5.64f **FLOATING
+C114 a_2470_1380# 0 5.64f **FLOATING
+C115 a_2430_1380# 0 5.64f **FLOATING
+C116 a_2390_1380# 0 5.64f **FLOATING
+C117 a_2350_1380# 0 5.64f **FLOATING
+C118 a_2310_1380# 0 5.64f **FLOATING
+C119 a_2270_1380# 0 5.64f **FLOATING
+C120 a_2230_1380# 0 5.64f **FLOATING
+C121 a_2190_1380# 0 5.64f **FLOATING
+C122 a_2150_1380# 0 5.64f **FLOATING
+C123 a_2110_1380# 0 5.64f **FLOATING
+C124 a_2070_1380# 0 5.64f **FLOATING
+C125 a_2030_1380# 0 5.64f **FLOATING
+C126 a_1990_1380# 0 5.64f **FLOATING
+C127 a_1950_1380# 0 5.64f **FLOATING
+C128 a_1910_1380# 0 5.64f **FLOATING
+C129 a_1870_1380# 0 5.64f **FLOATING
+C130 a_1830_1380# 0 5.64f **FLOATING
+C131 a_1790_1380# 0 5.64f **FLOATING
+C132 a_1750_1380# 0 5.64f **FLOATING
+C133 a_1710_1380# 0 5.64f **FLOATING
+C134 a_1670_1380# 0 5.64f **FLOATING
+C135 a_1630_1380# 0 5.64f **FLOATING
+C136 a_1590_1380# 0 5.64f **FLOATING
+C137 a_1550_1380# 0 5.64f **FLOATING
+C138 a_1510_1380# 0 5.64f **FLOATING
+C139 a_1470_1380# 0 5.64f **FLOATING
+C140 a_1430_1380# 0 5.64f **FLOATING
+C141 a_1390_1380# 0 5.64f **FLOATING
+C142 a_1350_1380# 0 5.64f **FLOATING
+C143 a_1310_1380# 0 5.64f **FLOATING
+C144 a_1270_1380# 0 5.64f **FLOATING
+C145 a_1230_1380# 0 5.64f **FLOATING
+C146 a_1190_1380# 0 5.64f **FLOATING
+C147 a_1150_1380# 0 5.64f **FLOATING
+C148 a_1110_1380# 0 5.64f **FLOATING
+C149 a_1070_1380# 0 5.64f **FLOATING
+C150 a_1030_1380# 0 5.64f **FLOATING
+C151 a_990_1380# 0 5.64f **FLOATING
+C152 a_950_1380# 0 5.64f **FLOATING
+C153 a_910_1380# 0 5.64f **FLOATING
+C154 a_870_1380# 0 5.64f **FLOATING
+C155 a_830_1380# 0 5.64f **FLOATING
+C156 a_790_1380# 0 5.64f **FLOATING
+C157 a_750_1380# 0 5.64f **FLOATING
+C158 a_710_1380# 0 5.64f **FLOATING
+C159 a_670_1380# 0 5.64f **FLOATING
+C160 a_630_1380# 0 5.64f **FLOATING
+C161 a_590_1380# 0 5.64f **FLOATING
+C162 a_550_1380# 0 5.64f **FLOATING
+C163 a_510_1380# 0 5.64f **FLOATING
+C164 a_470_1380# 0 5.64f **FLOATING
+C165 a_430_1380# 0 5.64f **FLOATING
+C166 a_390_1380# 0 5.64f **FLOATING
+C167 a_350_1380# 0 5.64f **FLOATING
+C168 a_310_1380# 0 5.64f **FLOATING
+C169 a_270_1380# 0 5.64f **FLOATING
+C170 a_230_1380# 0 5.64f **FLOATING
+C171 a_190_1380# 0 5.64f **FLOATING
+C172 a_150_1380# 0 5.64f **FLOATING
+C173 a_110_1380# 0 5.64f **FLOATING
+C174 a_70_1380# 0 5.64f **FLOATING
+C175 out_p 0 2.65654p **FLOATING
+C176 a_6430_2170# 0 8.04f **FLOATING
+C177 a_6390_2170# 0 5.64f **FLOATING
+C178 a_6350_2170# 0 5.64f **FLOATING
+C179 a_6310_2170# 0 5.64f **FLOATING
+C180 a_6270_2170# 0 5.64f **FLOATING
+C181 a_6230_2170# 0 5.64f **FLOATING
+C182 a_6190_2170# 0 5.64f **FLOATING
+C183 a_6150_2170# 0 5.64f **FLOATING
+C184 a_6110_2170# 0 5.64f **FLOATING
+C185 a_6070_2170# 0 5.64f **FLOATING
+C186 a_6030_2170# 0 5.64f **FLOATING
+C187 a_5990_2170# 0 5.64f **FLOATING
+C188 a_5950_2170# 0 5.64f **FLOATING
+C189 a_5910_2170# 0 5.64f **FLOATING
+C190 a_5870_2170# 0 5.64f **FLOATING
+C191 a_5830_2170# 0 5.64f **FLOATING
+C192 a_5790_2170# 0 5.64f **FLOATING
+C193 a_5750_2170# 0 5.64f **FLOATING
+C194 a_5710_2170# 0 5.64f **FLOATING
+C195 a_5670_2170# 0 5.64f **FLOATING
+C196 a_5630_2170# 0 5.64f **FLOATING
+C197 a_5590_2170# 0 5.64f **FLOATING
+C198 a_5550_2170# 0 5.64f **FLOATING
+C199 a_5510_2170# 0 5.64f **FLOATING
+C200 a_5470_2170# 0 5.64f **FLOATING
+C201 a_5430_2170# 0 5.64f **FLOATING
+C202 a_5390_2170# 0 5.64f **FLOATING
+C203 a_5350_2170# 0 5.64f **FLOATING
+C204 a_5310_2170# 0 5.64f **FLOATING
+C205 a_5270_2170# 0 5.64f **FLOATING
+C206 a_5230_2170# 0 5.64f **FLOATING
+C207 a_5190_2170# 0 5.64f **FLOATING
+C208 a_5150_2170# 0 5.64f **FLOATING
+C209 a_5110_2170# 0 5.64f **FLOATING
+C210 a_5070_2170# 0 5.64f **FLOATING
+C211 a_5030_2170# 0 5.64f **FLOATING
+C212 a_4990_2170# 0 5.64f **FLOATING
+C213 a_4950_2170# 0 5.64f **FLOATING
+C214 a_4910_2170# 0 5.64f **FLOATING
+C215 a_4870_2170# 0 5.64f **FLOATING
+C216 a_4830_2170# 0 5.64f **FLOATING
+C217 a_4790_2170# 0 5.64f **FLOATING
+C218 a_4750_2170# 0 5.64f **FLOATING
+C219 a_4710_2170# 0 5.64f **FLOATING
+C220 a_4670_2170# 0 5.64f **FLOATING
+C221 a_4630_2170# 0 5.64f **FLOATING
+C222 a_4590_2170# 0 5.64f **FLOATING
+C223 a_4550_2170# 0 5.64f **FLOATING
+C224 a_4510_2170# 0 5.64f **FLOATING
+C225 a_4470_2170# 0 5.64f **FLOATING
+C226 a_4430_2170# 0 5.64f **FLOATING
+C227 a_4390_2170# 0 5.64f **FLOATING
+C228 a_4350_2170# 0 5.64f **FLOATING
+C229 a_4310_2170# 0 5.64f **FLOATING
+C230 a_4270_2170# 0 5.64f **FLOATING
+C231 a_4230_2170# 0 5.64f **FLOATING
+C232 a_4190_2170# 0 5.64f **FLOATING
+C233 a_4150_2170# 0 5.64f **FLOATING
+C234 a_4110_2170# 0 5.64f **FLOATING
+C235 a_4070_2170# 0 5.64f **FLOATING
+C236 a_4030_2170# 0 5.64f **FLOATING
+C237 a_3990_2170# 0 5.64f **FLOATING
+C238 a_3950_2170# 0 5.64f **FLOATING
+C239 a_3910_2170# 0 5.64f **FLOATING
+C240 a_3870_2170# 0 5.64f **FLOATING
+C241 a_3830_2170# 0 5.64f **FLOATING
+C242 a_3790_2170# 0 5.64f **FLOATING
+C243 a_3750_2170# 0 5.64f **FLOATING
+C244 a_3710_2170# 0 5.64f **FLOATING
+C245 a_3670_2170# 0 5.64f **FLOATING
+C246 a_3630_2170# 0 5.64f **FLOATING
+C247 a_3590_2170# 0 5.64f **FLOATING
+C248 a_3550_2170# 0 5.64f **FLOATING
+C249 a_3510_2170# 0 5.64f **FLOATING
+C250 a_3470_2170# 0 5.64f **FLOATING
+C251 a_3430_2170# 0 5.64f **FLOATING
+C252 a_3390_2170# 0 5.64f **FLOATING
+C253 a_3350_2170# 0 5.64f **FLOATING
+C254 a_3310_2170# 0 5.64f **FLOATING
+C255 a_3270_2170# 0 5.64f **FLOATING
+C256 a_3230_2170# 0 5.64f **FLOATING
+C257 a_3190_2170# 0 5.64f **FLOATING
+C258 a_3150_2170# 0 5.64f **FLOATING
+C259 a_3110_2170# 0 5.64f **FLOATING
+C260 a_3070_2170# 0 5.64f **FLOATING
+C261 a_3030_2170# 0 5.64f **FLOATING
+C262 a_2990_2170# 0 5.64f **FLOATING
+C263 a_2950_2170# 0 5.64f **FLOATING
+C264 a_2910_2170# 0 5.64f **FLOATING
+C265 a_2870_2170# 0 5.64f **FLOATING
+C266 a_2830_2170# 0 5.64f **FLOATING
+C267 a_2790_2170# 0 5.64f **FLOATING
+C268 a_2750_2170# 0 5.64f **FLOATING
+C269 a_2710_2170# 0 5.64f **FLOATING
+C270 a_2670_2170# 0 5.64f **FLOATING
+C271 a_2630_2170# 0 5.64f **FLOATING
+C272 a_2590_2170# 0 5.64f **FLOATING
+C273 a_2550_2170# 0 5.64f **FLOATING
+C274 a_2510_2170# 0 5.64f **FLOATING
+C275 a_2470_2170# 0 5.64f **FLOATING
+C276 a_2430_2170# 0 5.64f **FLOATING
+C277 a_2390_2170# 0 5.64f **FLOATING
+C278 a_2350_2170# 0 5.64f **FLOATING
+C279 a_2310_2170# 0 5.64f **FLOATING
+C280 a_2270_2170# 0 5.64f **FLOATING
+C281 a_2230_2170# 0 5.64f **FLOATING
+C282 a_2190_2170# 0 5.64f **FLOATING
+C283 a_2150_2170# 0 5.64f **FLOATING
+C284 a_2110_2170# 0 5.64f **FLOATING
+C285 a_2070_2170# 0 5.64f **FLOATING
+C286 a_2030_2170# 0 5.64f **FLOATING
+C287 a_1990_2170# 0 5.64f **FLOATING
+C288 a_1950_2170# 0 5.64f **FLOATING
+C289 a_1910_2170# 0 5.64f **FLOATING
+C290 a_1870_2170# 0 5.64f **FLOATING
+C291 a_1830_2170# 0 5.64f **FLOATING
+C292 a_1790_2170# 0 5.64f **FLOATING
+C293 a_1750_2170# 0 5.64f **FLOATING
+C294 a_1710_2170# 0 5.64f **FLOATING
+C295 a_1670_2170# 0 5.64f **FLOATING
+C296 a_1630_2170# 0 5.64f **FLOATING
+C297 a_1590_2170# 0 5.64f **FLOATING
+C298 a_1550_2170# 0 5.64f **FLOATING
+C299 a_1510_2170# 0 5.64f **FLOATING
+C300 a_1470_2170# 0 5.64f **FLOATING
+C301 a_1430_2170# 0 5.64f **FLOATING
+C302 a_1390_2170# 0 5.64f **FLOATING
+C303 a_1350_2170# 0 5.64f **FLOATING
+C304 a_1310_2170# 0 5.64f **FLOATING
+C305 a_1270_2170# 0 5.64f **FLOATING
+C306 a_1230_2170# 0 5.64f **FLOATING
+C307 a_1190_2170# 0 5.64f **FLOATING
+C308 a_1150_2170# 0 5.64f **FLOATING
+C309 a_1110_2170# 0 5.64f **FLOATING
+C310 a_1070_2170# 0 5.64f **FLOATING
+C311 a_1030_2170# 0 5.64f **FLOATING
+C312 a_990_2170# 0 5.64f **FLOATING
+C313 a_950_2170# 0 5.64f **FLOATING
+C314 a_910_2170# 0 5.64f **FLOATING
+C315 a_870_2170# 0 5.64f **FLOATING
+C316 a_830_2170# 0 5.64f **FLOATING
+C317 a_790_2170# 0 5.64f **FLOATING
+C318 a_750_2170# 0 5.64f **FLOATING
+C319 a_710_2170# 0 5.64f **FLOATING
+C320 a_670_2170# 0 5.64f **FLOATING
+C321 a_630_2170# 0 5.64f **FLOATING
+C322 a_590_2170# 0 5.64f **FLOATING
+C323 a_550_2170# 0 5.64f **FLOATING
+C324 a_510_2170# 0 5.64f **FLOATING
+C325 a_470_2170# 0 5.64f **FLOATING
+C326 a_430_2170# 0 5.64f **FLOATING
+C327 a_390_2170# 0 5.64f **FLOATING
+C328 a_350_2170# 0 5.64f **FLOATING
+C329 a_310_2170# 0 5.64f **FLOATING
+C330 a_270_2170# 0 5.64f **FLOATING
+C331 a_230_2170# 0 5.64f **FLOATING
+C332 a_190_2170# 0 5.64f **FLOATING
+C333 a_150_2170# 0 5.64f **FLOATING
+C334 a_110_2170# 0 5.64f **FLOATING
+C335 a_70_2170# 0 5.64f **FLOATING
+C336 out_n 0 2.66584p **FLOATING
+C337 vtune 0 0.61916p **FLOATING
+C338 vss 0 9.06316f **FLOATING

@@ -1,0 +1,7 @@
+* Strict LVS contract for rx_mixer (generated with the layout)
+.SUBCKT rx_mixer out_i out_q lo0 lo90 lo180 lo270 rf_p rf_n vss
+M1 out_i lo0 rf_p vss NMOS w=200.0u l=1.0u
+M2 out_i lo180 rf_n vss NMOS w=200.0u l=1.0u
+M3 out_q lo90 rf_p vss NMOS w=200.0u l=1.0u
+M4 out_q lo270 rf_n vss NMOS w=200.0u l=1.0u
+.ENDS

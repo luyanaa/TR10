@@ -1,0 +1,33 @@
+* SPICE3 file created from rx_ssb.ext - technology: TR10
+
+M1000 a_190_440# q_hp a_150_440# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1001 a_110_440# q_hp out_n Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1002 a_150_440# q_hp a_110_440# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1003 a_110_0# i_lp out_p Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+M1004 out_p i_lp a_30_0# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1005 out_n q_hp tail Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=75p ps=56u
+M1006 a_190_0# i_lp a_150_0# Gnd nfet w=25u l=1u
++  ad=75p pd=56u as=37.5p ps=28u
+M1007 a_150_0# i_lp a_110_0# Gnd nfet w=25u l=1u
++  ad=37.5p pd=28u as=37.5p ps=28u
+C0 q_hp tail 0.2736f
+C1 tail out_n 0.2736f
+C2 a_190_0# 0 3.49f **FLOATING
+C3 a_150_0# 0 2.49f **FLOATING
+C4 a_110_0# 0 2.49f **FLOATING
+C5 out_p 0 22.4237f **FLOATING
+C6 a_30_0# 0 3.49f **FLOATING
+C7 i_lp 0 18.6946f **FLOATING
+C8 a_190_440# 0 3.49f **FLOATING
+C9 a_150_440# 0 2.49f **FLOATING
+C10 a_110_440# 0 2.49f **FLOATING
+C11 out_n 0 26.4917f **FLOATING
+C12 tail 0 70.9562f **FLOATING
+C13 q_hp 0 22.7626f **FLOATING
+C14 vss 0 10.4192f **FLOATING

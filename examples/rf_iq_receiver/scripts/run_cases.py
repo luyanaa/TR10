@@ -303,6 +303,55 @@ def case_full_am(ck: Checker, work: str) -> None:
              f"THD(2,3) = {100*d3:.2f} %, target < 10 %")
 
 
+def case_full_am_pex(ck: Checker, work: str) -> None:
+    """The same end-to-end AM chain with the post-layout modules
+    (pre-layout devices + Magic PEX caps; see gen_post_am.py)."""
+    subprocess.run([sys.executable, os.path.join(HERE, "gen_post_am.py")],
+                   check=True, capture_output=True, text=True)
+    run_ngspice("tb_am_1m_post.sp", work)
+    d = load_wrdata(os.path.join(work, "tb_am_1m_post.dat"))
+    t, audio = d[:, 0], d[:, 1]
+    T = 1.0 / 3e3
+    m = (t >= t[-1] - T) & (t <= t[-1])
+    a = tone_amp(t[m], audio[m], 3e3)
+    ck.check("full AM chain audio (post-layout)", a >= 0.10,
+             f"{a*1e3:.1f} mV at 3 kHz from a 1 mV RF input, target > 100 mV")
+    d3 = thd(t[m], audio[m], 3e3, harmonics=(2, 3))
+    ck.check("full AM chain distortion (post-layout)", d3 <= 0.10,
+             f"THD(2,3) = {100*d3:.2f} %, target < 10 %")
+
+
+def osc_freq(path: str, t_lo: float = 2e-6, t_hi: float = 5e-6):
+    """Frequency, swing and crossings of a differential VCO node."""
+    d = load_wrdata(path)
+    t, x = d[:, 0], d[:, 1]
+    m = (t >= t_lo) & (t <= t_hi)
+    t2, x2 = t[m], x[m] - x[m].mean()
+    z = np.where(np.diff(np.signbit(x2)))[0]
+
+    def cross(i):
+        t0, t1 = t2[i], t2[i + 1]
+        y0, y1 = x2[i], x2[i + 1]
+        return t0 - y0 * (t1 - t0) / (y1 - y0)
+
+    tc = [cross(i) for i in z]
+    half = (tc[-1] - tc[0]) / (len(tc) - 1)
+    return 1.0 / (2 * half), x2.max() - x2.min(), len(tc)
+
+
+def case_vco_pex(ck: Checker, work: str) -> None:
+    """Free-running VCO with the extracted tank parasitics."""
+    subprocess.run([sys.executable, os.path.join(HERE, "gen_post_am.py")],
+                   check=True, capture_output=True, text=True)
+    run_ngspice("tb_vco_post.sp", work)
+    f, swing, n = osc_freq(os.path.join(work, "vco_post.dat"))
+    ck.check("VCO oscillates post-layout", n >= 8 and swing > 0.5,
+             f"{f/1e6:.4f} MHz, {swing:.3f} Vpp, {n} crossings in 3 us")
+    ck.check("VCO frequency shift post-layout", abs(f - 2e6) / 2e6 <= 0.02,
+             f"{f/1e6:.4f} MHz vs 2.000 MHz design, "
+             f"{100*(f-2e6)/2e6:+.2f} % (tank +2.66 pF of varactor diffusion)")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--full", action="store_true",
@@ -339,6 +388,15 @@ def main() -> int:
         if args.full:
             print("\n== full AM chain at 1 MHz ==")
             case_full_am(ck, work)
+            if os.path.isdir(os.path.join(PKG, "layout", "pex")) and \
+                    os.path.exists(os.path.join(PKG, "layout", "pex", "rx_amdemod.spice")):
+                print("\n== full AM chain at 1 MHz (post-layout) ==")
+                case_full_am_pex(ck, work)
+                print("\n== VCO free running (post-layout) ==")
+                case_vco_pex(ck, work)
+            else:
+                print("\nSKIP  full AM chain post-layout "
+                      "(run layout/run_signoff.sh first)")
         else:
             print("\nSKIP  full AM chain (use --full)")
         rc = ck.done(args.json)

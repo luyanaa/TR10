@@ -1,0 +1,771 @@
+{
+  "design": "rx_lna",
+  "nets": [
+    {
+      "name": "__unlabeled_M1",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 4.5,
+          "x2": 4.5,
+          "y1": 0.2,
+          "y2": 28.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_1",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000005,
+          "x1": 8.5,
+          "x2": 8.5,
+          "y1": -5.8,
+          "y2": 19.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_10",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 44.5,
+          "x2": 44.5,
+          "y1": 0.2,
+          "y2": 28.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_11",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.3999999999999986,
+          "x1": 3.0,
+          "x2": 46.0,
+          "y1": 29.3,
+          "y2": 29.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_12",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.4,
+          "x1": 3.0,
+          "x2": 46.0,
+          "y1": -4.1,
+          "y2": -4.1
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_13",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 57.0,
+          "x2": 60.0,
+          "y1": 23.3,
+          "y2": 23.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_14",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 4.5,
+          "x2": 4.5,
+          "y1": 39.2,
+          "y2": 67.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_15",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000005,
+          "x1": 8.5,
+          "x2": 8.5,
+          "y1": 33.2,
+          "y2": 58.800000000000004
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_16",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 12.5,
+          "x2": 12.5,
+          "y1": 39.2,
+          "y2": 67.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_17",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 16.5,
+          "x2": 16.5,
+          "y1": 33.2,
+          "y2": 58.800000000000004
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_18",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 20.5,
+          "x2": 20.5,
+          "y1": 39.2,
+          "y2": 67.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_19",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 24.5,
+          "x2": 24.5,
+          "y1": 33.2,
+          "y2": 58.800000000000004
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_2",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 12.5,
+          "x2": 12.5,
+          "y1": 0.2,
+          "y2": 28.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_20",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 28.5,
+          "x2": 28.5,
+          "y1": 39.2,
+          "y2": 67.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_21",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999998,
+          "x1": 32.5,
+          "x2": 32.5,
+          "y1": 33.2,
+          "y2": 58.800000000000004
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_22",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 36.5,
+          "x2": 36.5,
+          "y1": 39.2,
+          "y2": 67.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_23",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 40.5,
+          "x2": 40.5,
+          "y1": 33.2,
+          "y2": 58.800000000000004
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_24",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 44.5,
+          "x2": 44.5,
+          "y1": 39.2,
+          "y2": 67.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_25",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.4000000000000057,
+          "x1": 3.0,
+          "x2": 46.0,
+          "y1": 68.3,
+          "y2": 68.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_26",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.3999999999999986,
+          "x1": 3.0,
+          "x2": 46.0,
+          "y1": 34.900000000000006,
+          "y2": 34.900000000000006
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_27",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 57.0,
+          "x2": 60.0,
+          "y1": 62.3,
+          "y2": 62.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_28",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 4.3999999999999915,
+          "x1": 57.1,
+          "x2": 61.5,
+          "y1": 81.30000000000001,
+          "y2": 81.30000000000001
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_3",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 16.5,
+          "x2": 16.5,
+          "y1": -5.8,
+          "y2": 19.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_30",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6,
+          "x1": 23.2,
+          "x2": 64.4,
+          "y1": -4.1000000000000005,
+          "y2": -4.1000000000000005
+        },
+        {
+          "id": "s1",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.5999999999999943,
+          "x1": 57.2,
+          "x2": 64.4,
+          "y1": 62.3,
+          "y2": 62.3
+        },
+        {
+          "id": "s2",
+          "layer": "M2",
+          "source": "GDS",
+          "width": 3.8000000000000043,
+          "x1": 62.5,
+          "x2": 62.5,
+          "y1": -6.1000000000000005,
+          "y2": 64.3
+        }
+      ],
+      "special": false,
+      "vias": [
+        {
+          "id": "v0",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 62.5,
+          "y": -4.1
+        },
+        {
+          "id": "v1",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 62.5,
+          "y": 62.3
+        }
+      ]
+    },
+    {
+      "name": "__unlabeled_M1_31",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000014,
+          "x1": 57.2,
+          "x2": 70.4,
+          "y1": 23.3,
+          "y2": 23.3
+        },
+        {
+          "id": "s1",
+          "layer": "M2",
+          "source": "GDS",
+          "width": 3.8000000000000114,
+          "x1": 68.5,
+          "x2": 68.5,
+          "y1": 21.3,
+          "y2": 25.3
+        }
+      ],
+      "special": false,
+      "vias": [
+        {
+          "id": "v0",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 68.5,
+          "y": 23.3
+        }
+      ]
+    },
+    {
+      "name": "__unlabeled_M1_33",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000014,
+          "x1": 23.2,
+          "x2": 76.4,
+          "y1": 29.3,
+          "y2": 29.3
+        },
+        {
+          "id": "s1",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000085,
+          "x1": 58.0,
+          "x2": 76.4,
+          "y1": 81.30000000000001,
+          "y2": 81.30000000000001
+        },
+        {
+          "id": "s2",
+          "layer": "M2",
+          "source": "GDS",
+          "width": 3.799999999999997,
+          "x1": 74.5,
+          "x2": 74.5,
+          "y1": 27.3,
+          "y2": 83.3
+        }
+      ],
+      "special": false,
+      "vias": [
+        {
+          "id": "v0",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 74.5,
+          "y": 29.3
+        },
+        {
+          "id": "v1",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 74.5,
+          "y": 81.30000000000001
+        }
+      ]
+    },
+    {
+      "name": "__unlabeled_M1_34",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000014,
+          "x1": 23.2,
+          "x2": 82.4,
+          "y1": 34.900000000000006,
+          "y2": 34.900000000000006
+        },
+        {
+          "id": "s1",
+          "layer": "M2",
+          "source": "GDS",
+          "width": 3.799999999999997,
+          "x1": 80.5,
+          "x2": 80.5,
+          "y1": 32.9,
+          "y2": 36.9
+        }
+      ],
+      "special": false,
+      "vias": [
+        {
+          "id": "v0",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 80.5,
+          "y": 34.900000000000006
+        }
+      ]
+    },
+    {
+      "name": "__unlabeled_M1_35",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000085,
+          "x1": 23.2,
+          "x2": 88.4,
+          "y1": 68.30000000000001,
+          "y2": 68.30000000000001
+        },
+        {
+          "id": "s1",
+          "layer": "M2",
+          "source": "GDS",
+          "width": 3.799999999999997,
+          "x1": 86.5,
+          "x2": 86.5,
+          "y1": 66.3,
+          "y2": 70.3
+        }
+      ],
+      "special": false,
+      "vias": [
+        {
+          "id": "v0",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 86.5,
+          "y": 68.3
+        }
+      ]
+    },
+    {
+      "name": "__unlabeled_M1_4",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 20.5,
+          "x2": 20.5,
+          "y1": 0.2,
+          "y2": 28.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_5",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 24.5,
+          "x2": 24.5,
+          "y1": -5.8,
+          "y2": 19.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_6",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 28.5,
+          "x2": 28.5,
+          "y1": 0.2,
+          "y2": 28.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_7",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999998,
+          "x1": 32.5,
+          "x2": 32.5,
+          "y1": -5.8,
+          "y2": 19.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_8",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 36.5,
+          "x2": 36.5,
+          "y1": 0.2,
+          "y2": 28.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_9",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 40.5,
+          "x2": 40.5,
+          "y1": -5.8,
+          "y2": 19.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    }
+  ],
+  "schema": 1,
+  "source": {
+    "dbu_to_um": 0.001,
+    "gds_sha256": "5cc1b7889ad99def0c435bd7fb002479a7c3bb99f15d320b4e3a3bb760b7da8b",
+    "kind": "gds",
+    "path": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/rx_lna.gds",
+    "top": "rx_lna"
+  },
+  "units": {
+    "length": "um"
+  },
+  "warnings": [
+    "gds_bbox_approximation",
+    "unlabeled_metal_shape_created_synthetic_net",
+    "via_connects_distinct_labeled_nets"
+  ]
+}

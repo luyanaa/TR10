@@ -1,0 +1,5 @@
+* Strict LVS contract for rx_lna (generated with the layout)
+.SUBCKT rx_lna d g out vdd vss
+M1 d g vss vss NMOS w=200.0u l=1.0u
+M2 vdd d out vss NMOS w=200.0u l=1.0u
+.ENDS

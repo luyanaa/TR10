@@ -1,0 +1,6573 @@
+{
+  "design": "rx_vco",
+  "nets": [
+    {
+      "name": "__unlabeled_M1",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 4.5,
+          "x2": 4.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_1",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000005,
+          "x1": 8.5,
+          "x2": 8.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_10",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 44.5,
+          "x2": 44.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_100",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 404.5,
+          "x2": 404.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_101",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 408.5,
+          "x2": 408.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_102",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 412.5,
+          "x2": 412.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_103",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 416.5,
+          "x2": 416.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_104",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 420.5,
+          "x2": 420.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_105",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 424.5,
+          "x2": 424.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_106",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 428.5,
+          "x2": 428.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_107",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 432.5,
+          "x2": 432.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_108",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 436.5,
+          "x2": 436.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_109",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 440.5,
+          "x2": 440.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_11",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 48.5,
+          "x2": 48.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_110",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 444.5,
+          "x2": 444.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_111",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 448.5,
+          "x2": 448.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_112",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 452.5,
+          "x2": 452.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_113",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 456.5,
+          "x2": 456.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_114",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 460.5,
+          "x2": 460.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_115",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 464.5,
+          "x2": 464.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_116",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 468.5,
+          "x2": 468.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_117",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 472.5,
+          "x2": 472.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_118",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 476.5,
+          "x2": 476.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_119",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 480.5,
+          "x2": 480.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_12",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 52.5,
+          "x2": 52.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_120",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 484.5,
+          "x2": 484.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_121",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 488.5,
+          "x2": 488.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_122",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 492.5,
+          "x2": 492.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_123",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 496.5,
+          "x2": 496.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_124",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 500.5,
+          "x2": 500.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_125",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 504.5,
+          "x2": 504.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_126",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 508.5,
+          "x2": 508.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_127",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999966,
+          "x1": 512.5,
+          "x2": 512.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_128",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 516.5,
+          "x2": 516.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_129",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 520.5,
+          "x2": 520.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_13",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 56.5,
+          "x2": 56.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_130",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 524.5,
+          "x2": 524.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_131",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 528.5,
+          "x2": 528.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_132",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 532.5,
+          "x2": 532.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_133",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 536.5,
+          "x2": 536.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_134",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 540.5,
+          "x2": 540.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_135",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 544.5,
+          "x2": 544.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_136",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 548.5,
+          "x2": 548.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_137",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 552.5,
+          "x2": 552.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_138",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 556.5,
+          "x2": 556.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_139",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 560.5,
+          "x2": 560.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_14",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 60.5,
+          "x2": 60.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_140",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 564.5,
+          "x2": 564.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_141",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 568.5,
+          "x2": 568.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_142",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 572.5,
+          "x2": 572.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_143",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 576.5,
+          "x2": 576.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_144",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 580.5,
+          "x2": 580.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_145",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 584.5,
+          "x2": 584.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_146",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 588.5,
+          "x2": 588.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_147",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 592.5,
+          "x2": 592.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_148",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 596.5,
+          "x2": 596.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_149",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 600.5,
+          "x2": 600.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_15",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 64.5,
+          "x2": 64.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_150",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 604.5,
+          "x2": 604.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_151",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 608.5,
+          "x2": 608.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_152",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 612.5,
+          "x2": 612.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_153",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 616.5,
+          "x2": 616.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_154",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 620.5,
+          "x2": 620.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_155",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 624.5,
+          "x2": 624.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_156",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 628.5,
+          "x2": 628.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_157",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 632.5,
+          "x2": 632.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_158",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 636.5,
+          "x2": 636.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_159",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 640.5,
+          "x2": 640.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_16",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 68.5,
+          "x2": 68.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_160",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 644.5,
+          "x2": 644.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_161",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.4000000000000057,
+          "x1": 3.0,
+          "x2": 646.0,
+          "y1": 207.3,
+          "y2": 207.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_162",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.4000000000000057,
+          "x1": 3.0,
+          "x2": 646.0,
+          "y1": 133.89999999999998,
+          "y2": 133.89999999999998
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_163",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 344.5,
+          "x2": 344.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_164",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.3999999999999773,
+          "x1": 3.0,
+          "x2": 646.0,
+          "y1": 286.3,
+          "y2": 286.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_165",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.3999999999999773,
+          "x1": 3.0,
+          "x2": 646.0,
+          "y1": 212.9,
+          "y2": 212.9
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_169",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6,
+          "x1": 11.200000000000001,
+          "x2": 664.4,
+          "y1": -4.1000000000000005,
+          "y2": -4.1000000000000005
+        },
+        {
+          "id": "s1",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000085,
+          "x1": 33.2,
+          "x2": 664.4,
+          "y1": 122.30000000000001,
+          "y2": 122.30000000000001
+        },
+        {
+          "id": "s2",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.5999999999999943,
+          "x1": 323.2,
+          "x2": 664.4,
+          "y1": 133.89999999999998,
+          "y2": 133.89999999999998
+        },
+        {
+          "id": "s3",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.5999999999999943,
+          "x1": 323.2,
+          "x2": 664.4,
+          "y1": 207.3,
+          "y2": 207.3
+        },
+        {
+          "id": "s4",
+          "layer": "M2",
+          "source": "GDS",
+          "width": 3.7999999999999545,
+          "x1": 662.5,
+          "x2": 662.5,
+          "y1": -6.1000000000000005,
+          "y2": 209.3
+        }
+      ],
+      "special": false,
+      "vias": [
+        {
+          "id": "v0",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 662.5,
+          "y": -4.1
+        },
+        {
+          "id": "v1",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 662.5,
+          "y": 122.30000000000001
+        },
+        {
+          "id": "v2",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 662.5,
+          "y": 133.89999999999998
+        },
+        {
+          "id": "v3",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 662.5,
+          "y": 207.3
+        }
+      ]
+    },
+    {
+      "name": "__unlabeled_M1_17",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 72.5,
+          "x2": 72.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_173",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000014,
+          "x1": 33.2,
+          "x2": 670.4,
+          "y1": 53.3,
+          "y2": 53.3
+        },
+        {
+          "id": "s1",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000014,
+          "x1": 11.200000000000001,
+          "x2": 670.4,
+          "y1": 64.9,
+          "y2": 64.9
+        },
+        {
+          "id": "s2",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000227,
+          "x1": 323.2,
+          "x2": 670.4,
+          "y1": 212.9,
+          "y2": 212.9
+        },
+        {
+          "id": "s3",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000227,
+          "x1": 323.2,
+          "x2": 670.4,
+          "y1": 286.3,
+          "y2": 286.3
+        },
+        {
+          "id": "s4",
+          "layer": "M2",
+          "source": "GDS",
+          "width": 3.7999999999999545,
+          "x1": 668.5,
+          "x2": 668.5,
+          "y1": 51.300000000000004,
+          "y2": 288.3
+        }
+      ],
+      "special": false,
+      "vias": [
+        {
+          "id": "v0",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 668.5,
+          "y": 53.3
+        },
+        {
+          "id": "v1",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 668.5,
+          "y": 64.9
+        },
+        {
+          "id": "v2",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 668.5,
+          "y": 212.9
+        },
+        {
+          "id": "v3",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 668.5,
+          "y": 286.3
+        }
+      ]
+    },
+    {
+      "name": "__unlabeled_M1_175",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000014,
+          "x1": 11.200000000000001,
+          "x2": 676.4,
+          "y1": 59.3,
+          "y2": 59.3
+        },
+        {
+          "id": "s1",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.5999999999999943,
+          "x1": 11.200000000000001,
+          "x2": 676.4,
+          "y1": 128.3,
+          "y2": 128.3
+        },
+        {
+          "id": "s2",
+          "layer": "M2",
+          "source": "GDS",
+          "width": 3.7999999999999545,
+          "x1": 674.5,
+          "x2": 674.5,
+          "y1": 57.300000000000004,
+          "y2": 130.3
+        }
+      ],
+      "special": false,
+      "vias": [
+        {
+          "id": "v0",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 674.5,
+          "y": 59.3
+        },
+        {
+          "id": "v1",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 674.5,
+          "y": 128.3
+        }
+      ]
+    },
+    {
+      "name": "__unlabeled_M1_176",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 392.5,
+          "x2": 392.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_177",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 396.5,
+          "x2": 396.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_178",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 400.5,
+          "x2": 400.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_179",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 404.5,
+          "x2": 404.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_18",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 76.5,
+          "x2": 76.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_180",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 408.5,
+          "x2": 408.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_181",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 412.5,
+          "x2": 412.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_182",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 416.5,
+          "x2": 416.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_183",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 420.5,
+          "x2": 420.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_184",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 424.5,
+          "x2": 424.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_185",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 428.5,
+          "x2": 428.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_186",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 432.5,
+          "x2": 432.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_187",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 436.5,
+          "x2": 436.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_188",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 440.5,
+          "x2": 440.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_189",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 444.5,
+          "x2": 444.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_19",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 80.5,
+          "x2": 80.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_190",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 448.5,
+          "x2": 448.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_191",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 452.5,
+          "x2": 452.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_192",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 456.5,
+          "x2": 456.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_193",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 460.5,
+          "x2": 460.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_194",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 464.5,
+          "x2": 464.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_195",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 468.5,
+          "x2": 468.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_196",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 472.5,
+          "x2": 472.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_197",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 476.5,
+          "x2": 476.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_198",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 480.5,
+          "x2": 480.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_199",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 484.5,
+          "x2": 484.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_2",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 12.5,
+          "x2": 12.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_20",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 84.5,
+          "x2": 84.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_200",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 488.5,
+          "x2": 488.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_201",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 492.5,
+          "x2": 492.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_202",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 496.5,
+          "x2": 496.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_203",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 500.5,
+          "x2": 500.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_204",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 504.5,
+          "x2": 504.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_205",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 508.5,
+          "x2": 508.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_206",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999966,
+          "x1": 512.5,
+          "x2": 512.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_207",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 516.5,
+          "x2": 516.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_208",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 520.5,
+          "x2": 520.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_209",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 524.5,
+          "x2": 524.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_21",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 88.5,
+          "x2": 88.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_210",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 528.5,
+          "x2": 528.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_211",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 532.5,
+          "x2": 532.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_212",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 536.5,
+          "x2": 536.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_213",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 540.5,
+          "x2": 540.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_214",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999909,
+          "x1": 544.5,
+          "x2": 544.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_215",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 548.5,
+          "x2": 548.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_216",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 552.5,
+          "x2": 552.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_217",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 556.5,
+          "x2": 556.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_218",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 560.5,
+          "x2": 560.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_219",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 564.5,
+          "x2": 564.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_22",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 92.5,
+          "x2": 92.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_220",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 568.5,
+          "x2": 568.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_221",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 572.5,
+          "x2": 572.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_222",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 576.5,
+          "x2": 576.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_223",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 580.5,
+          "x2": 580.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_224",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 584.5,
+          "x2": 584.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_225",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 588.5,
+          "x2": 588.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_226",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 592.5,
+          "x2": 592.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_227",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 596.5,
+          "x2": 596.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_228",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 600.5,
+          "x2": 600.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_229",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 604.5,
+          "x2": 604.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_23",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 96.5,
+          "x2": 96.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_230",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 608.5,
+          "x2": 608.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_231",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 612.5,
+          "x2": 612.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_232",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 616.5,
+          "x2": 616.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_233",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 620.5,
+          "x2": 620.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_234",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 624.5,
+          "x2": 624.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_235",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 628.5,
+          "x2": 628.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_236",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 632.5,
+          "x2": 632.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_237",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 636.5,
+          "x2": 636.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_238",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 640.5,
+          "x2": 640.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_239",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 644.5,
+          "x2": 644.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_24",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 100.5,
+          "x2": 100.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_240",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 657.0,
+          "x2": 660.0,
+          "y1": 201.3,
+          "y2": 201.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_241",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 348.5,
+          "x2": 348.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_242",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 657.0,
+          "x2": 660.0,
+          "y1": 280.3,
+          "y2": 280.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_243",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 4.399999999999977,
+          "x1": 657.1,
+          "x2": 661.5,
+          "y1": 299.3,
+          "y2": 299.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_244",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 352.5,
+          "x2": 352.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_245",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 356.5,
+          "x2": 356.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_246",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 360.5,
+          "x2": 360.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_247",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 364.5,
+          "x2": 364.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_248",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 368.5,
+          "x2": 368.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_249",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 372.5,
+          "x2": 372.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_25",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 104.5,
+          "x2": 104.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_250",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 376.5,
+          "x2": 376.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_251",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 380.5,
+          "x2": 380.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_252",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 384.5,
+          "x2": 384.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_253",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 388.5,
+          "x2": 388.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_255",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.5999999999999943,
+          "x1": 657.2,
+          "x2": 682.4,
+          "y1": 201.3,
+          "y2": 201.3
+        },
+        {
+          "id": "s1",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000227,
+          "x1": 657.2,
+          "x2": 682.4,
+          "y1": 280.3,
+          "y2": 280.3
+        },
+        {
+          "id": "s2",
+          "layer": "M2",
+          "source": "GDS",
+          "width": 3.7999999999999545,
+          "x1": 680.5,
+          "x2": 680.5,
+          "y1": 199.3,
+          "y2": 282.3
+        }
+      ],
+      "special": false,
+      "vias": [
+        {
+          "id": "v0",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 680.5,
+          "y": 201.3
+        },
+        {
+          "id": "v1",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 680.5,
+          "y": 280.3
+        }
+      ]
+    },
+    {
+      "name": "__unlabeled_M1_256",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.6000000000000227,
+          "x1": 658.0,
+          "x2": 688.4,
+          "y1": 299.3,
+          "y2": 299.3
+        },
+        {
+          "id": "s1",
+          "layer": "M2",
+          "source": "GDS",
+          "width": 3.7999999999999545,
+          "x1": 686.5,
+          "x2": 686.5,
+          "y1": 297.3,
+          "y2": 301.3
+        }
+      ],
+      "special": false,
+      "vias": [
+        {
+          "id": "v0",
+          "lower_layer": "M1",
+          "name": "V1",
+          "source": "GDS",
+          "upper_layer": "M2",
+          "x": 686.5,
+          "y": 299.3
+        }
+      ]
+    },
+    {
+      "name": "__unlabeled_M1_257",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 36.5,
+          "x2": 36.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_258",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 40.5,
+          "x2": 40.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_259",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 44.5,
+          "x2": 44.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_26",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 108.5,
+          "x2": 108.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_260",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 48.5,
+          "x2": 48.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_261",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 52.5,
+          "x2": 52.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_262",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 56.5,
+          "x2": 56.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_263",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 60.5,
+          "x2": 60.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_264",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 64.5,
+          "x2": 64.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_265",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 68.5,
+          "x2": 68.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_266",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 72.5,
+          "x2": 72.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_267",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 76.5,
+          "x2": 76.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_268",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 80.5,
+          "x2": 80.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_269",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 84.5,
+          "x2": 84.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_27",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 112.5,
+          "x2": 112.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_270",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 88.5,
+          "x2": 88.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_271",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 92.5,
+          "x2": 92.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_272",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 96.5,
+          "x2": 96.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_273",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 100.5,
+          "x2": 100.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_274",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 104.5,
+          "x2": 104.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_275",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 108.5,
+          "x2": 108.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_276",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 112.5,
+          "x2": 112.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_277",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 116.5,
+          "x2": 116.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_278",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 120.5,
+          "x2": 120.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_279",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 124.5,
+          "x2": 124.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_28",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 116.5,
+          "x2": 116.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_280",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000085,
+          "x1": 128.5,
+          "x2": 128.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_281",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 132.5,
+          "x2": 132.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_282",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 136.5,
+          "x2": 136.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_283",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 140.5,
+          "x2": 140.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_284",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 144.5,
+          "x2": 144.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_285",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 148.5,
+          "x2": 148.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_286",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 152.5,
+          "x2": 152.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_287",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 156.5,
+          "x2": 156.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_288",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 160.5,
+          "x2": 160.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_289",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 164.5,
+          "x2": 164.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_29",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 120.5,
+          "x2": 120.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_290",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 168.5,
+          "x2": 168.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_291",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 172.5,
+          "x2": 172.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_292",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 176.5,
+          "x2": 176.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_293",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 180.5,
+          "x2": 180.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_294",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 184.5,
+          "x2": 184.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_295",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 188.5,
+          "x2": 188.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_296",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 192.5,
+          "x2": 192.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_297",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 196.5,
+          "x2": 196.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_298",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 200.5,
+          "x2": 200.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_299",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 204.5,
+          "x2": 204.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_3",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 16.5,
+          "x2": 16.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_30",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 124.5,
+          "x2": 124.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_300",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 208.5,
+          "x2": 208.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_301",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 212.5,
+          "x2": 212.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_302",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 216.5,
+          "x2": 216.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_303",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 220.5,
+          "x2": 220.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_304",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 224.5,
+          "x2": 224.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_305",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 228.5,
+          "x2": 228.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_306",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 232.5,
+          "x2": 232.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_307",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 236.5,
+          "x2": 236.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_308",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 240.5,
+          "x2": 240.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_309",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 244.5,
+          "x2": 244.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_31",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000085,
+          "x1": 128.5,
+          "x2": 128.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_310",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 248.5,
+          "x2": 248.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_311",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 252.5,
+          "x2": 252.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_312",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 256.5,
+          "x2": 256.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_313",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 260.5,
+          "x2": 260.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_314",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 264.5,
+          "x2": 264.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_315",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 268.5,
+          "x2": 268.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_316",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 272.5,
+          "x2": 272.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_317",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 276.5,
+          "x2": 276.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_318",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 280.5,
+          "x2": 280.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_319",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 284.5,
+          "x2": 284.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_32",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 132.5,
+          "x2": 132.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_320",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 288.5,
+          "x2": 288.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_321",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 292.5,
+          "x2": 292.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_322",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 296.5,
+          "x2": 296.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_323",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 300.5,
+          "x2": 300.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_324",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 304.5,
+          "x2": 304.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_325",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 308.5,
+          "x2": 308.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_326",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 312.5,
+          "x2": 312.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_327",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 316.5,
+          "x2": 316.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_328",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 320.5,
+          "x2": 320.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_329",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 324.5,
+          "x2": 324.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_33",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 136.5,
+          "x2": 136.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_330",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 328.5,
+          "x2": 328.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_331",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 332.5,
+          "x2": 332.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_332",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 336.5,
+          "x2": 336.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_333",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 340.5,
+          "x2": 340.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_334",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 4.5,
+          "x2": 4.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_335",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000005,
+          "x1": 8.5,
+          "x2": 8.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_336",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 12.5,
+          "x2": 12.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_337",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 16.5,
+          "x2": 16.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_338",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 20.5,
+          "x2": 20.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_339",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 24.5,
+          "x2": 24.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_34",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 140.5,
+          "x2": 140.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_340",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 28.5,
+          "x2": 28.5,
+          "y1": 217.20000000000002,
+          "y2": 285.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_341",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999998,
+          "x1": 32.5,
+          "x2": 32.5,
+          "y1": 211.20000000000002,
+          "y2": 276.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_342",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.4,
+          "x1": 3.0,
+          "x2": 22.0,
+          "y1": -4.1,
+          "y2": -4.1
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_343",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 33.0,
+          "x2": 36.0,
+          "y1": 53.3,
+          "y2": 53.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_344",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 4.5,
+          "x2": 4.5,
+          "y1": 69.2,
+          "y2": 127.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_345",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000005,
+          "x1": 8.5,
+          "x2": 8.5,
+          "y1": 63.2,
+          "y2": 118.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_346",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 12.5,
+          "x2": 12.5,
+          "y1": 69.2,
+          "y2": 127.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_347",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 16.5,
+          "x2": 16.5,
+          "y1": 63.2,
+          "y2": 118.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_348",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 20.5,
+          "x2": 20.5,
+          "y1": 69.2,
+          "y2": 127.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_349",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.3999999999999915,
+          "x1": 3.0,
+          "x2": 22.0,
+          "y1": 128.3,
+          "y2": 128.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_35",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 144.5,
+          "x2": 144.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_350",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.3999999999999915,
+          "x1": 3.0,
+          "x2": 22.0,
+          "y1": 64.9,
+          "y2": 64.9
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_351",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000085,
+          "x1": 33.0,
+          "x2": 36.0,
+          "y1": 122.30000000000001,
+          "y2": 122.30000000000001
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_352",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 4.5,
+          "x2": 4.5,
+          "y1": 0.2,
+          "y2": 58.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_353",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000005,
+          "x1": 8.5,
+          "x2": 8.5,
+          "y1": -5.8,
+          "y2": 49.800000000000004
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_354",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 12.5,
+          "x2": 12.5,
+          "y1": 0.2,
+          "y2": 58.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_355",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999996,
+          "x1": 16.5,
+          "x2": 16.5,
+          "y1": -5.8,
+          "y2": 49.800000000000004
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_356",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 20.5,
+          "x2": 20.5,
+          "y1": 0.2,
+          "y2": 58.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_357",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 3.3999999999999986,
+          "x1": 3.0,
+          "x2": 22.0,
+          "y1": 59.3,
+          "y2": 59.3
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_36",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 148.5,
+          "x2": 148.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_37",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 152.5,
+          "x2": 152.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_38",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 156.5,
+          "x2": 156.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_39",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 160.5,
+          "x2": 160.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_4",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 20.5,
+          "x2": 20.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_40",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 164.5,
+          "x2": 164.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_41",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 168.5,
+          "x2": 168.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_42",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 172.5,
+          "x2": 172.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_43",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 176.5,
+          "x2": 176.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_44",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 180.5,
+          "x2": 180.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_45",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 184.5,
+          "x2": 184.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_46",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 188.5,
+          "x2": 188.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_47",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 192.5,
+          "x2": 192.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_48",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 196.5,
+          "x2": 196.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_49",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 200.5,
+          "x2": 200.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_5",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 24.5,
+          "x2": 24.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_50",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 204.5,
+          "x2": 204.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_51",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 208.5,
+          "x2": 208.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_52",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 212.5,
+          "x2": 212.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_53",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 216.5,
+          "x2": 216.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_54",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 220.5,
+          "x2": 220.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_55",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 224.5,
+          "x2": 224.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_56",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 228.5,
+          "x2": 228.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_57",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 232.5,
+          "x2": 232.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_58",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 236.5,
+          "x2": 236.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_59",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 240.5,
+          "x2": 240.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_6",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 28.5,
+          "x2": 28.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_60",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 244.5,
+          "x2": 244.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_61",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 248.5,
+          "x2": 248.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_62",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 252.5,
+          "x2": 252.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_63",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.5999999999999943,
+          "x1": 256.5,
+          "x2": 256.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_64",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 260.5,
+          "x2": 260.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_65",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 264.5,
+          "x2": 264.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_66",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 268.5,
+          "x2": 268.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_67",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 272.5,
+          "x2": 272.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_68",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 276.5,
+          "x2": 276.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_69",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 280.5,
+          "x2": 280.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_7",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.599999999999998,
+          "x1": 32.5,
+          "x2": 32.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_70",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 284.5,
+          "x2": 284.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_71",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 288.5,
+          "x2": 288.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_72",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 292.5,
+          "x2": 292.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_73",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 296.5,
+          "x2": 296.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_74",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 300.5,
+          "x2": 300.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_75",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 304.5,
+          "x2": 304.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_76",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 308.5,
+          "x2": 308.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_77",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 312.5,
+          "x2": 312.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_78",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 316.5,
+          "x2": 316.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_79",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 320.5,
+          "x2": 320.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_8",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 36.5,
+          "x2": 36.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_80",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 324.5,
+          "x2": 324.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_81",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 328.5,
+          "x2": 328.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_82",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 332.5,
+          "x2": 332.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_83",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 336.5,
+          "x2": 336.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_84",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 340.5,
+          "x2": 340.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_85",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 344.5,
+          "x2": 344.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_86",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 348.5,
+          "x2": 348.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_87",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 352.5,
+          "x2": 352.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_88",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 356.5,
+          "x2": 356.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_89",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 360.5,
+          "x2": 360.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_9",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000014,
+          "x1": 40.5,
+          "x2": 40.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_90",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 364.5,
+          "x2": 364.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_91",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 368.5,
+          "x2": 368.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_92",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 372.5,
+          "x2": 372.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_93",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 376.5,
+          "x2": 376.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_94",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 380.5,
+          "x2": 380.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_95",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 384.5,
+          "x2": 384.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_96",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 388.5,
+          "x2": 388.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_97",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 392.5,
+          "x2": 392.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_98",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 396.5,
+          "x2": 396.5,
+          "y1": 138.20000000000002,
+          "y2": 206.5
+        }
+      ],
+      "special": false,
+      "vias": []
+    },
+    {
+      "name": "__unlabeled_M1_99",
+      "ports": [],
+      "segments": [
+        {
+          "id": "s0",
+          "layer": "M1",
+          "source": "GDS",
+          "width": 2.6000000000000227,
+          "x1": 400.5,
+          "x2": 400.5,
+          "y1": 132.2,
+          "y2": 197.8
+        }
+      ],
+      "special": false,
+      "vias": []
+    }
+  ],
+  "schema": 1,
+  "source": {
+    "dbu_to_um": 0.001,
+    "gds_sha256": "17ad501ec2e8a5420c1f018bd0a8392b4714d2a1d645af5317db16f037a43f92",
+    "kind": "gds",
+    "path": "/grid/TR-1um_stdcell/flow/pdk_root/TR10/examples/rf_iq_receiver/layout/rx_vco.gds",
+    "top": "rx_vco"
+  },
+  "units": {
+    "length": "um"
+  },
+  "warnings": [
+    "gds_bbox_approximation",
+    "unlabeled_metal_shape_created_synthetic_net",
+    "via_connects_distinct_labeled_nets"
+  ]
+}
